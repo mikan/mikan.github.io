@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>技術ブログを作ってみた  &middot; Yutaka 🍊 Kato</title>
+  <title>Hugo でカスタム CSS を適用して画像の配置をイジる  &middot; Yutaka 🍊 Kato</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,23 +14,21 @@
 
 <meta name="description" content="" />
 
-<meta name="keywords" content="book, hugo, ">
+<meta name="keywords" content="hugo, ">
 
 
-<meta property="og:title" content="技術ブログを作ってみた  &middot; Yutaka 🍊 Kato ">
+<meta property="og:title" content="Hugo でカスタム CSS を適用して画像の配置をイジる  &middot; Yutaka 🍊 Kato ">
 <meta property="og:site_name" content="Yutaka 🍊 Kato"/>
-<meta property="og:url" content="/2017/11/03/hello-world/" />
+<meta property="og:url" content="/2017/11/03/centering-figures-in-hugo/" />
 <meta property="og:locale" content="ja-jp">
 
 
 <meta property="og:type" content="article" />
 <meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2017-11-03T00:05:15&#43;09:00" />
-<meta property="og:article:modified_time" content="2017-11-03T00:05:15&#43;09:00" />
+<meta property="og:article:published_time" content="2017-11-03T18:19:45&#43;09:00" />
+<meta property="og:article:modified_time" content="2017-11-03T18:19:45&#43;09:00" />
 
   
-    
-<meta property="og:article:tag" content="book">
     
 <meta property="og:article:tag" content="hugo">
     
@@ -40,9 +38,9 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@kagaorange" />
 <meta name="twitter:creator" content="@kagaorange" />
-<meta name="twitter:title" content="技術ブログを作ってみた" />
+<meta name="twitter:title" content="Hugo でカスタム CSS を適用して画像の配置をイジる" />
 <meta name="twitter:description" content="" />
-<meta name="twitter:url" content="/2017/11/03/hello-world/" />
+<meta name="twitter:url" content="/2017/11/03/centering-figures-in-hugo/" />
 <meta name="twitter:domain" content="/">
   
 
@@ -51,21 +49,21 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "技術ブログを作ってみた",
+    "headline": "Hugo でカスタム CSS を適用して画像の配置をイジる",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
     "datePublished": "2017-11-03",
     "description": "",
-    "wordCount": 1338
+    "wordCount": 764
   }
 </script>
   
 
 
 
-<link rel="canonical" href="/2017/11/03/hello-world/" />
+<link rel="canonical" href="/2017/11/03/centering-figures-in-hugo/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
 <meta name="generator" content="Hugo 0.31-DEV" />
@@ -162,7 +160,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <div class="text-center">
 
-    <h1>技術ブログを作ってみた
+    <h1>Hugo でカスタム CSS を適用して画像の配置をイジる
 </h1>
 
     <div class="metas">
@@ -173,34 +171,32 @@
 
 
   <small>
-  &middot; Read in about 3 min
-  &middot; (1338 words)
+  &middot; Read in about 2 min
+  &middot; (764 words)
   &middot; 
 <span class="share-box">Share this on:
-    <a href="https://www.facebook.com/sharer/sharer.php?u=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;url=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Hugo%20%e3%81%a7%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%20CSS%20%e3%82%92%e9%81%a9%e7%94%a8%e3%81%97%e3%81%a6%e7%94%bb%e5%83%8f%e3%81%ae%e9%85%8d%e7%bd%ae%e3%82%92%e3%82%a4%e3%82%b8%e3%82%8b&amp;url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
-    <a href="https://plus.google.com/share?url=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://plus.google.com/share?url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
 
-    <a href="http://www.reddit.com/submit?url=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="http://www.reddit.com/submit?url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2017%2f11%2f03%2fhello-world%2f&amp;title=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f&amp;title=Hugo%20%e3%81%a7%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%20CSS%20%e3%82%92%e9%81%a9%e7%94%a8%e3%81%97%e3%81%a6%e7%94%bb%e5%83%8f%e3%81%ae%e9%85%8d%e7%bd%ae%e3%82%92%e3%82%a4%e3%82%b8%e3%82%8b" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;body=Check out this site %2f2017%2f11%2f03%2fhello-world%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Hugo%20%e3%81%a7%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%20CSS%20%e3%82%92%e9%81%a9%e7%94%a8%e3%81%97%e3%81%a6%e7%94%bb%e5%83%8f%e3%81%ae%e9%85%8d%e7%bd%ae%e3%82%92%e3%82%a4%e3%82%b8%e3%82%8b&amp;body=Check out this site %2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   </small>
 
 <div class="margin-10">
   <i class="fa fa-tags"></i>
-  
-  <a href="/tags/book" class="label label-primary">book</a>
   
   <a href="/tags/hugo" class="label label-primary">hugo</a>
   
@@ -217,63 +213,86 @@
       <div class="content">
   
 
-<p>突然ですが、技術ブログを作ってみました！</p>
+<p>Hugo で画像を真ん中に寄せたくなったのだけど方法がわからなかったので調べてみました。</p>
 
-<p>実は 3～4 年前まで別の技術ブログを持っていました。しかし WordPress.com の操作ミスで消してしまったのです・・・。
-あぁ、私のキラキラ輝く山篭り生活 IN 北陸の秘密基地ライフが・・・ (本当に &ldquo;技術ブログ&rdquo; だったのか!? 😇)
-そこで 2017 年の頭に立てた目標の一つが、「技術ブログの復活」でした。さて、今は 11 月です。いったい今まで何をサボっていたのでしょう？</p>
+<p>Jekyll (正確には Klamdown) の場合は、 <code>{:refdef}</code> で対象を囲むことでなんでもできちゃう汎用性があります。例えばこんな感じ:</p>
 
-<h2 id="きっかけ">きっかけ</h2>
+<pre><code>{:refdef: style=&quot;float: right;&quot;}
+[![](/images/cover-microservices.jpg &quot;マイクロサービスアーキテクチャ&quot;)](/workshop/8-microservices)
+{: refdef}
+</code></pre>
 
-<p><a href="http://amzn.to/2h5lk9V">Soft Skills</a> という本を読んだことがあるでしょうか。ぶっとんだフリーランスの John Sonmez 氏が執筆した本で、ゆるふわ系エンジニアの私は大変な刺激を受けたものです。
-と同時に、「うわっ・・・私の技術アウトプット、低すぎ・・・？」 😱 と気付かされたわけで、そこからたくさんセミナーに顔出して懇親会にももっと顔出すようになったり、日本 Java ユーザー会のカンファレンス (JJUG CCC 2017 Spring) の登壇にチャレンジしてみたり、少しずつアクティブになってきたと思ってきたところです。そんな中、目標の一つにかかげつつまだ達成できていなかったのが、技術ブログ執筆なわけです。</p>
+<p>(<a href="https://aosn.ws">AOSN 読書会</a>のウェブサイトの例)</p>
+
+<p>Hugo の場合、テーマとの兼ね合いになってきます。本ブログで採用しているテーマ (<a href="https://github.com/appernetic/hugo-bootstrap-premium">hugo-bootstrap-premium</a>) の場合は、ソースコードを読むと <code>customCSS</code> という設定項目を読み込むように記述されているのを見つけました。</p>
+
+<blockquote>
+<p>themes/hugo-bootstrap-premium/layouts/partials/base/imports.html:</p>
+
+<pre><code>{{ range .Site.Params.customCSS }}
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ . | absURL}}&quot;&gt;
+{{ end }}
+</code></pre>
+</blockquote>
+
+<p>このような定義がお使いのテーマにない場合はここで一手間必要です。Hugo ではテーマを override する機構が備わっており、これを利用します。先程の例の <code>imports.html</code> に相当するファイルが同様に <code>themes/xxx/layouts/partials/base/imports.html</code> あるとしたら、それを override できるファイルのパスは <code>layouts/partials/base/imports.html</code> になります。ここにファイルをコピペして、上記の記述を差し込めば OK です。</p>
+
+<p><code>customCSS</code> を実際に指定する場所はもちろん Hugo の設定ファイルです。toml の場合はこんな感じです。</p>
+
+<pre><code class="language-toml">[params]
+	customCSS = [&quot;/css/custom.css&quot;]
+</code></pre>
+
+<p>上記の例では、実際に用意するファイルのパスは <code>/static/css/custom.css</code> となります。</p>
+
+<p>さて、肝心の画像を真ん中に寄せる方法ですが、Hugo の機能の一つであるショートコードの &ldquo;figure&rdquo; を使って CSS の class を指定してみることにしました。</p>
+
+<pre><code>&lt;figure src=&quot;/img/cover/gopl_ja.jpg&quot; class=&quot;center&quot; link=&quot;http://www.gopl.io/&quot; alt=&quot;プログラミング言語Go&quot;&gt;
+</code></pre>
+
+<p>(コピペしたあと <code>{{</code> と <code>}}</code> で囲ってください)</p>
+
+<p>CSS は以下のようになります。</p>
+
+<pre><code class="language-css">figure.center {
+    text-align: center;
+}
+figure.center img {
+    margin: 0 auto;
+}
+</code></pre>
+
+<p>結果は・・・</p>
 
 
 <figure class="center">
-    <a href="http://amzn.to/2h5lk9V">
-        <img src="/img/cover/softskills.png" width="20%" />
-    </a>
     
-    <figcaption>
-        <h4>SOFT SKILLS ソフトウェア開発者の人生マニュアル</h4>
-        
-    </figcaption>
+        <img src="/img/ss/centering-hugo-fig.png" alt="centering" width="80%" />
+    
     
 </figure>
 
 
-<p>もう一点、私は今年の 9 月に (再) 転職をしてベンチャー企業に入ったわけなのですが、ここが今まで身を置いていた会社 (お硬い大企業とか) とは違い、ナレッジは社内で溜め込むより社外にガンガン出してくほうがもっと多くの人の役に立つし良くね？的なオープンなノリがあって、でも個人的に Q なんとかは受け入れがたくて、やっぱ自分のスタイルでパブリッシュしていくには技術ブログかなと改めて感じました。</p>
+<p>見事、真ん中になりました。</p>
 
-<p>また、この後紹介しますが、今回は Git で原稿と HTML の双方をバージョン管理しており、ホスティングは GitHub Pages を使っています。これで、どんなアホな操作ミスをしても、武蔵小杉にミサイルが落ちてきても、サービスでデータロストが起きても、ブログのデータが地球から完全に消え去ってしまう可能性はかなり小さくなりました。つまり、WordPress ショックの再来 (注: 繰り返すが私の操作ミスで WP は悪くない) に怯えることもなくなったわけで、もはや書かない理由はなくなりました。</p>
+<p>同じノリで、右寄せもできます。応用として、画像を横に並べていくこともできます。CSS クラス <code>inline</code> としたときの CSS は以下のようになります。</p>
 
-<h2 id="使っているもの">使っているもの</h2>
+<pre><code class="language-css">figure.inline {
+    display: inline;
+}
+figure.inline img {
+    display: inline;
+}
+</code></pre>
 
-<p>ホスティングは GitHub Pages を使っています。元々はこの URL で雑多なポートフォリオ等を載せていました。</p>
+<p>元々のテーマには手を入れずに override でピンポイントに定義を追加していける点、とても使い心地が良いですね。</p>
 
-<p>原稿から HTML を生成するツールには <a href="https://gohugo.io/">Hugo</a> を利用しています。一言で紹介するならば、Go で書かれた Jekyll クローン、でしょうか。しかしその一言で片付けるにはもったいないぐらい魅力があるツールです。</p>
+<h4 id="参考文献">参考文献</h4>
 
-
-<figure class="center">
-    <a href="https://gohugo.io">
-        <img src="/img/ss/hugo.png" width="60%" />
-    </a>
-    
-    <figcaption>
-        <h4>Hugo</h4>
-        
-    </figcaption>
-    
-</figure>
-
-
-<p>あえて GitHub Pages ネイティブな Jekyll ではなく Hugo を採用した理由は、速さと機能性、Ruby インタプリタ不要な取り回し安さなどがありますが、9 割は趣味です。だって Golang 製だし。</p>
-
-<h2 id="テーマ">テーマ</h2>
-
-<p>ずばり、「<strong>IoT</strong>」です。私のエンジニアとしての目標は「<strong>IoT フルスタックエンジニア</strong>」で、それこそが組み込みからサーバーサイドまで経験し、また継続して興味を持ち続けている私の生きる道だと思っています。
-もっとも、ここんところ (転職前も後も) 金融系の仕事が続いていますが、クラウド活用や大量データを扱う設計など IoT の技術群とオーバーラップするところも少なくないのではと思っています。IoT のしごとをしていないときも、IoT にこじつけながらブログをポストしつづけられることを目指しています。</p>
-
-<p>Stay tuned &amp; Happy hacking!</p>
+<ol>
+<li><a href="https://gohugo.io/themes/customizing/">Hugo  | Customize a Theme</a></li>
+<li><a href="https://gohugo.io/content-management/shortcodes/">Hugo  | Shortcodes</a></li>
+</ol>
 
 </div>
 
@@ -281,22 +300,22 @@
       <footer>
   
 <span class="share-box">Share this on:
-    <a href="https://www.facebook.com/sharer/sharer.php?u=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.facebook.com/sharer/sharer.php?u=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;url=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Hugo%20%e3%81%a7%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%20CSS%20%e3%82%92%e9%81%a9%e7%94%a8%e3%81%97%e3%81%a6%e7%94%bb%e5%83%8f%e3%81%ae%e9%85%8d%e7%bd%ae%e3%82%92%e3%82%a4%e3%82%b8%e3%82%8b&amp;url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
-    <a href="https://plus.google.com/share?url=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://plus.google.com/share?url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
 
-    <a href="http://www.reddit.com/submit?url=%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="http://www.reddit.com/submit?url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2017%2f11%2f03%2fhello-world%2f&amp;title=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f&amp;title=Hugo%20%e3%81%a7%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%20CSS%20%e3%82%92%e9%81%a9%e7%94%a8%e3%81%97%e3%81%a6%e7%94%bb%e5%83%8f%e3%81%ae%e9%85%8d%e7%bd%ae%e3%82%92%e3%82%a4%e3%82%b8%e3%82%8b" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;body=Check out this site %2f2017%2f11%2f03%2fhello-world%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Hugo%20%e3%81%a7%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%20CSS%20%e3%82%92%e9%81%a9%e7%94%a8%e3%81%97%e3%81%a6%e7%94%bb%e5%83%8f%e3%81%ae%e9%85%8d%e7%bd%ae%e3%82%92%e3%82%a4%e3%82%b8%e3%82%8b&amp;body=Check out this site %2f2017%2f11%2f03%2fcentering-figures-in-hugo%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -304,13 +323,13 @@
   
     <nav><ul class="pager">
     
-
+        <li class="previous">
+          <a href="/2017/11/03/hugo-on-gh-pages/" title="Hugo を GitHub Pages でホストする方法を考える">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
     
-      <li class="next">
-        <a href="/2017/11/03/hugo-on-gh-pages/" title="Hugo を GitHub Pages でホストする方法を考える">
-            Next <span aria-hidden="true">&rarr;</span>
-        </a>
-      </li>
+
     
     </ul> </nav>
   

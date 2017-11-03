@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Fri, 03 Nov 2017 16:25:35 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 03 Nov 2017 18:19:45 +0900</lastBuildDate>
     
 	<atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo でカスタム CSS を適用して画像の配置をイジる</title>
+      <link>/2017/11/03/centering-figures-in-hugo/</link>
+      <pubDate>Fri, 03 Nov 2017 18:19:45 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>/2017/11/03/centering-figures-in-hugo/</guid>
+      <description>Hugo で画像を真ん中に寄せたくなったのだけど方法がわからなかったので調べてみました。 Jekyll (正確には Klamdown) の場合は、 {:refdef} で対象を囲むことでなんでもできちゃ</description>
+    </item>
     
     <item>
       <title>Hugo を GitHub Pages でホストする方法を考える</title>
