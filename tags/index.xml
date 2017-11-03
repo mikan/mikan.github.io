@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Yutaka 🍊 Kato</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Yutaka 🍊 Kato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <lastBuildDate>Fri, 03 Nov 2017 00:05:15 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Book</title>
+      <link>/tags/book/</link>
+      <pubDate>Fri, 03 Nov 2017 00:05:15 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>/tags/hugo/</link>
+      <pubDate>Fri, 03 Nov 2017 00:05:15 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

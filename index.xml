@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yutaka 🍊 Kato</title>
+    <link>/</link>
+    <description>Recent content on Yutaka 🍊 Kato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <lastBuildDate>Fri, 03 Nov 2017 00:09:42 +0900</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Fri, 03 Nov 2017 00:09:42 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>/about/</guid>
+      <description>Yutaka Kato / 加藤 裕 @ &amp;ldquo;IoT フルスタック&amp;rdquo; エンジニア (自称) GitHub: mikan / LinkedIn: yutakakato / Email: mikan@aosn.ws お仕事 2017.08-present: クラウド開発エンジニア @ 日系ITベンチャー 2017.01-2017.08: デリバリーエ</description>
+    </item>
+    
+    <item>
+      <title>Seminars</title>
+      <link>/seminars/</link>
+      <pubDate>Fri, 03 Nov 2017 00:09:42 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>/seminars/</guid>
+      <description>mikan が参加した社外の勉強会・セミナーの記録です。 凡例: Sign Desc. 📣 主催・幹事 👔 スタッフ 🎤 発表・登壇 🍺 懇親会参加 2017 Date Subject Venue Capacity 2017/10/28 Rakuten Technology Conference 2017 楽天 (二子玉川) ?</description>
+    </item>
+    
+    <item>
+      <title>技術ブログを作ってみた</title>
+      <link>/2017/11/03/hello-world/</link>
+      <pubDate>Fri, 03 Nov 2017 00:05:15 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>/2017/11/03/hello-world/</guid>
+      <description>突然ですが、技術ブログを作ってみました！ 実は 3～4 年前まで別の技術ブログを持っていました。しかし WordPress.com の操作ミスで消してしまったのです・・・。 あ</description>
+    </item>
+    
+  </channel>
+</rss>
