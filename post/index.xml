@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Fri, 03 Nov 2017 18:19:45 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 06 Nov 2017 22:49:31 +0900</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ESP-WROOM-02 を Mbed で使う</title>
+      <link>/2017/11/06/using-esp-wroom-02-with-mbed/</link>
+      <pubDate>Mon, 06 Nov 2017 22:49:31 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>/2017/11/06/using-esp-wroom-02-with-mbed/</guid>
+      <description>先日 (2017/10/21)、長野県の伊那市で「第3回 伊那市 LoRaWAN ハッカソン」というのが開かれまして、初参加してきました。 6人1チームで全6チー</description>
+    </item>
     
     <item>
       <title>Hugo でカスタム CSS を適用して画像の配置をイジる</title>
