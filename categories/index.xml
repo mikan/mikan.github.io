@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Yutaka 🍊 Kato</title>
-    <link>/categories/</link>
+    <link>https://mikan.github.io/categories/</link>
     <description>Recent content in Categories on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mikan.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Iot</title>
-      <link>/categories/iot/</link>
+      <link>https://mikan.github.io/categories/iot/</link>
       <pubDate>Mon, 06 Nov 2017 22:49:31 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
-      <guid>/categories/iot/</guid>
+      <guid>https://mikan.github.io/categories/iot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>/categories/life/</link>
+      <link>https://mikan.github.io/categories/life/</link>
       <pubDate>Fri, 03 Nov 2017 00:05:15 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
-      <guid>/categories/life/</guid>
+      <guid>https://mikan.github.io/categories/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web</title>
-      <link>/categories/web/</link>
+      <link>https://mikan.github.io/categories/web/</link>
       <pubDate>Fri, 03 Nov 2017 18:19:45 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
-      <guid>/categories/web/</guid>
+      <guid>https://mikan.github.io/categories/web/</guid>
       <description></description>
     </item>
     
