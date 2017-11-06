@@ -62,7 +62,7 @@
     },
     "datePublished": "2017-11-06",
     "description": "",
-    "wordCount": 2276
+    "wordCount": 2292
   }
 </script>
   
@@ -178,7 +178,7 @@
 
   <small>
   &middot; Read in about 5 min
-  &middot; (2276 words)
+  &middot; (2292 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f06%2fusing-esp-wroom-02-with-mbed%2f" onclick="window.open(this.href, 'mywin',
@@ -293,11 +293,11 @@
 </figure>
 
 
-<p>Switch Science でたったの \909 で売っています！(<a href="http://ssci.to/2347">ssci.to/2347</a>) 技適認証済です！ただし足はついていないので、一緒に買ってきてハンダ付けする必要があります。まあ、これぐらいはできなきゃね。</p>
+<p>Switch Science でたったの \909 で売っています！(<a href="http://ssci.to/2347">ssci.to/2347</a>) 技適認証済です！ただし足はついていないので、一緒に買ってきてハンダ付けする必要があります。まあ、これぐらいはこの記事に興味があるお兄ちゃん達は余裕だよね。</p>
 
-<p>ハンダ付けが終わったら、配線！なのですが、mbed のサイトで公開されている <a href="https://os.mbed.com/teams/ESP8266/">esp8266-driver</a> などのプログラムは <code>AT</code> コマンドというのをシリアルで投げることでチップに指示を送る仕組みを使っており、出荷時のファームウェアではこれに対応していないとのこと。なお、今回は純正の SDK を用いて書き換えを行うため、ファームウェアを書き換えても技適の認証には影響を与えないそうです<sup>[参考文献3]</sup>。安心してください。</p>
+<p>ハンダ付けが終わったら、配線！なのですが、mbed のサイトで公開されている <a href="https://os.mbed.com/teams/ESP8266/">esp8266-driver</a> などのプログラムは <code>AT</code> コマンドというのをシリアルで投げることでチップに指示を送る仕組みを使っており、出荷時のファームウェアではこれに対応していないとのこと。なのでまずはファームウェアアップグレードを行います。なお、今回は純正の SDK を用いて書き換えを行うため、ファームウェアを書き換えても技適の認証には影響を与えないそうです<sup>[参考文献3]</sup>。安心してください。</p>
 
-<p>まずはファームウェアアップグレードを行います。今回用意したのは mbed LPC1768 で、シリアル出力を PC でモニタリングするため、シリアルポートドライバを導入しておく必要があります (Windows の場合)。</p>
+<p>今回用意したのは mbed LPC1768 で、PC からシリアル入出力を行うため、シリアルポートドライバを導入しておく必要があります (Windows の場合)。</p>
 
 <blockquote>
 <p>Windows serial configuration - Handbook | Mbed</p>
@@ -399,8 +399,8 @@
 <p>ダウンロードするのは以下の２つ:</p>
 
 <ul>
-<li>SDKs &amp; Demos 欄にある「ESP8266 NONOS SDK」(私が利用したのは  V2.1.0)</li>
-<li>Tools 欄にある「Flash Download Tools (ESP8266 &amp; ESP32)」(私が利用したのは V3.6.1.0)</li>
+<li>SDKs &amp; Demos 欄にある「<strong>ESP8266 NONOS SDK</strong>」(私が利用したのは  V2.1.0)</li>
+<li>Tools 欄にある「<strong>Flash Download Tools (ESP8266 &amp; ESP32)</strong>」(私が利用したのは V3.6.1.0)</li>
 </ul>
 
 <p>mbed に電源を入れ、Flash Download Tool (ESPFlashDownloadTool_v3.6.1.0.exe) を起動し、ESP8266 DownloadTool ボタンを押すと、ファームウェアとアドレスを選ぶ画面になるので、説明書 (ESP8266_NONOS_SDK/bin/at/README.md) を読みながら指示どおり入力していきます。</p>
@@ -588,6 +588,21 @@
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 
 </div>
 
