@@ -52,7 +52,7 @@
     },
     "datePublished": "2017-11-13",
     "description": "",
-    "wordCount": 2390
+    "wordCount": 2405
   }
 </script>
   
@@ -168,7 +168,7 @@
 
   <small>
   &middot; Read in about 5 min
-  &middot; (2390 words)
+  &middot; (2405 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f13%2foperate-github-org-scope%2f" onclick="window.open(this.href, 'mywin',
@@ -332,7 +332,7 @@
 </figure>
 
 
-<p>No restrictions 状態の Organization には大きなリスクがあります。なぜならメンバーの <strong>誰か1人が</strong> 悪意ある OAuth アプリを認可したり、あるいは認可情報が流出して悪用されてしまえば、Organization の内部情報が丸裸となってしまい、さらに <code>write</code> や <code>admin</code> まで認可してしまった場合は、改ざんや消失のおそれまであるからです。Access Restricted な Organization ならば、OAuth アプリを認可しても、そのときに Grant ボタンさえ押さなければ被害を食い止められます (特に、何も考えずに先に進もうとする初心者は端っこにある小さな Grant ボタンより先に緑の Authorize ボタンを押すはずです)。従って、 <strong>特段の理由がない限り全ての GitHub Organization はまっさきに Access Restricted にすべき</strong> といえます。</p>
+<p>No restrictions 状態の Organization には大きなリスクがあります。なぜならメンバーの <strong>誰か1人が</strong> 悪意ある OAuth アプリを認可したり、あるいは認可情報が流出して悪用されてしまえば、No restrictions の Organization は無条件でアクセス許可されるため内部情報が丸裸となってしまい、さらに <code>write</code> や <code>admin</code> まで認可してしまった場合は、改ざんや消失のおそれまであるからです。Access Restricted な Organization ならば、OAuth アプリを認可しても、そのときに Grant ボタンさえ押さなければ設定した Organization への被害を食い止められます (特に、何も考えずに先に進もうとする初心者は端っこにある小さな Grant ボタンより先に緑の Authorize ボタンを押すはずです)。従って、 <strong>特段の理由がない限り全ての GitHub Organization はまっさきに Access Restricted にすべき</strong> といえます。</p>
 
 <p><code>read:org</code> や <code>admin:org</code> のアプリなんてめったにない？いえいえ、<code>org</code> スコープはあくまで一つの例で、CI/CD サービスなどに多い <code>repo</code> 系を要求してくるアプリも同様です。認可時に ❌ になっている Organization や、手動で Grant した Organization は、対象 OAuth アプリにそれらに属する全てのリポジトリの認可を与えることになります (public / private 別の scope 分類はあり)。これらの認可を下す際は、しっかりレビューをしてください。そしてもしあなたの Organization が No restrictions のままだったら、すぐさま管理者に Third-party access restriction の有効化を依頼してください。</p>
 
