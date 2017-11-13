@@ -52,7 +52,7 @@
     },
     "datePublished": "2017-11-13",
     "description": "",
-    "wordCount": 2237
+    "wordCount": 2262
   }
 </script>
   
@@ -168,7 +168,7 @@
 
   <small>
   &middot; Read in about 5 min
-  &middot; (2237 words)
+  &middot; (2262 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f13%2foperate-github-org-scope%2f" onclick="window.open(this.href, 'mywin',
@@ -266,7 +266,7 @@
 
 <p>このような性質の情報を取り扱うことから、ユーザーの所属組織一覧を取得する API <code>GET /user/orgs</code> では <code>read:org</code> または <code>user</code> のどちらかのスコープの認可がないとアクセスすらできません<sup>[参考文献2]</sup>。投票システムのユースケースでは、<code>user</code> は大きすぎるスコープであるため、<code>read:org</code> を要求しています。どうしても要求したくないという場合は、誰か一人のユーザーに対象の Organization のメンバー一覧を取得させ、それをその他のユーザーと使いまわすといった設計も可能ですが、誰か一人のユーザーのクレデンシャルをシステムに生贄として捧げる必要がある事に加え、フレームワークの支援を得るのも難しくなり、投票システムのユースケースではオーバーエンジニアリングでしょう。</p>
 
-<p>なお、本題からは外れますが spring-security-oauth2 で scope を指定する方法はとても簡単です。<code>ConfigurationProperties</code> でそのまま取り込んでくれます<sup>[参考文献4]</sup>。</p>
+<p>なお、本題からは外れますが spring-security-oauth2 で scope を指定する方法はとても簡単です。<code>application.yml</code> に <code>scope</code> を書くだけです。<sup>[参考文献4]</sup>。<code>ConfigurationProperties</code> を使った場合の例は次の通り。</p>
 
 <pre><code class="language-java">    @Bean
     @ConfigurationProperties(&quot;github&quot;)
