@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Mon, 13 Nov 2017 20:34:21 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 19 Nov 2017 23:07:42 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JJUG CCC 2017 Fall</title>
+      <link>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</link>
+      <pubDate>Sun, 19 Nov 2017 23:07:42 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</guid>
+      <description>日本最大の Java コミュニティカンファレンス、JJUG CCC (Japan Java User Group - Cross Community Conference) が今季もベルサール西新宿グランドで開催されました。年 2 回開催の、秋バージョ</description>
+    </item>
     
     <item>
       <title>GitHub OAuth の org スコープの適用と運用</title>
