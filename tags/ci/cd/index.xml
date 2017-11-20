@@ -19,7 +19,7 @@
       <pubDate>Mon, 20 Nov 2017 22:46:31 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/</guid>
-      <description>今回は Go 言語 (Golang) の CI 環境に関する備忘録。難易度は低いのですが、カンペなしですらすら書けないのでソースをぺったんするだけの記事です。 現在職場で使</description>
+      <description>今回は Go 言語 (Golang) の CI 環境に関する備忘録。難易度は低いのですが、カンペなしですらすら書けないので、あとで再利用するためにソースをぺったんするだけ</description>
     </item>
     
   </channel>
