@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/</loc>
+    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</loc>
     <lastmod>2017-11-19T23:07:42+09:00</lastmod>
   </url>
@@ -65,8 +70,26 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/ci/cd/</loc>
+    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/tags/github/</loc>
     <lastmod>2017-11-13T20:34:21+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/gitlab/</loc>
+    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/golang/</loc>
+    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -126,7 +149,7 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2017-11-19T23:07:42+09:00</lastmod>
+    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -155,6 +178,12 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/categories/tools/</loc>
+    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/tags/vaadin-framework/</loc>
     <lastmod>2017-11-13T20:34:21+09:00</lastmod>
     <priority>0</priority>
@@ -168,7 +197,7 @@
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2017-11-19T23:07:42+09:00</lastmod>
+    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
     <priority>0</priority>
   </url>
   

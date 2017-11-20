@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>技術ブログを作ってみた  &middot; Yutaka 🍊 Kato</title>
+  <title>Go の dep やら govendor やらを GitLab CI で回す  &middot; Yutaka 🍊 Kato</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,25 +14,27 @@
 
 <meta name="description" content="" />
 
-<meta name="keywords" content="book, hugo, ">
+<meta name="keywords" content="golang, gitlab, ci/cd, ">
 
 
-<meta property="og:title" content="技術ブログを作ってみた  &middot; Yutaka 🍊 Kato ">
+<meta property="og:title" content="Go の dep やら govendor やらを GitLab CI で回す  &middot; Yutaka 🍊 Kato ">
 <meta property="og:site_name" content="Yutaka 🍊 Kato"/>
-<meta property="og:url" content="https://mikan.github.io/2017/11/03/hello-world/" />
+<meta property="og:url" content="https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/" />
 <meta property="og:locale" content="ja-jp">
 
 
 <meta property="og:type" content="article" />
 <meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2017-11-03T00:05:15&#43;09:00" />
-<meta property="og:article:modified_time" content="2017-11-03T00:05:15&#43;09:00" />
+<meta property="og:article:published_time" content="2017-11-20T22:46:31&#43;09:00" />
+<meta property="og:article:modified_time" content="2017-11-20T22:46:31&#43;09:00" />
 
   
     
-<meta property="og:article:tag" content="book">
+<meta property="og:article:tag" content="golang">
     
-<meta property="og:article:tag" content="hugo">
+<meta property="og:article:tag" content="gitlab">
+    
+<meta property="og:article:tag" content="ci/cd">
     
   
 
@@ -40,9 +42,9 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@kagaorange" />
 <meta name="twitter:creator" content="@kagaorange" />
-<meta name="twitter:title" content="技術ブログを作ってみた" />
+<meta name="twitter:title" content="Go の dep やら govendor やらを GitLab CI で回す" />
 <meta name="twitter:description" content="" />
-<meta name="twitter:url" content="https://mikan.github.io/2017/11/03/hello-world/" />
+<meta name="twitter:url" content="https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/" />
 <meta name="twitter:domain" content="https://mikan.github.io/">
   
 
@@ -51,21 +53,21 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "技術ブログを作ってみた",
+    "headline": "Go の dep やら govendor やらを GitLab CI で回す",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
-    "datePublished": "2017-11-03",
+    "datePublished": "2017-11-20",
     "description": "",
-    "wordCount": 1338
+    "wordCount": 1195
   }
 </script>
   
 
 
 
-<link rel="canonical" href="https://mikan.github.io/2017/11/03/hello-world/" />
+<link rel="canonical" href="https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
 <meta name="generator" content="Hugo 0.31-DEV" />
@@ -162,37 +164,37 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <div class="text-center">
 
-    <h1>技術ブログを作ってみた
+    <h1>Go の dep やら govendor やらを GitLab CI で回す
 </h1>
 
     <div class="metas">
 <small>
   <i class="fa fa-calendar"></i>
-  <time datetime="2017-11-03">3 Nov, 2017</time>
+  <time datetime="2017-11-20">20 Nov, 2017</time>
 </small>
 
 
   <small>
   &middot; Read in about 3 min
-  &middot; (1338 words)
+  &middot; (1195 words)
   &middot; 
 <span class="share-box">Share this on:
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Go%20%e3%81%ae%20dep%20%e3%82%84%e3%82%89%20govendor%20%e3%82%84%e3%82%89%e3%82%92%20GitLab%20CI%20%e3%81%a7%e5%9b%9e%e3%81%99&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
-    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
 
-    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f&amp;title=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f&amp;title=Go%20%e3%81%ae%20dep%20%e3%82%84%e3%82%89%20govendor%20%e3%82%84%e3%82%89%e3%82%92%20GitLab%20CI%20%e3%81%a7%e5%9b%9e%e3%81%99" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Go%20%e3%81%ae%20dep%20%e3%82%84%e3%82%89%20govendor%20%e3%82%84%e3%82%89%e3%82%92%20GitLab%20CI%20%e3%81%a7%e5%9b%9e%e3%81%99&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   </small>
@@ -200,9 +202,11 @@
 <div class="margin-10">
   <i class="fa fa-tags"></i>
   
-  <a href="https://mikan.github.io/tags/book" class="label label-primary">book</a>
+  <a href="https://mikan.github.io/tags/golang" class="label label-primary">golang</a>
   
-  <a href="https://mikan.github.io/tags/hugo" class="label label-primary">hugo</a>
+  <a href="https://mikan.github.io/tags/gitlab" class="label label-primary">gitlab</a>
+  
+  <a href="https://mikan.github.io/tags/ci/cd" class="label label-primary">ci/cd</a>
   
 
 
@@ -217,63 +221,163 @@
       <div class="content">
   
 
-<p>突然ですが、技術ブログを作ってみました！</p>
+<p>今回は Go 言語 (Golang) の CI 環境に関する備忘録。難易度は低いのですが、カンペなしですらすら書けないのでソースをぺったんするだけの記事です。</p>
 
-<p>実は 3～4 年前まで別の技術ブログを持っていました。しかし WordPress.com の操作ミスで消してしまったのです・・・。
-あぁ、私のキラキラ輝く山篭り生活 IN 北陸の秘密基地ライフが・・・ (本当に &ldquo;技術ブログ&rdquo; だったのか!? 😇)
-そこで 2017 年の頭に立てた目標の一つが、「技術ブログの復活」でした。さて、今は 11 月です。いったい今まで何をサボっていたのでしょう？</p>
-
-<h2 id="きっかけ">きっかけ</h2>
-
-<p><a href="http://amzn.to/2h5lk9V">Soft Skills</a> という本を読んだことがあるでしょうか。ぶっとんだフリーランスの John Sonmez 氏が執筆した本で、ゆるふわ系エンジニアの私は大変な刺激を受けたものです。
-と同時に、「うわっ・・・私の技術アウトプット、低すぎ・・・？」 😱 と気付かされたわけで、そこからたくさんセミナーに顔出して懇親会にももっと顔出すようになったり、日本 Java ユーザー会のカンファレンス (JJUG CCC 2017 Spring) の登壇にチャレンジしてみたり、少しずつアクティブになってきたと思ってきたところです。そんな中、目標の一つにかかげつつまだ達成できていなかったのが、技術ブログ執筆なわけです。</p>
+<p>現在職場で使っているリポジトリホスティングサービスはGitLab.com で、皆さんご存知の通り大変素晴らしいツールです。無料なのにあんなことやこんなこともでき、そしてリポジトリブラウザとうまく統合された CI サービスもついてきます。自前で運用する場合は難儀な代物ですが (<del>マジで辛い過去が&hellip;</del>)、本家のマネージドサービスなら安心です。もっとも、過去には DB ぶっ飛び事件などのお騒がせもありましたが😇</p>
 
 
 <figure class="center">
-    <a href="http://amzn.to/2h5lk9V">
-        <img src="/img/cover/softskills.png" width="20%" />
+    <a href="https://about.gitlab.com/">
+        <img src="/img/logo/gitlab.png" width="20%" />
     </a>
     
     <figcaption>
-        <h4>SOFT SKILLS ソフトウェア開発者の人生マニュアル</h4>
+        <h4>GitLab.com</h4>
         
     </figcaption>
     
 </figure>
 
 
-<p>もう一点、私は今年の 9 月に (再) 転職をしてベンチャー企業に入ったわけなのですが、ここが今まで身を置いていた会社 (お硬い大企業とか) とは違い、ナレッジは社内で溜め込むより社外にガンガン出してくほうがもっと多くの人の役に立つし良くね？的なオープンなノリがあって、でも個人的に Q なんとかは受け入れがたくて、やっぱ自分のスタイルでパブリッシュしていくには技術ブログかなと改めて感じました。</p>
+<p>そんなわけで <code>.gitlab-ci.yml</code> の中身をぺったんしていきます。まずは普通に <code>go build</code>, <code>go test</code> する場合から。</p>
 
-<p>また、この後紹介しますが、今回は Git で原稿と HTML の双方をバージョン管理しており、ホスティングは GitHub Pages を使っています。これで、どんなアホな操作ミスをしても、武蔵小杉にミサイルが落ちてきても、サービスでデータロストが起きても、ブログのデータが地球から完全に消え去ってしまう可能性はかなり小さくなりました。つまり、WordPress ショックの再来 (注: 繰り返すが私の操作ミスで WP は悪くない) に怯えることもなくなったわけで、もはや書かない理由はなくなりました。</p>
+<h3 id="go-build">go build</h3>
 
-<h2 id="使っているもの">使っているもの</h2>
+<pre><code class="language-yml">image: golang:1.9
 
-<p>ホスティングは GitHub Pages を使っています。元々はこの URL で雑多なポートフォリオ等を載せていました。</p>
+variables:
+  REPO_NAME: gitlab.com/&lt;YOUR_GROUP&gt;/&lt;YOUR_REPO&gt;
 
-<p>原稿から HTML を生成するツールには <a href="https://gohugo.io/">Hugo</a> を利用しています。一言で紹介するならば、Go で書かれた Jekyll クローン、でしょうか。しかしその一言で片付けるにはもったいないぐらい魅力があるツールです。</p>
+stages:
+  - build
+  - test
+
+build-project:
+  stage: build
+  script:
+    - mkdir -p $GOPATH/src/$REPO_NAME
+    - mv $CI_PROJECT_DIR/* $GOPATH/src/$REPO_NAME
+    - cd $GOPATH/src/$REPO_NAME
+    - go build ./...
+
+test-project:
+  stage: test
+  script:
+    - mkdir -p $GOPATH/src/$REPO_NAME
+    - mv $CI_PROJECT_DIR/* $GOPATH/src/$REPO_NAME
+    - cd $GOPATH/src/$REPO_NAME
+    - go test ./... -cover
+  coverage: '/coverage: \d+\.\d+% of statements/'
+</code></pre>
+
+<p><code>&lt;YOUR_GROUP&gt;/&lt;YOUR_REPO&gt;</code> はあなたのリポジトリ通り書き換えてください。なおこの例では build と test でステージを分けていますが、ひとまとめのが断然速いです！とはいえこれでステージの切り方がわかりますし、Pipeline as Code なお気持ちになれます。</p>
+
+<p>冒頭の <code>image: golang:1.9</code> は、そのまんま Docker Hub のイメージです。つまりこれ:</p>
+
+<blockquote>
+<p><a href="https://hub.docker.com/_/golang/">https://hub.docker.com/_/golang/</a></p>
+</blockquote>
+
+<p>適切なイメージ (バージョン) を選びましょう。</p>
+
+<p><code>test</code> ステージにある最後の <code>coverage</code> にある文字列は、コンソールログからカバレッジのパーセンテージを拾う正規表現です。これを書いておくと、ジョブのログに数値が出ます。</p>
 
 
 <figure class="center">
-    <a href="https://gohugo.io">
-        <img src="/img/ss/hugo.png" width="60%" />
-    </a>
+    
+        <img src="/img/ss/gitlab-ci1.png" />
+    
     
     <figcaption>
-        <h4>Hugo</h4>
+        <h4>CI / CD -&gt; Jobs</h4>
         
     </figcaption>
     
 </figure>
 
 
-<p>あえて GitHub Pages ネイティブな Jekyll ではなく Hugo を採用した理由は、速さと機能性、Ruby インタプリタ不要な取り回し安さなどがありますが、9 割は趣味です。だって Golang 製だし。</p>
+<p>・・・そんだけです。グラフとかはない模様。設定が超絶シンプルかつスーパー汎用的な反面、さっと結果のみを確認する以外のこと (分析とか) はなにもできないのはトレードオフといったところか。なお、ログに複数出現すると最後のもの<strong>だけ</strong>がここに出るため、複数パッケージ (まさに <code>./...</code> でやっている) の場合はマージされません。そりゃそうだよね。ここは割り切るか、めっちゃ頑張るかのどちらかです。私は前者です😄</p>
 
-<h2 id="テーマ">テーマ</h2>
+<h3 id="dep">dep</h3>
 
-<p>ずばり、「<strong>IoT</strong>」です。私のエンジニアとしての目標は「<strong>IoT フルスタックエンジニア</strong>」で、それこそが組み込みからサーバーサイドまで経験し、また継続して興味を持ち続けている私の生きる道だと思っています。
-もっとも、ここんところ (転職前も後も) 金融系の仕事が続いていますが、クラウド活用や大量データを扱う設計など IoT の技術群とオーバーラップするところも少なくないのではと思っています。IoT のしごとをしていないときも、IoT にこじつけながらブログをポストしつづけられることを目指しています。</p>
+<p>お次は golang.org 公式の依存性管理ツールとなった <a href="https://github.com/golang/dep">dep</a> です。go get して取ってきていますが、いずれ go コマンドに統合された暁にはそれも不要となることでしょう。</p>
 
-<p>Stay tuned &amp; Happy hacking!</p>
+<pre><code class="language-yml">image: golang:1.9
+
+variables:
+  REPO_NAME: gitlab.com/&lt;YOUR_GROUP&gt;/&lt;YOUR_REPO&gt;
+
+stages:
+  - build
+  - test
+
+build-project:
+  stage: build
+  script:
+    - mkdir -p $GOPATH/src/$REPO_NAME
+    - mv $CI_PROJECT_DIR/* $GOPATH/src/$REPO_NAME
+    - cd $GOPATH/src/$REPO_NAME
+    - go get github.com/golang/dep/cmd/dep
+    - $GOPATH/bin/dep ensure
+    - go build ./...
+
+test-project:
+  stage: test
+  script:
+    - mkdir -p $GOPATH/src/$REPO_NAME
+    - mv $CI_PROJECT_DIR/* $GOPATH/src/$REPO_NAME
+    - cd $GOPATH/src/$REPO_NAME
+    - go get github.com/golang/dep/cmd/dep
+    - $GOPATH/bin/dep ensure
+    - go test ./... -cover
+  coverage: '/coverage: \d+\.\d+% of statements/'
+</code></pre>
+
+<p>いつものように魔法のおまじない <code>dep ensure</code> を詠唱すると、英霊たち (/vendor 以下) を召喚できます。</p>
+
+<h3 id="govendor">govendor</h3>
+
+<p>最後は <code>govendor</code> です。私実は dep よりこっちのが好きなんです。dep は凝った toml フォーマットなんて採用しちゃってますが、こちらは純粋無垢な json ファイルが 1 個ぺろっと自動生成されるだけのシンプル設計。dep 同様 Heroku デプロイにも使えます。素晴らしい・・・✨</p>
+
+<pre><code class="language-yml">image: golang:1.9
+
+variables:
+  REPO_NAME: gitlab.com/&lt;YOUR_GROUP&gt;/&lt;YOUR_REPO&gt;
+
+stages:
+  - build
+  - test
+
+build-project:
+  stage: build
+  script:
+    - mkdir -p $GOPATH/src/$REPO_NAME
+    - mv $CI_PROJECT_DIR/* $GOPATH/src/$REPO_NAME
+    - cd $GOPATH/src/$REPO_NAME
+    - go get github.com/kardianos/govendor
+    - $GOPATH/bin/govendor sync
+    - $GOPATH/bin/govendor build ./...
+
+test-project:
+  stage: test
+  script:
+    - mkdir -p $GOPATH/src/$REPO_NAME
+    - mv $CI_PROJECT_DIR/* $GOPATH/src/$REPO_NAME
+    - cd $GOPATH/src/$REPO_NAME
+    - go get github.com/kardianos/govendor
+    - $GOPATH/bin/govendor sync
+    - $GOPATH/bin/govendor test ./... -cover
+  coverage: '/coverage: \d+\.\d+% of statements/'
+</code></pre>
+
+<p>govendor コマンドが持つ go コマンドへのパススルーもちゃっかり使ってみました。簡単でしたね。</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://about.gitlab.com/2017/09/21/how-to-create-ci-cd-pipeline-with-autodeploy-to-kubernetes-using-gitlab-and-helm/">How to create a CI/CD pipeline with Auto Deploy to Kubernetes using GitLab and Helm | GitLab</a></li>
+<li><a href="https://devcenter.heroku.com/articles/go-support">Heroku Go Support | Heroku Dev Center</a></li>
+</ol>
 
 </div>
 
@@ -281,22 +385,22 @@
       <footer>
   
 <span class="share-box">Share this on:
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=Go%20%e3%81%ae%20dep%20%e3%82%84%e3%82%89%20govendor%20%e3%82%84%e3%82%89%e3%82%92%20GitLab%20CI%20%e3%81%a7%e5%9b%9e%e3%81%99&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
-    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
 
-    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" onclick="window.open(this.href, 'mywin',
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f&amp;title=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f&amp;title=Go%20%e3%81%ae%20dep%20%e3%82%84%e3%82%89%20govendor%20%e3%82%84%e3%82%89%e3%82%92%20GitLab%20CI%20%e3%81%a7%e5%9b%9e%e3%81%99" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=%e6%8a%80%e8%a1%93%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92%e4%bd%9c%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhello-world%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=Go%20%e3%81%ae%20dep%20%e3%82%84%e3%82%89%20govendor%20%e3%82%84%e3%82%89%e3%82%92%20GitLab%20CI%20%e3%81%a7%e5%9b%9e%e3%81%99&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -304,13 +408,13 @@
   
     <nav><ul class="pager">
     
-
+        <li class="previous">
+          <a href="https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/" title="JJUG CCC 2017 Fall">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
     
-      <li class="next">
-        <a href="https://mikan.github.io/2017/11/03/hugo-on-gh-pages/" title="Hugo を GitHub Pages でホストする方法を考える">
-            Next <span aria-hidden="true">&rarr;</span>
-        </a>
-      </li>
+
     
     </ul> </nav>
   
