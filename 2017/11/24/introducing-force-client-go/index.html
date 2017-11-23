@@ -325,8 +325,7 @@ func main() {
 	defer res.Body.Close()
 	decoder = json.NewDecoder(res.Body)
 	var out interface{}
-	err = decoder.Decode(&amp;out)
-	if err != nil {
+	if err = decoder.Decode(&amp;out); err != nil {
 		log.Fatal(err)
 	}
 	log.Printf(&quot;%v\n&quot;, out)
