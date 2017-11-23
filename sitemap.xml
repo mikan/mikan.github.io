@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2017/11/24/introducing-force-client-go/</loc>
+    <lastmod>2017-11-24T00:34:56+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/</loc>
     <lastmod>2017-11-20T22:46:31+09:00</lastmod>
   </url>
@@ -76,8 +81,14 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/force.com/</loc>
+    <lastmod>2017-11-24T00:34:56+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/tags/github/</loc>
-    <lastmod>2017-11-13T20:34:21+09:00</lastmod>
+    <lastmod>2017-11-24T00:34:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -89,7 +100,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/golang/</loc>
-    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
+    <lastmod>2017-11-24T00:34:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -149,7 +160,13 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
+    <lastmod>2017-11-24T00:34:56+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/categories/salesforce/</loc>
+    <lastmod>2017-11-24T00:34:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -197,7 +214,7 @@
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2017-11-20T22:46:31+09:00</lastmod>
+    <lastmod>2017-11-24T00:34:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   

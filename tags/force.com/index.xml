@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Yutaka 🍊 Kato</title>
-    <link>https://mikan.github.io/tags/golang/</link>
-    <description>Recent content in Golang on Yutaka 🍊 Kato</description>
+    <title>Force.com on Yutaka 🍊 Kato</title>
+    <link>https://mikan.github.io/tags/force.com/</link>
+    <description>Recent content in Force.com on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
     <lastBuildDate>Fri, 24 Nov 2017 00:34:56 +0900</lastBuildDate>
     
-	<atom:link href="https://mikan.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mikan.github.io/tags/force.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/24/introducing-force-client-go/</guid>
       <description>Go 言語 (Golang) で Salesforce の Force.com REST API を叩く方法と、それらを簡単に扱うためにクライアントライブラリ force-client-go を開発したので、そのご紹介。 Salesforce は CRM を始めとした様々な SaaS を提</description>
-    </item>
-    
-    <item>
-      <title>Go の dep やら govendor やらを GitLab CI で回す</title>
-      <link>https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/</link>
-      <pubDate>Mon, 20 Nov 2017 22:46:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
-      <guid>https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/</guid>
-      <description>今回は Go 言語 (Golang) の CI 環境に関する備忘録。難易度は低いのですが、カンペなしですらすら書けないので、あとで再利用するためにソースをぺったんするだけ</description>
     </item>
     
   </channel>
