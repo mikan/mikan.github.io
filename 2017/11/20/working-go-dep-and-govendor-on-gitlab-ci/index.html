@@ -63,7 +63,7 @@
     },
     "datePublished": "2017-11-20",
     "description": "",
-    "wordCount": 1231
+    "wordCount": 1277
   }
 </script>
   
@@ -179,7 +179,7 @@
 
   <small>
   &middot; Read in about 3 min
-  &middot; (1231 words)
+  &middot; (1277 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f20%2fworking-go-dep-and-govendor-on-gitlab-ci%2f" onclick="window.open(this.href, 'mywin',
@@ -299,7 +299,7 @@ test-project:
 </figure>
 
 
-<p>・・・そんだけです。グラフとかはない模様。設定が超絶シンプルかつスーパー汎用的な反面、さっと結果のみを確認する以外のこと (分析とか) はなにもできないのはトレードオフといったところか。なお、ログに複数出現すると最後のもの<strong>だけ</strong>がここに出るため、複数パッケージ (まさに <code>./...</code> でやっている) の場合はマージされません。そりゃそうだよね。ここは割り切るか、めっちゃ頑張るかのどちらかです。私は前者です😄</p>
+<p>・・・そんだけです。グラフとかはない模様。設定が超絶シンプルかつスーパー汎用的な反面、さっと結果のみを確認する以外のこと (分析とか) はなにもできないのはトレードオフといったところか。なお、ログに複数出現すると最後のもの<strong>だけ</strong>がここに出るため、複数パッケージ (まさに <code>./...</code> でやっている) の場合はマージされません。そりゃそうだよね。ここは割り切るか、StackOverflow にあるスクリプト<sup>[参考文献3]</sup>を使うかなどの選択を迫られます。私は今回前者です😄</p>
 
 <h3 id="dep">dep</h3>
 
@@ -380,6 +380,7 @@ test-project:
 <ol>
 <li><a href="https://about.gitlab.com/2017/09/21/how-to-create-ci-cd-pipeline-with-autodeploy-to-kubernetes-using-gitlab-and-helm/">How to create a CI/CD pipeline with Auto Deploy to Kubernetes using GitLab and Helm | GitLab</a></li>
 <li><a href="https://devcenter.heroku.com/articles/go-support">Heroku Go Support | Heroku Dev Center</a></li>
+<li><a href="http://stackoverflow.com/a/21142256/2055281">go - Is it possible to post coverage for multiple packages to Coveralls? - Stack Overflow</a></li>
 </ol>
 
 </div>
