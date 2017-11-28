@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sun, 19 Nov 2017 23:07:42 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 28 Nov 2017 21:42:48 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Apex</title>
+      <link>https://mikan.github.io/tags/apex/</link>
+      <pubDate>Tue, 28 Nov 2017 21:42:48 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/apex/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Book</title>
@@ -43,7 +52,7 @@
     <item>
       <title>Force.com</title>
       <link>https://mikan.github.io/tags/force.com/</link>
-      <pubDate>Fri, 24 Nov 2017 00:34:56 +0900</pubDate>
+      <pubDate>Tue, 28 Nov 2017 21:42:48 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/force.com/</guid>
       <description></description>
@@ -61,7 +70,7 @@
     <item>
       <title>Gitlab</title>
       <link>https://mikan.github.io/tags/gitlab/</link>
-      <pubDate>Mon, 20 Nov 2017 22:46:31 +0900</pubDate>
+      <pubDate>Tue, 28 Nov 2017 21:42:48 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/gitlab/</guid>
       <description></description>
@@ -172,6 +181,15 @@
       <pubDate>Mon, 13 Nov 2017 20:34:21 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/vaadin-framework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visualforce</title>
+      <link>https://mikan.github.io/tags/visualforce/</link>
+      <pubDate>Tue, 28 Nov 2017 21:42:48 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/visualforce/</guid>
       <description></description>
     </item>
     
