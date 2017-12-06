@@ -14,7 +14,7 @@
     
     
     <item>
-      <title>G Suite を IdP にした Salesforce への SAML SSO の有効化</title>
+      <title>G Suite を IdP にした Salesforce の SAML SSO の有効化</title>
       <link>https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/</link>
       <pubDate>Thu, 07 Dec 2017 00:19:59 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
