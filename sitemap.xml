@@ -121,6 +121,12 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/gsuite/</loc>
+    <lastmod>2017-12-07T00:19:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/tags/hackathon/</loc>
     <lastmod>2017-11-06T22:49:31+09:00</lastmod>
     <priority>0</priority>
@@ -181,8 +187,20 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/salesforce/</loc>
+    <lastmod>2017-12-07T00:19:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/categories/salesforce/</loc>
     <lastmod>2017-11-28T21:42:48+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/saml/</loc>
+    <lastmod>2017-12-07T00:19:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -230,7 +248,7 @@
   
   <url>
     <loc>https://mikan.github.io/categories/web/</loc>
-    <lastmod>2017-11-13T20:34:21+09:00</lastmod>
+    <lastmod>2017-12-07T00:19:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
