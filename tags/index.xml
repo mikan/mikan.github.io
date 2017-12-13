@@ -23,6 +23,15 @@
     </item>
     
     <item>
+      <title>Aws Iot</title>
+      <link>https://mikan.github.io/tags/aws-iot/</link>
+      <pubDate>Wed, 13 Dec 2017 23:31:44 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/aws-iot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Book</title>
       <link>https://mikan.github.io/tags/book/</link>
       <pubDate>Sun, 19 Nov 2017 23:07:42 +0900</pubDate>
@@ -34,7 +43,7 @@
     <item>
       <title>C&#43;&#43;</title>
       <link>https://mikan.github.io/tags/c&#43;&#43;/</link>
-      <pubDate>Tue, 07 Nov 2017 20:34:00 +0900</pubDate>
+      <pubDate>Wed, 13 Dec 2017 23:31:44 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/c&#43;&#43;/</guid>
       <description></description>
@@ -50,11 +59,29 @@
     </item>
     
     <item>
+      <title>Cloudwatch</title>
+      <link>https://mikan.github.io/tags/cloudwatch/</link>
+      <pubDate>Wed, 13 Dec 2017 23:31:44 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/cloudwatch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Force.com</title>
       <link>https://mikan.github.io/tags/force.com/</link>
       <pubDate>Tue, 28 Nov 2017 21:42:48 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/force.com/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Freertos</title>
+      <link>https://mikan.github.io/tags/freertos/</link>
+      <pubDate>Wed, 13 Dec 2017 23:31:44 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/freertos/</guid>
       <description></description>
     </item>
     
