@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2017/12/19/mashup-awards-2017/</loc>
+    <lastmod>2017-12-19T01:02:26+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/</loc>
     <lastmod>2017-12-13T23:31:44+09:00</lastmod>
   </url>
@@ -79,6 +84,12 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/award/</loc>
+    <lastmod>2017-12-19T01:02:26+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/tags/aws-iot/</loc>
     <lastmod>2017-12-13T23:31:44+09:00</lastmod>
     <priority>0</priority>
@@ -110,6 +121,12 @@
   <url>
     <loc>https://mikan.github.io/tags/cloudwatch/</loc>
     <lastmod>2017-12-13T23:31:44+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/exhibition/</loc>
+    <lastmod>2017-12-19T01:02:26+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -175,7 +192,7 @@
   
   <url>
     <loc>https://mikan.github.io/categories/life/</loc>
-    <lastmod>2017-11-19T23:07:42+09:00</lastmod>
+    <lastmod>2017-12-19T01:02:26+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -205,7 +222,7 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2017-12-13T23:31:44+09:00</lastmod>
+    <lastmod>2017-12-19T01:02:26+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -271,7 +288,7 @@
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2017-12-13T23:31:44+09:00</lastmod>
+    <lastmod>2017-12-19T01:02:26+09:00</lastmod>
     <priority>0</priority>
   </url>
   
