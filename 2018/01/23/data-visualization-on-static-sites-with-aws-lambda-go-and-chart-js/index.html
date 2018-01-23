@@ -67,7 +67,7 @@
     },
     "datePublished": "2018-01-23",
     "description": "",
-    "wordCount": 3010
+    "wordCount": 3012
   }
 </script>
   
@@ -183,7 +183,7 @@
 
   <small>
   &middot; Read in about 7 min
-  &middot; (3010 words)
+  &middot; (3012 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f01%2f23%2fdata-visualization-on-static-sites-with-aws-lambda-go-and-chart-js%2f" onclick="window.open(this.href, 'mywin',
@@ -288,7 +288,7 @@
 
 <h3 id="handler-implementation">Handler Implementation</h3>
 
-<p>Go で AWS Lambda のハンドラーを実装するのは他の言語同様にとても簡単です。利用可能な関数シグニチャの一覧がドキュメントにあるので、好きなシグニチャを選んで定義するだけで、最も簡単なものは <code>func ()</code> だけです <sup>[参考文献3]</sup>。関数名は何でも良いです。</p>
+<p>Go で AWS Lambda のハンドラーを実装するのは他の言語同様にとても簡単です。利用可能な関数シグニチャの一覧がドキュメントにあるので、好きなシグニチャを選んで定義するだけで、最も簡単なものは <code>func ()</code> だけです <sup>[参考文献3,5]</sup>。関数名は何でも良いです。</p>
 
 <pre><code>package main
 
@@ -303,7 +303,7 @@ func main() {
 }
 </code></pre>
 
-<p><code>githubo.com/aws/aws-lambda-go</code> ライブラリは、GitHub にあるので <code>go get</code> して取ってきます <sup>[参考文献4]</sup>。</p>
+<p><code>github.com/aws/aws-lambda-go</code> ライブラリは、GitHub にあるので <code>go get</code> して取ってきます <sup>[参考文献4]</sup>。</p>
 
 <p>デプロイ可能な zip ファイルを作るには、<code>GOOS=linux</code> でコンパイルした結果を <code>zip</code> します。Linux 持ってない？心配ありません。Go ならクロスコンパイルは鼻血がでるほど簡単です。</p>
 
