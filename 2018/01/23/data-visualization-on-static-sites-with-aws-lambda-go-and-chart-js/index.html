@@ -67,7 +67,7 @@
     },
     "datePublished": "2018-01-23",
     "description": "",
-    "wordCount": 3012
+    "wordCount": 3033
   }
 </script>
   
@@ -183,7 +183,7 @@
 
   <small>
   &middot; Read in about 7 min
-  &middot; (3012 words)
+  &middot; (3033 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f01%2f23%2fdata-visualization-on-static-sites-with-aws-lambda-go-and-chart-js%2f" onclick="window.open(this.href, 'mywin',
@@ -311,7 +311,7 @@ func main() {
 zip main.zip main
 </code></pre>
 
-<p>Windows で上記のような zip を生成するために <code>build-lambda-zip</code> というツールが提供されています <code>go get github.com/aws/aws-lambda-go/cmd/build-lambda-zip</code>。私はこんなバッチファイルを作りました。</p>
+<p>上記は macOS を想定したものですが、Windows で上記同様の zip を生成するために <code>build-lambda-zip</code> というツールが提供されています (<code>go get github.com/aws/aws-lambda-go/cmd/build-lambda-zip</code>)。私はこんなバッチファイルを作りました。</p>
 
 <pre><code>set GOOS=linux
 go build -o main .
