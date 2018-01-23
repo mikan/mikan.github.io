@@ -32,11 +32,11 @@
     </item>
     
     <item>
-      <title>Aws Iot</title>
-      <link>https://mikan.github.io/tags/aws-iot/</link>
-      <pubDate>Wed, 13 Dec 2017 23:31:44 +0900</pubDate>
+      <title>Aws</title>
+      <link>https://mikan.github.io/tags/aws/</link>
+      <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
-      <guid>https://mikan.github.io/tags/aws-iot/</guid>
+      <guid>https://mikan.github.io/tags/aws/</guid>
       <description></description>
     </item>
     
@@ -55,6 +55,15 @@
       <pubDate>Wed, 13 Dec 2017 23:31:44 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chart.js</title>
+      <link>https://mikan.github.io/tags/chart.js/</link>
+      <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/chart.js/</guid>
       <description></description>
     </item>
     
@@ -106,7 +115,7 @@
     <item>
       <title>Github</title>
       <link>https://mikan.github.io/tags/github/</link>
-      <pubDate>Fri, 24 Nov 2017 00:34:56 +0900</pubDate>
+      <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/github/</guid>
       <description></description>
@@ -124,7 +133,7 @@
     <item>
       <title>Golang</title>
       <link>https://mikan.github.io/tags/golang/</link>
-      <pubDate>Fri, 24 Nov 2017 00:34:56 +0900</pubDate>
+      <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/golang/</guid>
       <description></description>
@@ -163,6 +172,15 @@
       <pubDate>Sun, 19 Nov 2017 23:07:42 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://mikan.github.io/tags/javascript/</link>
+      <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
