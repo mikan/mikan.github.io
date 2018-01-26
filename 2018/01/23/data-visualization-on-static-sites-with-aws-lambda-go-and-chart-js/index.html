@@ -67,7 +67,7 @@
     },
     "datePublished": "2018-01-23",
     "description": "",
-    "wordCount": 3033
+    "wordCount": 3096
   }
 </script>
   
@@ -183,7 +183,7 @@
 
   <small>
   &middot; Read in about 7 min
-  &middot; (3033 words)
+  &middot; (3096 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f01%2f23%2fdata-visualization-on-static-sites-with-aws-lambda-go-and-chart-js%2f" onclick="window.open(this.href, 'mywin',
@@ -281,6 +281,24 @@
     &quot;labels&quot;:[&quot;intptr-t&quot;,&quot;mikan&quot;,&quot;budougumi0617&quot;,&quot;MrBearing&quot;,&quot;kzt-ysmr&quot;],
     &quot;data&quot;:[6,6,5,1,1]
   }
+}
+</code></pre>
+
+<p>対応する (パース結果を流し込む) Go の構造体はこんな感じです。</p>
+
+<pre><code class="language-go">type DataSet struct {
+	ByTimes     IntLabeledData    `json:&quot;times&quot;`
+	ByAttendees StringLabeledData `json:&quot;attendees&quot;`
+}
+
+type IntLabeledData struct {
+	Labels []int `json:&quot;labels&quot;`
+	Data   []int `json:&quot;data&quot;`
+}
+
+type StringLabeledData struct {
+	Labels []string `json:&quot;labels&quot;`
+	Data   []int    `json:&quot;data&quot;`
 }
 </code></pre>
 
