@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="gradle, asciidoc, plantuml, asciidoctor, jruby, ">
+
+
+<meta property="og:title" content="PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-02-23T22:16:01&#43;09:00" />
+<meta property="og:article:modified_time" content="2018-02-23T22:16:01&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="gradle">
+    
+<meta property="og:article:tag" content="asciidoc">
+    
+<meta property="og:article:tag" content="plantuml">
+    
+<meta property="og:article:tag" content="asciidoctor">
+    
+<meta property="og:article:tag" content="jruby">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-02-23",
+    "description": "",
+    "wordCount": 2626
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.36.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-02-23">23 Feb, 2018</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 6 min
+  &middot; (2626 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f&amp;title=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/gradle" class="label label-primary">gradle</a>
+  
+  <a href="https://mikan.github.io/tags/asciidoc" class="label label-primary">asciidoc</a>
+  
+  <a href="https://mikan.github.io/tags/plantuml" class="label label-primary">plantuml</a>
+  
+  <a href="https://mikan.github.io/tags/asciidoctor" class="label label-primary">asciidoctor</a>
+  
+  <a href="https://mikan.github.io/tags/jruby" class="label label-primary">jruby</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+<p>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの Asciidoc 化を推し進めています。
+今までは Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていたのですが、たまたま最近 (<a href="/2017/11/19/jjug-ccc-2017-fall/">JJUG CCC 2017 Fall</a> や社内のディスカッションなどで) Asciidoc を推す声を多く聞いたこともありこっちもやってやるかと思うようになりました。</p>
+
+
+<figure class="center">
+    <a href="http://asciidoc.org/">
+        <img src="/img/logo/asciidoc.png" />
+    </a>
+    
+    <figcaption>
+        <h4>Asciidoc</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>また、併せて PlantUML も導入されました。テキストで UML を表現できるため Git フレンドリーなのと、そこそこ綺麗にレンダリングでき、さらにレイアウトがツール任せなので個人差が出にくいのがかえってチーム開発では嬉しかったりします。</p>
+
+<p>もちろん、複雑な UML を書くときは愛用 (?) の <a href="http://astah.change-vision.com/ja/product/astah-professional.html">astah professional</a> で書くこともありますが、最新の macOS での操作性が不具合対応のため劣化したのと、以前からマルチディスプレイ環境でフリーズすることが多く、最近はよほどのことがないかぎり起動しなくなりました。もうライセンスを更新することはないかなぁ (Change Vision さんごめんなさい・・・！)。</p>
+
+
+<figure class="center">
+    <a href="http://plantuml.com/">
+        <img src="/img/logo/plantuml.png" />
+    </a>
+    
+    <figcaption>
+        <h4>PlantUML</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Asciidoc はプロセッサとして Ruby 製の <a href="https://asciidoctor.org/">Asciidocor</a> がポピュラーで、さらにこの拡張である asciidoctor-diagram を導入することで Asciidoc 内に PlantUML レンダー結果を埋め込むことができます。
+これは素晴らしいですね。しかし Asciidoc/Asciidoctor 自体はディレクトリ内のファイルを一括で (しかも再帰的に) HTML 化することはできません。そこで便利なのが・・・</p>
+
+
+<figure class="center">
+    <a href="https://gradle.org/">
+        <img src="/img/logo/gradle.png" width="50%" />
+    </a>
+    
+    <figcaption>
+        <h4>Gradle</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Gradle です。</p>
+
+<p>Asciidoctor には Gradle Plugin があり、名前はずばり Asciidoctor Gradle Plugin です。</p>
+
+<blockquote>
+<p>Asciidoctor Gradle Plugin | Asciidoctor</p>
+
+<p><a href="https://asciidoctor.org/docs/asciidoctor-gradle-plugin/">https://asciidoctor.org/docs/asciidoctor-gradle-plugin/</a></p>
+</blockquote>
+
+<p>Maven Plugin もあるようですね。Maven にこだわりたいというお方はここでお別れです😁</p>
+
+<p>Asciidoctor Gradle Plugin は、Ruby 製の Asciidoctor を JRuby で動かしてしまうというものです。Gradle (Groovy の DSL) から JRuby が呼ばれて Ruby が動くのです。夢のような技術ですね✨
+なお、JRuby で動くようにした Asciidoctor は asciidoctorj と呼ばれます。</p>
+
+<h3 id="asciidoctor-単体">Asciidoctor 単体</h3>
+
+<p>それでは、まずは Asciidoc 単体で動作確認してみましょう。</p>
+
+<p><code>build.gradle</code> を作ります。</p>
+
+<pre><code class="language-groovy">apply plugin: 'org.asciidoctor.convert'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+    }
+}
+</code></pre>
+
+<p>デフォルトの対象ディレクトリは <code>src/docs/asciidoc</code> です。それに習ってファイルを配置してみます。</p>
+
+<pre><code>$ tree
+adoc-test
+├── build.gradle
+└── src
+    └── docs
+        └── asciidoc
+            ├── func.adoc
+            └── index.adoc
+
+4 directories, 3 files
+</code></pre>
+
+<p>adoc の中身はなんでも良いですが、今回はサンプルとしてこんなものを置いてみました (<code>index.adoc</code> の中身)。</p>
+
+<pre><code class="language-adoc">= Asciidoc てすと
+mikan &lt;mikan@aosn.ws&gt;
+v0.1, 2018-02
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:toc:
+
+== 仕様書
+
+* link:func{outfilesuffix}[機能仕様書]
+
+== 用語集
+
+.一般用語
+[format=&quot;csv&quot;,options=&quot;header&quot;]
+|===
+用語,読み方,説明
+Asciidoc,あすきーどっく,文書マークアップ言語のひとつ
+PlantUML,ぷらんとゆーえむえる,テキストベースの UML 記述ツール
+|===
+</code></pre>
+
+<p>💡 HTML 出力した際のリンクを <code>.adoc</code> ではなく <code>.html</code> とするために <code>outfilesuffix</code> の機構を利用しています。上記のようにすることで、GitHub や IDE 等におけるレンダリングは <code>.adoc</code> に、HTML 出力結果は <code>.html</code> となります。</p>
+
+<p>準備ができたら、ビルドしてみましょう。</p>
+
+<pre><code>$ gradle asciidoctor
+</code></pre>
+
+<p><code>BUILD SUCCESSFUL</code> と表示され、<code>build/asciidoc/html5</code> に html ファイルができていれば成功です。早速開いてみましょう。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/asciidoctor1.png" width="80%" />
+    
+    
+    <figcaption>
+        <h4>Asciidoctor 出力 HTML</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>ばっちりですね✨ 文書間のリンクもちゃんと <code>.html</code> になっていることが確認できるはずです｀。</p>
+
+<p>さて、これで仕事が終わるなら簡単すぎてブログ記事になりません。<strong>問題はここから</strong>なのです・・・！</p>
+
+<h3 id="plantuml-を埋め込んでレンダリングする">PlantUML を埋め込んでレンダリングする</h3>
+
+<p>先に PlantUML をセットアップしておきます。今回レンダリングするために PlantUML と Graphviz のセットを導入しておく必要があります。Mac の Homebrew であれば <code>brew install plantuml</code> と叩くだけで準備は完了です。Windows は <a href="https://chocolatey.org/">Chocolatey</a> であれば両方パッケージが揃っていて手軽です。既に IDE 上でプレビューするためのプラグイン等の環境構築を行っていれば、おそらくそのまま Gradle からも呼び出せることでしょう (私のおすすめは IntelliJ の Asciidoc プラグインです)。</p>
+
+<p>さて、先ほどのサンプルでは <code>index.adoc</code> ともう一つ <code>func.adoc</code> というファイルを用意していました。そちらに PlantUML を書き込んでみます (中身にツッコミはなしでオナシャス)。</p>
+
+<pre><code class="language-adoc">= 機能仕様書
+mikan &lt;mikan@aosn.ws&gt;
+v0.1, 2018-02
+:toc:
+
+== ユースケース図
+
+[plantuml]
+----
+@startuml
+:ユーザー: -&gt; (本を借りる)
+:ユーザー: -&gt; (本を返却する)
+@enduml
+----
+</code></pre>
+
+<p>そして、これをビルドする <code>build.gradle</code> ですが&hellip; 最終的に使うのは冒頭で軽く触れたように asciidoctor の diagram 拡張になります。</p>
+
+<blockquote>
+<p>Asciidoctor Diagram | Asciidoctor</p>
+
+<p><a href="https://asciidoctor.org/docs/asciidoctor-diagram/">https://asciidoctor.org/docs/asciidoctor-diagram/</a></p>
+</blockquote>
+
+<p>ですが、これ自体はそもそも Ruby で require して使うものです。JRuby だとどうなる!? さらにそれを Gradle から指示するには!?</p>
+
+<p>今回役にたったのは JRuby Gradle Plugin です。Asciidoctor Gradle Plugin との合わせ技が可能でした。</p>
+
+<blockquote>
+<p>JRuby/Gradle</p>
+
+<p><a href="http://jruby-gradle.org/">http://jruby-gradle.org/</a></p>
+</blockquote>
+
+<p>・・・そして試行錯誤を重ねて私の手元で動くところまで書き加えた <code>build.gradle</code> はこんな感じになりました。</p>
+
+<pre><code class="language-groovy">buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.5.0'
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+        classpath 'org.asciidoctor:asciidoctorj-diagram:1.5.4.1'
+    }   
+}
+
+apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'com.github.jruby-gradle.base'
+
+dependencies {
+    gems 'rubygems:asciidoctor-diagram:1.5.7'
+}
+
+asciidoctor {
+    requires = ['asciidoctor-diagram']
+}
+</code></pre>
+
+<p>それでは gradle を叩いてみましょう！</p>
+
+<pre><code>$ gradle clean asciidoctor
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/asciidoctor2.png" width="80%" />
+    
+    
+    <figcaption>
+        <h4>Asciidoctor &#43; PlantUML 出力 HTML</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>レンダリング結果が埋め込まれれば成功です！🎊</p>
+
+<p>それにしても、Groovy に JRuby に Java に・・・すごい合わせ技でした (※ PlantUML は Java でできている)。</p>
+
+<h3 id="トラブルシューティング">トラブルシューティング</h3>
+
+<p>喜びはつかの間、このソースを GitHub に置いて push 通知を Webhooks で飛ばし適当なサーバーで Gradle ビルドを実行、生成 HTML をその場でホスティングするという仕組みを社内で構築、展開したのですが、そのときにいくつかのトラブルに遭遇しました。手元で実行するまでの間にハマったものもふくめ、トラブルシューティングとして記録を残しておきたいと思います。</p>
+
+<h4 id="java-のバージョン">Java のバージョン</h4>
+
+<p>これまで紹介した <code>build.gradle</code> では <strong>Java 8</strong> でしか動作せず、Java 7 環境や 9 環境が設定されている環境では動きませんでした。つらい！！まあ、JRuby というだけで嫌な予感がしてましたけどね・・・。複数バージョン入っている場合は <code>JAVA_HOME</code> をいじりながらやりくりする必要があります。</p>
+
+<h4 id="asciidoctor-gradle-plugin-のバージョン">Asciidoctor Gradle Plugin のバージョン</h4>
+
+<p>asciidoctor-gradle-plugin は <strong>1.5.3</strong> をお使いください！これより新しくすると (1.5.7 等)、PlantUML レンダリングが最初の一発だけしか正しく行われないという現象に遭遇することがあります <sup>[参考文献1]</sup>。</p>
+
+<h4 id="pdf-埋め込み機能">PDF 埋め込み機能</h4>
+
+<p>Asciidoctor には PDF を出力する機能を追加することができますが、今の所 PlantUML のレンダリング結果を拾ってくれません (<code>'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'</code> で検証)。
+ログを見ると png レンダリングされたファイルがある <code>outputDir</code> のパスではなく <code>sourceDir</code> のほうを読みに行ってしまっている様子。あと一歩な気がする！</p>
+
+<h4 id="org-jruby-ext-openssl-がないと言われる">org.jruby.ext.openssl がないと言われる</h4>
+
+<p>やっつけですが、<code>build.gradle</code> の buildscript の dependencies に以下を追加することで回避できたことがあります:</p>
+
+<pre><code class="language-groovy">classpath 'rubygems:jruby-openssl:0.9.21'
+</code></pre>
+
+<h4 id="plantuml-レンダリング結果で日本語が豆腐になる">PlantUML レンダリング結果で日本語が豆腐になる</h4>
+
+<p>Java が日本語フォントを認識していないせいです。JRE の <code>/jre/lib/fonts</code> に <code>fallback</code> というディレクトリを作り、そこにフォントのシンボリックリンクを突っ込むことで解決できます <sup>[参考文献2]</sup>。</p>
+
+<p>エンジニアフレンドリーなドキュメンテーション環境の追求は続く&hellip;</p>
+
+<p>Stay tuned &amp; Happy hacking!</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/222">Extentions dissapear with gradle daemon after first run · Issue #222 · asciidoctor/asciidoctor-gradle-plugin</a></li>
+<li><a href="https://wiki.archlinux.jp/index.php/Java_%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83%E3%81%AE%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88">Java 実行環境のフォント - ArchWiki</a></li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f&amp;title=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/" title="AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/">PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/">AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/19/mashup-awards-2017/">Mashup Awards 2017</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/">STM32L4 Discovery Kit IoT Node に Amazon FreeRTOS を導入する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/">G Suite を IdP にした Salesforce の SAML SSO の有効化</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/">PMD Apex / PMD Visualforce で Salesforce のコードを静的解析する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/24/introducing-force-client-go/">force-client-go: Go で Salesforce の REST API を叩く</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/">Go の dep やら govendor やらを GitLab CI で回す</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/">JJUG CCC 2017 Fall</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/13/operate-github-org-scope/">GitHub OAuth の org スコープの適用と運用</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/salesforce">salesforce</a></li><li><a href="/categories/tools">tools</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/github">github</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/golang">golang</a></li><li><a href="/tags/hugo">hugo</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/force.com">force.com</a></li><li><a href="/tags/gitlab">gitlab</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/mbed">mbed</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gradle on Yutaka 🍊 Kato</title>
+    <link>https://mikan.github.io/tags/gradle/</link>
+    <description>Recent content in Gradle on Yutaka 🍊 Kato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <lastBuildDate>Fri, 23 Feb 2018 22:16:01 +0900</lastBuildDate>
+    
+	<atom:link href="https://mikan.github.io/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換</title>
+      <link>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</link>
+      <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</guid>
+      <description>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの Asciidoc 化を推し進めています。 今までは Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていたのです</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</loc>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/</loc>
     <lastmod>2018-01-23T21:19:41+09:00</lastmod>
   </url>
@@ -85,6 +90,18 @@
   <url>
     <loc>https://mikan.github.io/tags/apex/</loc>
     <lastmod>2017-11-28T21:42:48+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/asciidoc/</loc>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/asciidoctor/</loc>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -172,6 +189,12 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/gradle/</loc>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/tags/gsuite/</loc>
     <lastmod>2017-12-07T00:19:59+09:00</lastmod>
     <priority>0</priority>
@@ -208,6 +231,12 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/jruby/</loc>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/categories/life/</loc>
     <lastmod>2017-12-19T01:02:26+09:00</lastmod>
     <priority>0</priority>
@@ -238,8 +267,14 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/plantuml/</loc>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2018-01-23T21:19:41+09:00</lastmod>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -281,7 +316,7 @@
   
   <url>
     <loc>https://mikan.github.io/categories/tools/</loc>
-    <lastmod>2017-11-28T21:42:48+09:00</lastmod>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -305,7 +340,7 @@
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2018-01-23T21:19:41+09:00</lastmod>
+    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
     <priority>0</priority>
   </url>
   

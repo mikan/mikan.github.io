@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Tue, 28 Nov 2017 21:42:48 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 23 Feb 2018 22:16:01 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/categories/tools/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換</title>
+      <link>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</link>
+      <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</guid>
+      <description>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの Asciidoc 化を推し進めています。 今までは Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていたのです</description>
+    </item>
     
     <item>
       <title>PMD Apex / PMD Visualforce で Salesforce のコードを静的解析する</title>
