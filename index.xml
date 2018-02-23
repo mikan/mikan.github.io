@@ -19,7 +19,7 @@
       <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</guid>
-      <description>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの AsciiDoc 化を推し進めています。 今までは Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていたのです</description>
+      <description>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの AsciiDoc 化を推し進めています。 私個人は今まで Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていた</description>
     </item>
     
     <item>
