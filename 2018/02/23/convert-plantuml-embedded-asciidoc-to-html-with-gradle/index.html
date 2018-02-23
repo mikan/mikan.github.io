@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換  &middot; Yutaka 🍊 Kato</title>
+  <title>PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換  &middot; Yutaka 🍊 Kato</title>
   <meta property="og:image" content="https://mikan.github.io/ogp.png" />
 
 
@@ -20,7 +20,7 @@
 <meta name="keywords" content="gradle, asciidoc, plantuml, jruby, ">
 
 
-<meta property="og:title" content="PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換  &middot; Yutaka 🍊 Kato ">
+<meta property="og:title" content="PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換  &middot; Yutaka 🍊 Kato ">
 <meta property="og:site_name" content="Yutaka 🍊 Kato"/>
 <meta property="og:url" content="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" />
 <meta property="og:locale" content="ja-jp">
@@ -47,7 +47,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@kagaorange" />
 <meta name="twitter:creator" content="@kagaorange" />
-<meta name="twitter:title" content="PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換" />
+<meta name="twitter:title" content="PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換" />
 <meta name="twitter:description" content="" />
 <meta name="twitter:url" content="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" />
 <meta name="twitter:domain" content="https://mikan.github.io/">
@@ -58,14 +58,14 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換",
+    "headline": "PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
     "datePublished": "2018-02-23",
     "description": "",
-    "wordCount": 2626
+    "wordCount": 2648
   }
 </script>
   
@@ -169,7 +169,7 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   <div class="text-center">
 
-    <h1>PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換
+    <h1>PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換
 </h1>
 
     <div class="metas">
@@ -181,13 +181,13 @@
 
   <small>
   &middot; Read in about 6 min
-  &middot; (2626 words)
+  &middot; (2648 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20AsciiDoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
     <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
@@ -196,10 +196,10 @@
     <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f&amp;title=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f&amp;title=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20AsciiDoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20AsciiDoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   </small>
@@ -228,8 +228,8 @@
       <div class="content">
   
 
-<p>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの Asciidoc 化を推し進めています。
-今までは Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていたのですが、たまたま最近 (<a href="/2017/11/19/jjug-ccc-2017-fall/">JJUG CCC 2017 Fall</a> や社内のディスカッションなどで) Asciidoc を推す声を多く聞いたこともありこっちもやってやるかと思うようになりました。</p>
+<p>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの AsciiDoc 化を推し進めています。
+今までは Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていたのですが、たまたま最近 (<a href="/2017/11/19/jjug-ccc-2017-fall/">JJUG CCC 2017 Fall</a> や社内のディスカッションなどで) AsciiDoc を推す声を多く聞いたこともありこっちもやってやるかと思うようになりました。</p>
 
 
 <figure class="center">
@@ -238,7 +238,7 @@
     </a>
     
     <figcaption>
-        <h4>Asciidoc</h4>
+        <h4>AsciiDoc</h4>
         
     </figcaption>
     
@@ -263,8 +263,8 @@
 </figure>
 
 
-<p>Asciidoc はプロセッサとして Ruby 製の <a href="https://asciidoctor.org/">Asciidocor</a> がポピュラーで、さらにこの拡張である asciidoctor-diagram を導入することで Asciidoc 内に PlantUML レンダー結果を埋め込むことができます。
-これは素晴らしいですね。しかし Asciidoc/Asciidoctor 自体はディレクトリ内のファイルを一括で (しかも再帰的に) HTML 化することはできません。そこで便利なのが・・・</p>
+<p>AsciiDoc はプロセッサとして Ruby 製の <a href="https://asciidoctor.org/">Asciidocor</a> がポピュラーで、さらにこの拡張である asciidoctor-diagram を導入することで AsciiDoc 内に PlantUML レンダー結果を埋め込むことができます。
+これは素晴らしいですね。しかし AsciiDoc/Asciidoctor 自体はディレクトリ内のファイルを一括で (しかも再帰的に) HTML 化することはできません。そこで便利なのが・・・</p>
 
 
 <figure class="center">
@@ -293,11 +293,11 @@
 <p>Maven Plugin もあるようですね。Maven にこだわりたいというお方はここでお別れです😁</p>
 
 <p>Asciidoctor Gradle Plugin は、Ruby 製の Asciidoctor を JRuby で動かしてしまうというものです。Gradle (Groovy の DSL) から JRuby が呼ばれて Ruby が動くのです。夢のような技術ですね✨
-なお、JRuby で動くようにした Asciidoctor は asciidoctorj と呼ばれます。</p>
+なお、JRuby を用いた Asciidoctor の Java バインディングを AsciidoctorJ と呼びます。</p>
 
 <h3 id="asciidoctor-単体">Asciidoctor 単体</h3>
 
-<p>それでは、まずは Asciidoc 単体で動作確認してみましょう。</p>
+<p>それでは、まずは AsciiDoc 単体で動作確認してみましょう。</p>
 
 <p><code>build.gradle</code> を作ります。</p>
 
@@ -349,7 +349,7 @@ PlantUML,ぷらんとゆーえむえる,テキストベースの UML 記述ツ�
 |===
 </code></pre>
 
-<p>💡 HTML 出力した際のリンクを <code>.adoc</code> ではなく <code>.html</code> とするために <code>outfilesuffix</code> の機構を利用しています。上記のようにすることで、GitHub や IDE 等におけるレンダリングは <code>.adoc</code> に、HTML 出力結果は <code>.html</code> となります。</p>
+<p>💡 HTML 出力した際のリンクを <code>.adoc</code> ではなく <code>.html</code> とするために <code>outfilesuffix</code> 変数の切替えを利用しています。上記のようにすることで、GitHub や IDE 等におけるレンダリングは <code>.adoc</code> に、HTML 出力結果は <code>.html</code> となります <sup>[参考文献1]</sup>。</p>
 
 <p>準備ができたら、ビルドしてみましょう。</p>
 
@@ -378,7 +378,7 @@ PlantUML,ぷらんとゆーえむえる,テキストベースの UML 記述ツ�
 
 <h3 id="plantuml-を埋め込んでレンダリングする">PlantUML を埋め込んでレンダリングする</h3>
 
-<p>先に PlantUML をセットアップしておきます。今回レンダリングするために PlantUML と Graphviz のセットを導入しておく必要があります。Mac の Homebrew であれば <code>brew install plantuml</code> と叩くだけで準備は完了です。Windows は <a href="https://chocolatey.org/">Chocolatey</a> であれば両方パッケージが揃っていて手軽です。既に IDE 上でプレビューするためのプラグイン等の環境構築を行っていれば、おそらくそのまま Gradle からも呼び出せることでしょう (私のおすすめは IntelliJ の Asciidoc プラグインです)。</p>
+<p>先に PlantUML をセットアップしておきます。今回レンダリングするために PlantUML と Graphviz のセットを導入しておく必要があります。Mac の Homebrew であれば <code>brew install plantuml</code> と叩くだけで準備は完了です。Windows は <a href="https://chocolatey.org/">Chocolatey</a> であれば両方パッケージが揃っていて手軽です。既に IDE 上でプレビューするためのプラグイン等の環境構築を行っていれば、おそらくそのまま Gradle からも呼び出せることでしょう (私のおすすめは IntelliJ の AsciiDoc プラグインです)。</p>
 
 <p>さて、先ほどのサンプルでは <code>index.adoc</code> ともう一つ <code>func.adoc</code> というファイルを用意していました。そちらに PlantUML を書き込んでみます (中身にツッコミはなしでオナシャス)。</p>
 
@@ -474,7 +474,7 @@ asciidoctor {
 
 <h4 id="asciidoctor-gradle-plugin-のバージョン">Asciidoctor Gradle Plugin のバージョン</h4>
 
-<p>asciidoctor-gradle-plugin は <strong>1.5.3</strong> をお使いください！これより新しくすると (1.5.7 等)、PlantUML レンダリングが最初の一発だけしか正しく行われないという現象に遭遇することがあります <sup>[参考文献1]</sup>。</p>
+<p>asciidoctor-gradle-plugin は <strong>1.5.3</strong> をお使いください！これより新しくすると (1.5.7 等)、PlantUML レンダリングが最初の一発だけしか正しく行われないという現象に遭遇することがあります <sup>[参考文献2]</sup>。</p>
 
 <h4 id="pdf-埋め込み機能">PDF 埋め込み機能</h4>
 
@@ -490,7 +490,7 @@ asciidoctor {
 
 <h4 id="plantuml-レンダリング結果で日本語が豆腐になる">PlantUML レンダリング結果で日本語が豆腐になる</h4>
 
-<p>Java が日本語フォントを認識していないせいです。JRE の <code>/jre/lib/fonts</code> に <code>fallback</code> というディレクトリを作り、そこにフォントのシンボリックリンクを突っ込むことで解決できます <sup>[参考文献2]</sup>。</p>
+<p>Java が日本語フォントを認識していないせいです。JRE の <code>/jre/lib/fonts</code> に <code>fallback</code> というディレクトリを作り、そこにフォントのシンボリックリンクを突っ込むことで解決できます <sup>[参考文献3]</sup>。</p>
 
 <p>エンジニアフレンドリーなドキュメンテーション環境の追求は続く&hellip;</p>
 
@@ -499,6 +499,7 @@ asciidoctor {
 <h4 id="参考文献">参考文献</h4>
 
 <ol>
+<li><a href="http://asciidoctor.org/docs/faq/">Frequently Asked Questions (FAQs) and Troubleshooting</a> - asciidoctor.org</li>
 <li><a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/222">Extentions dissapear with gradle daemon after first run · Issue #222 · asciidoctor/asciidoctor-gradle-plugin</a></li>
 <li><a href="https://wiki.archlinux.jp/index.php/Java_%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83%E3%81%AE%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88">Java 実行環境のフォント - ArchWiki</a></li>
 </ol>
@@ -512,7 +513,7 @@ asciidoctor {
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
 
-    <a href="https://twitter.com/intent/tweet?text=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
+    <a href="https://twitter.com/intent/tweet?text=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20AsciiDoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
 
     <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
@@ -521,10 +522,10 @@ asciidoctor {
     <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
 
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f&amp;title=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b" onclick="window.open(this.href, 'mywin',
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f&amp;title=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20AsciiDoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b" onclick="window.open(this.href, 'mywin',
 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
 
-    <a href="mailto:?subject=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20Asciidoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+    <a href="mailto:?subject=PlantUML%20%e5%9f%8b%e3%82%81%e8%be%bc%e3%81%bf%20AsciiDoc%20%e3%81%ae%20Gradle%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%20HTML%20%e4%b8%80%e6%8b%ac%e5%a4%89%e6%8f%9b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
   </span>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -580,7 +581,7 @@ asciidoctor {
         <ul>
         
           <li>
-          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/">PlantUML 埋め込み Asciidoc の Gradle を用いた HTML 一括変換</a>
+          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/">PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換</a>
           </li>
         
           <li>
