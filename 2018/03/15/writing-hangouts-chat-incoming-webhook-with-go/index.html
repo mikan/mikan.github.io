@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Hangouts Chat の Incoming webhook を Go で叩く  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="gsuite, golang, hangouts-chat, mail, ">
+
+
+<meta property="og:title" content="Hangouts Chat の Incoming webhook を Go で叩く  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-03-15T22:41:43&#43;09:00" />
+<meta property="og:article:modified_time" content="2018-03-15T22:41:43&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="gsuite">
+    
+<meta property="og:article:tag" content="golang">
+    
+<meta property="og:article:tag" content="hangouts-chat">
+    
+<meta property="og:article:tag" content="mail">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="Hangouts Chat の Incoming webhook を Go で叩く" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Hangouts Chat の Incoming webhook を Go で叩く",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-03-15",
+    "description": "",
+    "wordCount": 3701
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.36.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Hangouts Chat の Incoming webhook を Go で叩く
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-03-15">15 Mar, 2018</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 8 min
+  &middot; (3701 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Hangouts%20Chat%20%e3%81%ae%20Incoming%20webhook%20%e3%82%92%20Go%20%e3%81%a7%e5%8f%a9%e3%81%8f&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f&amp;title=Hangouts%20Chat%20%e3%81%ae%20Incoming%20webhook%20%e3%82%92%20Go%20%e3%81%a7%e5%8f%a9%e3%81%8f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Hangouts%20Chat%20%e3%81%ae%20Incoming%20webhook%20%e3%82%92%20Go%20%e3%81%a7%e5%8f%a9%e3%81%8f&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/gsuite" class="label label-primary">gsuite</a>
+  
+  <a href="https://mikan.github.io/tags/golang" class="label label-primary">golang</a>
+  
+  <a href="https://mikan.github.io/tags/hangouts-chat" class="label label-primary">hangouts-chat</a>
+  
+  <a href="https://mikan.github.io/tags/mail" class="label label-primary">mail</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+
+<figure class="center">
+    
+        <img src="/img/logo/hangouts-chat.png" />
+    
+    
+</figure>
+
+
+<p>今月頭の 3 月 1 日、Google が <a href="https://gsuite.google.com/products/chat/">Hangouts Chat</a> の正式版をアナウンスしました。
+IT 系ニュースメディアは早速「Slack のライバル」などとセンセーショナルに報じています<sup>[参考文献1]</sup>。
+ですが、Hangouts Chat はあくまで G Suite の一機能なので、独立したチャットサービスである Slack とはターゲットは幾分か異なるはずです。しかし機能強化を続けていけばいずれ Slack に追いつき追い越すことも容易に想像できます。</p>
+
+<p>と、期待の膨らむ Hangouts Chat ですが、私の手元では 8 日になってようやくアクセスできるようになりました。
+早速使ってみるとなるほど、 Bot や Webhook など Slack ライクな機能が備わっています。しかし Slack と比べると圧倒的な機能不足を感じます。例えば、</p>
+
+<ol>
+<li>組織外のユーザーと会話できない (これは致命的)</li>
+<li>Workspace の概念がない (「チャットルーム」を束ねる上位概念がない)</li>
+<li>絵文字リアクション機能がない (かなしい)</li>
+<li>カスタム絵文字がない (超かなしい)</li>
+</ol>
+
+<p>といったところです。でも一方、Hangouts Chat ならではのメリットも確かにあります。例えば、</p>
+
+<ol>
+<li>Google クオリティ (無駄がなく統一感のある UI デザインやアプリ・サービスとしての完成度の高さ)</li>
+<li>DM は既存の Hangouts とログを共有、従来の Hangouts と会話可能 (ただし従来のグループチャットは統合されない)</li>
+<li>Google Drive のファイルのアタッチが入力欄からダイレクトに可能、変更通知も Bot 経由で受け取れる</li>
+<li>そもそも G Suite を導入済の組織にとってはコスト面も管理面も一体化できて最高の選択肢</li>
+</ol>
+
+<p>などが挙げられると思います。</p>
+
+<p>今回の記事の主題である Webhook はというと、投げ方までは Slack とほとんど同じです。
+ただし URL の発行までのステップが Slack と異なる (というか劇的に簡単) ことと、フォーマットが違うのが Slack と異なるところです。</p>
+
+<h3 id="webhook-url-取得">Webhook URL 取得</h3>
+
+<p>そもそもの Hangouts Chat へのアクセス手段ですが、Slack 同様 Web からアクセスする方法と、アプリからアクセスする方法の二つがあります。
+Web からアクセスする場合は <a href="https://chat.google.com/">chat.google.com</a> というシンプルな URL をブラウザに叩きこむだけです。
+アプリからアクセスする場合は <a href="https://get.google.com/chat/">get.google.com/chat</a> と同じくシンプルな URL からダウンロードに進めます。
+今の所、Windows, macOS, Android, iOS 版があります。
+Web アプリは今流行りのレスポンシブデザインですね (もしかして PWA?)。そしてアプリ版もいわゆる &ldquo;ガワネイティブ&rdquo; らしく、中身は Web 版となんら代わりありません。</p>
+
+<p>Hangouts Chat を開いたら、まず「チャットルーム」を作成します。Slack でいう channel です。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat1.png" />
+    
+    
+    <figcaption>
+        <h4>チャットルームの作成</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>作成できましたか？試しに @Giphy で遊んでみましょう (脱線)。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat2.png" />
+    
+    
+    <figcaption>
+        <h4>@Giphy で遊ぶ</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>なんだこれ。</p>
+
+<p>お次に [ルーム名 👤 n] となっているところをクリックし、 [Webhook を設定] を選びます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat3.png" />
+    
+    
+    <figcaption>
+        <h4>Webhook を設定</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>着信 Webhook というダイアログが出るので、 [WEBHOOK を追加] を選ぶと、名前とアイコンを選ぶダイアログが表示されるので、適当な値を記入します。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat4.png" />
+    
+    
+    <figcaption>
+        <h4>着信 Webhook</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>💡 オマケ: GitHub の機能で <code>github.com/&lt;USER or ORG&gt;.png</code> という URL で対象のユーザーや Organization のアイコン画像を取得できます。
+手っ取り早くアイコン画像を得たいときにとても便利です。
+さらにクエリパラメーター <code>size</code> でサイズを px 単位で指定することもできる超絶便利なおまけつきです。
+上記の例では <code>https://github.com/golang.png?size=128</code> と入力しています。
+なお、この機能は 302 リダイレクトされるため <code>curl</code> では <code>-L</code> を追加する必要があります。</p>
+
+<p>Webhook URL が発行されたらコピーしておきます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat5.png" />
+    
+    
+    <figcaption>
+        <h4>着信 Webhook</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<h3 id="go-による実装">Go による実装</h3>
+
+<p>Webhook の実態は例によって JSON を HTTP POST するだけの簡単なものです。従って Go 言語ならば標準ライブラリのみで簡潔に書くことができます。
+用いる標準ライブラリは <code>encoding/json</code>, <code>net/http</code>, そしてバイトスライスの <code>Reader</code> のためにちょこっと <code>bytes</code> パッケージを使うだけです。以下のコードはエラー処理とエラー時のレスポンス読み込みまで書いているので <code>log</code> と <code>io/ioutil</code> も使っています。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;bytes&quot;
+	&quot;encoding/json&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+)
+
+const webhook = &quot;https://chat.googleapis.com/v1/spaces/...&quot;
+
+func main() {
+	payload, err := json.Marshal(struct {
+		Text string `json:&quot;text&quot;`
+	}{
+		Text: &quot;てすと！&quot;,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	resp, err := http.Post(webhook, &quot;application/json; charset=UTF-8&quot;, bytes.NewReader(payload))
+	if err != nil {
+		log.Fatal(err)
+	}
+	if resp.StatusCode != 200 {
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Fatalf(&quot;HTTP %d: %s&quot;, resp.StatusCode, body)
+	}
+}
+</code></pre>
+
+<p>実行すると、Hangouts Chat には以下のように表示されます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat6.png" />
+    
+    
+    <figcaption>
+        <h4>Webhook 結果</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>ここまでは webhook の URL 以外は Slack と何も変わりません。</p>
+
+<h3 id="メンションとデコレーション">メンションとデコレーション</h3>
+
+<p>メンションやテキストの飾り付けは、Slack と異なっており、以下のような書式で指定する必要があります<sup>[参考文献2]</sup>。
+Markdown とは一部異なるので注意してください。</p>
+
+<table>
+<thead>
+<tr>
+<th>書式</th>
+<th>記号</th>
+<th>例</th>
+<th>結果</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>太字</td>
+<td>*</td>
+<td>&#042;hello&#042;</td>
+<td><strong>hello</strong></td>
+</tr>
+
+<tr>
+<td>斜体</td>
+<td>_ (アンダースコア)</td>
+<td>&#095;hello&#095;</td>
+<td><em>hello</em></td>
+</tr>
+
+<tr>
+<td>取り消し線</td>
+<td>~</td>
+<td>&#126;hello&#126;</td>
+<td><del>hello</del></td>
+</tr>
+
+<tr>
+<td>等幅文字列</td>
+<td>&#096; (バッククオート)</td>
+<td>&#096;hello&#096;</td>
+<td><code>hello</code></td>
+</tr>
+
+<tr>
+<td>等幅文字列ブロック</td>
+<td>&#096;&#096;&#096; (バッククオート3つ)</td>
+<td>&#096;&#096;&#096;<br/>Hello<br/>World<br/>&#096;&#096;&#096;</td>
+<td><pre>Hello<br/>World</pre></td>
+</tr>
+
+<tr>
+<td>リンク</td>
+<td>&lt; &#124; &gt;</td>
+<td>&lt;<code>https://mikan.github.io/</code>&#124;<code>my link text</code>&gt;</td>
+<td><a href="https://mikan.github.io">my link text</a></td>
+</tr>
+
+<tr>
+<td>全体メンション</td>
+<td>&lt; / &gt;</td>
+<td>&lt;users/all&gt;</td>
+<td>@all (メンション)</td>
+</tr>
+
+<tr>
+<td>ユーザーメンション</td>
+<td>&lt; / &gt;</td>
+<td>&lt;users/123456789012345678901&gt;</td>
+<td>@ユーザー (メンション)</td>
+</tr>
+</tbody>
+</table>
+
+<p>全体メンションを人間がやるときは「@全員」なのですが、API だと「@all」です。またユーザー宛メンションで用いるユーザー ID は着信メッセージの <code>sender</code> フィールドから取れとドキュメントにあります。インタラクティブな Bot を作るときに使うようです。</p>
+
+<h3 id="カードメッセージの送信">カードメッセージの送信</h3>
+
+<p>Hangouts Chat の Webhook には Card Message というフォーマットも規定されてみました<sup>[参考文献3]</sup>。こちらも投げてみます。
+先に動かした結果から見てみましょう。次の画像はドキュメントにあるピザ配達のメッセージをそのまま再現したものです (地図の座標は省略されていたので代わりに多摩川を映してみる)。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat7.png" />
+    
+    
+    <figcaption>
+        <h4>Card Message</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>画像があり、タイトルとサブタイトルがあり、注文番号と状態を示すセクションがあり、地図を示すセクションがあり、そして注文を開くボタン？があります。
+これらのコンポーネントは全て JSON で定義されたものです。
+アイコンに関しては、上記例は画像を直接刺していますが、ビルトインのアイコンもいくつか定義されています。</p>
+
+<p>さて、これを Go 言語で扱うのは簡単ではありません。
+ですが一度 JSON の仕様を構造体に定義してしまえば、あとは Go が誇る構造体リテラルを使ってデータを組み立てていくだけです。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;bytes&quot;
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+)
+
+const webhook = &quot;https://chat.googleapis.com/v1/spaces/...&quot;
+
+type Cards struct {
+	Cards []Card `json:&quot;cards,omitempty&quot;`
+}
+
+type Card struct {
+	Header   *Header   `json:&quot;header,omitempty&quot;`
+	Sections []Section `json:&quot;sections,omitempty&quot;`
+}
+
+type Header struct {
+	Title      string `json:&quot;title,omitempty&quot;`
+	Subtitle   string `json:&quot;subtitle,omitempty&quot;`
+	ImageURL   string `json:&quot;imageUrl,omitempty&quot;`
+	ImageStyle string `json:&quot;imageStyle,omitempty&quot;`
+}
+
+type Section struct {
+	Header  string   `json:&quot;header,omitempty&quot;`
+	Widgets []Widget `json:&quot;widgets,omitempty&quot;`
+}
+
+type Widget struct {
+	KeyValue      *KeyValue `json:&quot;keyValue,omitempty&quot;`
+	Image         *Image    `json:&quot;image,omitempty&quot;`
+	Buttons       []Button  `json:&quot;buttons,omitempty&quot;`
+	TextParagraph string    `json:&quot;textParagraph,omitempty&quot;`
+}
+
+type KeyValue struct {
+	TopLabel         string   `json:&quot;topLabel,omitempty&quot;`
+	Content          string   `json:&quot;content,omitempty&quot;`
+	Icon             string   `json:&quot;icon,omitempty&quot;`
+	ContentMultiLine string   `json:&quot;contentMultiline,omitempty&quot;`
+	BottomLabel      string   `json:&quot;bottomLabel,omitempty&quot;`
+	OnClick          *OnClick `json:&quot;onClick,omitempty&quot;`
+	Button           *Button  `json:&quot;button,omitempty&quot;`
+}
+
+type Image struct {
+	ImageURL string   `json:&quot;imageUrl,omitempty&quot;`
+	OnClick  *OnClick `json:&quot;onClick,omitempty&quot;`
+}
+
+type Button struct {
+	TextButton  *TextButton  `json:&quot;textButton,omitempty&quot;`
+	ImageButton *ImageButton `json:&quot;imageButton,omitempty&quot;`
+}
+
+type TextButton struct {
+	Text    string   `json:&quot;text,omitempty&quot;`
+	OnClick *OnClick `json:&quot;onClick,omitempty&quot;`
+}
+
+type ImageButton struct {
+	IconURL string   `json:&quot;iconUrl,omitempty&quot;`
+	Icon    string   `json:&quot;icon,omitempty&quot;`
+	OnClick *OnClick `json:&quot;onClick,omitempty&quot;`
+}
+
+type OnClick struct {
+	OpenLink *OpenLink `json:&quot;openLink,omitempty&quot;`
+}
+
+type OpenLink struct {
+	URL string `json:&quot;url,omitempty&quot;`
+}
+
+func main() {
+	msg := Cards{[]Card{{
+		&amp;Header{
+			Title:    &quot;Pizza Bot Customer Support&quot;,
+			Subtitle: &quot;pizzabot@example.com&quot;,
+			ImageURL: &quot;https://goo.gl/aeDtrS&quot;,
+		},
+		[]Section{
+			{
+				Widgets: []Widget{
+					{
+						KeyValue: &amp;KeyValue{
+							TopLabel: &quot;Order No.&quot;,
+							Content:  &quot;12345&quot;,
+						},
+					},
+					{
+						KeyValue: &amp;KeyValue{
+							TopLabel: &quot;Status&quot;,
+							Content:  &quot;In Delivery&quot;,
+						},
+					},
+				},
+			},
+			{
+				Header: &quot;Location&quot;,
+				Widgets: []Widget{{
+					Image: &amp;Image{
+						ImageURL: &quot;http://maps.google.com/maps/api/staticmap?center=35.5872872,139.667575&amp;zoom=17&amp;size=400x300&quot;,
+					},
+				}},
+			},
+			{
+				Widgets: []Widget{{
+					Buttons: []Button{{
+						TextButton: &amp;TextButton{
+							Text:    &quot;OPEN ORDER&quot;,
+							OnClick: &amp;OnClick{&amp;OpenLink{&quot;https://mikan.github.io/&quot;}},
+						},
+					}},
+				}},
+			},
+		},
+	}}}
+
+	payload, err := json.Marshal(msg)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(string(payload))
+	resp, err := http.Post(webhook, &quot;application/json; charset=UTF-8&quot;, bytes.NewReader(payload))
+	if err != nil {
+		log.Fatal(err)
+	}
+	if resp.StatusCode != 200 {
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Fatalf(&quot;HTTP %d: %s&quot;, resp.StatusCode, body)
+	}
+}
+</code></pre>
+
+<p>構造体定義がずらずらある以外は、そんなに複雑ではないことに気づくでしょう。
+なお、使わない (ゼロ値の) フィールドを JSON 出力しないように <code>omitempty</code> フィールドタグを添えています。
+埋め込む構造体をポインタにしているのもこのためです。</p>
+
+<p>また、上記例には含まれておりませんが、 Card Message では、多くの文字列フィールドは一部の HTML タグが利用できます。使えるタグは、</p>
+
+<ul>
+<li>&lt;b&gt; (太字)</li>
+<li>&lt;i&gt; (斜体)</li>
+<li>&lt;u&gt; (下線)</li>
+<li>&lt;strike&gt; (取消線)</li>
+<li>&lt;font color=&ldquo;&rdquo;&gt; (文字色) ※&lt;font color=\&ldquo;#ff0000\&rdquo;&gt;red&lt;/font&gt; のように利用</li>
+<li>&lt;a href=&ldquo;&rdquo;&gt; (ハイパーリンク)</li>
+<li>&lt;br&gt; (改行)</li>
+</ul>
+
+<p>が規定されています。</p>
+
+<h3 id="活用例">活用例</h3>
+
+<p>今回、この Webhook の仕組みを用いて社内で使っているシステムの通知を Hangouts Chat に連携する機能を導入してみました。
+こんなシステムです (赤字が今回の改修部分):</p>
+
+
+<figure class="center">
+    
+        <img src="/img/diagram/gh-id-checker.png" />
+    
+    
+</figure>
+
+
+<p>このシステムは GitHub の会社の Organization に「私の ID を追加して！」ってお願いするための申請システムで、
+Organization の社内運用ルールに適合するアカウントかどうか (2FA 有効か、会社メルアド刺さってるか等) を予め自動チェックするのが目的です。</p>
+
+<p>もちろん Go で実装しており、通知の本文はこんな感じです:</p>
+
+<pre><code class="language-go">msg := client.Message{
+	Text: fmt.Sprintf(&quot;&lt;users/all&gt; GitHub ユーザー &lt;https://github.com/%s|%s&gt; から登録依頼が来ました。\n&lt;https://github.com/orgs/%s/people|メンバー管理はこちら&gt;&quot;, userData.Login, userData.Login, org),
+}
+</code></pre>
+
+<p>通知はこのようになります:</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/hangouts-chat8.png" />
+    
+    
+</figure>
+
+
+<p>このシステムでは同時にメールも送信しており、主にメールを見るユーザーにも通知を確実に届けます。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;bytes&quot;
+	&quot;log&quot;
+	&quot;net/smtp&quot;
+	&quot;os&quot;
+)
+
+func sendMail(id, org string) {
+	from := os.Getenv(&quot;SEND_FROM&quot;)
+	to := os.Getenv(&quot;SEND_TO&quot;)
+	user := os.Getenv(&quot;SMTP_USER&quot;)
+	password := os.Getenv(&quot;SMTP_PASSWORD&quot;)
+	server := os.Getenv(&quot;SMTP_SERVER&quot;)
+	port := os.Getenv(&quot;SMTP_PORT&quot;)
+	body := bytes.NewBufferString(&quot;Subject: [GitHub/&quot; + org + &quot;] ID 招待依頼\r\n&quot;)
+	body.WriteString(&quot;Content-Type: text/plain; charset=\&quot;UTF-8\&quot;\r\n&quot;)
+	body.WriteString(&quot;\r\n&quot;)
+	body.WriteString(&quot;次のユーザーから GitHub &quot; + org + &quot; 組織への招待依頼が届きました: https://github.com/&quot; + id + &quot;\r\n&quot;)
+	body.WriteString(&quot;\r\n&quot;)
+	body.WriteString(&quot;メンバー管理はこちら: https://github.com/orgs/&quot; + org + &quot;/people\r\n&quot;)
+	auth := smtp.PlainAuth(&quot;&quot;, user, password, server)
+	if err := smtp.SendMail(server+&quot;:&quot;+port, auth, from, []string{to}, body.Bytes()); err != nil {
+		log.Printf(&quot;Failed to send mail, %v&quot;, err)
+	}
+}
+</code></pre>
+
+<p>標準ライブラリ <code>net/smtp</code> でさくっとメールを送れるあたりも Go の魅力です。
+ただし、日本語メールを送る場合は上記例のように <code>Content-Type: text/plain; charset=\&quot;UTF-8\&quot;</code> ヘッダーを刺すをお忘れなく。</p>
+
+<p>・・・また脱線してしまいましたが、いかがでしたでしょうか。簡単に連携できて、その気になれば凝ったメッセージも送れることがお分りいただけたかと思います。
+Webhook で Hangouts Chat の表現力が分かってきたら、次は Bot の自作にチャレンジしたいところですね。</p>
+
+<p>Stay tuned &amp; Happy hacking!</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://jp.techcrunch.com/2018/03/01/2018-02-28-hangout-chat-googles-slack-competitor-comes-out-of-beta/">Google、Hangouts Chat、G Suite向け正式版公開――Slackのライバルを狙う  |  TechCrunch Japan</a></li>
+<li><a href="https://developers.google.com/hangouts/chat/reference/message-formats/basic">Simple Text Messages &nbsp;|&nbsp; Hangouts Chat &nbsp;|&nbsp; Google Developers</a></li>
+<li><a href="https://developers.google.com/hangouts/chat/reference/message-formats/cards">Card Formatting Messages &nbsp;|&nbsp; Hangouts Chat &nbsp;|&nbsp; Google Developers</a></li>
+<li><a href="http://amzn.to/2HAwTNW">プログラミング言語Go</a> 第4章 - Alan A.A. Donovan (著),‎ Brian W. Kernighan (著),‎ 柴田 芳樹 (翻訳)</li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Hangouts%20Chat%20%e3%81%ae%20Incoming%20webhook%20%e3%82%92%20Go%20%e3%81%a7%e5%8f%a9%e3%81%8f&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f&amp;title=Hangouts%20Chat%20%e3%81%ae%20Incoming%20webhook%20%e3%82%92%20Go%20%e3%81%a7%e5%8f%a9%e3%81%8f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Hangouts%20Chat%20%e3%81%ae%20Incoming%20webhook%20%e3%82%92%20Go%20%e3%81%a7%e5%8f%a9%e3%81%8f&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" title="PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/">Hangouts Chat の Incoming webhook を Go で叩く</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/">PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/">AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/19/mashup-awards-2017/">Mashup Awards 2017</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/">STM32L4 Discovery Kit IoT Node に Amazon FreeRTOS を導入する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/">G Suite を IdP にした Salesforce の SAML SSO の有効化</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/">PMD Apex / PMD Visualforce で Salesforce のコードを静的解析する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/24/introducing-force-client-go/">force-client-go: Go で Salesforce の REST API を叩く</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/">Go の dep やら govendor やらを GitLab CI で回す</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/">JJUG CCC 2017 Fall</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/salesforce">salesforce</a></li><li><a href="/categories/tools">tools</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/github">github</a></li><li><a href="/tags/golang">golang</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/hugo">hugo</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/force.com">force.com</a></li><li><a href="/tags/gitlab">gitlab</a></li><li><a href="/tags/gsuite">gsuite</a></li><li><a href="/tags/java">java</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Tue, 23 Jan 2018 21:19:41 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 15 Mar 2018 22:41:43 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hangouts Chat の Incoming webhook を Go で叩く</title>
+      <link>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</link>
+      <pubDate>Thu, 15 Mar 2018 22:41:43 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</guid>
+      <description>今月頭の 3 月 1 日、Google が Hangouts Chat の正式版をアナウンスしました。 IT 系ニュースメディアは早速「Slack のライバル」などとセンセーショナルに</description>
+    </item>
     
     <item>
       <title>AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</title>
