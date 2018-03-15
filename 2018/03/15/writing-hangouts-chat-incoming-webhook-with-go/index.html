@@ -65,7 +65,7 @@
     },
     "datePublished": "2018-03-15",
     "description": "",
-    "wordCount": 3701
+    "wordCount": 3702
   }
 </script>
   
@@ -181,7 +181,7 @@
 
   <small>
   &middot; Read in about 8 min
-  &middot; (3701 words)
+  &middot; (3702 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f03%2f15%2fwriting-hangouts-chat-incoming-webhook-with-go%2f" onclick="window.open(this.href, 'mywin',
@@ -273,7 +273,7 @@ Web からアクセスする場合は <a href="https://chat.google.com/">chat.go
 今の所、Windows, macOS, Android, iOS 版があります。
 Web アプリは今流行りのレスポンシブデザインですね (もしかして PWA?)。そしてアプリ版もいわゆる &ldquo;ガワネイティブ&rdquo; らしく、中身は Web 版となんら代わりありません。</p>
 
-<p>Hangouts Chat を開いたら、まず「チャットルーム」を作成します。Slack でいう channel です。</p>
+<p>Hangouts Chat を開いたら、まず「チャットルーム」を作成します。Slack でいう Channel です。</p>
 
 
 <figure class="center">
@@ -421,7 +421,7 @@ func main() {
 
 <h3 id="メンションとデコレーション">メンションとデコレーション</h3>
 
-<p>メンションやテキストの飾り付けは、Slack と異なっており、以下のような書式で指定する必要があります<sup>[参考文献2]</sup>。
+<p>メンションやテキストの飾り付けは Slack と異なっており、以下のような書式で指定する必要があります<sup>[参考文献2]</sup>。
 Markdown とは一部異なるので注意してください。</p>
 
 <table>
@@ -493,11 +493,11 @@ Markdown とは一部異なるので注意してください。</p>
 </tbody>
 </table>
 
-<p>全体メンションを人間がやるときは「@全員」なのですが、API だと「@all」です。またユーザー宛メンションで用いるユーザー ID は着信メッセージの <code>sender</code> フィールドから取れとドキュメントにあります。インタラクティブな Bot を作るときに使うようです。</p>
+<p>全体メンションを人間がやるときは「@全員」なのですが、API からだと「@all」と表示されます。またユーザー宛メンションで用いるユーザー ID は着信メッセージの <code>sender</code> フィールドから取れとドキュメントにあります。インタラクティブな Bot を作るときに使うようです。</p>
 
 <h3 id="カードメッセージの送信">カードメッセージの送信</h3>
 
-<p>Hangouts Chat の Webhook には Card Message というフォーマットも規定されてみました<sup>[参考文献3]</sup>。こちらも投げてみます。
+<p>Hangouts Chat の Webhook には Card Message というフォーマットも規定されています<sup>[参考文献3]</sup>。こちらも投げてみます。
 先に動かした結果から見てみましょう。次の画像はドキュメントにあるピザ配達のメッセージをそのまま再現したものです (地図の座標は省略されていたので代わりに多摩川を映してみる)。</p>
 
 
@@ -699,6 +699,15 @@ func main() {
 
 <p>このシステムは GitHub の会社の Organization に「私の ID を追加して！」ってお願いするための申請システムで、
 Organization の社内運用ルールに適合するアカウントかどうか (2FA 有効か、会社メルアド刺さってるか等) を予め自動チェックするのが目的です。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/gh-id-checker.png" />
+    
+    
+</figure>
+
 
 <p>もちろん Go で実装しており、通知の本文はこんな感じです:</p>
 
