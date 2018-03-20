@@ -68,6 +68,15 @@
     </item>
     
     <item>
+      <title>Bookshelf</title>
+      <link>https://mikan.github.io/bookshelf/</link>
+      <pubDate>Wed, 06 Dec 2017 00:46:42 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/bookshelf/</guid>
+      <description>mikan の本棚にある本たち。技術書や自己啓発本に限ります。サブタイトルは省略しています。 上付き文字は読書会課題本を示します (AOSN AOSN読書会, JRBOF Ja</description>
+    </item>
+    
+    <item>
       <title>PMD Apex / PMD Visualforce で Salesforce のコードを静的解析する</title>
       <link>https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/</link>
       <pubDate>Tue, 28 Nov 2017 21:42:48 +0900</pubDate>
