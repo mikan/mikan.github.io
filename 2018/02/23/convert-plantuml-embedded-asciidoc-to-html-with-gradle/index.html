@@ -65,7 +65,7 @@
     },
     "datePublished": "2018-02-23",
     "description": "",
-    "wordCount": 2647
+    "wordCount": 2841
   }
 </script>
   
@@ -75,7 +75,7 @@
 <link rel="canonical" href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.36.1" />
+<meta name="generator" content="Hugo 0.38.1" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -189,7 +189,7 @@
 
   <small>
   &middot; Read in about 6 min
-  &middot; (2647 words)
+  &middot; (2841 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f02%2f23%2fconvert-plantuml-embedded-asciidoc-to-html-with-gradle%2f" onclick="window.open(this.href, 'mywin',
@@ -334,6 +334,8 @@ adoc-test
 4 directories, 3 files
 </code></pre>
 
+<p>💡 ソースディレクトリを変更したい場合は、 <code>build.gradle</code> に <code>asciidoctor{ sourceDir = file('./docs') }</code> のようにパスを教えてあげる必要があります。</p>
+
 <p>adoc の中身はなんでも良いですが、今回はサンプルとしてこんなものを置いてみました (<code>index.adoc</code> の中身)。</p>
 
 <pre><code class="language-adoc">= Asciidoc てすと
@@ -381,6 +383,8 @@ PlantUML,ぷらんとゆーえむえる,テキストベースの UML 記述ツ�
 
 
 <p>ばっちりですね✨ 文書間のリンクもちゃんと <code>.html</code> になっていることが確認できるはずです。</p>
+
+<p>💡 アウトプットディレクトリを変更したい場合は、 <code>build.gradle</code> に <code>asciidoctor{ sourceDir = file('./docs') }</code> のようにパスを教えてあげる必要があります。</p>
 
 <p>さて、これで仕事が終わるなら簡単すぎてブログ記事になりません。<strong>問題はここから</strong>なのです・・・！</p>
 
@@ -487,11 +491,26 @@ asciidoctor {
 <h4 id="pdf-埋め込み機能">PDF 埋め込み機能</h4>
 
 <p>Asciidoctor には PDF を出力する機能を追加することができますが、今の所 PlantUML のレンダリング結果を拾ってくれません (<code>'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'</code> で検証)。
-ログを見ると png レンダリングされたファイルがある <code>outputDir</code> のパスではなく <code>sourceDir</code> のほうを読みに行ってしまっている様子。あと一歩な気がする！</p>
+ログを見ると png レンダリングされたファイルがある <code>outputDir</code> のパスではなく <code>sourceDir</code> のほうを読みに行ってしまっている様子。 <del>あと一歩な気がする！</del>
+そこで、 <code>asciidoctor</code> ブロックを以下のように設定し、正しいパスを教えてあげます。</p>
+
+<pre><code class="language-groovy">asciidoctor {
+    backends = ['html5','pdf']
+    requires = ['asciidoctor-diagram']
+    attributes &quot;imagesdir&quot;: buildDir
+}
+</code></pre>
+
+<p><code>buildscript</code> の <code>dependencies</code> に次を追記するのもお忘れなく。</p>
+
+<pre><code class="language-groovy">classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.16'
+</code></pre>
+
+<p>✨ <em>2018/04/13 加筆しました (Thanks <a href="#comment-3851233493">@osamus</a>)</em></p>
 
 <h4 id="org-jruby-ext-openssl-がないと言われる">org.jruby.ext.openssl がないと言われる</h4>
 
-<p>やっつけですが、<code>build.gradle</code> の buildscript の dependencies に以下を追加することで回避できたことがあります:</p>
+<p>やっつけですが、<code>build.gradle</code> の <code>buildscript</code> の <code>dependencies</code> に以下を追加することで回避できたことがあります:</p>
 
 <pre><code class="language-groovy">classpath 'rubygems:jruby-openssl:0.9.21'
 </code></pre>
@@ -510,6 +529,7 @@ asciidoctor {
 <li><a href="http://asciidoctor.org/docs/faq/">Frequently Asked Questions (FAQs) and Troubleshooting</a> - asciidoctor.org</li>
 <li><a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues/222">Extentions dissapear with gradle daemon after first run · Issue #222 · asciidoctor/asciidoctor-gradle-plugin</a></li>
 <li><a href="https://wiki.archlinux.jp/index.php/Java_%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83%E3%81%AE%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88">Java 実行環境のフォント - ArchWiki</a></li>
+<li><a href="https://github.com/asciidoctor/asciidoctorj-pdf">asciidoctor/asciidoctorj-pdf: AsciidoctorJ PDF bundles the Asciidoctor PDF RubyGem (asciidoctor-pdf) so it can be loaded into the JVM using JRuby.</a></li>
 </ol>
 
 </div>
