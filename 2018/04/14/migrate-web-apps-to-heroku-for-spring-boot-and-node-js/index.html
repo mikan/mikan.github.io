@@ -71,7 +71,7 @@
     },
     "datePublished": "2018-04-14",
     "description": "",
-    "wordCount": 6167
+    "wordCount": 6372
   }
 </script>
   
@@ -195,7 +195,7 @@
 
   <small>
   &middot; Read in about 13 min
-  &middot; (6167 words)
+  &middot; (6372 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
@@ -468,6 +468,14 @@ nf run node app.js
     archiveName = baseName + &quot;.&quot; + extension
 }
 </code></pre>
+
+<p><code>system.properties</code> のほうは、Java のバージョンを指定するために利用します。こんな感じです。</p>
+
+<pre><code class="language-properties">java.runtime.version=1.8
+</code></pre>
+
+<p>Heroku は最新の Java の追従がとても速く (Go 等他の言語もめっちゃ速い！)、(この記事を書いている今) 出たばかりの OpenJDK 10 も選べます (<code>java.runtime.version=10</code>)。
+さらにすごいことに、 OpenJDK だけでなく Azul Zulu JDK も選ぶことができます。ただしこちらは現時点では 9.0.1 が最新でした (<code>java.runtime.version=zulu-9.0.1</code>)。</p>
 
 <h4 id="2-2-node-js">2.2 Node.js</h4>
 
