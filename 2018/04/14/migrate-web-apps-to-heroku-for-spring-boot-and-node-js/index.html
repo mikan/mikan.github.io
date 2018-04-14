@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Spring Boot と Node.js の Heroku お引越し大作戦  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="heroku, java, spring-boot, gradle, javascript, node.js, newrelic, ">
+
+
+<meta property="og:title" content="Spring Boot と Node.js の Heroku お引越し大作戦  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-04-14T19:46:31&#43;09:00" />
+<meta property="og:article:modified_time" content="2018-04-14T19:46:31&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="heroku">
+    
+<meta property="og:article:tag" content="java">
+    
+<meta property="og:article:tag" content="spring-boot">
+    
+<meta property="og:article:tag" content="gradle">
+    
+<meta property="og:article:tag" content="javascript">
+    
+<meta property="og:article:tag" content="node.js">
+    
+<meta property="og:article:tag" content="newrelic">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="Spring Boot と Node.js の Heroku お引越し大作戦" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Spring Boot と Node.js の Heroku お引越し大作戦",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-04-14",
+    "description": "",
+    "wordCount": 6167
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.38.1" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-users'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Spring Boot と Node.js の Heroku お引越し大作戦
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-04-14">14 Apr, 2018</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 13 min
+  &middot; (6167 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Spring%20Boot%20%e3%81%a8%20Node.js%20%e3%81%ae%20Heroku%20%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97%e5%a4%a7%e4%bd%9c%e6%88%a6&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f&amp;title=Spring%20Boot%20%e3%81%a8%20Node.js%20%e3%81%ae%20Heroku%20%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97%e5%a4%a7%e4%bd%9c%e6%88%a6" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Spring%20Boot%20%e3%81%a8%20Node.js%20%e3%81%ae%20Heroku%20%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97%e5%a4%a7%e4%bd%9c%e6%88%a6&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/heroku" class="label label-primary">heroku</a>
+  
+  <a href="https://mikan.github.io/tags/java" class="label label-primary">java</a>
+  
+  <a href="https://mikan.github.io/tags/spring-boot" class="label label-primary">spring-boot</a>
+  
+  <a href="https://mikan.github.io/tags/gradle" class="label label-primary">gradle</a>
+  
+  <a href="https://mikan.github.io/tags/javascript" class="label label-primary">javascript</a>
+  
+  <a href="https://mikan.github.io/tags/node.js" class="label label-primary">node.js</a>
+  
+  <a href="https://mikan.github.io/tags/newrelic" class="label label-primary">newrelic</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+
+<figure class="center">
+    
+        <img src="/img/logo/heroku2.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>先日、契約している VPS (<a href="https://www.vultr.com/?ref=7053029">VULTR VPS 東京リージョン</a>) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。この記事はその奮闘記です。
+主に、設定ファイルの環境変数化、デプロイ、Deploy to Heroku ボタンの設置、New Relic APM によるパフォーマンスモニタリングの適用の4点についてのメモをまとめました。</p>
+
+<h3 id="1-設定ファイルの環境変数化">1. 設定ファイルの環境変数化</h3>
+
+<p>皆さんの Web アプリはどのようにパラメーターを定義・記載していますか？そして、それをどうやって環境ごとに切り替えていますか？
+たとえば、標準的な Web アプリでは以下のような環境があり、それぞれデータベースやログレベルなどを異なるものを指すことが多いでしょう。</p>
+
+<ul>
+<li>ローカル開発環境</li>
+<li>ローカルユニットテスト環境</li>
+<li>CI ユニットテスト環境</li>
+<li>CI インテグレーション・E2E テスト環境</li>
+<li>ステージング環境</li>
+<li>プロダクション環境</li>
+</ul>
+
+<p>また、ステージングやプロダクションもリージョンや提供サービスのランクなどによりホストごとに環境が分かれることも多々あります。そのため、プログラムに環境依存のパラメーターをハードコーディングをするするのではなく、外だしすることはもはや定石でしょう。</p>
+
+<p>しかし、問題はその方法です。例えば、 Spring Boot では多数のパラメーター供給方法があり、次の 17 段階のオーダーに基づいて実際にランタイムが採用するプロパティ (パラメーター) を決定します<sup>[参考文献1]</sup>。</p>
+
+<ol>
+<li>ホームディレクトリの Devtools グローバル設定プロパティ (devtools がアクティブのとき)</li>
+<li>テスト中の <code>@TestPropertySource</code> アノテーション</li>
+<li>テスト中の <code>@SpringBootTest#properties</code> アノテーション属性</li>
+<li><strong>コマンドライン引数</strong></li>
+<li><code>SPRING_APPLICATION_JSON</code> 内のプロパティ (環境変数かシステムプロパティのインライン JSON 埋め込み)</li>
+<li><code>ServletConfig</code> の init パラメーター</li>
+<li><code>ServletContext</code> の init パラメーター</li>
+<li><code>java:comp/env</code> の JNDI 属性</li>
+<li><strong>Java システムプロパティ</strong> (<code>System.getProperties()</code>)</li>
+<li><strong>OS 環境変数</strong></li>
+<li><code>RandomValuePropertySource</code> が持つ <code>random.*</code> プロパティ</li>
+<li>パッケージされた jar の外にあるプロファイル固有のアプリケーションプロパティ (<code>application-{profile}.properties</code> とその YAML 版)</li>
+<li>パッケージされた jar の中にあるプロファイル固有のアプリケーションプロパティ (<code>application-{profile}.prioerties</code> とその YAML 版)</li>
+<li>パッケージされた jar の外にあるアプリケーションプロパティ (<code>application.properties</code> とその YAML 版)</li>
+<li>パッケージされた jar の中にあるアプリケーションプロパティ (<code>application.properties</code> とその YAML 版)</li>
+<li><code>@Configuration</code> クラス中の <code>@PropertySource</code> アノテーション</li>
+<li><strong>デフォルトプロパティ</strong> (<code>SpringApplication.setDefaultProperties</code> で指定)</li>
+</ol>
+
+<p>パラメーターのデフォルト値を上書きする方法が 16 通りもあるんですよ！人間の勝手な都合がコンピューターにどれだけ複雑な処理を強いていることか 😇 よくわからない人のためになるべく簡単に解説すると、デフォルト値は環境変数で上書きできるし、それをさらにシステムプロパティで上書きできるし、それをさらにコマンドライン引数で上書きできるし、そしてさらに神のツール Spring Boot Devtools は万物の破壊と創造を司ることができるのです。</p>
+
+<p>私がこれまで開発した移行対象のアプリでは、設定ファイルを複数用意して実行時の環境変数で切り替える方式を採用していました。それぞれこんな感じです。</p>
+
+<p>Spring Boot (w/プロファイル):</p>
+
+<table>
+<thead>
+<tr>
+<th>環境</th>
+<th>設定ファイル</th>
+<th>実行コマンド</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ローカル開発</td>
+<td><code>src/main/resources/application.yml</code></td>
+<td><code>java -jar app.jar</code></td>
+</tr>
+
+<tr>
+<td>プロダクション</td>
+<td><code>src/main/resources/application-production.yml</code></td>
+<td><code>java -jar -Dspring.profiles.active=production app.jar</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>Node.js (w/<a href="https://github.com/lorenwest/node-config">node-config</a>):</p>
+
+<table>
+<thead>
+<tr>
+<th>環境</th>
+<th>設定ファイル</th>
+<th>実行コマンド</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ローカル開発</td>
+<td><code>config/default.yml</code></td>
+<td><code>node app.js</code></td>
+</tr>
+
+<tr>
+<td>プロダクション</td>
+<td><code>config/production.yml</code></td>
+<td><code>NODE_ENV=production node app.js</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>しかし、Heroku (他の PaaS も同様) では OS の環境変数でパラメーターを与えることがベストプラクティスとなっています。
+Heroku が生み出した Web アプリ開発の有名な方法論 <strong>&ldquo;The Twelve-Factor App&rdquo;</strong> の 3 項目目には、次のように記されています<sup>[参考文献3]</sup>。</p>
+
+<blockquote>
+<p>環境変数は、コードを変更することなくデプロイごとに簡単に変更できる。設定ファイルとは異なり、誤ってリポジトリにチェックインされる可能性はほとんどない。また、独自形式の設定ファイルやJava System Propertiesなど他の設定の仕組みとは異なり、環境変数は言語やOSに依存しない標準である。</p>
+</blockquote>
+
+<p>というわけで、これまでオンプレや IaaS で慣れ親しんできた高機能なプロファイルスイッチングと決別し、ローレベルでプリミティブな環境変数に原点回帰することになりました。</p>
+
+<h4 id="1-1-spring-boot-の場合">1.1 Spring Boot の場合</h4>
+
+<p>Spring Boot のプロパティは、環境変数と相互に変換可能です。すなわち、<code>spring.data.mongodb.uri</code> というプロパティは環境変数 <code>SPRING_DATA_MONGODB_URI</code> に対応しています。よって、この仕組みを使うことでアプリ側は何も対応することなく Heroku にフィットさせることができます。</p>
+
+<p>しかし、Heroku ではアドオンから提供される環境変数をアプリから利用するというパターンがあり、全ての環境変数をデベロッパー (この記事を読んでいるあなた) が決められるとは限りません。このようなケースでは、環境変数とプロパティの対応関係を何かしらの手段で定義することになります。
+また、Spring Boot は前述のように <code>application.properties</code> / <code>.yml</code> とプロファイルの機構による柔軟なパラメーター制御が最初から備わっており、Spring Security や Spring Data 等の構造化されたパラメーターたちもこのファイル一つで取り回せる利便性があります。
+いくら環境変数絶対な Heroku といえども、この仕組みはなかなか手放したくないものです。
+そこで便利なのが、<code>application.propeties</code> / <code>.yml</code> の中から環境変数を刺す機能を用いた、プロパティ・プロファイル・環境変数の合わせ技です。</p>
+
+<pre><code class="language-properties">spring.data.mongodb.uri=${MONGODB_URI}
+</code></pre>
+
+<pre><code class="language-yaml">spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+</code></pre>
+
+<p>パラメーターからパラメーターを参照しちゃうなんて、実にけしからん機能ですね 😍
+さらにすごいことに <code>${KEY:foo}</code> のようにデフォルト値を指定することもできてしまいます。
+ローカル用はデフォルト値、Heroku 用は環境変数としておけば、1つの <code>application.yml</code> を七変化させることができます。</p>
+
+<p>従来通りプロファイル分けも併用する場合は、どっちをローカル、どっちを Heroku (環境変数) に寄せるか検討する必要があります。
+例えば、いかのようなパターンが考えられます:</p>
+
+<ul>
+<li><code>application.yml</code> はローカル用かつ Git は ignore する、Heroku は <code>application-production.yml</code> で igonre しない</li>
+<li><code>application.yml</code> は Heroku 用かつ Git は ignore しない、ローカルは <code>application-development.yml</code> で igonre する</li>
+</ul>
+
+<p>起動時のプロファイル指定を開発環境か Heroku かどっちでやりたいかで決まります (両方でも良い)。</p>
+
+<h4 id="1-2-node-js-の場合">1.2 Node.js の場合</h4>
+
+<p>Node.js では、Spring Boot のような重厚長大な設定機能はありません。環境変数をファイル化するシンプルなツール <a href="https://www.npmjs.com/package/dotenv">dotenv</a> を用いて、ローカルではファイルを参照、Heroku では環境変数を参照と透過的に行うことを目指してみようと思います。
+早速アプリケーションに導入してみましょう。</p>
+
+<pre><code>npm i dotenv --save
+</code></pre>
+
+<p>プロジェクトルートに <code>.env</code> というファイルを用意し、<code>KEY=VALUE</code> を並べていきます。こんな感じです。</p>
+
+<pre><code class="language-properties">LDAP_URI=&quot;ldap://foo.bar.com:389&quot;
+MONGODB_URI=&quot;mongodb://user:password@foo.bar.com:27017/database&quot;
+</code></pre>
+
+<p>もちろんリポジトリからは ignore します。</p>
+
+<pre><code>echo .env &gt;&gt; .gitignore
+</code></pre>
+
+<p>💡 アプリが要求する環境変数の一覧の自己文書化は後述の「Deploy to Heroku ボタン」のセクションで登場する <code>app.json</code> にて紹介します。</p>
+
+<p>アプリケーションから設定値を読み出すときは、はじめに <code>require</code> し、その後 Node.js の <code>process.env</code> から引っ張ってきます。</p>
+
+<pre><code class="language-js">require('dotenv').config();
+console.log(process.env.LDAP_URI);
+</code></pre>
+
+<p><code>require</code> する代わりに外部ツール (<a href="https://github.com/strongloop/node-foreman">node-foreman</a>) で環境変数に読み込むこともできます。</p>
+
+<pre><code>npm i -g foreman
+nf run node app.js
+</code></pre>
+
+<p>なお、　foreman の場合は　 <code>.env</code> の中身を以下のような JSON フォーマットでも記述できるようです。</p>
+
+<pre><code class="language-json">{
+    &quot;ldap&quot;: {
+        &quot;uri&quot;: &quot;ldap://foo.bar.com:389&quot;
+    },
+    &quot;mongodb&quot;: {
+        &quot;uri&quot;: &quot;mongodb://user:password@foo.bar.com:27017/database&quot;
+    }
+}
+</code></pre>
+
+<p>これで、長年お世話になった node-config とはお別れです。</p>
+
+<h3 id="2-デプロイ">2. デプロイ</h3>
+
+<p>パラメーターの戦略が決まったら、次はいよいよデプロイです。</p>
+
+<h4 id="2-1-spring-boot">2.1 Spring Boot</h4>
+
+<p>Spring Boot の場合はその前に一仕事。Heroku のドキュメントに従い、必要に応じて <code>Procfile</code> と <code>system.properties</code> を用意します<sup>[参考文献5]</sup>。</p>
+
+<p>プロジェクトルートに以下のような <code>Procfile</code> を配置します。</p>
+
+<pre><code>web: java -jar -Dspring.profiles.active=production build/libs/app.jar --server.port=$PORT
+</code></pre>
+
+<p>少し補足です。</p>
+
+<ul>
+<li>冒頭の <code>web:</code> は Web Dyno であることを指しています。Worker Dyno なら <code>worker:</code> で始まります<sup>[参考文献7]</sup>。</li>
+<li><code>spring.profiles.active</code> は前述の環境変数入りプロファイルを指定するために書いていますが、指定しない場合は <code>-D</code> ごと削除してください。なお、<code>SPRING_PROFILES_ACTIVE</code> 環境変数を用いて、この指定自体を外出しすることも可能です。</li>
+<li>jar ファイルの名前を固定するには、ビルドツールにそのように指示しなければなりません。Gradle の場合は、以下のように記述します:</li>
+</ul>
+
+<pre><code class="language-groovy">bootJar {
+    baseName = 'app'
+    archiveName = baseName + &quot;.&quot; + extension
+}
+</code></pre>
+
+<h4 id="2-2-node-js">2.2 Node.js</h4>
+
+<p>Node.js (npm) の場合は、今の所何もしなくても良さげです。Heroku が振るランダムなポート番号も勝手に Node.js に渡ります。</p>
+
+<h4 id="2-3-デプロイ">2.3 デプロイ</h4>
+
+<p>heroku-cli を使うのが簡単です。以下のページからダウンロード、あるいは Homebrew 等を用いた方法が記載されています。</p>
+
+<blockquote>
+<p>Heroku CLI | Heroku Dev Center</p>
+
+<p><a href="https://devcenter.heroku.com/articles/heroku-cli">https://devcenter.heroku.com/articles/heroku-cli</a></p>
+</blockquote>
+
+<p>導入したら、あとはコマンド操作で。</p>
+
+<pre><code>heroku login
+git status # コミット漏れがあればここでコミットしておく
+heroku create APP_NAME
+git push heroku master
+heroku open
+</code></pre>
+
+<p>⚠️ 世の中には heroku create 時に <code>APP_NAME</code> が省略されているチュートリアルが山のようにありますが、これを指定しないとあなたが大事に育てた大切なアプリにランダム数字入りのおぞましい DQN ネームをつけられてしまいます。</p>
+
+<p>手作業で環境変数を足していくにも、heroku-cli が便利です。</p>
+
+<pre><code>heroku config:set KEY=VALUE
+</code></pre>
+
+<p>⚠️ 環境変数に変更があると、Heroku は Dyno を (勝手に) 再起動します。ご注意ください。</p>
+
+<p>アドオンの導入もおてのもの。次は無料の MongoDB をアタッチして配備されたエンドポイントを調べるコマンドです。</p>
+
+<pre><code>heroku addons:create mongolab:sandbox
+heroku config:get MONGODB_URI
+</code></pre>
+
+<p>⚠️ アドオンは無料・有料に関わらず予めクレジットカードの登録が必要です。</p>
+
+<p>無事にアプリが動作しましたか？おめでとうございます 🎉</p>
+
+<h3 id="3-deploy-to-heroku-ボタン">3. Deploy to Heroku ボタン</h3>
+
+<p>OSS で Heroku Ready だよとアピールしたり、異なる Heroku 環境へのデプロイ作業を楽にしたり、環境変数を自己文書化したりするために <code>app.json</code> と Deploy to Heroku ボタンを設置してみましょう。</p>
+
+<p><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy" /></p>
+
+<p>※ ☝️これは押せませんよ！</p>
+
+<p><code>app.json</code> の例:</p>
+
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;My App&quot;,
+  &quot;description&quot;: &quot;Sample Application&quot;,
+  &quot;repository&quot;: &quot;https://github.com/mikan/mikan.github.io&quot;,
+  &quot;logo&quot;: &quot;https://github.com/mikan.png&quot;,
+  &quot;keywords&quot;: [
+    &quot;node&quot;,
+    &quot;express&quot;
+  ],
+  &quot;addons&quot;: [
+    {
+      &quot;plan&quot;: &quot;mongolab:sandbox&quot;
+    }
+  ],
+  &quot;env&quot;: {
+    &quot;LDAP_URI&quot;: {
+      &quot;description&quot;: &quot;LDAP server URL&quot;,
+      &quot;value&quot;: &quot;ldap://foo.bar.com:389&quot;
+    },
+    &quot;LDAP_BIND_DN&quot;: {
+      &quot;description&quot;: &quot;LDAP bind DN&quot;,
+      &quot;value&quot;: &quot;cn=foo,dc=bar,dc=com&quot;
+    },
+    &quot;LDAP_BIND_CRED&quot;: {
+      &quot;description&quot;: &quot;LDAP bind credential&quot;
+    },
+    &quot;LDAP_SEARCH_BASE&quot;: {
+      &quot;description&quot;: &quot;LDAP search base&quot;,
+      &quot;value&quot;: &quot;dc=bar,dc=com&quot;
+    },
+    &quot;LDAP_SEARCH_FILTER&quot;: {
+      &quot;description&quot;: &quot;LDAP search filter&quot;,
+      &quot;value&quot;: &quot;(uid={{username}})&quot;
+    },
+    &quot;MONGODB_COLLECTION&quot;: {
+      &quot;description&quot;: &quot;MongoDB collection&quot;
+    }
+  }
+}
+</code></pre>
+
+<p><code>&quot;env&quot;</code> の環境変数に定義できる値は、以下のものがあります<sup>[参考文献9]</sup>:</p>
+
+<ul>
+<li><code>description</code>: 人間が読める説明文書</li>
+<li><code>value</code>: デフォルト値 (文字列)</li>
+<li><code>required</code>: 必須かオプションかを指定 (デフォルトは <code>true</code>)</li>
+<li><code>generator</code>: ランダムな文字列を生成 (現状 <code>&quot;secret&quot;</code> のみ利用可能)</li>
+</ul>
+
+<p>デフォルト値は、本来の (変えたいなら変えれば的な) 意味のデフォルト値として利用するのはもちろん、プレースホルダー的にサンプル値を入れてみるのも良いかもしれません。これをちゃんと書いておけば、前述の通り自己文書化にもなり、メンテナンスする人の助けになるでしょう。
+あとで環境変数を足したり削ったり仕様を変えたりした場合、ここ (<code>app.json</code>) もしっかりアップデートすることをお忘れなく。</p>
+
+<p>お目当のボタンのほうは、実はすごく簡単です。なんと、載せたいところに以下のように固定の画像を刺すだけです:</p>
+
+<p>Markdown:</p>
+
+<pre><code class="language-md">[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+</code></pre>
+
+<p>HTML:</p>
+
+<pre><code class="language-html">&lt;a href=&quot;https://heroku.com/deploy&quot;&gt;
+  &lt;img src=&quot;https://www.herokucdn.com/deploy/button.svg&quot; alt=&quot;Deploy&quot;&gt;
+&lt;/a&gt;
+</code></pre>
+
+<p>HTTP の <code>referer</code> でどこでボタンを押したのかを特定する仕組みです。</p>
+
+<p>GitHub のプライベートリポジトリの場合は <code>referer</code> は送られないため、次のように <code>template</code> パラメーターを添えます。</p>
+
+<pre><code class="language-md">[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/heroku/node-js-sample)
+</code></pre>
+
+<pre><code class="language-html">&lt;a href=&quot;https://heroku.com/deploy?template=https://github.com/heroku/node-js-sample&quot;&gt;
+  &lt;img src=&quot;https://www.herokucdn.com/deploy/button.svg&quot; alt=&quot;Deploy&quot;&gt;
+&lt;/a&gt;
+</code></pre>
+
+<p><code>referer</code> を潰すセキュリティソフトやプロキシ等があることから、パブリックリポジトリでも指しておいたほうが安全かもしれません。</p>
+
+<h3 id="4-new-relic-apm-によるパフォーマンスモニタリング">4. New Relic APM によるパフォーマンスモニタリング</h3>
+
+<p>最後はおまけセクション、New Relic APM によるパフォーマンスモニタリングです。
+Heroku Add-ons から簡単に使え、アプリ自体にクライアントを組み込むことで、ログだけではわからない詳細な分析ができるようになっているのが特徴です。</p>
+
+
+<figure class="center">
+    <a href="https://elements.heroku.com/addons/newrelic">
+        <img src="/img/logo/newrelic_apm.png" width="50%" />
+    </a>
+    
+</figure>
+
+
+<p><del>某英国の半導体設計会社の旧ロゴそっくり&hellip;</del></p>
+
+<p>さて、今度はどっちみちモニタリング画面がブラウザなので、コマンドではなく画面操作でアドオンを追加してみます。</p>
+
+<blockquote>
+<p>New Relic APM - Add-ons - Heroku Elements</p>
+
+<p><a href="https://elements.heroku.com/addons/newrelic">https://elements.heroku.com/addons/newrelic</a></p>
+</blockquote>
+
+<p>右上の [Install New Relic APM] ボタンをクリックし、対象のアプリとプランを選びます。</p>
+
+<p>💡 New Relic APM は無料では機能がだいぶ限られます。最初の2週間は色々使えるので、この間に威力をチェックして課金するか無課金継続か検討してみましょう。</p>
+
+<p>導入したら、ダッシュボードのアプリのページから New Relic APM を探してクリックします。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/heroku1.png" />
+    
+    
+</figure>
+
+
+<p>登録した直後は SSO がうまく連携できず、認証エラーになることがありました。しばらく待つと解決します。</p>
+
+<p>さて、めでたく開けてもまだデータがなにもありません。アプリから送ってやらんといかんのです。そして Spring Boot と Node.js でありえないぐらいに手順が異なります。</p>
+
+<h4 id="4-1-spring-boot">4.1 Spring Boot</h4>
+
+<p>先ほど開いた New Relic の画面から、右上のアカウントドロップダウンを開き、 [Account Settings] を開きます。
+すると右側に &ldquo;Update your New Relic agent&rdquo; というペインがあるので、そこから Java 用の Agent のバージョンをクリックするとダウンロードがはじまります。私がダウンロードしたのは <code>newrelic-java-4.0.0.zip</code> で、 9.3MB ありました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/newrelic1.png" />
+    
+    
+</figure>
+
+
+<p>ダウンロードした zip を展開し、 <code>newrelic.jar</code> と <code>newrelic.yml</code> をプロジェクトルートに配置します。
+この方法が気持ち悪いと思われる方のために、Maven ダウンロードさせて使う方法が公式ドキュメントにありますが、コピペの 5 倍ぐらい面倒なのと、私が Maven を使っていないので割愛します。</p>
+
+<p><code>newrelic.yml</code> を少しだけ修正します。</p>
+
+<pre><code class="language-diff">-  license_key: '&lt;%= license_key %&gt;'
++  #license_key: '&lt;%= license_key %&gt;'
+
+-  app_name: My Application
++  app_name: my-special-app
+</code></pre>
+
+<p>誰もライセンスキーを Git にコミットなどしたくありません！
+大丈夫、Heroku は Add-ons として追加した際に環境変数にライセンスキーが刺さっています。ここに、Add-ons 経由で利用するメリットがあります (SSO でログインできるだけじゃあないんだよ)。</p>
+
+<p>最後におまじないを指しておしまいです。「デプロイ」のセクションで登場した <code>Procfile</code> を次のように編集します。</p>
+
+<pre><code class="language-diff">- web: java -jar -Dspring.profiles.active=production build/libs/app.jar --server.port=$PORT
++ web: java -javaagent:newrelic.jar -jar -Dspring.profiles.active=production build/libs/app.jar --server.port=$PORT
+</code></pre>
+
+<p>(<code>-javaagent:newrelic.jar</code> を追加しています)</p>
+
+<p>コミットして <code>git push heroku master</code> すると、New Relic APM へ計測結果が送られるようになります。</p>
+
+<h4 id="4-2-node-js">4.2 Node.js</h4>
+
+<p>Node.js の場合は、npm で入れてコードにチョイ足しするだけで組み込むことができます。</p>
+
+<pre><code>npm i --save newrelic
+</code></pre>
+
+<p>私が実行した際は、 <code>package.json</code> に 4.0.0 が入りました。</p>
+
+<p>次に、設定ファイルを持ってきます。</p>
+
+<pre><code>cp node_modules/newrelic/newrelic.js .
+</code></pre>
+
+<p>次のように修正します。</p>
+
+<pre><code class="language-diff">-  app_name: ['My Application'],
++  app_name: ['my-special-app'],
+
+-  license_key: 'license key here',
++  license_key: process.env.NEW_RELIC_LICENSE_KEY,
+</code></pre>
+
+<p>アプリケーションのエントリーポイントとなるところ (<code>app.js</code>) の頭に <code>require</code> を足します。</p>
+
+<pre><code>require('newrelic');
+</code></pre>
+
+<p>ただし、このままだと <code>NEW_RELIC_LICENSE_KEY</code> 環境変数がないローカルで動きません。
+というわけでやっつけ解決策です。</p>
+
+<pre><code>if (process.env.NEW_RELIC_LICENSE_KEY) {
+    require('newrelic');
+}
+</code></pre>
+
+<h4 id="おまけ-new-relic-synthetics">おまけ: New Relic Synthetics</h4>
+
+<p>New Relic には APM 以外にもいくつかの機能があり、無料で使える便利なものに Synthetics の ping 監視機能があります。</p>
+
+<p>メニューから [SYNTHETICS] を選び、Monitor type を Ping に、名前と叩く URL とどっから叩くか指定し、最後に・・・</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/newrelic2.png" />
+    
+    
+</figure>
+
+
+<p>何分おきに叩くのか指定します (ここでは 15 分)。こうすることで、監視するついでに Free Dyno が 30 分で寝落ちしないように殴り続けることが可能です。APM とセットで運用なら定点観測もできて良いことづくめですね。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>Heroku は 12 Factor に従った Web アプリを運用するためのプラットフォームなので、12 Factor を考慮していないレガシーな Web アプリケーションは例え動いたとしても Heroku の持つ機能を活かすことはできません。
+しかし一度 12 Factor の &ldquo;設定&rdquo; (3 項目目) に従うようアプリケーションを構成すれば、少なくとも Heroku においては異なる環境に簡単にデプロイしたり、Add-ons で刺したデータストアや追加機能を環境変数を通じて瞬時にインテグレートできるようになります。
+もっとも、レガシーな Web アプリを Heroku フレンドリーな Web アプリに仕立てるには他にもやることがたくさんあるのは言うまでもありません。</p>
+
+<p>Heroku には他にも様々な機能や Add-ons があるので、どんどん活用していきたいところですね。</p>
+
+<p>Stay tuned &amp; Happy hacking!</p>
+
+<h3 id="参考文献">参考文献</h3>
+
+<ol>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html">24. Externalized Configuration</a></li>
+<li><a href="https://github.com/lorenwest/node-config">lorenwest/node-config: Node.js Application Configuration</a></li>
+<li><a href="https://12factor.net/ja/config">The Twelve-Factor App （日本語訳）</a></li>
+<li><a href="https://github.com/strongloop/node-foreman">strongloop/node-foreman: A Node.js Version of Foreman</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-spring-boot-apps-to-heroku">Deploying Spring Boot Applications to Heroku | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/java-support">Heroku Java Support | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/procfile">Process Types and the Procfile | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/heroku-button">Creating a &#39;Deploy to Heroku&#39; Button | Heroku Dev Center</a></li>
+<li><a href="https://devcenter.heroku.com/articles/app-json-schema">app.json Schema | Heroku Dev Center</a></li>
+<li><a href="https://docs.newrelic.com/docs/agents/java-agent/getting-started/introduction-new-relic-java">Introduction to New Relic for Java | New Relic Documentation</a></li>
+<li><a href="https://docs.newrelic.com/docs/agents/java-agent/heroku/java-agent-heroku">Java agent and Heroku | New Relic Documentation</a></li>
+<li><a href="https://amzn.to/2HBw7BA">マイクロサービスアーキテクチャ</a> Sam Newman (著), 佐藤 直生 (監修), 木下 哲也 (翻訳)</li>
+<li><a href="https://amzn.to/2HAzOaI">プロダクションレディマイクロサービス ―運用に強い本番対応システムの実装と標準化</a> Susan J. Fowler (著), 佐藤 直生 (監修), 長尾 高弘 (翻訳)</li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Spring%20Boot%20%e3%81%a8%20Node.js%20%e3%81%ae%20Heroku%20%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97%e5%a4%a7%e4%bd%9c%e6%88%a6&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f&amp;title=Spring%20Boot%20%e3%81%a8%20Node.js%20%e3%81%ae%20Heroku%20%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97%e5%a4%a7%e4%bd%9c%e6%88%a6" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Spring%20Boot%20%e3%81%a8%20Node.js%20%e3%81%ae%20Heroku%20%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97%e5%a4%a7%e4%bd%9c%e6%88%a6&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/" title="Hangouts Chat の Incoming Webhook を Go で叩く">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/">Spring Boot と Node.js の Heroku お引越し大作戦</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/">Hangouts Chat の Incoming Webhook を Go で叩く</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/">PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/">AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/19/mashup-awards-2017/">Mashup Awards 2017</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/">STM32L4 Discovery Kit IoT Node に Amazon FreeRTOS を導入する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/">G Suite を IdP にした Salesforce の SAML SSO の有効化</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/">PMD Apex / PMD Visualforce で Salesforce のコードを静的解析する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/24/introducing-force-client-go/">force-client-go: Go で Salesforce の REST API を叩く</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/">Go の dep やら govendor やらを GitLab CI で回す</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/salesforce">salesforce</a></li><li><a href="/categories/tools">tools</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/github">github</a></li><li><a href="/tags/golang">golang</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/hugo">hugo</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/force.com">force.com</a></li><li><a href="/tags/gitlab">gitlab</a></li><li><a href="/tags/gradle">gradle</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

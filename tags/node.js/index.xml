@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Node.js on Yutaka 🍊 Kato</title>
+    <link>https://mikan.github.io/tags/node.js/</link>
+    <description>Recent content in Node.js on Yutaka 🍊 Kato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <lastBuildDate>Sat, 14 Apr 2018 19:46:31 +0900</lastBuildDate>
+    
+	<atom:link href="https://mikan.github.io/tags/node.js/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
+      <link>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</link>
+      <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</guid>
+      <description>先日、契約している VPS (VULTR VPS 東京リージョン) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。</description>
+    </item>
+    
+  </channel>
+</rss>

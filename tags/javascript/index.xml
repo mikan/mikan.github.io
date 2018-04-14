@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Tue, 23 Jan 2018 21:19:41 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 14 Apr 2018 19:46:31 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
+      <link>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</link>
+      <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</guid>
+      <description>先日、契約している VPS (VULTR VPS 東京リージョン) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。</description>
+    </item>
     
     <item>
       <title>AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</title>
