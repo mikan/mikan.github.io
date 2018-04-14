@@ -400,7 +400,7 @@ Heroku が生み出した Web アプリ開発の有名な方法論 <strong>&ldqu
 <p>Node.js では、Spring Boot のような重厚長大な設定機能はありません。環境変数をファイル化するシンプルなツール <a href="https://www.npmjs.com/package/dotenv">dotenv</a> を用いて、ローカルではファイルを参照、Heroku では環境変数を参照と透過的に行うことを目指してみようと思います。
 早速アプリケーションに導入してみましょう。</p>
 
-<pre><code>npm i dotenv --save
+<pre><code>npm i --save dotenv
 </code></pre>
 
 <p>プロジェクトルートに <code>.env</code> というファイルを用意し、<code>KEY=VALUE</code> を並べていきます。こんな感じです。</p>
@@ -428,7 +428,7 @@ console.log(process.env.LDAP_URI);
 nf run node app.js
 </code></pre>
 
-<p>なお、　foreman の場合は　 <code>.env</code> の中身を以下のような JSON フォーマットでも記述できるようです。</p>
+<p>なお、　foreman の場合は <code>.env</code> の中身を以下のような JSON フォーマットでも記述できるようです。</p>
 
 <pre><code class="language-json">{
     &quot;ldap&quot;: {
