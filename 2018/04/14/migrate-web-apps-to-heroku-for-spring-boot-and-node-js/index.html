@@ -460,6 +460,7 @@ nf run node app.js
 <ul>
 <li>冒頭の <code>web:</code> は Web Dyno であることを指しています。Worker Dyno なら <code>worker:</code> で始まります<sup>[参考文献7]</sup>。</li>
 <li><code>spring.profiles.active</code> は前述の環境変数入りプロファイルを指定するために書いていますが、指定しない場合は <code>-D</code> ごと削除してください。なお、<code>SPRING_PROFILES_ACTIVE</code> 環境変数を用いて、この指定自体を外出しすることも可能です。</li>
+<li>最後の <code>--server.port=$PORT</code> の部分は <code>application.yml</code> に <code>server.port: ${PORT}</code> などと指定があれば必要ありません。</li>
 <li>jar ファイルの名前を固定するには、ビルドツールにそのように指示しなければなりません。Gradle の場合は、以下のように記述します:</li>
 </ul>
 
@@ -468,10 +469,6 @@ nf run node app.js
     archiveName = baseName + &quot;.&quot; + extension
 }
 </code></pre>
-
-<ul>
-<li>最後の <code>--server.port=$PORT</code> の部分は <code>application.yml</code> に <code>server.port: ${PORT}</code> などと指定があれば必要ありません。</li>
-</ul>
 
 <p><code>system.properties</code> のほうは、Java のバージョンを指定するために利用します。こんな感じです。</p>
 
