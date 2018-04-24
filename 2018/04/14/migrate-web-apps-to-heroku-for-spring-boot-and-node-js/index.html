@@ -71,7 +71,7 @@
     },
     "datePublished": "2018-04-14",
     "description": "",
-    "wordCount": 6372
+    "wordCount": 6401
   }
 </script>
   
@@ -195,7 +195,7 @@
 
   <small>
   &middot; Read in about 13 min
-  &middot; (6372 words)
+  &middot; (6401 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
@@ -468,6 +468,10 @@ nf run node app.js
     archiveName = baseName + &quot;.&quot; + extension
 }
 </code></pre>
+
+<ul>
+<li>最後の <code>--server.port=$PORT</code> の部分は <code>application.yml</code> に <code>server.port: ${PORT}</code> などと指定があれば必要ありません。</li>
+</ul>
 
 <p><code>system.properties</code> のほうは、Java のバージョンを指定するために利用します。こんな感じです。</p>
 
