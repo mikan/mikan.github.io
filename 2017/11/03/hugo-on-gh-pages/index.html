@@ -61,7 +61,7 @@
     },
     "datePublished": "2017-11-03",
     "description": "",
-    "wordCount": 1474
+    "wordCount": 1547
   }
 </script>
   
@@ -71,7 +71,7 @@
 <link rel="canonical" href="https://mikan.github.io/2017/11/03/hugo-on-gh-pages/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.39" />
+<meta name="generator" content="Hugo 0.40.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -184,8 +184,8 @@
 
 
   <small>
-  &middot; Read in about 3 min
-  &middot; (1474 words)
+  &middot; Read in about 4 min
+  &middot; (1547 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2017%2f11%2f03%2fhugo-on-gh-pages%2f" onclick="window.open(this.href, 'mywin',
@@ -287,7 +287,11 @@
 
 <p>今回の私の最大のニーズは mikan.github.io のルートでホストすることでした。従って1番目のパターンしか取りえません。一方、サブディレクトリ (例: mikan.github.io/blog/) を許容する場合は、全てのパターンが選択肢になります。例えば2番目のパターンは、&lt;user/org&gt;.github.io リポジトリの master の直下に Hugo のファイル一式を置いて設定で <code>publishDir = &quot;blog&quot;</code> とサブフォルダを指定しつつ、更に index.md 等を置いてルートは Jekyll として利用するというハイブリッドな使い方も可能なパターンになります。</p>
 
-<p>なお、独自ドメイン利用時の注意点として、現在の GitHub Pages では独自ドメイン経由でアクセスする際には HTTPS が使えません (証明書のアップロードとかできるようにして欲しいな・・・)。ただしリバプロはできるので、例えば CloudFlare を使い DNS サーバーを変更して CloudFlare 経由にルーティングすれば、CloudFlare の無料 SSL/TLS 証明書を利用することができます。</p>
+<p><del>なお、独自ドメイン利用時の注意点として、現在の GitHub Pages では独自ドメイン経由でアクセスする際には HTTPS が使えません (証明書のアップロードとかできるようにして欲しいな・・・)。ただしリバプロはできるので、例えば CloudFlare を使い DNS サーバーを変更して CloudFlare 経由にルーティングすれば、CloudFlare の無料 SSL/TLS 証明書を利用することができます。</del></p>
+
+<p><strong>UPDATE:</strong> 2018/5/1 にカスタムドメインの GitHub Pages で Let&rsquo;s Encrypt による HTTPS サービスが開始されました！ <a href="https://blog.github.com/2018-05-01-github-pages-custom-domains-https/">Custom domains on GitHub Pages gain support for HTTPS &#124; The GitHub Blog</a></p>
+
+<p>✨ <em>2018/05/20 追記しました</em></p>
 
 <p>様々なセットアップ手順は参考文献の1番目 (公式ドキュメント) に譲りますが、ここでは今回構築した1番目のパターンの手順をご紹介します。</p>
 
