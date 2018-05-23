@@ -65,7 +65,7 @@
     },
     "datePublished": "2018-05-23",
     "description": "",
-    "wordCount": 3363
+    "wordCount": 3386
   }
 </script>
   
@@ -189,7 +189,7 @@
 
   <small>
   &middot; Read in about 7 min
-  &middot; (3363 words)
+  &middot; (3386 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
@@ -535,7 +535,7 @@ sudo service nginx reload
 </figure>
 
 
-<p>複数していだと、こんな感じ。</p>
+<p>複数指定していたら、こんな感じ。</p>
 
 
 <figure class="center">
@@ -559,7 +559,7 @@ sudo service nginx reload
 
 <p>Auth0 の認証画面が表示されましたか？おめでとうございます ✨</p>
 
-<p>もし <strong>Callback URL mismatch.</strong> と表示された場合は、oauth2_proxy で指定した <code>redirect_url</code> の値が Auth0 の &ldquo;Settings&rdquo; タブの &ldquo;Allowed Callback URLs&rdquo; に追加 (修正) してください。</p>
+<p>もし <strong>Callback URL mismatch.</strong> と表示された場合は、oauth2_proxy で指定した <code>redirect_url</code> の値と、 Auth0 の &ldquo;Settings&rdquo; タブの &ldquo;Allowed Callback URLs&rdquo; に記入した値が合っていないか、設定を忘れています。修正してください。</p>
 
 
 <figure class="center">
