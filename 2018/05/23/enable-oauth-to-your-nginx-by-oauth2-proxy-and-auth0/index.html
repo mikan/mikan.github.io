@@ -65,7 +65,7 @@
     },
     "datePublished": "2018-05-23",
     "description": "",
-    "wordCount": 3337
+    "wordCount": 3363
   }
 </script>
   
@@ -189,7 +189,7 @@
 
   <small>
   &middot; Read in about 7 min
-  &middot; (3337 words)
+  &middot; (3363 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
@@ -366,7 +366,7 @@ auth_basic_user_file /path/to/htpasswd;
 
 <p>次は oauth2_proxy のセットアップです。本稿執筆時点の最新版は <code>2.2</code> なのですが、ここには <code>oidc</code> (OpenID Connect) プロバイダーがないため、master ブランチから自分でビルドします (本稿執筆時点では <code>2.2.1-alpha</code> 相当)。自分でビルドといっても、oauth2_proxy は Go 製ですので簡単です。順に説明します。</p>
 
-<p>もし、Go ツールチェインを持っていなければ、何らかの手段でそれを導入します。Linux ディストリビューションのパッケージではたいてい <code>golang</code> (大多数) か、あるいは <code>go</code> (Arch 等) です。<a href="https://golang.org/dl/">golang.org</a> から tar ball を落としても良いでしょう。なお、Go 1.7 の新機能 <code>context</code> パッケージを利用しているので、あまりに古いと (1.7 未満だと) ビルドは失敗します。それと、<code>git</code> コマンドも入っていなかったらこのタイミングで入れてください。</p>
+<p>もし、Go ツールチェインを持っていなければ、何らかの手段でそれを導入します。Linux ディストリビューションのパッケージではたいてい <code>golang</code> (大多数) か、あるいは <code>go</code> (Arch 等) です。<a href="https://golang.org/dl/">golang.org</a> から tar ball を落としても良いでしょう。なお、Go 1.7 の新機能 <code>context</code> パッケージを利用しているので、あまりに古いと (1.7 未満だと) ビルドは失敗します。それと、<code>git</code> コマンドも入っていなかったらこのタイミングで入れてください (直接は叩かないですが、 <code>go</code> コマンドが裏で利用します)。</p>
 
 <p>お次は <code>GOPATH</code> 環境変数の確認です。<code>echo $GOPATH</code> などと打ちパスが返ってくれば OK です。空っぽならば、この場で設定します。例えばこんな感じです。</p>
 
