@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sat, 14 Apr 2018 19:46:31 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 23 May 2018 20:42:54 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>oauth2_proxy と Auth0 を用いた　Nginx のお手軽 OAuth 化</title>
+      <link>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</link>
+      <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</guid>
+      <description>Nginx でホストしているページや Web アプリにちょっとした認証をかけたいとき、簡単だからと BASIC 認証をかけて運用しているケースは少なくないと思います。 例え</description>
+    </item>
     
     <item>
       <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
@@ -172,7 +181,7 @@
       <pubDate>Fri, 03 Nov 2017 00:09:42 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/about/</guid>
-      <description>Yutaka Kato / 加藤 裕 @ &amp;ldquo;IoT フルスタック&amp;rdquo; エンジニア (自称) GitHub: mikan / LinkedIn: yutakakato / Email: mikan@aosn.ws 開発経験 2017-present: クラウド開発エンジニア @ 日系ITベンチャー IoT システム概</description>
+      <description>Yutaka Kato / 加藤 裕 @ &amp;ldquo;IoT フルスタック&amp;rdquo; エンジニア (自称) GitHub: mikan / LinkedIn: yutakakato / Email: mikan@aosn.ws 開発経験 2017-present: クラウド開発エンジニア @ 日系ITベンチャー IoT システム概</description>
     </item>
     
     <item>

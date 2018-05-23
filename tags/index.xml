@@ -32,6 +32,15 @@
     </item>
     
     <item>
+      <title>Auth0</title>
+      <link>https://mikan.github.io/tags/auth0/</link>
+      <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/auth0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Award</title>
       <link>https://mikan.github.io/tags/award/</link>
       <pubDate>Tue, 19 Dec 2017 01:02:26 +0900</pubDate>
@@ -266,6 +275,15 @@
     </item>
     
     <item>
+      <title>Nginx</title>
+      <link>https://mikan.github.io/tags/nginx/</link>
+      <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Node Red</title>
       <link>https://mikan.github.io/tags/node-red/</link>
       <pubDate>Tue, 07 Nov 2017 20:34:00 +0900</pubDate>
@@ -286,9 +304,18 @@
     <item>
       <title>Oauth</title>
       <link>https://mikan.github.io/tags/oauth/</link>
-      <pubDate>Mon, 13 Nov 2017 20:34:21 +0900</pubDate>
+      <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/oauth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openid Connect</title>
+      <link>https://mikan.github.io/tags/openid-connect/</link>
+      <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/openid-connect/</guid>
       <description></description>
     </item>
     

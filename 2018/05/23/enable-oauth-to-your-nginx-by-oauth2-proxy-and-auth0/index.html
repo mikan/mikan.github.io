@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>oauth2_proxy と Auth0 を用いた　Nginx のお手軽 OAuth 化  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="oauth, openid-connect, nginx, auth0, ">
+
+
+<meta property="og:title" content="oauth2_proxy と Auth0 を用いた　Nginx のお手軽 OAuth 化  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-05-23T20:42:54&#43;09:00" />
+<meta property="og:article:modified_time" content="2018-05-23T20:42:54&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="oauth">
+    
+<meta property="og:article:tag" content="openid-connect">
+    
+<meta property="og:article:tag" content="nginx">
+    
+<meta property="og:article:tag" content="auth0">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="oauth2_proxy と Auth0 を用いた　Nginx のお手軽 OAuth 化" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "oauth2_proxy と Auth0 を用いた　Nginx のお手軽 OAuth 化",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-05-23",
+    "description": "",
+    "wordCount": 3286
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.40.3" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-users'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>oauth2_proxy と Auth0 を用いた　Nginx のお手軽 OAuth 化
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-05-23">23 May, 2018</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 7 min
+  &middot; (3286 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=oauth2_proxy%20%e3%81%a8%20Auth0%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%80%80Nginx%20%e3%81%ae%e3%81%8a%e6%89%8b%e8%bb%bd%20OAuth%20%e5%8c%96&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f&amp;title=oauth2_proxy%20%e3%81%a8%20Auth0%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%80%80Nginx%20%e3%81%ae%e3%81%8a%e6%89%8b%e8%bb%bd%20OAuth%20%e5%8c%96" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=oauth2_proxy%20%e3%81%a8%20Auth0%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%80%80Nginx%20%e3%81%ae%e3%81%8a%e6%89%8b%e8%bb%bd%20OAuth%20%e5%8c%96&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/oauth" class="label label-primary">oauth</a>
+  
+  <a href="https://mikan.github.io/tags/openid-connect" class="label label-primary">openid-connect</a>
+  
+  <a href="https://mikan.github.io/tags/nginx" class="label label-primary">nginx</a>
+  
+  <a href="https://mikan.github.io/tags/auth0" class="label label-primary">auth0</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero7.png" />
+    
+    
+</figure>
+
+
+<p>Nginx でホストしているページや Web アプリにちょっとした認証をかけたいとき、簡単だからと BASIC 認証をかけて運用しているケースは少なくないと思います。
+例えば、サーバー監視用のダッシュボードだったり、本番ではないステージングや開発環境だったり、ひみつのファイル置き場だったり。
+しかし BASIC 認証は手軽な反面、気をつけて運用しないといけません。例えば、</p>
+
+<ul>
+<li>可逆形式でパスワードを送信するため、少なくとも HTTPS は必須</li>
+<li>ログアウトができない</li>
+<li>ユーザーに安全にサインアップさせる仕組みを作るのが面倒</li>
+</ul>
+
+<p>などなど。それでも使われているのは、何にも代えがたいメリット、つまり手軽に導入できることがあると思います。
+なんせ、Nginx なんてたったこれだけで有効になりますから。</p>
+
+<pre><code class="language-nginx">auth_basic &quot;Restricted&quot;;
+auth_basic_user_file /path/to/htpasswd;
+</code></pre>
+
+<p>肝心の <code>htpasswd</code> も、ブラウザでちょちょいと生成してくれる便利なジェネレーターを使えば <code>apache2-utils</code> など取り寄せる必要すらありません<sup>[1]</sup>。</p>
+
+<p>でも、同じぐらいの (とまではいかなくてもあとすこしほんのちょっとの) 手順で好きな認証サービスと自在に繋がったらかっこよくありませんか？
+そんなことを考えながら色々と調べたり試したりしていたところ、サーバーサイドに仕込むツールと、クラウドサービスの組み合わせが最高だったのでご紹介。</p>
+
+<h3 id="アーキテクチャ">アーキテクチャ</h3>
+
+<p>今回認証を実現するのに用いるツールは短縮 URL サービスの Bitly 社が開発している <a href="https://github.com/bitly/oauth2_proxy">oauth2_proxy</a> というものです。これは Nginx とは独立して (別プロセスとして) 動く Go 言語製のサーバープログラムで、Nginx の <code>auth_request</code> と連動させて利用します。</p>
+
+<p>認証サービスは包括的な認証統合サービスである <a href="https://auth0.com/">Auth0</a> をチョイスします。なお、oauth2_proxy はそれ自体が Google, LinkedIn, Facebook, GitHub, Azure, GitLab を直接サポートしていますので、これ以外には絶対に手を出さん！というのならそれでも良いと思います。しかし Auth0 は一度使ってみると便利すぎて震えること間違いなしです！自前のユーザーストアはもちろん備わってますし、ソーシャルログイン 2 箇所までは無料で利用できます。しかも有効化はたったのワンクリックです。対応するサービスは Google, Facebook, Microsoft, LinkedIn, GitHub, Dropbox, BitBucket, PayPal, Twitter, Amazon, vKontakte, Yandex, Yahoo!, 37 signals, Box, Salesforce, Salesforce Community, Fitbit, Baidu, Renren, Weibo, AOL, Shopify, WordPress, Dwolla, MiiCard, Yammer, SoundCloud, Instagram, The City, Planning Center, Evernote, Exact, DoCoMo&hellip; とにかくたくさんあります！</p>
+
+
+<figure class="center">
+    
+        <img src="/img/diagram/nginx-oauth-auth0.png" />
+    
+    
+</figure>
+
+
+<h3 id="auth0-の準備">Auth0 の準備</h3>
+
+<p>まずは Auth0 のアカウントを作るところから。以下のサイトからサインアップすることができます。</p>
+
+<blockquote>
+<p>Single Sign On &amp; Token Based Authentication - Auth0</p>
+
+<p><a href="https://auth0.com/jp/">https://auth0.com/jp/</a></p>
+</blockquote>
+
+<p>テナントまで作り終えたら、 &ldquo;Application&rdquo; を作ります。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero2.png" width="80%" />
+    
+    
+</figure>
+
+
+<p>名前を入れ、 &ldquo;Regular Web Application&rdquo; を選んで [Create] を押します。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero3.png" width="80%" />
+    
+    
+</figure>
+
+
+<p>アプリケーションが作成されると　Quick Start が表示されると思いますが、今回はプログラミングなど必要ありません。&rdquo;Settings&rdquo; タブに移動します。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero4.png" width="80%" />
+    
+    
+</figure>
+
+
+<p>&ldquo;Allowed Callback URLs&rdquo; に、次のような URL を入力します:</p>
+
+<ul>
+<li><code>https://your-site.com/oauth2/callback</code></li>
+</ul>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero6.png" />
+    
+    
+</figure>
+
+
+<p>💡 設置サイト (Nginx) で後ほど <code>/oauth2</code> 以下を oauth2_proxy ツールにプロキシするので、ここでは設置サイトのホスト名のところ (<code>your-site.com</code> と書いたところ) だけ合わせてください</p>
+
+<p>設定はここだけです。以下の情報を後で用います。</p>
+
+<ul>
+<li>Domain (<code>xxx.auth0.com</code>)</li>
+<li>Client ID (32文字)</li>
+<li>Client Secret (64文字)</li>
+</ul>
+
+<p>&ldquo;Connections&rdquo; タブを開き、このアプリケーションに適用する認証手段を選択します。
+ソーシャルログインのソースは画面左側のメニューから &ldquo;Connections&rdquo; を選び、好きなサービスを有効化します (無料枠は 2 つまで)。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero5.png" width="80%" />
+    
+    
+</figure>
+
+
+<h3 id="oauth2-proxy-のセットアップ">oauth2_proxy のセットアップ</h3>
+
+<p>次は oauth2_proxy のセットアップです。本稿執筆時点の最新版は <code>2.2</code> なのですが、ここには <code>oidc</code> (OpenID Connect) プロバイダーがないため、master ブランチから自分でビルドします (本稿執筆時点では <code>2.2.1-alpha</code> 相当)。自分でビルドといっても、oauth2_proxy は Go 製ですので簡単です。順に説明します。</p>
+
+<p>もし、Go ツールチェインを持っていなければ、何らかの手段でそれを導入します。Linux ディストリビューションのパッケージではたいてい <code>golang</code> (大多数) か、あるいは <code>go</code> (Arch 等) です。<a href="https://golang.org/dl/">golang.org</a> から tar ball を落としても良いでしょう。なお、Go 1.7 の新機能 <code>context</code> パッケージを利用しているので、あまりに古いと (1.7 未満だと) ビルドは失敗します。それと、<code>git</code> コマンドも入っていなかったらこのタイミングで入れてください。</p>
+
+<p>お次は <code>GOPATH</code> 環境変数の確認です。<code>echo $GOPATH</code> などと打ちパスが返ってくれば OK です。空っぽならば、この場で設定します。例えばこんな感じです。</p>
+
+<pre><code class="language-bash">sudo mkdir /opt/go
+sudo chown &lt;user&gt;:&lt;group&gt; /opt/go
+export GOPATH=/opt/go
+</code></pre>
+
+<p>それでは oauth2_proxy を導入します。</p>
+
+<pre><code class="language-bash">go get -u github.com/bitly/oauth2_proxy
+</code></pre>
+
+<p>エラーなく終了したら、 <code>$GOPATH/bin/oauth2_proxy</code> ができているはずです。</p>
+
+<p><a href="https://github.com/bitly/oauth2_proxy/blob/master/contrib/oauth2_proxy.cfg.example">公式サンプル</a>を参考にしながら設定ファイルを作ります。ファイル名・場所はもちろん好みです。</p>
+
+<p><code>/etc/oauth2proxy.conf</code>:</p>
+
+<pre><code>http_address = &quot;127.0.0.1:4180&quot;
+provider = &quot;oidc&quot;
+oidc_issuer_url = &quot;https://xxxx.auth0.com/&quot;
+redirect_url = &quot;https://your-site.com/oauth2/callback&quot;
+client_id = &quot;********************************&quot;
+client_secret = &quot;****************************************************************&quot;
+email_domains = [
+    &quot;your-site.com&quot;
+]
+cookie_secret = &quot;secret&quot;
+cookie_secure = false
+</code></pre>
+
+<p>少し補足します。</p>
+
+<ul>
+<li><code>oidc_issuer_url</code> - Auth0 の設定画面に表示されていた &ldquo;Domain&rdquo; の値の URL 表現が入ります</li>
+<li><code>redirect_url</code> - 設置サイト (Nginx) で後ほど <code>/oauth2</code> 以下を本ツールにプロキシするので、ここでは設置サイトのホスト名のところ (<code>your-site.com</code> と書いたところ) だけ合わせてください</li>
+<li><code>client_id</code> - Auth0 の設定画面に表示されていた &ldquo;Client ID&rdquo; の値が入ります (32文字)</li>
+<li><code>client_secret</code> - Auth0 の設定画面に表示されていた &ldquo;Client Secret&rdquo; の値が入ります (64文字)</li>
+<li><code>email_domains</code> - 認証を許可するメールアドレスのドメインを制限する場合に利用します (複数ある場合はカンマ区切りで列挙します) が、ここで制限しない場合は <code>&quot;*&quot;</code> となります (ここで制限するということは、Auth0 は通してもアプリケーションで拒否するケースがある、ということを意味します)</li>
+</ul>
+
+<p>複数指定する場合:</p>
+
+<pre><code>email_domains = [
+    &quot;foo.com&quot;,
+    &quot;bar.com&quot;
+]
+</code></pre>
+
+<p>制限しない場合:</p>
+
+<pre><code>email_domains = [
+    &quot;*&quot;
+]
+</code></pre>
+
+<p>設定を終えたら、軽く喰わせてみましょう。</p>
+
+<pre><code>/opt/go/bin/oauth2_proxy -config /etc/oauth2proxy.conf
+</code></pre>
+
+<p>エラーはありませんか？
+間違って <code>OAuthProxy configured for Google Client ID: xxx</code> などと表示されていませんか？ (※ ビルドしたバージョンに設定で指定した <code>oidc</code> がないと、デフォルトの Google モードになってしまいます)
+問題なければ、Ctrl+C で殺して、ちゃんとサービスにしてあげましょう。</p>
+
+<h3 id="oauth2-proxy-の-systemd-化">oauth2_proxy の systemd 化</h3>
+
+<p>oauth2_proxy はサービス運用に欠かせない大事なデーモンになります。そこで systemd のサービスにしておきましょう。</p>
+
+<p><code>/etc/systemd/system/oauth2proxy.service</code>:</p>
+
+<pre><code>[Unit]
+Description=oauth2_proxy daemon
+After=syslog.target network.target
+
+[Service]
+ExecStart=/opt/go/bin/oauth2_proxy -config /etc/oauth2proxy.conf
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>💡 <code>User</code>, <code>Group</code> やバイナリ、設定ファイルのパス (<code>ExecStart</code>) 等は適宜変えてください。</p>
+
+<p>設定ファイルができたら、登録・起動します。</p>
+
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl enable oauth2proxy
+sudo service oauth2proxy start
+</code></pre>
+
+<h3 id="nginx-の設定">Nginx の設定</h3>
+
+<p>誰だ・・・ほんのちょっとの手順だからーとか言ったやつ・・・！でも、これで最後です！いよいよ Nginx に設定を入れ込んでいきます。</p>
+
+<p>まず、先ほど起動した oauth2_proxy のエンドポイントを露出させます。有効な設定ファイル (<code>/etc/nginx/site-enabled/default</code> かな？) の <code>server</code> セクション内に、以下を追加します。</p>
+
+<pre><code class="language-nginx">	location /oauth2/ {
+		proxy_pass http://localhost:4180;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Scheme $scheme;
+		proxy_set_header X-Auth-Request-Redirect $request_uri;
+	}
+	location = /oauth2/auth {
+		proxy_pass http://localhost:4180;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP: $remote_addr;
+		proxy_set_header X-Scheme $scheme;
+		proxy_set_header Content-Length &quot;&quot;;
+		proxy_pass_request_body off;
+	}
+</code></pre>
+
+<p>⚠️ 1つ目が <code>location /...</code> で2つ目が <code>location = /...</code> なので注意！</p>
+
+<p>次に、認証を有効化したい <code>location</code> (例では <code>/secret</code>) に以下を追加します。</p>
+
+<pre><code class="language-nginx">	location /secret {
+		auth_request /oauth2/auth;
+		error_page 401 = /oauth2/sign_in;
+		auth_request_set $user $upstream_http_x_auth_request_user;
+		auth_request_set $email $upstream_http_x_auth_request_email;
+		proxy_set_header X-User $user;
+		proxy_set_header X-Email $email;
+		auth_request_set $auth_cookie $upstream_http_set_cookie;
+		add_header Set-Cookie $auth_cookie;
+    }
+</code></pre>
+
+<p>終わったらチェック → リロード！</p>
+
+<pre><code class="language-bash">sudo service nginx configtest
+sudo service nginx reload
+</code></pre>
+
+<h3 id="動作確認">動作確認</h3>
+
+<p>いよいよ、認証をかけた場所にブラウザでアクセスしてみます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/oauth2proxy2.png" />
+    
+    
+</figure>
+
+
+<p>ボタンが出現しました！</p>
+
+<p>なお、メールアドレスの制限を入れていた場合は、次のようになります。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/oauth2proxy1.png" />
+    
+    
+</figure>
+
+
+<p>複数していだと、こんな感じ。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/oauth2proxy3.png" />
+    
+    
+</figure>
+
+
+<p>では、ボタンを押してみましょう！</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero7.png" />
+    
+    
+</figure>
+
+
+<p>Auth0 の認証画面が表示されましたか？おめでとうございます ✨</p>
+
+<p>もし <strong>Callback URL mismatch.</strong> と表示された場合は、oauth2_proxy で指定した <code>redirect_url</code> の値が Auth0 の &ldquo;Settings&rdquo; タブの &ldquo;Allowed Callback URLs&rdquo; に追加 (修正) してください。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero6.png" />
+    
+    
+</figure>
+
+
+<p>無事に認証できることまで確認したら、ミッションコンプリートです。
+Auth0 のダッシュボードには、見事にログインが記録されています。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/authzero8.png" />
+    
+    
+</figure>
+
+
+<p>GitHub みたいにアクティビティのヒートマップもありますね。まあ、Auth0 上で草を生やしてもしゃーないのですが 😇</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>以上で、割と簡単に Nginx サイト/アプリの OAuth 化ができることがお分かりいただけたかと思います (実は手順はほどほどにありましたが&hellip;)。
+1度段取りを覚えれば、いままで BASIC や Digest だったところもどんどん OAuth 化したくなってくるかもしれません。
+また、Auth0 にさえつないでおけば、こっちのサービスはこのトークン、あっちのサービスはこのトークンなどととっちらかることもなくスマートに ID を管理することができます。さらに有償版なら、エンタープライズな統合機能もたくさんあります。
+こうした便利で簡単な道具をうまく組み合わせてセキュアなウェブサイトやウェブアプリをサクサク構築していきたいものですね。</p>
+
+<p>Stay tuned &amp; Happy hacking!</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="http://www.htaccesstools.com/htpasswd-generator/">Htpasswd Generator &#8211; Create htpasswd - Htaccess Tools</a></li>
+<li><a href="https://github.com/bitly/oauth2_proxy/blob/master/README.md">oauth2_proxy/README.md at master · bitly/oauth2_proxy</a></li>
+<li><a href="http://nginx.org/en/docs/http/ngx_http_auth_request_module.html">Module ngx_http_auth_request_module</a></li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=oauth2_proxy%20%e3%81%a8%20Auth0%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%80%80Nginx%20%e3%81%ae%e3%81%8a%e6%89%8b%e8%bb%bd%20OAuth%20%e5%8c%96&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f&amp;title=oauth2_proxy%20%e3%81%a8%20Auth0%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%80%80Nginx%20%e3%81%ae%e3%81%8a%e6%89%8b%e8%bb%bd%20OAuth%20%e5%8c%96" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=oauth2_proxy%20%e3%81%a8%20Auth0%20%e3%82%92%e7%94%a8%e3%81%84%e3%81%9f%e3%80%80Nginx%20%e3%81%ae%e3%81%8a%e6%89%8b%e8%bb%bd%20OAuth%20%e5%8c%96&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f05%2f23%2fenable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/" title="Spring Boot と Node.js の Heroku お引越し大作戦">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/">oauth2_proxy と Auth0 を用いた　Nginx のお手軽 OAuth 化</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/">Spring Boot と Node.js の Heroku お引越し大作戦</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/">Hangouts Chat の Incoming Webhook を Go で叩く</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/">PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/">AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/19/mashup-awards-2017/">Mashup Awards 2017</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/">STM32L4 Discovery Kit IoT Node に Amazon FreeRTOS を導入する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/">G Suite を IdP にした Salesforce の SAML SSO の有効化</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/">PMD Apex / PMD Visualforce で Salesforce のコードを静的解析する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/11/24/introducing-force-client-go/">force-client-go: Go で Salesforce の REST API を叩く</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/salesforce">salesforce</a></li><li><a href="/categories/tools">tools</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/github">github</a></li><li><a href="/tags/golang">golang</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/hugo">hugo</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/force.com">force.com</a></li><li><a href="/tags/gitlab">gitlab</a></li><li><a href="/tags/gradle">gradle</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
