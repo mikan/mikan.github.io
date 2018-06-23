@@ -52,7 +52,7 @@
     <item>
       <title>Aws</title>
       <link>https://mikan.github.io/tags/aws/</link>
-      <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
+      <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/aws/</guid>
       <description></description>
@@ -160,7 +160,7 @@
     <item>
       <title>Gradle</title>
       <link>https://mikan.github.io/tags/gradle/</link>
-      <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
+      <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/gradle/</guid>
       <description></description>
@@ -212,6 +212,15 @@
     </item>
     
     <item>
+      <title>Intellij</title>
+      <link>https://mikan.github.io/tags/intellij/</link>
+      <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/intellij/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Java</title>
       <link>https://mikan.github.io/tags/java/</link>
       <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
@@ -235,6 +244,15 @@
       <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/jruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kotlin</title>
+      <link>https://mikan.github.io/tags/kotlin/</link>
+      <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/kotlin/</guid>
       <description></description>
     </item>
     
@@ -325,6 +343,15 @@
       <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/plantuml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspberrypi</title>
+      <link>https://mikan.github.io/tags/raspberrypi/</link>
+      <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/raspberrypi/</guid>
       <description></description>
     </item>
     

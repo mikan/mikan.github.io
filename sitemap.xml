@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</loc>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</loc>
     <lastmod>2018-05-23T20:42:54+09:00</lastmod>
   </url>
@@ -133,7 +138,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/aws/</loc>
-    <lastmod>2018-01-23T21:19:41+09:00</lastmod>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -210,7 +215,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/gradle/</loc>
-    <lastmod>2018-04-14T19:46:31+09:00</lastmod>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -245,8 +250,14 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/intellij/</loc>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/categories/iot/</loc>
-    <lastmod>2017-12-13T23:31:44+09:00</lastmod>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -265,6 +276,12 @@
   <url>
     <loc>https://mikan.github.io/tags/jruby/</loc>
     <lastmod>2018-02-23T22:16:01+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/kotlin/</loc>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -336,7 +353,13 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2018-05-23T20:42:54+09:00</lastmod>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/raspberrypi/</loc>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -402,7 +425,7 @@
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2018-05-23T20:42:54+09:00</lastmod>
+    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
