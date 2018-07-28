@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="vue.js, quasar-framework, node.js, gradle, spring-boot, kotlin, ">
+
+
+<meta property="og:title" content="Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-07-28T19:40:00&#43;09:00" />
+<meta property="og:article:modified_time" content="2018-07-28T19:40:00&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="vue.js">
+    
+<meta property="og:article:tag" content="quasar-framework">
+    
+<meta property="og:article:tag" content="node.js">
+    
+<meta property="og:article:tag" content="gradle">
+    
+<meta property="og:article:tag" content="spring-boot">
+    
+<meta property="og:article:tag" content="kotlin">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-07-28",
+    "description": "",
+    "wordCount": 3460
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.44" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-users'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-07-28">28 Jul, 2018</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 7 min
+  &middot; (3460 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Vue.js%20%e3%82%92%20Spring%20WebFlux%20%e3%81%a7%e3%83%9b%e3%82%b9%e3%83%88%e3%81%99%e3%82%8b%e9%9a%9b%e3%81%ae%e3%83%97%e3%83%ad%e3%82%b8%e3%82%a7%e3%82%af%e3%83%88%e6%a7%8b%e6%88%90%e3%82%92%e8%80%83%e3%81%88%e3%82%8b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f&amp;title=Vue.js%20%e3%82%92%20Spring%20WebFlux%20%e3%81%a7%e3%83%9b%e3%82%b9%e3%83%88%e3%81%99%e3%82%8b%e9%9a%9b%e3%81%ae%e3%83%97%e3%83%ad%e3%82%b8%e3%82%a7%e3%82%af%e3%83%88%e6%a7%8b%e6%88%90%e3%82%92%e8%80%83%e3%81%88%e3%82%8b" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Vue.js%20%e3%82%92%20Spring%20WebFlux%20%e3%81%a7%e3%83%9b%e3%82%b9%e3%83%88%e3%81%99%e3%82%8b%e9%9a%9b%e3%81%ae%e3%83%97%e3%83%ad%e3%82%b8%e3%82%a7%e3%82%af%e3%83%88%e6%a7%8b%e6%88%90%e3%82%92%e8%80%83%e3%81%88%e3%82%8b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/vue.js" class="label label-primary">vue.js</a>
+  
+  <a href="https://mikan.github.io/tags/quasar-framework" class="label label-primary">quasar-framework</a>
+  
+  <a href="https://mikan.github.io/tags/node.js" class="label label-primary">node.js</a>
+  
+  <a href="https://mikan.github.io/tags/gradle" class="label label-primary">gradle</a>
+  
+  <a href="https://mikan.github.io/tags/spring-boot" class="label label-primary">spring-boot</a>
+  
+  <a href="https://mikan.github.io/tags/kotlin" class="label label-primary">kotlin</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+<p>2018年3月1日に Spring Boot 2.0 がリリースされてから半年がたち<sup>[参考文献1]</sup>、Kotlin の正式サポートや Spring WebFlux によるリアクティブ Web プログラミングといったパラダイムシフトが徐々に広まりをみせつつある今日このごろです。
+そしてこれらバックエンド技術と、進化を続ける JavaScript フレームワークによるフロントエンド技術を組合せて Web アプリやシステムを開発するというのはよくあるパターンになっています。さらにこの組合せの境界を言語的にまたぐアプローチやフレームワークもあり、開発チームの構成によってはすごくフィットすることがあります。</p>
+
+<p>ところでフロントエンド界隈は生き残っているものでは Angular 派, React 派, Vue.js 派の 3 大派閥があり<sup>[参考文献2]</sup>、また最近では Mithril など新進気鋭も見かけるようになりました。
+そしてそれぞれのフレームワークをベースにしたフレームワークも多数登場しており<sup>[参考文献3]</sup>、有名所では SSR (Server Side Rendering) を実現する Next.js (React ベース) や Nuxt.js (Vue.js ベース) などが挙げられるでしょう。</p>
+
+<p>今回は DB 操作などを WebFlux, SPA (Single Page Application) 画面を Vue.js を用い、更に Vue.js のビルド結果のサーブにも WebFlux を用いる構成を考えてみます (もちろん、他のフレームワークにも応用が効きます)。この構成の利点は 2 つあります:</p>
+
+<ol>
+<li>フロントエンドコードとバックエンドコードをひとまとめに管理できる</li>
+<li>フロントエンド開発者とバックエンド開発者の双方が手軽に両者結合したテストを実行できる</li>
+<li>1つのアプリケーション (単一の jar ファイル) としてデプロイできる</li>
+</ol>
+
+<p>欠点としては、そもそも別々にデプロイしたい (フロントのサーブとバックエンドを別々にスケールしたい) 場合にはハマらないのと、ディレクトリ構成が少し複雑になることが挙げられます。</p>
+
+<h3 id="基本戦略">基本戦略</h3>
+
+<p>Spring WebFlux は Gradle, Vue.js を npm でビルドし、双方のディレクトリレイアウトの慣習を一切破らずに開発したいとします。
+すると問題になるのが <code>src</code> の扱いです。Gradle と npm で src 内のディレクトリ構成が全く違うので、ここは分けるのが賢明です。
+もちろん <code>src</code> 改名という荒療治でも解決はできますが、ここは Gradle のサブプロジェクト機能を最大限に活用してみましょう。
+概念上はこんな構成になります:</p>
+
+<pre><code class="language-console">app
+├── backend
+│   ├── gradle サブプロジェクト
+│   └── src
+│       └── webflux コード
+├── gradle ルートプロジェクト
+├── npm ファイル
+└── src
+    └── vue.js コード
+</code></pre>
+
+<p>それぞれ、次のような役割を振ります:</p>
+
+<ul>
+<li>npm: Vue.js のビルド</li>
+<li>gradle ルートプロジェクト: gradle-node-plugin を用いた npm ビルドの呼び出し</li>
+<li>gradle サブプロジェクト: WebFlux のビルド</li>
+</ul>
+
+<h3 id="プロジェクトの作成">プロジェクトの作成</h3>
+
+<p>用意するものは以下の 3 つです:</p>
+
+<ul>
+<li><code>npm</code> コマンド (Node.js についてくる)</li>
+<li><code>vue</code> コマンド (<code>npm install -g @vue/cli</code>)</li>
+<li><code>gradle</code> コマンド (Homebrew や Chocolatey で導入が楽)</li>
+</ul>
+
+<p>⚠️ Vue CLI の npm パッケージはバージョン 2 までが <code>vue-cli</code> で 3 からが <code>@vue/cli</code> です<sup>[参考文献4]</sup>。今回は 3 ベースで説明しています。</p>
+
+<pre><code class="language-console">$ vue create webflux-vuejs-demo
+</code></pre>
+
+<p>💡 このコマンドは与えられた名前でディレクトリを作り、その中にプロジェクトファイルを生成してくれます。</p>
+
+<p>実行すると、次のように聞かれます。</p>
+
+<pre><code class="language-console">Vue CLI v3.0.0-rc.8
+? Please pick a preset: 
+❯ default (babel, eslint) 
+  Manually select features
+</code></pre>
+
+<p>キーボードの ⬆️ と ⬇️ で切り替えられます。ここは default のまま Enter をターンっとタイプします。
+また、 &ldquo;Your connection to the default npm registry seems to be slow.&rdquo; と出て、別の npm リポジトリをお勧めされることがあります。私の場合、 taobao.org とか・・・中国っぽい。</p>
+
+<p>実行が終わると、次のコマンドで試すよう促されます。実際に動かしてみましょう。</p>
+
+<pre><code class="language-console">$ cd webflux-vuejs-demo
+$ npm run serve
+</code></pre>
+
+<p>ブラウザで <a href="http://localhost:8080/">http://localhost:8080/</a> にアクセスすると&hellip;</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/vuejs1.png" width="80%" />
+    
+    
+</figure>
+
+
+<p>めでたく表示されました！って、満足してはいけません。話はここからです・・・。</p>
+
+<p>さきほど npm を叩いたのと同じディレクトリで、以下のコマンドを実行します。</p>
+
+<pre><code class="language-console">$ gradle init wrapper
+</code></pre>
+
+<p><code>build.gradle</code> ほかいくつかのファイルが生成されました。ここで <code>.gitignore</code> に以下を追加します。</p>
+
+<pre><code class="language-console"># Gradle
+.gradle
+build
+</code></pre>
+
+<p><code>build.gradle</code> を編集します。元からあるコメント行はいらないので消してしまいましょう。</p>
+
+<pre><code class="language-groovy">plugins {
+    id &quot;com.moowork.node&quot; version &quot;1.2.0&quot;
+}
+
+node {
+    version = '10.7.0'
+    download = true
+}
+</code></pre>
+
+<p>これで、 npm と同じことが gradle からできるようになりました。</p>
+
+<table>
+<thead>
+<tr>
+<th>npm</th>
+<th>gradle</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>npm install</td>
+<td>./gradlew npm_install</td>
+</tr>
+
+<tr>
+<td>npm run lint</td>
+<td>./gradlew npm_run_lint</td>
+</tr>
+
+<tr>
+<td>npm run build</td>
+<td>./gradlew npm_run_build</td>
+</tr>
+
+<tr>
+<td>npm run serve</td>
+<td>./gradlew npm_run_serve</td>
+</tr>
+</tbody>
+</table>
+
+<p>さらに、よく使うタスクについては、以下のように別途定義することで <code>./gradlew runBuild</code> のように呼び出せます。</p>
+
+<pre><code class="language-groovy">task runBuild(type: NpmTask) {
+    args = ['run', 'build']
+}
+</code></pre>
+
+<p>💡 <code>./gradlew tasks --all</code> で叩けるタスク一覧とルールを確認することができます。</p>
+
+<h3 id="webflux-の構成">WebFlux の構成</h3>
+
+<p>gradle-node-plugin (com.moowork.node) の素晴らしさを体感したら、いよいよ WebFlux の構成です。</p>
+
+<p>先の基本戦略に従い、 <code>backend</code> サブプロジェクトを作成します。</p>
+
+<pre><code>$ mkdir backend
+$ vi backend/build.gradle
+</code></pre>
+
+<p><code>backend/build.gradle</code>:</p>
+
+<pre><code class="language-groovy">plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.51'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.2.51'
+    id 'org.springframework.boot' version '2.0.3.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    compile 'org.jetbrains.kotlin:kotlin-reflect'
+    compile 'org.springframework.boot:spring-boot-starter-webflux'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }   
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }   
+}
+
+bootJar {
+    baseName = 'webflux-vuejs-demo'
+    archiveName = baseName + '.' + extension
+}
+</code></pre>
+
+<p>そしてプロジェクトルートにある <code>settings.gradle</code> に以下を追記します。</p>
+
+<pre><code class="language-groovy">include 'backend'
+</code></pre>
+
+<p>Router Function を実装します。Kotlin で書いてみました。</p>
+
+<p><code>backend/src/main/kotlin/com/github/mikan/demo/App.kt</code>:</p>
+
+<pre><code class="language-console">package com.github.mikan.demo
+
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.Bean
+import org.springframework.core.io.Resource
+import org.springframework.http.MediaType
+import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.server.HandlerFunction
+import org.springframework.web.reactive.function.server.RequestPredicates
+import org.springframework.web.reactive.function.server.RouterFunction
+import org.springframework.web.reactive.function.server.RouterFunctions
+import org.springframework.web.reactive.function.server.ServerRequest
+import org.springframework.web.reactive.function.server.ServerResponse
+import reactor.core.publisher.Mono
+
+@SpringBootApplication
+class App
+
+fun main(args: Array&lt;String&gt;) {
+    SpringApplication.run(App::class.java, *args)
+}
+
+@Component
+class IndexHandler {
+    @Value(&quot;classpath:/static/index.html&quot;)
+    private lateinit var indexHtml: Resource
+
+    @Bean
+    fun indexRoutes(): RouterFunction&lt;ServerResponse&gt; {
+        return RouterFunctions.route(RequestPredicates.GET(&quot;/&quot;), HandlerFunction { get(it) })
+    }
+
+    fun get(request: ServerRequest): Mono&lt;ServerResponse&gt; {
+        return ServerResponse.ok().contentType(MediaType.TEXT_HTML).syncBody(indexHtml)
+    }
+}
+</code></pre>
+
+<p>💡 Spring Boot の Welcome Page 機能により本来は自動的に <code>/static/index.html</code> が <code>/</code> にマッピングされますが、 WebFlux ではそれが実現されていません<sup>[参考文献5]</sup>。そのため参考文献に示されているワークアラウンドとして <code>Resource</code> として取得して手作業でルーティングしています。今後のアップデートで不要になる可能性があります。</p>
+
+<h3 id="vue-js-ビルド成果物の連携">Vue.js ビルド成果物の連携</h3>
+
+<p>先程 Kotlin のコードに <code>classpath:/static/index.html</code> とあったように、Vue.js のビルド成果物を backend に渡さないとこのコードは動きません。
+といっても、実際これを実現するのは簡単です。まずはディレクトリを作成します。</p>
+
+<pre><code class="language-console">$ mkdir -p backend/src/main/resources/static
+</code></pre>
+
+<p><code>.gitignore</code> に以下を追記します。</p>
+
+<pre><code class="language-console"># Frontend output for backend
+/backend/src/main/resources/static
+</code></pre>
+
+<p><code>package.json</code> の <code>build</code> を次のように修正します。</p>
+
+<pre><code class="language-diff">-     &quot;build&quot;: &quot;vue-cli-service build&quot;,
++     &quot;build&quot;: &quot;vue-cli-service build --dest backend/src/main/resources/static&quot;,
+</code></pre>
+
+<p>これで準備ができました。いよいよビルドして実行してみましょう！</p>
+
+<pre><code>$ ./gradlew npm_run_build
+$ ./gradlew bootRun
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/vuejs1.png" width="80%" />
+    
+    
+</figure>
+
+
+<p>結果は同じですね。ですが、確かに WebFlux で動いています。あとはフロントエンド・バックエンド二手に分かれてガシガシ開発するのみです。</p>
+
+<p>参考までに、今回作成した一式のサンプルを GitHub に公開してみました。ご利用ください。</p>
+
+<blockquote>
+<p><a href="https://github.com/mikan/webflux-vuejs-demo">https://github.com/mikan/webflux-vuejs-demo</a></p>
+</blockquote>
+
+<h3 id="vue-router-の-history-mode-の使用">Vue Router の history mode の使用</h3>
+
+<p>Vue.js には素晴らしいルーティング機構 Vue Router が付属しており、２つの動作モード hash と history があります<sup>[参考文献6]</sup>。
+hash モードは URL に /#/ を入れることで完全な URL をシミュレートしていますが、これを取り除く手段として HTML5 の History API 機能を用いた history モードが提供されています。この場合、最初の一発目だけ WebFlux が index.html をサーブし、その後は JavaScript の世界でページ遷移が実現されます (ページごとに WebFlux に取りにいきません) 。</p>
+
+<p>その一発目が 404 にならないようにするには、ありったけのパスを index.html に降ってあげる必要があります。
+シンプルな解決策としては、 (使わない) パスパラメーターでパターンを定義してしまうというアイデアがあります。</p>
+
+<pre><code class="language-console">    @Bean
+    fun indexRoutes(): RouterFunction&lt;ServerResponse&gt; {
+        val handler = HandlerFunction { get(it) }
+        return RouterFunctions.route(RequestPredicates.GET(&quot;/&quot;), handler)
+                .andRoute(RequestPredicates.GET(&quot;/page&quot;), handler)
+                .andRoute(RequestPredicates.GET(&quot;/page/{sub1}&quot;), handler)
+                .andRoute(RequestPredicates.GET(&quot;/page/{sub1}/{sub2}&quot;), handler)
+    }
+</code></pre>
+
+<p>ただし、WebFlux は他の静的リソース (js や css 等) も提供しますし、エンドポイント (API など) も提供することを考えると、競合しないように少なくともトップレベルからはパスパラメーターを外す必要があるでしょう (例では <code>page</code> 固定)。</p>
+
+<h3 id="quasar-framework-の使用">Quasar Framework の使用</h3>
+
+<p>Vue.js ベースのフレームワークの一つに Quasar Framework (くえーさーふれーむわーく) があります<sup>[参考文献7]</sup>。
+こちらで開発する際、プロジェクト作成時のコマンドと、先のビルド成果物の連携の設定手段が変わってきます。
+作り方を順を追って説明します。</p>
+
+<p>追加で必要なもの:</p>
+
+<ul>
+<li><code>quasar</code> コマンド (<code>npm install -g quasar-cli</code>)</li>
+<li><code>vue init</code> コマンド (<code>npm install -g @vue/cli-init</code>)</li>
+</ul>
+
+<p>手順:</p>
+
+<pre><code>$ quasar init webflux-quasar-demo
+? Project name (internal usage for dev) webflux-quasar-demo
+? Project product name (official name) Quasar App
+? Project description A Quasar Framework app
+? Author xxx &lt;xxx@xxx.xxx&gt;
+? Check the features needed for your project: ESLint
+? Pick an ESLint preset Standard
+? Cordova id (disregard if not building mobile apps) org.cordova.quasar.app
+? Should we run `npm install` for you after the project has been created? (recommended) NPM
+</code></pre>
+
+<p>手順の統一のため、最後の質問を <code>NPM</code> にしています。それ以外はデフォルトのまま Enter です。</p>
+
+<p>Gradle プロジェクトの構成についてはこれまでの説明と一緒ですが、ビルド成果物の出力場所の設定箇所が <code>package.json</code> から <code>quasar.conf.js</code> に変わり、次のように <code>build</code> セクションに <code>distDir</code> としてパスを追加することになります。</p>
+
+<pre><code class="language-diff">      ...
+      build: {
++      distDir: 'backend/src/main/resources/static',
+       scopeHoisting: true,
+       vueRouterMode: 'history',
+       ...
+</code></pre>
+
+<p>そして、これまでと同様 <code>./gradlew npm_run_build</code> でビルドするために、 <code>package.json</code> に <code>build</code> スクリプトを追加します。</p>
+
+<pre><code class="language-diff">   &quot;scripts&quot;: {
++    &quot;build&quot;: &quot;quasar build&quot;,
+     &quot;lint&quot;: &quot;eslint --ext .js,.vue src&quot;,
+     &quot;test&quot;: &quot;echo \&quot;No test specified\&quot; &amp;&amp; exit 0&quot;
+   },
+</code></pre>
+
+<p>これで、 <code>./gradlew npm_run_build bootRun</code> で WebFlux サーブされます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/quasar1.png" width="80%" />
+    
+    
+</figure>
+
+
+<p>あともうひとつ。<code>quasar init</code> コマンドは色々なファイルを生成しますが、その中に <code>.editorconfig</code> があります。
+しかしこれは全てのファイルに 2 スペースインデントを強制するため、4 スペースが標準な Kotlin がひどいことになります。
+そこで、以下のように修正します。</p>
+
+<pre><code class="language-diff">- [*]
++ [*.{js,vue}]
+  charset = utf-8
+  indent_style = space
+  indent_size = 2
+</code></pre>
+
+<p>IntelliJ だとデフォルトで .editorconfig をサポートしているので、存在を忘れるとなぜ 2 スペースになるのかわからず混乱します 😱</p>
+
+<p>参考までに、今回作成した Quasar 版のサンプルも GitHub に公開してみました。ご利用ください。</p>
+
+<blockquote>
+<p><a href="https://github.com/mikan/webflux-quasar-demo">https://github.com/mikan/webflux-quasar-demo</a></p>
+</blockquote>
+
+<p>Happy hacking!</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://spring.io/blog/2018/03/01/spring-boot-2-0-goes-ga">Spring Boot 2.0 goes GA</a></li>
+<li><a href="https://github.com/kamranahmedse/developer-roadmap">kamranahmedse/developer-roadmap: Roadmap to becoming a web developer in 2018</a></li>
+<li><a href="https://cssauthor.com/vuejs-frameworks/">25+ Best Vue.js Frameworks » CSS Author</a></li>
+<li><a href="https://cli.vuejs.org/guide/">Overview | Vue CLI 3</a></li>
+<li><a href="https://github.com/spring-projects/spring-boot/issues/9785">Welcome page(classpath:/static/index.html) not being resolved for / uri in webflux project · Issue #9785 · spring-projects/spring-boot</a></li>
+<li><a href="https://router.vuejs.org/ja/guide/essentials/history-mode.html">HTML5 History モード | Vue Router</a></li>
+<li><a href="https://quasar-framework.org/">Quasar Framework</a></li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Vue.js%20%e3%82%92%20Spring%20WebFlux%20%e3%81%a7%e3%83%9b%e3%82%b9%e3%83%88%e3%81%99%e3%82%8b%e9%9a%9b%e3%81%ae%e3%83%97%e3%83%ad%e3%82%b8%e3%82%a7%e3%82%af%e3%83%88%e6%a7%8b%e6%88%90%e3%82%92%e8%80%83%e3%81%88%e3%82%8b&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f&amp;title=Vue.js%20%e3%82%92%20Spring%20WebFlux%20%e3%81%a7%e3%83%9b%e3%82%b9%e3%83%88%e3%81%99%e3%82%8b%e9%9a%9b%e3%81%ae%e3%83%97%e3%83%ad%e3%82%b8%e3%82%a7%e3%82%af%e3%83%88%e6%a7%8b%e6%88%90%e3%82%92%e8%80%83%e3%81%88%e3%82%8b" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Vue.js%20%e3%82%92%20Spring%20WebFlux%20%e3%81%a7%e3%83%9b%e3%82%b9%e3%83%88%e3%81%99%e3%82%8b%e9%9a%9b%e3%81%ae%e3%83%97%e3%83%ad%e3%82%b8%e3%82%a7%e3%82%af%e3%83%88%e6%a7%8b%e6%88%90%e3%82%92%e8%80%83%e3%81%88%e3%82%8b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/" title="Kotlin で始める AWS Greengrass">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/">Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/">Kotlin で始める AWS Greengrass</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/">oauth2_proxy と Auth0 を用いた Nginx のお手軽 OAuth 化</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/">Spring Boot と Node.js の Heroku お引越し大作戦</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/">Hangouts Chat の Incoming Webhook を Go で叩く</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/">PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/">AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/19/mashup-awards-2017/">Mashup Awards 2017</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/">STM32L4 Discovery Kit IoT Node に Amazon FreeRTOS を導入する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/">G Suite を IdP にした Salesforce の SAML SSO の有効化</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/salesforce">salesforce</a></li><li><a href="/categories/tools">tools</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/golang">golang</a></li><li><a href="/tags/github">github</a></li><li><a href="/tags/gradle">gradle</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/hugo">hugo</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/spring-boot">spring-boot</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/force.com">force.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

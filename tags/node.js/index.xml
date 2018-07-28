@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sat, 14 Apr 2018 19:46:31 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 28 Jul 2018 19:40:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/node.js/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</title>
+      <link>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</link>
+      <pubDate>Sat, 28 Jul 2018 19:40:00 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</guid>
+      <description>2018年3月1日に Spring Boot 2.0 がリリースされてから半年がたち[参考文献1]、Kotlin の正式サポートや Spring WebFlux によるリアクティブ Web プログラミングと</description>
+    </item>
     
     <item>
       <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</loc>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</loc>
     <lastmod>2018-06-23T19:57:02+09:00</lastmod>
   </url>
@@ -215,7 +220,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/gradle/</loc>
-    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -281,7 +286,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/kotlin/</loc>
-    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -329,7 +334,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/node.js/</loc>
-    <lastmod>2018-04-14T19:46:31+09:00</lastmod>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -353,7 +358,13 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/tags/quasar-framework/</loc>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -383,7 +394,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/spring-boot/</loc>
-    <lastmod>2018-04-14T19:46:31+09:00</lastmod>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -418,14 +429,20 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/vue.js/</loc>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/categories/web/</loc>
-    <lastmod>2018-05-23T20:42:54+09:00</lastmod>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2018-06-23T19:57:02+09:00</lastmod>
+    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
