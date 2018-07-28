@@ -69,7 +69,7 @@
     },
     "datePublished": "2018-07-28",
     "description": "",
-    "wordCount": 3470
+    "wordCount": 3477
   }
 </script>
   
@@ -193,7 +193,7 @@
 
   <small>
   &middot; Read in about 7 min
-  &middot; (3470 words)
+  &middot; (3477 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f07%2f28%2fdesigining-project-layout-of-vuejs-that-serving-on-spring-webflux%2f" onclick="window.open(this.href, 'mywin',
@@ -558,7 +558,7 @@ hash モードは URL に /#/ を入れることで完全な URL をシミュレ
     }
 </code></pre>
 
-<p>ただし、WebFlux は他の静的リソース (js や css 等) も提供しますし、エンドポイント (API など) も提供することを考えると、競合しないように少なくともトップレベルからはパスパラメーターを外す必要があるでしょう (例では <code>page</code> 固定)。</p>
+<p>WebFlux は他の静的リソース (js や css 等) も提供しますから、トップレベルをパスパラメーターにすることはできません (例では <code>page</code> としています)。そして、他に API エンドポイントなども作ることを考えると、それらと競合しないように URL 設計する必要があります。</p>
 
 <h3 id="quasar-framework-の使用">Quasar Framework の使用</h3>
 
