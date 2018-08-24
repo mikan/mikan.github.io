@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sat, 28 Jul 2018 19:40:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Aug 2018 14:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</title>
+      <link>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</link>
+      <pubDate>Fri, 24 Aug 2018 14:00:00 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</guid>
+      <description>Jackson といえば、Java 界隈ではとても有名な JSON ライブラリですが、 Kotlin (for JVM) でもそのパワーを存分に発揮することができます。特にクラスと JSON をマッピングす</description>
+    </item>
     
     <item>
       <title>Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</title>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</loc>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</loc>
     <lastmod>2018-07-28T19:40:00+09:00</lastmod>
   </url>
@@ -149,7 +154,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/book/</loc>
-    <lastmod>2017-11-19T23:07:42+09:00</lastmod>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -220,7 +225,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/gradle/</loc>
-    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -268,7 +273,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/java/</loc>
-    <lastmod>2018-04-14T19:46:31+09:00</lastmod>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -286,7 +291,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/kotlin/</loc>
-    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -358,7 +363,7 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -436,13 +441,13 @@
   
   <url>
     <loc>https://mikan.github.io/categories/web/</loc>
-    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2018-07-28T19:40:00+09:00</lastmod>
+    <lastmod>2018-08-24T14:00:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
