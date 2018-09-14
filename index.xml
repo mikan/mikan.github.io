@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Fri, 24 Aug 2018 14:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 15 Sep 2018 06:13:13 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>株式会社ウフルを退職します</title>
+      <link>https://mikan.github.io/2018/09/15/resign-uhuru-corporation/</link>
+      <pubDate>Sat, 15 Sep 2018 06:13:13 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/09/15/resign-uhuru-corporation/</guid>
+      <description>先日、在籍する株式会社ウフルに退職願を出してきました。 せっかくなのでこの会社で得られた色々な経験を記しておきます。 得られた経験 Salesforce ウフルは今で</description>
+    </item>
     
     <item>
       <title>Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</title>
