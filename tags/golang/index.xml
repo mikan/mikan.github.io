@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Wed, 23 May 2018 20:42:54 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Oct 2018 23:10:56 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS IoT MQTT の 443 ポートへ Go からアクセスする</title>
+      <link>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</link>
+      <pubDate>Mon, 22 Oct 2018 23:10:56 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</guid>
+      <description>久々にお戯れではないホンモノの IoT の世界に戻って参りました。 大変いきいきしております。ハイ。 早速 AWS IoT × Go 言語で新シーズンの最初の記事を飾ろうと</description>
+    </item>
     
     <item>
       <title>oauth2_proxy と Auth0 を用いた Nginx のお手軽 OAuth 化</title>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mqtt on Yutaka 🍊 Kato</title>
+    <link>https://mikan.github.io/tags/mqtt/</link>
+    <description>Recent content in Mqtt on Yutaka 🍊 Kato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <lastBuildDate>Mon, 22 Oct 2018 23:10:56 +0900</lastBuildDate>
+    
+	<atom:link href="https://mikan.github.io/tags/mqtt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AWS IoT MQTT の 443 ポートへ Go からアクセスする</title>
+      <link>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</link>
+      <pubDate>Mon, 22 Oct 2018 23:10:56 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</guid>
+      <description>久々にお戯れではないホンモノの IoT の世界に戻って参りました。 大変いきいきしております。ハイ。 早速 AWS IoT × Go 言語で新シーズンの最初の記事を飾ろうと</description>
+    </item>
+    
+  </channel>
+</rss>
