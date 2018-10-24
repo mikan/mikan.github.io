@@ -65,7 +65,7 @@
     },
     "datePublished": "2018-10-22",
     "description": "",
-    "wordCount": 2134
+    "wordCount": 2137
   }
 </script>
   
@@ -189,7 +189,7 @@
 
   <small>
   &middot; Read in about 5 min
-  &middot; (2134 words)
+  &middot; (2137 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f10%2f22%2faccessing-aws-iot-mqtt-through-port-443-from-go%2f" onclick="window.open(this.href, 'mywin',
@@ -417,10 +417,12 @@ func main() {
 }
 
 func newTLSConfig() (*tls.Config, error) {
-	pool := x509.NewCertPool()
-	if rootCA, err := ioutil.ReadFile(RootCAFile); err != nil {
-		pool.AppendCertsFromPEM(rootCA)
+	rootCA, err := ioutil.ReadFile(RootCAFile)
+	if err != nil {
+		return nil, err
 	}
+	pool := x509.NewCertPool()
+	pool.AppendCertsFromPEM(rootCA)
 	cert, err := tls.LoadX509KeyPair(CertFile, KeyFile)
 	if err != nil {
 		return nil, err
