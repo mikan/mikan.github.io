@@ -65,7 +65,7 @@
     },
     "datePublished": "2018-10-22",
     "description": "",
-    "wordCount": 2144
+    "wordCount": 2134
   }
 </script>
   
@@ -189,7 +189,7 @@
 
   <small>
   &middot; Read in about 5 min
-  &middot; (2144 words)
+  &middot; (2134 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f10%2f22%2faccessing-aws-iot-mqtt-through-port-443-from-go%2f" onclick="window.open(this.href, 'mywin',
@@ -318,8 +318,6 @@ Go の ALPN サポートは標準ライブラリ <code>crypt/tls</code> にて�
 
 <pre><code class="language-go">tls.Config{
     RootCAs:            pool,
-    ClientAuth:         tls.NoClientCert,
-    ClientCAs:          nil,
     InsecureSkipVerify: true,
     Certificates:       []tls.Certificate{cert},
 }
@@ -329,11 +327,9 @@ Go の ALPN サポートは標準ライブラリ <code>crypt/tls</code> にて�
 
 <pre><code class="language-go">tls.Config{
     RootCAs:            pool,
-    ClientAuth:         tls.NoClientCert,
-    ClientCAs:          nil,
     InsecureSkipVerify: true,
     Certificates:       []tls.Certificate{cert},
-    NextProtos:         []string{&quot;x-amzn-mqtt-ca&quot;}, // Add
+    NextProtos:         []string{&quot;x-amzn-mqtt-ca&quot;}, // Port 443 ALPN
 }
 </code></pre>
 
@@ -422,8 +418,8 @@ func main() {
 
 func newTLSConfig() (*tls.Config, error) {
 	pool := x509.NewCertPool()
-	if pemCerts, err := ioutil.ReadFile(RootCAFile); err == nil {
-		pool.AppendCertsFromPEM(pemCerts)
+	if rootCA, err := ioutil.ReadFile(RootCAFile); err != nil {
+		pool.AppendCertsFromPEM(rootCA)
 	}
 	cert, err := tls.LoadX509KeyPair(CertFile, KeyFile)
 	if err != nil {
@@ -434,11 +430,9 @@ func newTLSConfig() (*tls.Config, error) {
 		return nil, err
 	}
 	return &amp;tls.Config{
-		RootCAs:            pool,
-		ClientAuth:         tls.NoClientCert,
-		ClientCAs:          nil,
-		InsecureSkipVerify: true,
-		Certificates:       []tls.Certificate{cert},
+        RootCAs:            pool,
+        InsecureSkipVerify: true,
+        Certificates:       []tls.Certificate{cert},
 		NextProtos:         []string{&quot;x-amzn-mqtt-ca&quot;}, // Port 443 ALPN
 	}, nil
 }
