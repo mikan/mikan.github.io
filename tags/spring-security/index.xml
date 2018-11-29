@@ -19,7 +19,7 @@
       <pubDate>Fri, 30 Nov 2018 00:20:00 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/</guid>
-      <description>2018年9月27日にリリースされた Spring Security 5.1[参考文献1]では (5.0 に間に合わなかった) とても多くの機能追加が行われました。 中でも注目なのは、</description>
+      <description>2018年9月27日にリリースされた Spring Security 5.1[参考文献1]では多くの機能追加が行われました。 中でも注目なのは、 WebFlux に OAuth 2 サポートが加わったこ</description>
     </item>
     
     <item>
