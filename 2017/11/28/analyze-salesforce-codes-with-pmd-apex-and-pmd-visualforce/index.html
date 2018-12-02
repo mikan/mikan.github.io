@@ -75,7 +75,7 @@
 <link rel="canonical" href="https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.44" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -238,10 +238,17 @@
 
 <p>Salesforce のカスタマイズで用いる独自言語、Apex と Visualforce のコードを静的解析できるツール PMD Apex / PMD Visualforce を使ってみたので、ハマりどころや CI の工夫などをまとめてみます。</p>
 
-<figure class="center"><a href="https://pmd.github.io/">
-    <img src="/img/logo/pmd.png" width="40%"/> </a><figcaption>
-            <h4>PMD</h4>
-        </figcaption>
+
+<figure class="center">
+    <a href="https://pmd.github.io/">
+        <img src="/img/logo/pmd.png" width="40%" />
+    </a>
+    
+    <figcaption>
+        <h4>PMD</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -287,19 +294,33 @@ pmd -d /path/to/src -f html -R apex-apexunit,apex-braces,apex-complexity,apex-pe
 
 <p><code>-f html</code> で HTML レポートを出力すると、こんな感じの質素な HTML が<strong>標準出力</strong>されます。</p>
 
+
 <figure class="center">
-    <img src="/img/ss/pmd-report1.png" width="80%"/> <figcaption>
-            <h4>PMD HTML Report</h4>
-        </figcaption>
+    
+        <img src="/img/ss/pmd-report1.png" width="80%" />
+    
+    
+    <figcaption>
+        <h4>PMD HTML Report</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
 <p><code>-f vbhtml</code> で HTML レポートを出力すると、こんな感じの HTML が標準出力されます。ファイルごとにまとまった感じで出力されていいですね。ちなみに vb とは Vladimir Bossicard (開発者の名前) のようです。</p>
 
+
 <figure class="center">
-    <img src="/img/ss/pmd-report2.png"/> <figcaption>
-            <h4>PMD HTML Report (VB)</h4>
-        </figcaption>
+    
+        <img src="/img/ss/pmd-report2.png" />
+    
+    
+    <figcaption>
+        <h4>PMD HTML Report (VB)</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -604,23 +625,23 @@ pmd:
 </script>
 
 <script>
-var ENABLE_POPOVER =  null , 
-EXPIRE_COOKIE =  null , 
-SHOW_MODAL_TIMEOUT =  null , 
-MOUSE_LEAVE =  null , 
-MODAL_SIZE =  null , 
-POST_URL =  null , 
-SIGNUP_HEADER =  null ,
-HEADER_IMAGE =  null ,
-IMG_DESCRIPTION =  null ,
-SIGNUP_TEXT =  null ,
-INPUT_PLACEHOLDER =  null ,
-SUBMIT_BUTTON =  null ,
-SUCCESS_MESSAGE =  null ,
-ERROR_MESSAGE =  null ,
-OPTIN =  null ,
-COOKIE_NAME =  null ,
-CONTENTLANGUAGE =  null ; 
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
 </script>
 
 

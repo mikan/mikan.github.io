@@ -75,7 +75,7 @@
 <link rel="canonical" href="https://mikan.github.io/2017/11/06/using-esp-wroom-02-with-mbed/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.52" />
+<meta name="generator" content="Hugo 0.44" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -240,28 +240,49 @@
 
 <p>6人1チームで全6チームで伊那市の課題を解決するアイデアソン＋ LoRaWAN でデモを開発するというハッカソンで、私は「チーム1」に配属、凄腕メンバーに囲まれたおかげで2位を受賞することができました。チーム1で提案したシステムは、伊那市の豊かな山地の道なき道をゆく登山者、林業従事者、きのこハンター、けものハンター、徘徊老人たちにデバイスを持たせ、踏破実績を収集・蓄積して山林ルートマップを作成、地域の様々な課題解決やサービスに役立てられるプラットフォームを作る！というものでした。そして今回作ったデモシステムは mbed に GPS とボタンを実装、LoRaWAN で割と高頻度で送信し、最終的に超イケメン BI ツール <a href="http://www.wingarc.com/product/motionboard/">MotionBoard</a> でビジュアライズするというものです (ドローンは構想のみ)。</p>
 
+
 <figure class="center">
-    <img src="/img/ss/inahack-team1-5.png" width="80%"/> <figcaption>
-            <h4>InaHack チーム1 システム構成</h4>
-        </figcaption>
+    
+        <img src="/img/ss/inahack-team1-5.png" width="80%" />
+    
+    
+    <figcaption>
+        <h4>InaHack チーム1 システム構成</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
 <p>開発の部で私が主に担当したのはデータの中継 (と加工) を行う <a href="https://enebular.com/">Enebular</a> (Node-RED プロバイダー) のフローで、一通り組んだあとはこんな感じになっていました。</p>
 
+
 <figure class="center">
-    <img src="/img/ss/inahack-enebular.png" width="80%"/> <figcaption>
-            <h4>InaHack チーム1 Enebular フロー</h4>
-        </figcaption>
+    
+        <img src="/img/ss/inahack-enebular.png" width="80%" />
+    
+    
+    <figcaption>
+        <h4>InaHack チーム1 Enebular フロー</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
 <p>ハードのほうも少しお手伝いして、こんな感じの見た目になりました。徘徊老人がこれ持って歩いてたらめっちゃロックだよね！🤘</p>
 
+
 <figure class="center">
-    <img src="/img/photo/20171022-1555.jpg" width="80%"/> <figcaption>
-            <h4>デモ筐体</h4>
-        </figcaption>
+    
+        <img src="/img/photo/20171022-1555.jpg" width="80%" />
+    
+    
+    <figcaption>
+        <h4>デモ筐体</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -269,10 +290,17 @@
 
 <p>さて、ここからが今回の記事の本題なのですが (<strong>前置きが長い</strong>)、ハッカソンが終わったあと、このコンセプトを自分の手元でも再現したいと思いまして、まずは LoRaWAN に相当する部分を WLAN に置き換えて試そうと、こんなものを買ってきました。</p>
 
+
 <figure class="center">
-    <img src="/img/ss/esp-breakout.jpg" width="40%"/> <figcaption>
-            <h4>ESP-WROOM-02ピッチ変換済みモジュール</h4>
-        </figcaption>
+    
+        <img src="/img/ss/esp-breakout.jpg" width="40%" />
+    
+    
+    <figcaption>
+        <h4>ESP-WROOM-02ピッチ変換済みモジュール</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -341,19 +369,33 @@
 </tbody>
 </table>
 
+
 <figure class="center">
-    <img src="/img/photo/20171106-2240.jpg" width="80%"/> <figcaption>
-            <h4>配線完了 (余計なの写ってるけどそれはあとで別記事にする)</h4>
-        </figcaption>
+    
+        <img src="/img/photo/20171106-2240.jpg" width="80%" />
+    
+    
+    <figcaption>
+        <h4>配線完了 (余計なの写ってるけどそれはあとで別記事にする)</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
 <p>手元の検証では、いくつかの mbed で再起動が繰り返される減少に陥りました (私の mbed コレクションの中でもいける個体といけない個体あり ← 改造のせい)。電力不足のようなので、そんなときはこんな感じで 3.3V を他の mbed から救援してみましょう (別に mbed じゃなくても良いのだけど、自己責任で)。</p>
 
+
 <figure class="center">
-    <img src="/img/photo/20171106-2236.jpg" width="80%"/> <figcaption>
-            <h4>3.3V 給電を別の mbed から救援中の図</h4>
-        </figcaption>
+    
+        <img src="/img/photo/20171106-2236.jpg" width="80%" />
+    
+    
+    <figcaption>
+        <h4>3.3V 給電を別の mbed から救援中の図</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -385,10 +427,17 @@
 
 <p>以下が書き込み中の画面 (下戴中)。START 押したとき FLASH SIZE の選択値が 16Mbit-C1 から 16Mbit に勝手に変わったけどバグかな？ 😇</p>
 
+
 <figure class="center">
-    <img src="/img/ss/esp-download.png"/> <figcaption>
-            <h4>ESP8266 DOWNLOAD TOOL V3.6.1.0</h4>
-        </figcaption>
+    
+        <img src="/img/ss/esp-download.png" />
+    
+    
+    <figcaption>
+        <h4>ESP8266 DOWNLOAD TOOL V3.6.1.0</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -467,10 +516,17 @@
 
 <p>では適当なターミナルエミュレータ (Tera Term とか) で結果を見てみましょう！Baudrate はソースコードに合わせて 115200 に設定します。</p>
 
+
 <figure class="center">
-    <img src="/img/ss/coolterm1.png"/> <figcaption>
-            <h4>CoolTerm</h4>
-        </figcaption>
+    
+        <img src="/img/ss/coolterm1.png" />
+    
+    
+    <figcaption>
+        <h4>CoolTerm</h4>
+        
+    </figcaption>
+    
 </figure>
 
 
@@ -715,23 +771,23 @@
 </script>
 
 <script>
-var ENABLE_POPOVER =  null , 
-EXPIRE_COOKIE =  null , 
-SHOW_MODAL_TIMEOUT =  null , 
-MOUSE_LEAVE =  null , 
-MODAL_SIZE =  null , 
-POST_URL =  null , 
-SIGNUP_HEADER =  null ,
-HEADER_IMAGE =  null ,
-IMG_DESCRIPTION =  null ,
-SIGNUP_TEXT =  null ,
-INPUT_PLACEHOLDER =  null ,
-SUBMIT_BUTTON =  null ,
-SUCCESS_MESSAGE =  null ,
-ERROR_MESSAGE =  null ,
-OPTIN =  null ,
-COOKIE_NAME =  null ,
-CONTENTLANGUAGE =  null ; 
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
 </script>
 
 
