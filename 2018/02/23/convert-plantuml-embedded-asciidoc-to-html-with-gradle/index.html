@@ -75,7 +75,7 @@
 <link rel="canonical" href="https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -239,17 +239,10 @@
 <p>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの AsciiDoc 化を推し進めています。
 私個人は今まで Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていたのですが、たまたま最近 (<a href="/2017/11/19/jjug-ccc-2017-fall/">JJUG CCC 2017 Fall</a> や社内のディスカッションなどで) AsciiDoc を推す声を多く聞いたこともありこっちもやってやるかと思うようになりました。</p>
 
-
-<figure class="center">
-    <a href="http://asciidoc.org/">
-        <img src="/img/logo/asciidoc.png" />
-    </a>
-    
-    <figcaption>
-        <h4>AsciiDoc</h4>
-        
-    </figcaption>
-    
+<figure class="center"><a href="http://asciidoc.org/">
+    <img src="/img/logo/asciidoc.png"/> </a><figcaption>
+            <h4>AsciiDoc</h4>
+        </figcaption>
 </figure>
 
 
@@ -257,34 +250,20 @@
 
 <p>もちろん、複雑な UML を書くときは愛用 (?) の <a href="http://astah.change-vision.com/ja/product/astah-professional.html">astah professional</a> で書くこともありますが、最新の macOS での操作性が不具合対応のため劣化したのと、以前からマルチディスプレイ環境でフリーズすることが多く、最近はよほどのことがないかぎり起動しなくなりました。もうライセンスを更新することはないかなぁ (Change Vision さんごめんなさい・・・！)。</p>
 
-
-<figure class="center">
-    <a href="http://plantuml.com/">
-        <img src="/img/logo/plantuml.png" />
-    </a>
-    
-    <figcaption>
-        <h4>PlantUML</h4>
-        
-    </figcaption>
-    
+<figure class="center"><a href="http://plantuml.com/">
+    <img src="/img/logo/plantuml.png"/> </a><figcaption>
+            <h4>PlantUML</h4>
+        </figcaption>
 </figure>
 
 
 <p>AsciiDoc はプロセッサとして Ruby 製の <a href="https://asciidoctor.org/">Asciidocor</a> がポピュラーで、さらにこの拡張である asciidoctor-diagram を導入することで AsciiDoc 内に PlantUML レンダー結果を埋め込むことができます。
 これは素晴らしいですね。しかし AsciiDoc/Asciidoctor 自体はディレクトリ内のファイルを一括で (しかも再帰的に) HTML 化することはできません。そこで便利なのが・・・</p>
 
-
-<figure class="center">
-    <a href="https://gradle.org/">
-        <img src="/img/logo/gradle.png" width="50%" />
-    </a>
-    
-    <figcaption>
-        <h4>Gradle</h4>
-        
-    </figcaption>
-    
+<figure class="center"><a href="https://gradle.org/">
+    <img src="/img/logo/gradle.png" width="50%"/> </a><figcaption>
+            <h4>Gradle</h4>
+        </figcaption>
 </figure>
 
 
@@ -368,17 +347,10 @@ PlantUML,ぷらんとゆーえむえる,テキストベースの UML 記述ツ�
 
 <p><code>BUILD SUCCESSFUL</code> と表示され、<code>build/asciidoc/html5</code> に html ファイルができていれば成功です。早速開いてみましょう。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/asciidoctor1.png" width="80%" />
-    
-    
-    <figcaption>
-        <h4>Asciidoctor 出力 HTML</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/asciidoctor1.png" width="80%"/> <figcaption>
+            <h4>Asciidoctor 出力 HTML</h4>
+        </figcaption>
 </figure>
 
 
@@ -458,17 +430,10 @@ asciidoctor {
 <pre><code>$ gradle clean asciidoctor
 </code></pre>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/asciidoctor2.png" width="80%" />
-    
-    
-    <figcaption>
-        <h4>Asciidoctor &#43; PlantUML 出力 HTML</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/asciidoctor2.png" width="80%"/> <figcaption>
+            <h4>Asciidoctor &#43; PlantUML 出力 HTML</h4>
+        </figcaption>
 </figure>
 
 
@@ -749,23 +714,23 @@ asciidoctor {
 </script>
 
 <script>
-var ENABLE_POPOVER = "", 
-EXPIRE_COOKIE = "", 
-SHOW_MODAL_TIMEOUT = "", 
-MOUSE_LEAVE = "", 
-MODAL_SIZE = "", 
-POST_URL = "", 
-SIGNUP_HEADER = "",
-HEADER_IMAGE = "",
-IMG_DESCRIPTION = "",
-SIGNUP_TEXT = "",
-INPUT_PLACEHOLDER = "",
-SUBMIT_BUTTON = "",
-SUCCESS_MESSAGE = "",
-ERROR_MESSAGE = "",
-OPTIN = "",
-COOKIE_NAME = "",
-CONTENTLANGUAGE = ""; 
+var ENABLE_POPOVER =  null , 
+EXPIRE_COOKIE =  null , 
+SHOW_MODAL_TIMEOUT =  null , 
+MOUSE_LEAVE =  null , 
+MODAL_SIZE =  null , 
+POST_URL =  null , 
+SIGNUP_HEADER =  null ,
+HEADER_IMAGE =  null ,
+IMG_DESCRIPTION =  null ,
+SIGNUP_TEXT =  null ,
+INPUT_PLACEHOLDER =  null ,
+SUBMIT_BUTTON =  null ,
+SUCCESS_MESSAGE =  null ,
+ERROR_MESSAGE =  null ,
+OPTIN =  null ,
+COOKIE_NAME =  null ,
+CONTENTLANGUAGE =  null ; 
 </script>
 
 

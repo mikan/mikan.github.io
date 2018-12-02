@@ -75,7 +75,7 @@
 <link rel="canonical" href="https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -236,12 +236,8 @@
       <div class="content">
   
 
-
 <figure class="center">
-    
-        <img src="/img/logo/hangouts-chat.png" />
-    
-    
+    <img src="/img/logo/hangouts-chat.png"/> 
 </figure>
 
 
@@ -283,33 +279,19 @@ Web アプリは今流行りのレスポンシブデザインですね (もし�
 
 <p>Hangouts Chat を開いたら、まず「チャットルーム」を作成します。Slack でいう Channel です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat1.png" />
-    
-    
-    <figcaption>
-        <h4>チャットルームの作成</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/hangouts-chat1.png"/> <figcaption>
+            <h4>チャットルームの作成</h4>
+        </figcaption>
 </figure>
 
 
 <p>作成できましたか？試しに @Giphy で遊んでみましょう (脱線)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat2.png" />
-    
-    
-    <figcaption>
-        <h4>@Giphy で遊ぶ</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/hangouts-chat2.png"/> <figcaption>
+            <h4>@Giphy で遊ぶ</h4>
+        </figcaption>
 </figure>
 
 
@@ -317,33 +299,19 @@ Web アプリは今流行りのレスポンシブデザインですね (もし�
 
 <p>お次に [ルーム名 👤 n] となっているところをクリックし、 [Webhook を設定] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat3.png" />
-    
-    
-    <figcaption>
-        <h4>Webhook を設定</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/hangouts-chat3.png"/> <figcaption>
+            <h4>Webhook を設定</h4>
+        </figcaption>
 </figure>
 
 
 <p>着信 Webhook というダイアログが出るので、 [WEBHOOK を追加] を選ぶと、名前とアイコンを選ぶダイアログが表示されるので、適当な値を記入します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat4.png" />
-    
-    
-    <figcaption>
-        <h4>着信 Webhook</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/hangouts-chat4.png"/> <figcaption>
+            <h4>着信 Webhook</h4>
+        </figcaption>
 </figure>
 
 
@@ -355,17 +323,10 @@ Web アプリは今流行りのレスポンシブデザインですね (もし�
 
 <p>Webhook URL が発行されたらコピーしておきます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat5.png" />
-    
-    
-    <figcaption>
-        <h4>着信 Webhook</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/hangouts-chat5.png"/> <figcaption>
+            <h4>着信 Webhook</h4>
+        </figcaption>
 </figure>
 
 
@@ -411,17 +372,10 @@ func main() {
 
 <p>実行すると、Hangouts Chat には以下のように表示されます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat6.png" />
-    
-    
-    <figcaption>
-        <h4>Webhook 結果</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/hangouts-chat6.png"/> <figcaption>
+            <h4>Webhook 結果</h4>
+        </figcaption>
 </figure>
 
 
@@ -508,17 +462,10 @@ Markdown とは一部異なるので注意してください。</p>
 <p>Hangouts Chat の Webhook には Card Message というフォーマットも規定されています<sup>[参考文献3]</sup>。こちらも投げてみます。
 先に動かした結果から見てみましょう。次の画像はドキュメントにあるピザ配達のメッセージをそのまま再現したものです (地図の座標は省略されていたので代わりに多摩川を映してみる)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat7.png" />
-    
-    
-    <figcaption>
-        <h4>Card Message</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/hangouts-chat7.png"/> <figcaption>
+            <h4>Card Message</h4>
+        </figcaption>
 </figure>
 
 
@@ -696,24 +643,16 @@ func main() {
 <p>今回、この Webhook の仕組みを用いて社内で使っているシステムの通知を Hangouts Chat に連携する機能を導入してみました。
 こんなシステムです (赤字が今回の改修部分):</p>
 
-
 <figure class="center">
-    
-        <img src="/img/diagram/gh-id-checker.png" />
-    
-    
+    <img src="/img/diagram/gh-id-checker.png"/> 
 </figure>
 
 
 <p>このシステムは GitHub の会社の Organization に「私の ID を追加して！」ってお願いするための申請システムで、
 Organization の社内運用ルールに適合するアカウントかどうか (2FA 有効か、会社メルアド刺さってるか等) を予め自動チェックするのが目的です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/gh-id-checker.png" />
-    
-    
+    <img src="/img/ss/gh-id-checker.png"/> 
 </figure>
 
 
@@ -726,12 +665,8 @@ Organization の社内運用ルールに適合するアカウントかどうか 
 
 <p>通知はこのようになります:</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/hangouts-chat8.png" />
-    
-    
+    <img src="/img/ss/hangouts-chat8.png"/> 
 </figure>
 
 
@@ -1000,23 +935,23 @@ Webhook で Hangouts Chat の表現力が分かってきたら、次は Bot の�
 </script>
 
 <script>
-var ENABLE_POPOVER = "", 
-EXPIRE_COOKIE = "", 
-SHOW_MODAL_TIMEOUT = "", 
-MOUSE_LEAVE = "", 
-MODAL_SIZE = "", 
-POST_URL = "", 
-SIGNUP_HEADER = "",
-HEADER_IMAGE = "",
-IMG_DESCRIPTION = "",
-SIGNUP_TEXT = "",
-INPUT_PLACEHOLDER = "",
-SUBMIT_BUTTON = "",
-SUCCESS_MESSAGE = "",
-ERROR_MESSAGE = "",
-OPTIN = "",
-COOKIE_NAME = "",
-CONTENTLANGUAGE = ""; 
+var ENABLE_POPOVER =  null , 
+EXPIRE_COOKIE =  null , 
+SHOW_MODAL_TIMEOUT =  null , 
+MOUSE_LEAVE =  null , 
+MODAL_SIZE =  null , 
+POST_URL =  null , 
+SIGNUP_HEADER =  null ,
+HEADER_IMAGE =  null ,
+IMG_DESCRIPTION =  null ,
+SIGNUP_TEXT =  null ,
+INPUT_PLACEHOLDER =  null ,
+SUBMIT_BUTTON =  null ,
+SUCCESS_MESSAGE =  null ,
+ERROR_MESSAGE =  null ,
+OPTIN =  null ,
+COOKIE_NAME =  null ,
+CONTENTLANGUAGE =  null ; 
 </script>
 
 

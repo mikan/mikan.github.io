@@ -79,7 +79,7 @@
 <link rel="canonical" href="https://mikan.github.io/2017/11/13/operate-github-org-scope/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -246,12 +246,8 @@
 
 <p>GitHub の OAuth をするとき、様々な追加権限の要求を突きつけられた経験はありますか？ありますよね？例えばこんな画面。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-oauth1.png" />
-    
-    
+    <img src="/img/ss/github-oauth1.png"/> 
 </figure>
 
 
@@ -277,12 +273,8 @@
 
 <p>今回は、3年前に立ち上げ現在も継続しているオンライン読書会「<a href="https://aosn.ws">AOSN読書会</a>」の課題本投票システム「<a href="https://vote.aosn.ws">Mosaic</a>」がお題です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/mosaic1.png" width="80%" />
-    
-    
+    <img src="/img/ss/mosaic1.png" width="80%"/> 
 </figure>
 
 
@@ -290,17 +282,10 @@
 
 <p>ユーザーが特定の Organization に属しているか否かという情報は、ユーザーが公開・非公開を選べる類の情報であり、デフォルトは非公開です。さらにOwner はメンバーの公開状態を Public から Private にはできても、逆はできません。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-org1.png" />
-    
-    
-    <figcaption>
-        <h4>Organization -&gt; People</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/github-org1.png"/> <figcaption>
+            <h4>Organization -&gt; People</h4>
+        </figcaption>
 </figure>
 
 
@@ -331,44 +316,26 @@
 
 <p>さて、OAuth アプリが無事 <code>read:org</code> を得られるようになったところで、冒頭の認可画面をふりかえってみます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-oauth1.png" />
-    
-    
+    <img src="/img/ss/github-oauth1.png"/> 
 </figure>
 
 
 <p>Organization ごとに表示されている ✔️ や ❌ は一体何なのでしょう？このインジケータは、皆さんの期待通り ✔️ の Organization の <code>read:org</code> はこのアプリに認可し、❌ の Organization の <code>read:org</code> はこのアプリに認可しないことを示しています。所属している Organization が 4 つでも、認可されている Organization が 2 つならば、<code>GET /user/orgs</code> で帰ってくる Organization も認可された 2 つのみとなります (手元で検証済です！)。ではデフォルトで ✔️ が入っている (そして外すことができない！) Organization と、デフォルトで ❌ で、手動で Grant できる Organization とで一体何が違うのでしょうか？</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-org2.png" width="80%" />
-    
-    
-    <figcaption>
-        <h4>Organization -&gt; Settings -&gt; Third-party access (No restrictions)</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/github-org2.png" width="80%"/> <figcaption>
+            <h4>Organization -&gt; Settings -&gt; Third-party access (No restrictions)</h4>
+        </figcaption>
 </figure>
 
 
 <p>答えは Organization ごとの <strong>Third-party access</strong> 設定です<sup>[参考文献5]</sup>。これのポリシーが「No restrictions」(無制限) となっている Organization が、認可画面の拒否できない ✔️ になります。一方「Access Restricted」(アクセス制限済) となっている Organization は、認可画面でデフォルトで ❌ となります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-org3.png" width="80%" />
-    
-    
-    <figcaption>
-        <h4>Organization -&gt; Settings -&gt; Third-party access (Access restricted)</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/github-org3.png" width="80%"/> <figcaption>
+            <h4>Organization -&gt; Settings -&gt; Third-party access (Access restricted)</h4>
+        </figcaption>
 </figure>
 
 
@@ -376,17 +343,10 @@
 
 <p><code>read:org</code> や <code>admin:org</code> のアプリなんてめったにない？いえいえ、<code>org</code> スコープはあくまで一つの例で、CI/CD サービスなどに多い <code>repo</code> 系を要求してくるアプリも同様です。認可時に ✔️ になっている Organization や、手動で Grant した Organization は、対象 OAuth アプリにそれらに属する全てのリポジトリの認可を与えることになります (public / private 別の scope 分類はあり)。これらの認可を下す際は、しっかりレビューをしてください。そしてもしあなたの Organization が No restrictions のままだったら、すぐさま管理者に Third-party access restriction の有効化を依頼してください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-org4.png" width="80%" />
-    
-    
-    <figcaption>
-        <h4>Organization -&gt; Settings -&gt; Third-party access (Approved apps)</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/github-org4.png" width="80%"/> <figcaption>
+            <h4>Organization -&gt; Settings -&gt; Third-party access (Approved apps)</h4>
+        </figcaption>
 </figure>
 
 
@@ -394,12 +354,8 @@
 
 <p>おまけ: どの Organization にも属していないユーザーが Organization や Repository 系の OAuth アプリを認可しようとすると、Organization に関する追加権限は表示されません。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-oauth2.png" />
-    
-    
+    <img src="/img/ss/github-oauth2.png"/> 
 </figure>
 
 
@@ -632,23 +588,23 @@
 </script>
 
 <script>
-var ENABLE_POPOVER = "", 
-EXPIRE_COOKIE = "", 
-SHOW_MODAL_TIMEOUT = "", 
-MOUSE_LEAVE = "", 
-MODAL_SIZE = "", 
-POST_URL = "", 
-SIGNUP_HEADER = "",
-HEADER_IMAGE = "",
-IMG_DESCRIPTION = "",
-SIGNUP_TEXT = "",
-INPUT_PLACEHOLDER = "",
-SUBMIT_BUTTON = "",
-SUCCESS_MESSAGE = "",
-ERROR_MESSAGE = "",
-OPTIN = "",
-COOKIE_NAME = "",
-CONTENTLANGUAGE = ""; 
+var ENABLE_POPOVER =  null , 
+EXPIRE_COOKIE =  null , 
+SHOW_MODAL_TIMEOUT =  null , 
+MOUSE_LEAVE =  null , 
+MODAL_SIZE =  null , 
+POST_URL =  null , 
+SIGNUP_HEADER =  null ,
+HEADER_IMAGE =  null ,
+IMG_DESCRIPTION =  null ,
+SIGNUP_TEXT =  null ,
+INPUT_PLACEHOLDER =  null ,
+SUBMIT_BUTTON =  null ,
+SUCCESS_MESSAGE =  null ,
+ERROR_MESSAGE =  null ,
+OPTIN =  null ,
+COOKIE_NAME =  null ,
+CONTENTLANGUAGE =  null ; 
 </script>
 
 

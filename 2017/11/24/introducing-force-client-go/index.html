@@ -73,7 +73,7 @@
 <link rel="canonical" href="https://mikan.github.io/2017/11/24/introducing-force-client-go/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -234,12 +234,8 @@
 
 <p>Go 言語 (Golang) で Salesforce の Force.com REST API を叩く方法と、それらを簡単に扱うためにクライアントライブラリ <a href="https://github.com/mikan/force-client-go">force-client-go</a> を開発したので、そのご紹介。</p>
 
-
-<figure class="center">
-    <a href="https://www.salesforce.com/jp/products/platform/products/force/">
-        <img src="/img/logo/force-dot-com.png" width="50%" />
-    </a>
-    
+<figure class="center"><a href="https://www.salesforce.com/jp/products/platform/products/force/">
+    <img src="/img/logo/force-dot-com.png" width="50%"/> </a>
 </figure>
 
 
@@ -256,12 +252,8 @@
 <p>1番目と2番目はユーザーがブラウザでログインした結果をアプリケーションに返すフローで、コールバックを受け付けるセキュアなエンドポイント (HTTP はダメ) を建てる必要があります。コンソールアプリケーションだったり、開発中にちょこっと叩いたりするには都合が悪いですね。
 従って、ここでは3番目を選びます。しかしこれはあくまで開発用、個人用アプリケーションのための選択肢であることをお忘れなく。なお、Salesforce の接続アプリケーションの設定ではコールバック URL の入力が必須項目になっていますが、3番目だけ使うならば「 <a href="https://localhost/">https://localhost/</a> 」など適当なものを入れておけば大丈夫です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/salesforce-setting1.png" />
-    
-    
+    <img src="/img/ss/salesforce-setting1.png"/> 
 </figure>
 
 
@@ -358,17 +350,10 @@ func main() {
 
 <p>それにしても、<code>http</code> パッケージの簡易メソッドが使えないため、だらだらと長いコードになっていますね。リクエスト結果をデコードするのも数行に渡っていて、ちょっとつらくなってきました。構造体にデータを入れようとしたら、さらに定義もつらつら書かないといけません。さらに Go 言語 1.7 で導入された <code>context</code> パッケージも使えていません。そこで、私が開発したクライアントライブラリ <a href="https://github.com/mikan/force-client-go">force-client-go</a> のご紹介です。</p>
 
-
-<figure class="center">
-    <a href="https://github.com/mikan/force-client-go">
-        <img src="/img/ss/github-force-client-go1.png" width="80%" />
-    </a>
-    
-    <figcaption>
-        <h4>force-client-go</h4>
-        
-    </figcaption>
-    
+<figure class="center"><a href="https://github.com/mikan/force-client-go">
+    <img src="/img/ss/github-force-client-go1.png" width="80%"/> </a><figcaption>
+            <h4>force-client-go</h4>
+        </figcaption>
 </figure>
 
 
@@ -630,23 +615,23 @@ err = client.Delete(context.Background(), sobject.ContactObjectName, id)
 </script>
 
 <script>
-var ENABLE_POPOVER = "", 
-EXPIRE_COOKIE = "", 
-SHOW_MODAL_TIMEOUT = "", 
-MOUSE_LEAVE = "", 
-MODAL_SIZE = "", 
-POST_URL = "", 
-SIGNUP_HEADER = "",
-HEADER_IMAGE = "",
-IMG_DESCRIPTION = "",
-SIGNUP_TEXT = "",
-INPUT_PLACEHOLDER = "",
-SUBMIT_BUTTON = "",
-SUCCESS_MESSAGE = "",
-ERROR_MESSAGE = "",
-OPTIN = "",
-COOKIE_NAME = "",
-CONTENTLANGUAGE = ""; 
+var ENABLE_POPOVER =  null , 
+EXPIRE_COOKIE =  null , 
+SHOW_MODAL_TIMEOUT =  null , 
+MOUSE_LEAVE =  null , 
+MODAL_SIZE =  null , 
+POST_URL =  null , 
+SIGNUP_HEADER =  null ,
+HEADER_IMAGE =  null ,
+IMG_DESCRIPTION =  null ,
+SIGNUP_TEXT =  null ,
+INPUT_PLACEHOLDER =  null ,
+SUBMIT_BUTTON =  null ,
+SUCCESS_MESSAGE =  null ,
+ERROR_MESSAGE =  null ,
+OPTIN =  null ,
+COOKIE_NAME =  null ,
+CONTENTLANGUAGE =  null ; 
 </script>
 
 

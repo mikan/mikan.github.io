@@ -75,7 +75,7 @@
 <link rel="canonical" href="https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.52" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -239,12 +239,8 @@
 <p>Amazon FreeRTOS は 2017/11/29 に Amazon のイベント re:Invent 2017 にて発表されたマイクロコントローラー向けリアルタイム OS のディストリビューションです。
 今回、とりあえず触ってみようと対応ボードを買ってきてセットアップしてみたので、その手順をご紹介。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20171212-2101.jpg" width="80%" />
-    
-    
+    <img src="/img/photo/20171212-2101.jpg" width="80%"/> 
 </figure>
 
 
@@ -274,12 +270,8 @@
 
 <p>今回チョイスしたのは ST のボードです (冒頭の写真)。<strong>STM32L4 Discovery kit IoT node</strong> と呼ばれていますが、正式名称は <strong>B-L475E-IOT01A</strong> で、もっと正確には B-L475E-IOT01A<strong>2</strong> となっています。<a href="https://www.mouser.jp/search/ProductDetail.aspx?r=511-B-L475E-IOT01A2">Mouser Electronics</a> で ¥6,440 で購入しました。私の注文は UPS でアメリカから発送されました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/ups1.png" width="50%" />
-    
-    
+    <img src="/img/ss/ups1.png" width="50%"/> 
 </figure>
 
 
@@ -288,17 +280,10 @@
 
 <p>この基盤の素晴らしいところは、いろんな IO やセンサーがごった煮になっているところです。載っているものを調べて図示してみました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/stm32iot1.png" />
-    
-    
-    <figcaption>
-        <h4>STM32L4 Discovery kit IoT node オモテ</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/stm32iot1.png"/> <figcaption>
+            <h4>STM32L4 Discovery kit IoT node オモテ</h4>
+        </figcaption>
 </figure>
 
 
@@ -319,12 +304,8 @@
 
 <p>なお、ドキュメントには <code>AWSFreeRTOSFullAccess</code> とありますが<sup>[参考文献5]</sup>、実際にはそんなポリシーはなく <code>AmazonFreeRTOSFullAccess</code> の間違いと思われます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/iam1.png" width="80%" />
-    
-    
+    <img src="/img/ss/iam1.png" width="80%"/> 
 </figure>
 
 
@@ -341,100 +322,64 @@
 
 <p>左側のメニューから [管理 -&gt; モノ] を選び [モノの登録]、既に何かある場合は [作成] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot1.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot1.png" width="80%"/> 
 </figure>
 
 
 <p>一番上の [単一のモノを作成する] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot2.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot2.png" width="80%"/> 
 </figure>
 
 
 <p>モノにキュートな名前を付けてあげましょう。終わったら一番下までスクロールして [次へ] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot3.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot3.png" width="80%"/> 
 </figure>
 
 
 <p>一番上の [証明書の作成] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot4.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot4.png" width="80%"/> 
 </figure>
 
 
 <p>証明書が発行されたら、一通りダウンロードしておきましょう。そして [有効化] を押すのを忘れずに！</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot5.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot5.png" width="80%"/> 
 </figure>
 
 
 <p>本当に有効化しましたか？ (しつこい) ボタンが [無効化] に変わっていれば大丈夫です。[ポリシーのアタッチ] に進みましょう。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot6.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot6.png" width="80%"/> 
 </figure>
 
 
 <p>おや、何もありませんね。大丈夫、あとで作ります。というわけでそのまま [モノの登録] に進みます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot7.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot7.png" width="80%"/> 
 </figure>
 
 
 <p>モノができました。これぞニッポンが誇るモノづくりです。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot8.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot8.png" width="80%"/> 
 </figure>
 
 
 <p>・・・失礼。さっき飛ばしたポリシーを作りましょう。左側のメニューから [安全性] -&gt; [ポリシー] を選びます。[ポリシーの作成]、既に何かある場合は [作成] に進んでください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot9.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot9.png" width="80%"/> 
 </figure>
 
 
@@ -483,34 +428,22 @@
 
 <p>リソース ARN 欄は自動で入力されますが、あくまでテンプレで<strong>サフィックス (replaceWithXXX 部分) の修正</strong>が重要です。表の通り修正してください。全て追加し終わったら [作成] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot10.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot10.png" width="80%"/> 
 </figure>
 
 
 <p>作成し終わったら左側メニューから [安全性] -&gt; [証明書] を選びます。いつのまにか (モノの定義をしたときに) 出来ている証明書を選び、アクションメニューから [ポリシーのアタッチ] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot11.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot11.png" width="80%"/> 
 </figure>
 
 
 <p>さっき作ったポリシーの名前は覚えていますか？忘れた？そんなあなたのために画面には既に先程作ったポリシーが現れています。チェックを入れて [アタッチ] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot12.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot12.png" width="80%"/> 
 </figure>
 
 
@@ -528,12 +461,8 @@
 
 <p>今回のお目当ては「Connect to AWS IoT - ST」です。ダウンロードします。高々 2.38 MB しかありません。ダウンロードしたら、ZIP を展開しておきましょう。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot13.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot13.png" width="80%"/> 
 </figure>
 
 
@@ -549,12 +478,8 @@
 
 <p>開くとこんな感じのウェブサイトが (ブラウザの「安全ではありません」警告と共に) 現れるはずです。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/openstm32-page1.png" width="80%" />
-    
-    
+    <img src="/img/ss/openstm32-page1.png" width="80%"/> 
 </figure>
 
 
@@ -562,12 +487,8 @@
 
 <p>しかも、https ではないサイトで入力フォームに必要事項を全て記入しないといけません。しかもしかも、MS メールだと弾かれるらしいです。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/openstm32-page2.png" width="80%" />
-    
-    
+    <img src="/img/ss/openstm32-page2.png" width="80%"/> 
 </figure>
 
 
@@ -579,12 +500,8 @@
 <p><a href="http://www.openstm32.org/Downloading+the+System+Workbench+for+STM32+installer">http://www.openstm32.org/Downloading+the+System+Workbench+for+STM32+installer</a></p>
 </blockquote>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/openstm32-page3.png" width="80%" />
-    
-    
+    <img src="/img/ss/openstm32-page3.png" width="80%"/> 
 </figure>
 
 
@@ -592,100 +509,64 @@
 
 <p>ダウンロードが終わったら、実行です。基本全部デフォルトで進めたほうが無難でしょう。もしエラーに遭遇したら <a href="http://www.openstm32.org/faq1">FAQ</a> が助けになるかもしれません。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb1.png" />
-    
-    
+    <img src="/img/ss/swb1.png"/> 
 </figure>
 
 
 <p>途中、インストール終盤では、ドライバをインストールする画面が別途出現します (Windows の場合)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb2.png" />
-    
-    
+    <img src="/img/ss/swb2.png"/> 
 </figure>
 
 
 <p>全てうまくいくと、こんな感じ。[Done] で閉じます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb3.png" />
-    
-    
+    <img src="/img/ss/swb3.png"/> 
 </figure>
 
 
 <p>スタートメニューやデスクトップショートカットやら作る設定 (デフォルト) なら、出来ているはずなのでそこから起動します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb4.png" />
-    
-    
+    <img src="/img/ss/swb4.png"/> 
 </figure>
 
 
 <p>起動スプラッシュはなかなか。起動途中に現れる Eclipse 同様のワークスペース選択設定は適当に。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb5.png" />
-    
-    
+    <img src="/img/ss/swb5.png"/> 
 </figure>
 
 
 <p>起動後も初回インストール処理のようなものが走ります。Eclipse IDE for C/C++ Developers がベースになっていることがわかります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb6.png" width="80%" />
-    
-    
+    <img src="/img/ss/swb6.png" width="80%"/> 
 </figure>
 
 
 <p>メニューから [File] -&gt; [Import] を選び、Import 画面にて [General] -&gt; [Existing Project into Workspace] を選んで [Next &gt;] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb7.png" />
-    
-    
+    <img src="/img/ss/swb7.png"/> 
 </figure>
 
 
 <p>このセクションの冒頭でダウンロードした ZIP の中にある <code>AmazonFreeRTOS/demos/st/stm32l475_discovery/ac6</code> ディレクトリを指定し、<code>aws_demos</code> プロジェクトが選択されていることを確認します。最後に [Finish]!</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb8.png" />
-    
-    
+    <img src="/img/ss/swb8.png"/> 
 </figure>
 
 
 <p>Welcome タブを閉じてプロジェクトファイルを眺めたあと、メニューから [Project] -&gt; [Build All] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb9.png" width="80%" />
-    
-    
+    <img src="/img/ss/swb9.png" width="80%"/> 
 </figure>
 
 
@@ -695,12 +576,8 @@
 
 <p>System Workbench の Project Explorer にて <code>aws_clientcredential.h</code> を開きます。<code>application_code/common_demos/include</code> にあります (ファイルシステム上のパスは <code>AmazonFreeRTOS/demos/common/include</code> です)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb10.png" width="80%" />
-    
-    
+    <img src="/img/ss/swb10.png" width="80%"/> 
 </figure>
 
 
@@ -756,12 +633,8 @@
 
 <p>AWS IoT のエンドポイントは、<a href="https://console.aws.amazon.com/iot">IoT コンソール</a>の左側メニューの下にある [設定] より確認できる値です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot14.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot14.png" width="80%"/> 
 </figure>
 
 
@@ -805,12 +678,8 @@
 
 <p>ファイルブラウザ (エクスプローラー) にて <code>AmazonFreeRTOS/demos/common/devmode_key_provisioning/CertificateConfigurationTool</code> にある <code>CertificateConfigurator.html</code> を開きます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/freertos1.png" width="80%" />
-    
-    
+    <img src="/img/ss/freertos1.png" width="80%"/> 
 </figure>
 
 
@@ -827,12 +696,8 @@
 
 <p>メニューから [Project] -&gt; [Build All] を選び、コンパイルエラーがないかチェックします。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb9.png" width="80%" />
-    
-    
+    <img src="/img/ss/swb9.png" width="80%"/> 
 </figure>
 
 
@@ -840,12 +705,8 @@
 
 <p>AWS IoT の左側のメニューより [テスト] を選び、MQTT サブスクリプションの設定を行います。トピック名 <code>freertos/demos/echo</code> とし、[MQTT ペイロード表示] は [ペイロードを文字列として表示 (より正確)] を選びます。最後に [トピックへの&hellip;] に進みます (何!? 英語は Subscribe to topic なので「トピックへのサブスクライブ」かな)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot15.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot15.png" width="80%"/> 
 </figure>
 
 
@@ -889,39 +750,24 @@
 </tbody>
 </table>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/stm32iot2.png" />
-    
-    
-    <figcaption>
-        <h4>STM32L4 Discovery kit IoT node ウラ</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/stm32iot2.png"/> <figcaption>
+            <h4>STM32L4 Discovery kit IoT node ウラ</h4>
+        </figcaption>
 </figure>
 
 
 <p>PC とボードを USB で接続します！繋ぐポートは USB ST-LINK (端っこの穴) です。向きに注意して優しくインサートしてください💕</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20171213-2032.jpg" width="80%" />
-    
-    
+    <img src="/img/photo/20171213-2032.jpg" width="80%"/> 
 </figure>
 
 
 <p>System Workbench のメニューで [Run] -&gt; [Run Configurations&hellip;] を選び、左側ペインで [Ac6 STM32 Debugging] -&gt; [aws_demos Debug] を選びます。さらに [Debugger] タブを開き、中腹にある [Show generator options&hellip;] を押します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/swb11.png" />
-    
-    
+    <img src="/img/ss/swb11.png"/> 
 </figure>
 
 
@@ -947,23 +793,15 @@ shutdown command invoked
 
 <p>途中 ERROR とかも出てるけど大丈夫なんか・・・？😇 でも Verifyied OK とか言ってるし・・・？おそるおそる、シリアルポート端末アプリを開き (ここでは Cool Term)、Baudrate を 115200 にしてつなぎにいきます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/coolterm3.png" />
-    
-    
+    <img src="/img/ss/coolterm3.png"/> 
 </figure>
 
 
 <p>Cool Term は [OK] を押したあと、[Connect] を押す必要があります。繋がったら、ボードの <strong>リセットボタン</strong> (黒い物理ボタン) を押します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/coolterm4.png" />
-    
-    
+    <img src="/img/ss/coolterm4.png"/> 
 </figure>
 
 
@@ -971,12 +809,8 @@ shutdown command invoked
 
 <p>最初に開いておいた AWS IoT のトピック画面を見てみましょう！</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot16.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot16.png" width="80%"/> 
 </figure>
 
 
@@ -988,23 +822,15 @@ shutdown command invoked
 
 <p>さて、問題に直面したあなた (っていうかわたし) はより深い知見を得る絶好のチャンスです。切り分けの基本はまず事実を集めることです。というわけでログの確認から。例によって、AWS IoT は CloudWatch によるログ集計が可能です。が、デフォルトでオフになっています。有効にするには、左側メニューの下部にある [設定] から [ログ] ペインを確認します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot17.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot17.png" width="80%"/> 
 </figure>
 
 
 <p>レベルは [デバッグ]、ロールは新規に作ります。名前はなんでも良いです。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot18.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot18.png" width="80%"/> 
 </figure>
 
 
@@ -1018,34 +844,22 @@ shutdown command invoked
 
 <p>[メトリクスの参照] を選択します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/cloudwatch1.png" width="80%" />
-    
-    
+    <img src="/img/ss/cloudwatch1.png" width="80%"/> 
 </figure>
 
 
 <p>お、[IoT] ができていますね。選択し、続けて [プロトコルメトリクス] を選択します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/cloudwatch2.png" width="80%" />
-    
-    
+    <img src="/img/ss/cloudwatch2.png" width="80%"/> 
 </figure>
 
 
 <p>MQTT や HTTP などいくつかのメトリクスが並んでいるので、まずは MQTT 系を全てチェックしグラフを眺めます。期待したものがなければ AWS IoT と疎通ができていないことが推測できますし、図のように <code>Connect.AuthError</code> が頻発しているときは、疎通はできているがポリシー違反などで弾かれていると推測できます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/cloudwatch3.png" width="80%" />
-    
-    
+    <img src="/img/ss/cloudwatch3.png" width="80%"/> 
 </figure>
 
 
@@ -1319,23 +1133,23 @@ shutdown command invoked
 </script>
 
 <script>
-var ENABLE_POPOVER = "", 
-EXPIRE_COOKIE = "", 
-SHOW_MODAL_TIMEOUT = "", 
-MOUSE_LEAVE = "", 
-MODAL_SIZE = "", 
-POST_URL = "", 
-SIGNUP_HEADER = "",
-HEADER_IMAGE = "",
-IMG_DESCRIPTION = "",
-SIGNUP_TEXT = "",
-INPUT_PLACEHOLDER = "",
-SUBMIT_BUTTON = "",
-SUCCESS_MESSAGE = "",
-ERROR_MESSAGE = "",
-OPTIN = "",
-COOKIE_NAME = "",
-CONTENTLANGUAGE = ""; 
+var ENABLE_POPOVER =  null , 
+EXPIRE_COOKIE =  null , 
+SHOW_MODAL_TIMEOUT =  null , 
+MOUSE_LEAVE =  null , 
+MODAL_SIZE =  null , 
+POST_URL =  null , 
+SIGNUP_HEADER =  null ,
+HEADER_IMAGE =  null ,
+IMG_DESCRIPTION =  null ,
+SIGNUP_TEXT =  null ,
+INPUT_PLACEHOLDER =  null ,
+SUBMIT_BUTTON =  null ,
+SUCCESS_MESSAGE =  null ,
+ERROR_MESSAGE =  null ,
+OPTIN =  null ,
+COOKIE_NAME =  null ,
+CONTENTLANGUAGE =  null ; 
 </script>
 
 
