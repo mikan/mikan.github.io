@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
-    <lastBuildDate>Fri, 30 Nov 2018 00:20:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tools</title>
+      <link>https://mikan.github.io/tools/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0900</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tools/</guid>
+      <description>mikan が作った道具箱です。ご自由にお使いください。 文字数カウンター ライトニングトークタイマー</description>
+    </item>
     
     <item>
       <title>Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</title>
@@ -244,7 +253,7 @@
       <pubDate>Fri, 03 Nov 2017 00:09:42 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/about/</guid>
-      <description>Yutaka Kato / 加藤 裕 @ &amp;ldquo;IoT フルスタック&amp;rdquo; エンジニア (自称) GitHub: mikan / LinkedIn: yutakakato / Email: mikan@aosn.ws 開発経験 2018-present: 研究開発エンジニア @ 日系IoTスタートアップ 農業向け IoT</description>
+      <description>Yutaka Kato / 加藤 裕 @ &amp;ldquo;IoT フルスタック&amp;rdquo; エンジニア (自称) GitHub: mikan / LinkedIn: yutakakato / Email: mikan@aomikan.org 開発経験 2018-present: 研究開発エンジニア @ 日系IoTスタートアップ 農業向け IoT</description>
     </item>
     
     <item>
@@ -253,7 +262,7 @@
       <pubDate>Fri, 03 Nov 2017 00:09:42 +0900</pubDate>
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/seminars/</guid>
-      <description>mikan が参加した社外の勉強会・セミナーの記録です。 凡例: Sign Desc. 📣 主催・幹事 👔 スタッフ 🎤 発表・登壇 🍺 懇親会参加 2019 Date Subject Venue Capacity 2019/07/27 Heroku Meetup #25🍺 TRAVEL HUB MIX (東京)</description>
+      <description>mikan が参加した社外の勉強会・セミナーの記録です。 凡例: Sign Desc. 📣 主催・幹事 👔 スタッフ 🎤 発表・登壇 🍺 懇親会参加 2019 Date Subject Venue Capacity 2019/08/22 JAWS-UG IoT専門支部 19.08 アマゾン</description>
     </item>
     
     <item>
@@ -263,6 +272,24 @@
       <author>mikan@aosn.ws (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/03/hello-world/</guid>
       <description>突然ですが、技術ブログを作ってみました！ 実は 3～4 年前まで別の技術ブログを持っていました。しかし WordPress.com の操作ミスで消してしまったのです・・・。 あ</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mikan.github.io/tool/charcount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tool/charcount/</guid>
+      <description>Character Counter function count(form, val) { &#34;use strict&#34;; var wis, wos, line; if (!val) return; wis = val.replace(/\n/g, &#34;&#34;); form.within_space.value = wis.length; wos = val.replace(/\s| /g, &#34;&#34;); form.without_space.value = wos.length; line = val.match(/\n/g); form.lines.value = line &amp;&amp; line.length + 1 || &#34;1&#34;; } body { font-size: 100%; width: 50%; margin: 10px auto; text-align: center; } textarea { width: 100%; height: 50%; } table { color: black; background: lavender; margin: 10px</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://mikan.github.io/tool/timer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tool/timer/</guid>
+      <description>LT Timer &#34;use strict&#34;; var COLOR = { NORMAL: &#34;cyan&#34;, WARNING: &#34;salmon&#34;, ERROR: &#34;red&#34; }; var defaultM = 5; var defaultS = 0; var over = false; var t; window.onload = function() { document.getElementById(&#34;timer&#34;).style.color = COLOR.NORMAL; }; function startCounting() { over = false; document.getElementById(&#34;start&#34;).disabled = true; document.getElementById(&#34;stop&#34;).disabled = false; t = setInterval(&#34;countDown()&#34;, 1000); } function stopCounting() { document.getElementById(&#34;start&#34;).disabled = false; document.getElementById(&#34;stop&#34;).disabled = true; clearInterval(t); } function resetCounter() { over =</description>
     </item>
     
   </channel>
