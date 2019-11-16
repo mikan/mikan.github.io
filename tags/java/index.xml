@@ -6,8 +6,8 @@
     <description>Recent content in Java on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Fri, 24 Aug 2018 14:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</title>
       <link>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</link>
       <pubDate>Fri, 24 Aug 2018 14:00:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</guid>
       <description>Jackson といえば、Java 界隈ではとても有名な JSON ライブラリですが、 Kotlin (for JVM) でもそのパワーを存分に発揮することができます。特にクラスと JSON をマッピングす</description>
     </item>
@@ -26,7 +26,7 @@
       <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
       <link>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</link>
       <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</guid>
       <description>先日、契約している VPS (VULTR VPS 東京リージョン) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。</description>
     </item>
@@ -35,7 +35,7 @@
       <title>JJUG CCC 2017 Fall</title>
       <link>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</link>
       <pubDate>Sun, 19 Nov 2017 23:07:42 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</guid>
       <description>日本最大の Java コミュニティカンファレンス、JJUG CCC (Japan Java User Group - Cross Community Conference) が今季もベルサール新宿グランドで開催されました。年 2 回開催の、秋バージョン</description>
     </item>
@@ -44,7 +44,7 @@
       <title>GitHub OAuth の org スコープの適用と運用</title>
       <link>https://mikan.github.io/2017/11/13/operate-github-org-scope/</link>
       <pubDate>Mon, 13 Nov 2017 20:34:21 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/13/operate-github-org-scope/</guid>
       <description>GitHub の OAuth をするとき、様々な追加権限の要求を突きつけられた経験はありますか？ありますよね？例えばこんな画面。 今回はそんな認可画面遷移の一瞬にまつ</description>
     </item>

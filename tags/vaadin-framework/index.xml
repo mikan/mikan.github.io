@@ -6,8 +6,8 @@
     <description>Recent content in Vaadin Framework on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Mon, 13 Nov 2017 20:34:21 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/vaadin-framework/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>GitHub OAuth の org スコープの適用と運用</title>
       <link>https://mikan.github.io/2017/11/13/operate-github-org-scope/</link>
       <pubDate>Mon, 13 Nov 2017 20:34:21 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/13/operate-github-org-scope/</guid>
       <description>GitHub の OAuth をするとき、様々な追加権限の要求を突きつけられた経験はありますか？ありますよね？例えばこんな画面。 今回はそんな認可画面遷移の一瞬にまつ</description>
     </item>

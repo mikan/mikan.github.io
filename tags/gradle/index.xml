@@ -6,8 +6,8 @@
     <description>Recent content in Gradle on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Fri, 24 Aug 2018 14:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/gradle/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</title>
       <link>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</link>
       <pubDate>Fri, 24 Aug 2018 14:00:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</guid>
       <description>Jackson といえば、Java 界隈ではとても有名な JSON ライブラリですが、 Kotlin (for JVM) でもそのパワーを存分に発揮することができます。特にクラスと JSON をマッピングす</description>
     </item>
@@ -26,7 +26,7 @@
       <title>Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</title>
       <link>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</link>
       <pubDate>Sat, 28 Jul 2018 19:40:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</guid>
       <description>2018年3月1日に Spring Boot 2.0 がリリースされてから半年がたち[参考文献1]、Kotlin の正式サポートや Spring WebFlux によるリアクティブ Web プログラミングと</description>
     </item>
@@ -35,7 +35,7 @@
       <title>Kotlin で始める AWS Greengrass</title>
       <link>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</link>
       <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</guid>
       <description>AWS Greengrass という、IoT 機器のローカルで AWS Lambda の関数を実行できて、他にもあんなことやこんなことができる素晴らしいサービスをご存知でしょうか？ Greengrass があれ</description>
     </item>
@@ -44,7 +44,7 @@
       <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
       <link>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</link>
       <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</guid>
       <description>先日、契約している VPS (VULTR VPS 東京リージョン) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。</description>
     </item>
@@ -53,7 +53,7 @@
       <title>PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換</title>
       <link>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</link>
       <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</guid>
       <description>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの AsciiDoc 化を推し進めています。 私個人は今まで Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていた</description>
     </item>

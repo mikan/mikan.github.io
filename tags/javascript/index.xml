@@ -6,8 +6,8 @@
     <description>Recent content in Javascript on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Sat, 14 Apr 2018 19:46:31 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
       <link>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</link>
       <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</guid>
       <description>先日、契約している VPS (VULTR VPS 東京リージョン) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。</description>
     </item>
@@ -26,7 +26,7 @@
       <title>AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</title>
       <link>https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/</link>
       <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/</guid>
       <description>1月15日、ついに待ちに待った AWS Lambda Go がリリースされました！🎉 今年最初のブログ記事はその活用例のご紹介をしたいと思います。 AWS Lambda は言わずと知れた</description>
     </item>

@@ -6,8 +6,8 @@
     <description>Recent content in Openid Connect on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Fri, 30 Nov 2018 00:20:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/openid-connect/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</title>
       <link>https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/</link>
       <pubDate>Fri, 30 Nov 2018 00:20:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/</guid>
       <description>2018年9月27日にリリースされた Spring Security 5.1[参考文献1]では多くの機能追加が行われました。 中でも注目なのは、 WebFlux に OAuth 2 サポートが加わったこ</description>
     </item>
@@ -26,7 +26,7 @@
       <title>oauth2_proxy と Auth0 を用いた Nginx のお手軽 OAuth 化</title>
       <link>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</link>
       <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</guid>
       <description>Nginx でホストしているページや Web アプリにちょっとした認証をかけたいとき、簡単だからと BASIC 認証をかけて運用しているケースは少なくないと思います。 例え</description>
     </item>

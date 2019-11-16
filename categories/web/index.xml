@@ -6,8 +6,8 @@
     <description>Recent content in Web on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Fri, 30 Nov 2018 00:20:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</title>
       <link>https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/</link>
       <pubDate>Fri, 30 Nov 2018 00:20:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/</guid>
       <description>2018年9月27日にリリースされた Spring Security 5.1[参考文献1]では多くの機能追加が行われました。 中でも注目なのは、 WebFlux に OAuth 2 サポートが加わったこ</description>
     </item>
@@ -26,7 +26,7 @@
       <title>Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</title>
       <link>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</link>
       <pubDate>Fri, 24 Aug 2018 14:00:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</guid>
       <description>Jackson といえば、Java 界隈ではとても有名な JSON ライブラリですが、 Kotlin (for JVM) でもそのパワーを存分に発揮することができます。特にクラスと JSON をマッピングす</description>
     </item>
@@ -35,7 +35,7 @@
       <title>Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</title>
       <link>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</link>
       <pubDate>Sat, 28 Jul 2018 19:40:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</guid>
       <description>2018年3月1日に Spring Boot 2.0 がリリースされてから半年がたち[参考文献1]、Kotlin の正式サポートや Spring WebFlux によるリアクティブ Web プログラミングと</description>
     </item>
@@ -44,7 +44,7 @@
       <title>oauth2_proxy と Auth0 を用いた Nginx のお手軽 OAuth 化</title>
       <link>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</link>
       <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</guid>
       <description>Nginx でホストしているページや Web アプリにちょっとした認証をかけたいとき、簡単だからと BASIC 認証をかけて運用しているケースは少なくないと思います。 例え</description>
     </item>
@@ -53,7 +53,7 @@
       <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
       <link>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</link>
       <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</guid>
       <description>先日、契約している VPS (VULTR VPS 東京リージョン) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。</description>
     </item>
@@ -62,7 +62,7 @@
       <title>Hangouts Chat の Incoming Webhook を Go で叩く</title>
       <link>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</link>
       <pubDate>Thu, 15 Mar 2018 22:41:43 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</guid>
       <description>今月頭の 3月1日、Google が Hangouts Chat の正式版をアナウンスしました。 IT 系ニュースメディアは早速「Slack のライバル」などとセンセーショナルに</description>
     </item>
@@ -71,7 +71,7 @@
       <title>AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</title>
       <link>https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/</link>
       <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/</guid>
       <description>1月15日、ついに待ちに待った AWS Lambda Go がリリースされました！🎉 今年最初のブログ記事はその活用例のご紹介をしたいと思います。 AWS Lambda は言わずと知れた</description>
     </item>
@@ -80,7 +80,7 @@
       <title>GitHub OAuth の org スコープの適用と運用</title>
       <link>https://mikan.github.io/2017/11/13/operate-github-org-scope/</link>
       <pubDate>Mon, 13 Nov 2017 20:34:21 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/13/operate-github-org-scope/</guid>
       <description>GitHub の OAuth をするとき、様々な追加権限の要求を突きつけられた経験はありますか？ありますよね？例えばこんな画面。 今回はそんな認可画面遷移の一瞬にまつ</description>
     </item>
@@ -89,7 +89,7 @@
       <title>Hugo でカスタム CSS を適用して画像の配置をイジる</title>
       <link>https://mikan.github.io/2017/11/03/centering-figures-in-hugo/</link>
       <pubDate>Fri, 03 Nov 2017 18:19:45 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/03/centering-figures-in-hugo/</guid>
       <description>Hugo で画像を真ん中に寄せたくなったのだけど方法がわからなかったので調べてみました。 Jekyll (正確には Klamdown) の場合は、 {:refdef} で対象を囲むことでなんでもできちゃ</description>
     </item>
@@ -98,7 +98,7 @@
       <title>Hugo を GitHub Pages でホストする方法を考える</title>
       <link>https://mikan.github.io/2017/11/03/hugo-on-gh-pages/</link>
       <pubDate>Fri, 03 Nov 2017 16:25:35 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/03/hugo-on-gh-pages/</guid>
       <description>今回本ブログを作るにあたって採用した Hugo について、GitHub Pages でホスティングするにあたって検討した内容をまとめてみます。 Hugo は Jekyll と違い GitHub でビル</description>
     </item>

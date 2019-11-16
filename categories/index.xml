@@ -6,8 +6,8 @@
     <description>Recent content in Categories on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     
 	<atom:link href="https://mikan.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -16,7 +16,7 @@
       <title>Iot</title>
       <link>https://mikan.github.io/categories/iot/</link>
       <pubDate>Mon, 22 Oct 2018 23:10:56 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/categories/iot/</guid>
       <description></description>
     </item>
@@ -25,7 +25,7 @@
       <title>Life</title>
       <link>https://mikan.github.io/categories/life/</link>
       <pubDate>Wed, 26 Sep 2018 22:32:02 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/categories/life/</guid>
       <description></description>
     </item>
@@ -34,7 +34,7 @@
       <title>Salesforce</title>
       <link>https://mikan.github.io/categories/salesforce/</link>
       <pubDate>Thu, 07 Dec 2017 00:19:59 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/categories/salesforce/</guid>
       <description></description>
     </item>
@@ -43,7 +43,7 @@
       <title>Tools</title>
       <link>https://mikan.github.io/categories/tools/</link>
       <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/categories/tools/</guid>
       <description></description>
     </item>
@@ -52,7 +52,7 @@
       <title>Web</title>
       <link>https://mikan.github.io/categories/web/</link>
       <pubDate>Fri, 30 Nov 2018 00:20:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/categories/web/</guid>
       <description></description>
     </item>

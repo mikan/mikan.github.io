@@ -6,8 +6,8 @@
     <description>Recent content in Gsuite on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Thu, 15 Mar 2018 22:41:43 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/gsuite/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Hangouts Chat の Incoming Webhook を Go で叩く</title>
       <link>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</link>
       <pubDate>Thu, 15 Mar 2018 22:41:43 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</guid>
       <description>今月頭の 3月1日、Google が Hangouts Chat の正式版をアナウンスしました。 IT 系ニュースメディアは早速「Slack のライバル」などとセンセーショナルに</description>
     </item>
@@ -26,7 +26,7 @@
       <title>G Suite を IdP にした Salesforce の SAML SSO の有効化</title>
       <link>https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/</link>
       <pubDate>Thu, 07 Dec 2017 00:19:59 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/</guid>
       <description>唐突に G Suite と Salesforce を SAML で連携する方法をご紹介。 G Suite と Salesforce は共に SAML で SSO (シングルサインオン) 連携できる機能が標準で備わっており、またどちらも IdP (認証</description>
     </item>

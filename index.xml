@@ -6,8 +6,8 @@
     <description>Recent content on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Tools</title>
       <link>https://mikan.github.io/tools/</link>
       <pubDate>Thu, 22 Aug 2019 00:00:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tools/</guid>
       <description>mikan が作った道具箱です。ご自由にお使いください。 文字数カウンター ライトニングトークタイマー</description>
     </item>
@@ -26,7 +26,7 @@
       <title>Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</title>
       <link>https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/</link>
       <pubDate>Fri, 30 Nov 2018 00:20:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/</guid>
       <description>2018年9月27日にリリースされた Spring Security 5.1[参考文献1]では多くの機能追加が行われました。 中でも注目なのは、 WebFlux に OAuth 2 サポートが加わったこ</description>
     </item>
@@ -35,7 +35,7 @@
       <title>AWS IoT MQTT の 443 ポートへ Go からアクセスする</title>
       <link>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</link>
       <pubDate>Mon, 22 Oct 2018 23:10:56 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</guid>
       <description>久々にお戯れではないホンモノの IoT の世界に戻って参りました。 大変いきいきしております。ハイ。 早速 AWS IoT × Go 言語で新シーズンの最初の記事を飾ろうと</description>
     </item>
@@ -44,7 +44,7 @@
       <title>AOSN読書会 年次活動報告 2018</title>
       <link>https://mikan.github.io/2018/09/26/aosn-workshop-yearly-report-2018/</link>
       <pubDate>Wed, 26 Sep 2018 22:32:02 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/09/26/aosn-workshop-yearly-report-2018/</guid>
       <description>先日、私が世話人？を務めるオンライン読書会「AOSN読書会」の合宿が北海道の登別温泉で開催されました。 合宿は毎年開催しており、温泉と地ビール</description>
     </item>
@@ -53,7 +53,7 @@
       <title>株式会社ウフルを退職します</title>
       <link>https://mikan.github.io/2018/09/15/resign-uhuru-corporation/</link>
       <pubDate>Sat, 15 Sep 2018 06:13:13 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/09/15/resign-uhuru-corporation/</guid>
       <description>先日、在籍する株式会社ウフルに退職願を出してきました。 せっかくなのでこの会社で得られた色々な経験を記しておきます。 得られた経験 Salesforce ウフルは今で</description>
     </item>
@@ -62,7 +62,7 @@
       <title>Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</title>
       <link>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</link>
       <pubDate>Fri, 24 Aug 2018 14:00:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</guid>
       <description>Jackson といえば、Java 界隈ではとても有名な JSON ライブラリですが、 Kotlin (for JVM) でもそのパワーを存分に発揮することができます。特にクラスと JSON をマッピングす</description>
     </item>
@@ -71,7 +71,7 @@
       <title>Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</title>
       <link>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</link>
       <pubDate>Sat, 28 Jul 2018 19:40:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/</guid>
       <description>2018年3月1日に Spring Boot 2.0 がリリースされてから半年がたち[参考文献1]、Kotlin の正式サポートや Spring WebFlux によるリアクティブ Web プログラミングと</description>
     </item>
@@ -80,7 +80,7 @@
       <title>Kotlin で始める AWS Greengrass</title>
       <link>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</link>
       <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</guid>
       <description>AWS Greengrass という、IoT 機器のローカルで AWS Lambda の関数を実行できて、他にもあんなことやこんなことができる素晴らしいサービスをご存知でしょうか？ Greengrass があれ</description>
     </item>
@@ -89,7 +89,7 @@
       <title>oauth2_proxy と Auth0 を用いた Nginx のお手軽 OAuth 化</title>
       <link>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</link>
       <pubDate>Wed, 23 May 2018 20:42:54 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/</guid>
       <description>Nginx でホストしているページや Web アプリにちょっとした認証をかけたいとき、簡単だからと BASIC 認証をかけて運用しているケースは少なくないと思います。 例え</description>
     </item>
@@ -98,7 +98,7 @@
       <title>Spring Boot と Node.js の Heroku お引越し大作戦</title>
       <link>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</link>
       <pubDate>Sat, 14 Apr 2018 19:46:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/04/14/migrate-web-apps-to-heroku-for-spring-boot-and-node-js/</guid>
       <description>先日、契約している VPS (VULTR VPS 東京リージョン) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。</description>
     </item>
@@ -107,7 +107,7 @@
       <title>Hangouts Chat の Incoming Webhook を Go で叩く</title>
       <link>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</link>
       <pubDate>Thu, 15 Mar 2018 22:41:43 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/03/15/writing-hangouts-chat-incoming-webhook-with-go/</guid>
       <description>今月頭の 3月1日、Google が Hangouts Chat の正式版をアナウンスしました。 IT 系ニュースメディアは早速「Slack のライバル」などとセンセーショナルに</description>
     </item>
@@ -116,7 +116,7 @@
       <title>PlantUML 埋め込み AsciiDoc の Gradle を用いた HTML 一括変換</title>
       <link>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</link>
       <pubDate>Fri, 23 Feb 2018 22:16:01 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/02/23/convert-plantuml-embedded-asciidoc-to-html-with-gradle/</guid>
       <description>最近仕事で機能仕様書や設定手順書などの開発ドキュメントの AsciiDoc 化を推し進めています。 私個人は今まで Markdown や reStructuredText (reST) を用いた設計文書の記述をよくやっていた</description>
     </item>
@@ -125,7 +125,7 @@
       <title>AWS Lambda Go と Chart.js で実現する静的サイトのデータビジュアライゼーション</title>
       <link>https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/</link>
       <pubDate>Tue, 23 Jan 2018 21:19:41 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/</guid>
       <description>1月15日、ついに待ちに待った AWS Lambda Go がリリースされました！🎉 今年最初のブログ記事はその活用例のご紹介をしたいと思います。 AWS Lambda は言わずと知れた</description>
     </item>
@@ -134,7 +134,7 @@
       <title>Mashup Awards 2017</title>
       <link>https://mikan.github.io/2017/12/19/mashup-awards-2017/</link>
       <pubDate>Tue, 19 Dec 2017 01:02:26 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/12/19/mashup-awards-2017/</guid>
       <description>12&amp;frasl;16 に開催された Mashup Awards 2017 の展示会兼プレゼン大会兼授賞式である FESTA 2017 by Mashup Awards に参加してきました。 これがもう、ものすごくエキサイティングな集いだったので</description>
     </item>
@@ -143,7 +143,7 @@
       <title>STM32L4 Discovery Kit IoT Node に Amazon FreeRTOS を導入する</title>
       <link>https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/</link>
       <pubDate>Wed, 13 Dec 2017 23:31:44 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/12/13/setup-amazon-freertos-on-stm32l4-discovery-kit-iot-node/</guid>
       <description>Amazon FreeRTOS は 2017/11/29 に Amazon のイベント re:Invent 2017 にて発表されたマイクロコントローラー向けリアルタイム OS のディストリビューションです。 今回、とりあえず触ってみようと</description>
     </item>
@@ -152,7 +152,7 @@
       <title>G Suite を IdP にした Salesforce の SAML SSO の有効化</title>
       <link>https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/</link>
       <pubDate>Thu, 07 Dec 2017 00:19:59 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/12/07/enabling-saml-based-sso-to-salesforce-with-g-suite-as-idp/</guid>
       <description>唐突に G Suite と Salesforce を SAML で連携する方法をご紹介。 G Suite と Salesforce は共に SAML で SSO (シングルサインオン) 連携できる機能が標準で備わっており、またどちらも IdP (認証</description>
     </item>
@@ -161,7 +161,7 @@
       <title>Bookshelf</title>
       <link>https://mikan.github.io/bookshelf/</link>
       <pubDate>Wed, 06 Dec 2017 00:46:42 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/bookshelf/</guid>
       <description>mikan の本棚にある本たち。技術書や自己啓発本に限ります。サブタイトルは省略しています。 上付き文字は読書会課題本を示します (AOSN AOSN読書会, JRBOF Ja</description>
     </item>
@@ -170,7 +170,7 @@
       <title>PMD Apex / PMD Visualforce で Salesforce のコードを静的解析する</title>
       <link>https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/</link>
       <pubDate>Tue, 28 Nov 2017 21:42:48 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/28/analyze-salesforce-codes-with-pmd-apex-and-pmd-visualforce/</guid>
       <description>Salesforce のカスタマイズで用いる独自言語、Apex と Visualforce のコードを静的解析できるツール PMD Apex / PMD Visualforce を使ってみたので、ハマりどころや CI の工夫などをまとめて</description>
     </item>
@@ -179,7 +179,7 @@
       <title>force-client-go: Go で Salesforce の REST API を叩く</title>
       <link>https://mikan.github.io/2017/11/24/introducing-force-client-go/</link>
       <pubDate>Fri, 24 Nov 2017 00:34:56 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/24/introducing-force-client-go/</guid>
       <description>Go 言語 (Golang) で Salesforce の Force.com REST API を叩く方法と、それらを簡単に扱うためにクライアントライブラリ force-client-go を開発したので、そのご紹介。 Salesforce は CRM を始めとした様々な SaaS を提</description>
     </item>
@@ -188,7 +188,7 @@
       <title>Go の dep やら govendor やらを GitLab CI で回す</title>
       <link>https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/</link>
       <pubDate>Mon, 20 Nov 2017 22:46:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/20/working-go-dep-and-govendor-on-gitlab-ci/</guid>
       <description>今回は Go 言語 (Golang) の CI 環境に関する備忘録。難易度は低いのですが、カンペなしですらすら書けないので、あとで再利用するためにソースをぺったんするだけ</description>
     </item>
@@ -197,7 +197,7 @@
       <title>JJUG CCC 2017 Fall</title>
       <link>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</link>
       <pubDate>Sun, 19 Nov 2017 23:07:42 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</guid>
       <description>日本最大の Java コミュニティカンファレンス、JJUG CCC (Japan Java User Group - Cross Community Conference) が今季もベルサール新宿グランドで開催されました。年 2 回開催の、秋バージョン</description>
     </item>
@@ -206,7 +206,7 @@
       <title>GitHub OAuth の org スコープの適用と運用</title>
       <link>https://mikan.github.io/2017/11/13/operate-github-org-scope/</link>
       <pubDate>Mon, 13 Nov 2017 20:34:21 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/13/operate-github-org-scope/</guid>
       <description>GitHub の OAuth をするとき、様々な追加権限の要求を突きつけられた経験はありますか？ありますよね？例えばこんな画面。 今回はそんな認可画面遷移の一瞬にまつ</description>
     </item>
@@ -215,7 +215,7 @@
       <title>みちびき対応 GPS モジュール PA6C を Mbed で使う</title>
       <link>https://mikan.github.io/2017/11/07/using-pa6c-with-mbed/</link>
       <pubDate>Tue, 07 Nov 2017 20:34:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/07/using-pa6c-with-mbed/</guid>
       <description>前回の記事に引き続き Mbed ネタです。今回ご紹介するのはコチラ！ PA6C Breakout基板 (実装済み) みちびき対応と謳われている GPS モジュール PA6C (FGPMMOPA6C) が載っ</description>
     </item>
@@ -224,7 +224,7 @@
       <title>ESP-WROOM-02 を Mbed で使う</title>
       <link>https://mikan.github.io/2017/11/06/using-esp-wroom-02-with-mbed/</link>
       <pubDate>Mon, 06 Nov 2017 22:49:31 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/06/using-esp-wroom-02-with-mbed/</guid>
       <description>先日 (2017/10/21)、長野県の伊那市で「第3回 伊那市 LoRaWAN ハッカソン」というのが開かれまして、初参加してきました。 6人1チームで全6チー</description>
     </item>
@@ -233,7 +233,7 @@
       <title>Hugo でカスタム CSS を適用して画像の配置をイジる</title>
       <link>https://mikan.github.io/2017/11/03/centering-figures-in-hugo/</link>
       <pubDate>Fri, 03 Nov 2017 18:19:45 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/03/centering-figures-in-hugo/</guid>
       <description>Hugo で画像を真ん中に寄せたくなったのだけど方法がわからなかったので調べてみました。 Jekyll (正確には Klamdown) の場合は、 {:refdef} で対象を囲むことでなんでもできちゃ</description>
     </item>
@@ -242,7 +242,7 @@
       <title>Hugo を GitHub Pages でホストする方法を考える</title>
       <link>https://mikan.github.io/2017/11/03/hugo-on-gh-pages/</link>
       <pubDate>Fri, 03 Nov 2017 16:25:35 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/03/hugo-on-gh-pages/</guid>
       <description>今回本ブログを作るにあたって採用した Hugo について、GitHub Pages でホスティングするにあたって検討した内容をまとめてみます。 Hugo は Jekyll と違い GitHub でビル</description>
     </item>
@@ -251,7 +251,7 @@
       <title>About</title>
       <link>https://mikan.github.io/about/</link>
       <pubDate>Fri, 03 Nov 2017 00:09:42 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/about/</guid>
       <description>Yutaka Kato / 加藤 裕 @ &amp;ldquo;IoT フルスタック&amp;rdquo; エンジニア (自称) GitHub: mikan / LinkedIn: yutakakato / Email: mikan@aomikan.org 開発経験 2018-present: 研究開発エンジニア @ 日系IoTスタートアップ 農業向け IoT</description>
     </item>
@@ -260,16 +260,16 @@
       <title>Seminars</title>
       <link>https://mikan.github.io/seminars/</link>
       <pubDate>Fri, 03 Nov 2017 00:09:42 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/seminars/</guid>
-      <description>mikan が参加した社外の勉強会・セミナーの記録です。 凡例: Sign Desc. 📣 主催・幹事 👔 スタッフ 🎤 発表・登壇 🍺 懇親会参加 2019 Date Subject Venue Capacity 2019/08/22 JAWS-UG IoT専門支部 19.08 アマゾン</description>
+      <description>mikan が参加した社外の勉強会・セミナーの記録です。 凡例: Sign Desc. 📣 主催・幹事 👔 スタッフ 🎤 発表・登壇 🍺 懇親会参加 2019 Date Subject Venue Capacity 2019/11/09 Rakuten Technology Conference 2019 楽天 (二子玉川) 1500</description>
     </item>
     
     <item>
       <title>技術ブログを作ってみた</title>
       <link>https://mikan.github.io/2017/11/03/hello-world/</link>
       <pubDate>Fri, 03 Nov 2017 00:05:15 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/03/hello-world/</guid>
       <description>突然ですが、技術ブログを作ってみました！ 実は 3～4 年前まで別の技術ブログを持っていました。しかし WordPress.com の操作ミスで消してしまったのです・・・。 あ</description>
     </item>
@@ -278,7 +278,7 @@
       <title></title>
       <link>https://mikan.github.io/tool/charcount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tool/charcount/</guid>
       <description>Character Counter function count(form, val) { &#34;use strict&#34;; var wis, wos, line; if (!val) return; wis = val.replace(/\n/g, &#34;&#34;); form.within_space.value = wis.length; wos = val.replace(/\s| /g, &#34;&#34;); form.without_space.value = wos.length; line = val.match(/\n/g); form.lines.value = line &amp;&amp; line.length + 1 || &#34;1&#34;; } body { font-size: 100%; width: 50%; margin: 10px auto; text-align: center; } textarea { width: 100%; height: 50%; } table { color: black; background: lavender; margin: 10px</description>
     </item>
@@ -287,7 +287,7 @@
       <title></title>
       <link>https://mikan.github.io/tool/timer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tool/timer/</guid>
       <description>LT Timer &#34;use strict&#34;; var COLOR = { NORMAL: &#34;cyan&#34;, WARNING: &#34;salmon&#34;, ERROR: &#34;red&#34; }; var defaultM = 5; var defaultS = 0; var over = false; var t; window.onload = function() { document.getElementById(&#34;timer&#34;).style.color = COLOR.NORMAL; }; function startCounting() { over = false; document.getElementById(&#34;start&#34;).disabled = true; document.getElementById(&#34;stop&#34;).disabled = false; t = setInterval(&#34;countDown()&#34;, 1000); } function stopCounting() { document.getElementById(&#34;start&#34;).disabled = false; document.getElementById(&#34;stop&#34;).disabled = true; clearInterval(t); } function resetCounter() { over =</description>
     </item>

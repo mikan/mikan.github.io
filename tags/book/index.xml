@@ -6,8 +6,8 @@
     <description>Recent content in Book on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <managingEditor>mikan@aosn.ws (Yutaka Kato)</managingEditor>
-    <webMaster>mikan@aosn.ws (Yutaka Kato)</webMaster>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Mon, 22 Oct 2018 23:10:56 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/book/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>AWS IoT MQTT の 443 ポートへ Go からアクセスする</title>
       <link>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</link>
       <pubDate>Mon, 22 Oct 2018 23:10:56 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/</guid>
       <description>久々にお戯れではないホンモノの IoT の世界に戻って参りました。 大変いきいきしております。ハイ。 早速 AWS IoT × Go 言語で新シーズンの最初の記事を飾ろうと</description>
     </item>
@@ -26,7 +26,7 @@
       <title>Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</title>
       <link>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</link>
       <pubDate>Fri, 24 Aug 2018 14:00:00 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/</guid>
       <description>Jackson といえば、Java 界隈ではとても有名な JSON ライブラリですが、 Kotlin (for JVM) でもそのパワーを存分に発揮することができます。特にクラスと JSON をマッピングす</description>
     </item>
@@ -35,7 +35,7 @@
       <title>JJUG CCC 2017 Fall</title>
       <link>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</link>
       <pubDate>Sun, 19 Nov 2017 23:07:42 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/19/jjug-ccc-2017-fall/</guid>
       <description>日本最大の Java コミュニティカンファレンス、JJUG CCC (Japan Java User Group - Cross Community Conference) が今季もベルサール新宿グランドで開催されました。年 2 回開催の、秋バージョン</description>
     </item>
@@ -44,7 +44,7 @@
       <title>技術ブログを作ってみた</title>
       <link>https://mikan.github.io/2017/11/03/hello-world/</link>
       <pubDate>Fri, 03 Nov 2017 00:05:15 +0900</pubDate>
-      <author>mikan@aosn.ws (Yutaka Kato)</author>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2017/11/03/hello-world/</guid>
       <description>突然ですが、技術ブログを作ってみました！ 実は 3～4 年前まで別の技術ブログを持っていました。しかし WordPress.com の操作ミスで消してしまったのです・・・。 あ</description>
     </item>
