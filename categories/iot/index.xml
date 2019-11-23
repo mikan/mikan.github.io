@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
-    <lastBuildDate>Mon, 22 Oct 2018 23:10:56 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 23 Nov 2019 22:15:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/categories/iot/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する</title>
+      <link>https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/</link>
+      <pubDate>Sat, 23 Nov 2019 22:15:00 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/</guid>
+      <description>La Frite は 2018/10/12 に Kickstarter に登場した 10 ドルで Raspberry Pi 3 を上回る性能を叩き出す (と謳われる) Linux ボードのファウンディングプロジェクトです。 La Frite は実際には 10 ドルの RAM</description>
+    </item>
     
     <item>
       <title>AWS IoT MQTT の 443 ポートへ Go からアクセスする</title>

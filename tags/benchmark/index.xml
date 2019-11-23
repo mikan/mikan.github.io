@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Raspberrypi on Yutaka 🍊 Kato</title>
-    <link>https://mikan.github.io/tags/raspberrypi/</link>
-    <description>Recent content in Raspberrypi on Yutaka 🍊 Kato</description>
+    <title>Benchmark on Yutaka 🍊 Kato</title>
+    <link>https://mikan.github.io/tags/benchmark/</link>
+    <description>Recent content in Benchmark on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
     <lastBuildDate>Sat, 23 Nov 2019 22:15:00 +0900</lastBuildDate>
     
-	<atom:link href="https://mikan.github.io/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mikan.github.io/tags/benchmark/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/</guid>
       <description>La Frite は 2018/10/12 に Kickstarter に登場した 10 ドルで Raspberry Pi 3 を上回る性能を叩き出す (と謳われる) Linux ボードのファウンディングプロジェクトです。 La Frite は実際には 10 ドルの RAM</description>
-    </item>
-    
-    <item>
-      <title>Kotlin で始める AWS Greengrass</title>
-      <link>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</link>
-      <pubDate>Sat, 23 Jun 2018 19:57:02 +0900</pubDate>
-      <author>mikan@aomikan.org (Yutaka Kato)</author>
-      <guid>https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/</guid>
-      <description>AWS Greengrass という、IoT 機器のローカルで AWS Lambda の関数を実行できて、他にもあんなことやこんなことができる素晴らしいサービスをご存知でしょうか？ Greengrass があれ</description>
     </item>
     
   </channel>
