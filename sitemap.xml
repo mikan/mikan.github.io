@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/</loc>
+    <lastmod>2019-12-08T01:04:20+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/</loc>
     <lastmod>2019-11-23T22:15:00+09:00</lastmod>
   </url>
@@ -263,7 +268,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/golang/</loc>
-    <lastmod>2018-10-22T23:10:56+09:00</lastmod>
+    <lastmod>2019-12-08T01:04:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -413,7 +418,7 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2019-11-23T22:15:00+09:00</lastmod>
+    <lastmod>2019-12-08T01:04:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -496,13 +501,13 @@
   
   <url>
     <loc>https://mikan.github.io/categories/web/</loc>
-    <lastmod>2018-11-30T00:20:00+09:00</lastmod>
+    <lastmod>2019-12-08T01:04:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2019-11-23T22:15:00+09:00</lastmod>
+    <lastmod>2019-12-08T01:04:20+09:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Go の html/template でヘッダーやフッター等を実現する方法  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="golang, ">
+
+
+<meta property="og:title" content="Go の html/template でヘッダーやフッター等を実現する方法  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2019-12-08T01:04:20&#43;09:00" />
+<meta property="og:article:modified_time" content="2019-12-08T01:04:20&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="golang">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="Go の html/template でヘッダーやフッター等を実現する方法" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Go の html/template でヘッダーやフッター等を実現する方法",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2019-12-08",
+    "description": "",
+    "wordCount": 2978
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.44" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-book'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/tools/" >
+                <i class='fa fa-cut'></i>
+                Tools
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Go の html/template でヘッダーやフッター等を実現する方法
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2019-12-08">8 Dec, 2019</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 6 min
+  &middot; (2978 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Go%20%e3%81%ae%20html%2ftemplate%20%e3%81%a7%e3%83%98%e3%83%83%e3%83%80%e3%83%bc%e3%82%84%e3%83%95%e3%83%83%e3%82%bf%e3%83%bc%e7%ad%89%e3%82%92%e5%ae%9f%e7%8f%be%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95&amp;url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f&amp;title=Go%20%e3%81%ae%20html%2ftemplate%20%e3%81%a7%e3%83%98%e3%83%83%e3%83%80%e3%83%bc%e3%82%84%e3%83%95%e3%83%83%e3%82%bf%e3%83%bc%e7%ad%89%e3%82%92%e5%ae%9f%e7%8f%be%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Go%20%e3%81%ae%20html%2ftemplate%20%e3%81%a7%e3%83%98%e3%83%83%e3%83%80%e3%83%bc%e3%82%84%e3%83%95%e3%83%83%e3%82%bf%e3%83%bc%e7%ad%89%e3%82%92%e5%ae%9f%e7%8f%be%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/golang" class="label label-primary">golang</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+<p>最近新人に Go 言語を教えているのですが、「これは確かに分かりにくいよな」って思ったところがあったので1つ取り上げて解説したいと思います。
+それは、「自分で Go でテンプレートの分割をやろうとしたところ値をうまく渡せず諦めました。これ、どうやったんですか？」といった質問でした。
+</p>
+
+<p>Go の標準ライブラリの <code>html/template</code> (<code>text/template</code> ではない) はびっくりするぐらいシンプルなのにとてもパワフルなテンプレートエンジンです。
+私は現在この <code>html/template</code> を用いて 43 個もの画面を持つ Web アプリケーションの開発・運用しており、中には 1000 行を軽く超える HTML もありますが、どのページも高速でレンダリングされます。
+また、本記事で紹介する部品化を使いこなせば、フロントエンドフレームワークでやっているコンポーネント化に近いこともある程度までは実現することができます。</p>
+
+<p>すべての <code>html/template</code> の仕様は Godoc にあるので、困ったらここを見れば答えがみつかるはずです。</p>
+
+<blockquote>
+<p>template - The Go Programming Language</p>
+
+<p><a href="https://golang.org/pkg/html/template/">https://golang.org/pkg/html/template/</a></p>
+</blockquote>
+
+<p>冒頭の質問に対する回答例を紹介するまえに、まずは基本的な使い方をおさらいしましょう。</p>
+
+<h3 id="おさらい-html-template-の基本">おさらい: html/template の基本</h3>
+
+<p>まず、次のようにファイルを用意します。</p>
+
+<pre><code>.
+├── server.go
+└── template
+    └── index.html
+</code></pre>
+
+<p><code>index.html</code> を作りましょう。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;{{.Title}}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;{{.Title}}&lt;/h1&gt;
+&lt;p&gt;{{.Message}}&lt;/p&gt;
+&lt;p&gt;現在時刻: {{.Time.Format &quot;2006/1/2 15:04:05&quot;}}&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><code>server.go</code> を書きましょう。
+上記のテンプレート <code>index.html</code> では <code>Title</code> と <code>Message</code> の 2 つの値を参照していました。
+値を供給してテンプレートを実行します。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;html/template&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+	&quot;time&quot;
+)
+
+func main() {
+	port := &quot;8080&quot;
+	http.HandleFunc(&quot;/&quot;, handleIndex)
+	log.Printf(&quot;Server listening on port %s&quot;, port)
+	log.Print(http.ListenAndServe(&quot;:&quot;+port, nil))
+}
+
+func handleIndex(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles(&quot;template/index.html&quot;)
+	if err != nil {
+		log.Fatalf(&quot;template error: %v&quot;, err)
+	}
+	if err := t.Execute(w, struct {
+		Title   string
+		Message string
+		Time    time.Time
+	}{
+		Title:   &quot;テストページ&quot;,
+		Message: &quot;こんにちは！&quot;,
+		Time:    time.Now(),
+	}); err != nil {
+		log.Printf(&quot;failed to execute template: %v&quot;, err)
+	}
+}
+</code></pre>
+
+<p><code>handleIndex</code> 関数は、テンプレートをファイルから読み込んでパースし、値を詰めて実行しています。
+ここではその場で無名の struct を作って渡していますが、map で渡すこともできます。ただし map の場合は value の型が揃っていないといけません (あるいは <code>interface{}</code> にしないといけません)。</p>
+
+<p><code>main</code> 関数はパスと関数をマッピングし、サーバーを起動しています。コマンド <code>go run server.go</code> で実行してみましょう。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/template-demo1.png" />
+    
+    
+</figure>
+
+
+<p>ばっちりですね！</p>
+
+<p>さて、コードを読むと (書くと) リクエストが来るたびにテンプレートファイルを読み込むのは効率が悪いと感じるでしょう (テンプレートのデバッグ中には嬉しいのですが)。
+起動時に読み込むように改良してみます。</p>
+
+<pre><code class="language-go">// import は省略しました
+
+var templates = make(map[string]*template.Template)
+
+func main() {
+	port := &quot;8080&quot;
+	templates[&quot;index&quot;] = loadTemplate(&quot;index&quot;)
+	http.HandleFunc(&quot;/&quot;, handleIndex)
+	log.Printf(&quot;Server listening on port %s&quot;, port)
+	log.Print(http.ListenAndServe(&quot;:&quot;+port, nil))
+}
+
+func handleIndex(w http.ResponseWriter, r *http.Request) {
+	if err := templates[&quot;index&quot;].Execute(w, struct {
+		Title   string
+		Message string
+		Time    time.Time
+	}{
+		Title:   &quot;テストページ&quot;,
+		Message: &quot;こんにちは！&quot;,
+		Time:    time.Now(),
+	}); err != nil {
+		log.Printf(&quot;failed to execute template: %v&quot;, err)
+	}
+}
+
+func loadTemplate(name string) *template.Template {
+	t, err := template.ParseFiles(&quot;template/&quot; + name + &quot;.html&quot;)
+	if err != nil {
+		log.Fatalf(&quot;template error: %v&quot;, err)
+	}
+	return t
+}
+</code></pre>
+
+<p>それっぽくなってきましたね！</p>
+
+<p>それでは質問に答える時が来ました。</p>
+
+<h3 id="ヘッダーとフッターを定義">ヘッダーとフッターを定義</h3>
+
+<p>まずはファイルを作成しましょう。
+名前は <code>_header.html</code> と <code>_footer.html</code> とします。
+これはあくまでプラクティスなのですが、部品であることが名前からわかるようにしたいですよね。私はシンプルにアンスコをつけることにしました。
+もしかしたら、ディレクトリを分けるほうが好きな人もいるかもしれません。もちろんそれでも構いません。</p>
+
+<pre><code>├── server.go
+└── template
+    ├── _footer.html
+    ├── _header.html
+    └── index.html
+</code></pre>
+
+<p>部品を定義するには、 <code>{{define &quot;&lt;NAME&gt;&quot;}}</code> とします。お尻には <code>{{end}}</code> も必要です。</p>
+
+<p>まずは <code>_header.html</code> から。今回は以下のようにしてみました。</p>
+
+<pre><code class="language-html">{{define &quot;header&quot;}}
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;{{.Title}}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;{{.Title}}&lt;/h1&gt;
+{{end}}
+</code></pre>
+
+<p>続いて、 <code>_footer.html</code> です。こちらは可変部分がない静的な部品にしてみました。</p>
+
+<pre><code class="language-html">{{define &quot;footer&quot;}}
+&lt;div&gt;Copyright &amp;copy; mikan&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+{{end}}
+</code></pre>
+
+<p>元の <code>index.html</code> はどうなるのでしょうか？ここが味噌です。こうなります！</p>
+
+<pre><code class="language-html">{{template &quot;header&quot; .}}
+&lt;p&gt;{{.Message}}&lt;/p&gt;
+{{template &quot;footer&quot;}}
+</code></pre>
+
+<p>header と footer の呼び出しがちょこっとだけ違うことに気が付きましたか？
+先程書いた header は値を利用していました。一方 footer は値を利用していません。
+値を利用する動的なテンプレートの場合は、template に値を渡してあげる必要があります。
+値を利用しない静的なテンプレートの場合は、なにも渡す必要がないのです。
+このちょっとした違いが、初学者のハマりポイントの1つ目だと思われます。</p>
+
+<p>さて、テンプレートの準備が終わったら、 Go のコードもそれを読むように指定する必要があります。
+とはいえ、直すポイントは一箇所だけです。
+先程作った <code>loadTemplate</code> 関数が修正箇所になります。こうなります。</p>
+
+<pre><code class="language-go">func loadTemplate(name string) *template.Template {
+	t, err := template.ParseFiles(&quot;template/&quot; + name + &quot;.html&quot;, &quot;template/_footer.html&quot;, &quot;template/_header.html&quot;)
+	if err != nil {
+		log.Fatalf(&quot;template error: %v&quot;, err)
+	}
+	return t
+}
+</code></pre>
+
+<p>関数 <code>ParseFiles()</code> の引数は、関数名が示す通り可変長になっていて複数のパスを受け取ります。
+最上位となるテンプレートを第一引数に渡したあと、<strong>その後ろに</strong>部品を列挙していくのです。</p>
+
+<p>実はここもハマりポイントがあります。太字で強調しましたが、 <code>ParseFiles()</code> が返すテンプレートの識別子は第一引数に渡したものが採用される仕様となっています。
+なので、部品を最初に書いてはいけません。部品は最後です。なお、部品同士の順序は自由です (footer が header の前にあっても良い)。</p>
+
+<p>ハマりポイントを 2 つ超えれば、晴れて部品化は完了です。もう一度プログラムを実行してみましょう。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/template-demo2.png" />
+    
+    
+</figure>
+
+
+<p>ヘッダーに移した「テストページ」という部分と、フッターの記載内容が無事表示されました！</p>
+
+<p>OK 完全に理解した！これでこの記事の役目はおしまい？このブラウザタブ閉じちゃう？まあ、それでもいいです。でももうひとつ私からアドバイスがあります！</p>
+
+<h3 id="部品が使うデータの分離">部品が使うデータの分離</h3>
+
+<p>部品を扱えるようになったら、もう一歩先に進んでみましょう。</p>
+
+<p>ページがたくさんある Web アプリケーションを想像してみてください。
+ヘッダーに新たな値が欲しくなったとき、いまある全ページの struct に新しい値を詰めないとどうなりますか？もちろん壊れてしまいます。そんな Web アプリケーション、メンテしたくありませんよね。</p>
+
+<p>そこで、値を使うテンプレートの部品には専用の struct と便利関数を提供し、これを解決します。</p>
+
+<p>まずは header テンプレートから。 <code>UserName</code> という値を使う行を追加しました。</p>
+
+<pre><code class="language-html">{{define &quot;header&quot;}}
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;{{.Title}}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;{{.Title}}&lt;/h1&gt;
+&lt;p&gt;ようこそ {{.UserName}} さん!&lt;/p&gt;
+{{end}}
+</code></pre>
+
+<p>これに対応する struct と便利関数を Go で書きます。</p>
+
+<pre><code>type header struct {
+	Title    string
+	UserName string
+}
+
+func newHeader(title string) header {
+	return header{Title: title, UserName: &quot;ゲスト&quot;}
+}
+</code></pre>
+
+<p>この構造体を、ハンドラーから利用し、テンプレートに渡します。</p>
+
+<pre><code class="language-go">func handleIndex(w http.ResponseWriter, r *http.Request) {
+	if err := templates[&quot;index&quot;].Execute(w, struct {
+		Header  header
+		Message string
+		Time    time.Time
+	}{
+		Header:  newHeader(&quot;テストページ&quot;),
+		Message: &quot;こんにちは！&quot;,
+		Time:    time.Now(),
+	}); err != nil {
+		log.Printf(&quot;failed to execute template: %v&quot;, err)
+	}
+}
+</code></pre>
+
+<p><code>index.html</code> からは、ハンドラーから渡される <code>Header</code> を <code>header</code> テンプレートに渡します。</p>
+
+<pre><code class="language-html">{{template &quot;header&quot; .Header}}
+&lt;p&gt;{{.Message}}&lt;/p&gt;
+&lt;p&gt;現在時刻: {{.Time.Format &quot;2006/1/2 15:04:05&quot;}}&lt;/p&gt;
+{{template &quot;footer&quot;}}
+</code></pre>
+
+<p><code>{{template &quot;header&quot; .}}</code> だったところが <code>{{template &quot;header&quot; .Header}}</code> になりました。
+これで部品の中のスコープが <code>header</code> の中になります。</p>
+
+<p>実行してみると・・・</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/template-demo3.png" />
+    
+    
+</figure>
+
+
+<p><code>UserName</code> が表示されました！</p>
+
+<p>なお、今回のような変更は <code>index</code> のテンプレートを修正しないまま (<code>{{template &quot;header&quot; .}}</code> のままで) 適用することもできます。
+その場合、部品のほうで <code>{{.UserName}}</code> ではなく <code>{{.Header.UserName}}</code> と呼び出すことになります。</p>
+
+<p>Go の基本的なテクニックと、ちょっとした <code>template</code> のコツを組み合わせると、そこそこの規模の Web アプリケーションも難なく開発できるようになります。</p>
+
+<p>また、本記事では省きますが <code>FuncMap</code> という機能があります。これを用いるとテンプレートから思い思いの Go 関数を呼び出せるようになり、表現力が倍増します。テンプレートの部品化と併せて、ぜひ習得してみてください。</p>
+
+<p>本記事で紹介したコードの完全版は、以下の場所にあります。ライセンスは Do What The Fuck You Want To Public License です。自由にコピペして頂いて構いません 😄</p>
+
+<blockquote>
+<p><a href="https://github.com/mikan/template-demo">https://github.com/mikan/template-demo</a></p>
+</blockquote>
+
+<p>Happy hacking!</p>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Go%20%e3%81%ae%20html%2ftemplate%20%e3%81%a7%e3%83%98%e3%83%83%e3%83%80%e3%83%bc%e3%82%84%e3%83%95%e3%83%83%e3%82%bf%e3%83%bc%e7%ad%89%e3%82%92%e5%ae%9f%e7%8f%be%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95&amp;url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f&amp;title=Go%20%e3%81%ae%20html%2ftemplate%20%e3%81%a7%e3%83%98%e3%83%83%e3%83%80%e3%83%bc%e3%82%84%e3%83%95%e3%83%83%e3%82%bf%e3%83%bc%e7%ad%89%e3%82%92%e5%ae%9f%e7%8f%be%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Go%20%e3%81%ae%20html%2ftemplate%20%e3%81%a7%e3%83%98%e3%83%83%e3%83%80%e3%83%bc%e3%82%84%e3%83%95%e3%83%83%e3%82%bf%e3%83%bc%e7%ad%89%e3%82%92%e5%ae%9f%e7%8f%be%e3%81%99%e3%82%8b%e6%96%b9%e6%b3%95&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/" title="10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/">Go の html/template でヘッダーやフッター等を実現する方法</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/">10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/">Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/">AWS IoT MQTT の 443 ポートへ Go からアクセスする</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/26/aosn-workshop-yearly-report-2018/">AOSN読書会 年次活動報告 2018</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/15/resign-uhuru-corporation/">株式会社ウフルを退職します</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/">Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/">Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/">Kotlin で始める AWS Greengrass</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/">oauth2_proxy と Auth0 を用いた Nginx のお手軽 OAuth 化</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/salesforce">salesforce</a></li><li><a href="/categories/tools">tools</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/golang">golang</a></li><li><a href="/tags/gradle">gradle</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/github">github</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/kotlin">kotlin</a></li><li><a href="/tags/spring-boot">spring-boot</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/hugo">hugo</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

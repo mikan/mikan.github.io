@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sat, 23 Nov 2019 22:15:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 08 Dec 2019 01:04:20 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go の html/template でヘッダーやフッター等を実現する方法</title>
+      <link>https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/</link>
+      <pubDate>Sun, 08 Dec 2019 01:04:20 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/</guid>
+      <description>最近新人に Go 言語を教えているのですが、「これは確かに分かりにくいよな」って思ったところがあったので1つ取り上げて解説したいと思います。 それは</description>
+    </item>
     
     <item>
       <title>10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する</title>
