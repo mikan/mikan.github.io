@@ -59,7 +59,7 @@
     },
     "datePublished": "2019-12-08",
     "description": "",
-    "wordCount": 2990
+    "wordCount": 3007
   }
 </script>
   
@@ -190,8 +190,8 @@
 
 
   <small>
-  &middot; Read in about 6 min
-  &middot; (2990 words)
+  &middot; Read in about 7 min
+  &middot; (3007 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
@@ -404,10 +404,11 @@ func loadTemplate(name string) *template.Template {
 {{end}}
 </code></pre>
 
-<p>元の <code>index.html</code> はどうなるのでしょうか？ここが味噌です。こうなります！</p>
+<p>元の <code>index.html</code> はどうなるのでしょうか？ここがミソです。こうなります！</p>
 
 <pre><code class="language-html">{{template &quot;header&quot; .}}
 &lt;p&gt;{{.Message}}&lt;/p&gt;
+&lt;p&gt;現在時刻: {{.Time.Format &quot;2006/1/2 15:04:05&quot;}}&lt;/p&gt;
 {{template &quot;footer&quot;}}
 </code></pre>
 
