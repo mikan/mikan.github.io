@@ -59,7 +59,7 @@
     },
     "datePublished": "2019-12-08",
     "description": "",
-    "wordCount": 3005
+    "wordCount": 3009
   }
 </script>
   
@@ -190,8 +190,8 @@
 
 
   <small>
-  &middot; Read in about 6 min
-  &middot; (3005 words)
+  &middot; Read in about 7 min
+  &middot; (3009 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
@@ -535,6 +535,8 @@ func newHeader(title string) header {
 
 <p>なお、今回のような変更は <code>index</code> のテンプレートを修正しないまま (<code>{{template &quot;header&quot; .}}</code> のままで) 適用することもできます。
 その場合、部品のほうで <code>{{.UserName}}</code> ではなく <code>{{.Header.UserName}}</code> と呼び出すことになります。</p>
+
+<h3 id="おわりに">おわりに</h3>
 
 <p>Go の基本的なテクニックと、ちょっとした <code>template</code> のコツを組み合わせると、そこそこの規模の Web アプリケーションも難なく開発できるようになります。</p>
 
