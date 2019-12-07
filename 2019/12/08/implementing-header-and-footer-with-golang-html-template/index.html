@@ -59,7 +59,7 @@
     },
     "datePublished": "2019-12-08",
     "description": "",
-    "wordCount": 3007
+    "wordCount": 3005
   }
 </script>
   
@@ -190,8 +190,8 @@
 
 
   <small>
-  &middot; Read in about 7 min
-  &middot; (3007 words)
+  &middot; Read in about 6 min
+  &middot; (3005 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
@@ -423,7 +423,11 @@ func loadTemplate(name string) *template.Template {
 先程作った <code>loadTemplate</code> 関数が修正箇所になります。こうなります。</p>
 
 <pre><code class="language-go">func loadTemplate(name string) *template.Template {
-	t, err := template.ParseFiles(&quot;template/&quot; + name + &quot;.html&quot;, &quot;template/_footer.html&quot;, &quot;template/_header.html&quot;)
+	t, err := template.ParseFiles(
+		&quot;template/&quot;+name+&quot;.html&quot;,
+		&quot;template/_header.html&quot;,
+		&quot;template/_footer.html&quot;,
+	)
 	if err != nil {
 		log.Fatalf(&quot;template error: %v&quot;, err)
 	}
