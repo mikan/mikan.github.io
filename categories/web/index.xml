@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sun, 08 Dec 2019 01:04:20 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2020 11:56:54 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Heroku の mLab Add-on を MongoDB Atlas に移行する</title>
+      <link>https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/</link>
+      <pubDate>Sat, 11 Jul 2020 11:56:54 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/</guid>
+      <description>先日 (2020/7/10), Heroku のアドオン mLab MongoDB が 2020/11/10 にシャットダウンするとアナウンスがありました[参考文献1]。 mLab (旧 MongoLab) といえば、Heroku 界隈では無料でサクッと MongoDB</description>
+    </item>
     
     <item>
       <title>Go の html/template でヘッダーやフッター等の共通化を実現する方法</title>

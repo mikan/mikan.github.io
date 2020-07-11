@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Heroku の mLab Add-on を MongoDB Atlas に移行する  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="heroku, java, spring-boot, mongodb, ">
+
+
+<meta property="og:title" content="Heroku の mLab Add-on を MongoDB Atlas に移行する  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2020-07-11T11:56:54&#43;09:00" />
+<meta property="og:article:modified_time" content="2020-07-11T11:56:54&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="heroku">
+    
+<meta property="og:article:tag" content="java">
+    
+<meta property="og:article:tag" content="spring-boot">
+    
+<meta property="og:article:tag" content="mongodb">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="Heroku の mLab Add-on を MongoDB Atlas に移行する" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Heroku の mLab Add-on を MongoDB Atlas に移行する",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2020-07-11",
+    "description": "",
+    "wordCount": 4052
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.44" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-book'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/tools/" >
+                <i class='fa fa-cut'></i>
+                Tools
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Heroku の mLab Add-on を MongoDB Atlas に移行する
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2020-07-11">11 Jul, 2020</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 9 min
+  &middot; (4052 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Heroku%20%e3%81%ae%20mLab%20Add-on%20%e3%82%92%20MongoDB%20Atlas%20%e3%81%ab%e7%a7%bb%e8%a1%8c%e3%81%99%e3%82%8b&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f&amp;title=Heroku%20%e3%81%ae%20mLab%20Add-on%20%e3%82%92%20MongoDB%20Atlas%20%e3%81%ab%e7%a7%bb%e8%a1%8c%e3%81%99%e3%82%8b" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Heroku%20%e3%81%ae%20mLab%20Add-on%20%e3%82%92%20MongoDB%20Atlas%20%e3%81%ab%e7%a7%bb%e8%a1%8c%e3%81%99%e3%82%8b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/heroku" class="label label-primary">heroku</a>
+  
+  <a href="https://mikan.github.io/tags/java" class="label label-primary">java</a>
+  
+  <a href="https://mikan.github.io/tags/spring-boot" class="label label-primary">spring-boot</a>
+  
+  <a href="https://mikan.github.io/tags/mongodb" class="label label-primary">mongodb</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+
+<figure class="center">
+    
+        <img src="/img/logo/mlab_rip.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>先日 (2020/7/10), Heroku のアドオン mLab MongoDB が 2020/11/10 にシャットダウンするとアナウンスがありました<sup>[参考文献1]</sup>。</p>
+
+<p>mLab (旧 MongoLab) といえば、Heroku 界隈では無料でサクッと MongoDB を試せる便利な DBaaS として多くの採用例がありました。
+有償プランも充実しており、最大ストレージ 700GB / RAM 64GB までスケールさせることができるのも強みで、本番用には有償プラン、開発用環境や Review Apps などでは無料の sandbox、みたいに使っていた方も多いのではないでしょうか。</p>
+
+<p>しかし 2018/10/9 に MongoDB の開発元 MongoDB, Inc. が mLab を買収します<sup>[参考文献2]</sup>。
+MongoDB, Inc. では独自の DBaaS である Atlas をローンチしており、mLab は完全に競合サービスとなっていました。買収アナウンスによれば今後 12 ヶ月以内にすべての顧客を Atlas に移行させることを期待しているとあり、競合潰しのための買収であることは明らかです。
+この買収と方針を受け、mLab ではマイグレーションを支援するためのツールを開発する方針を示し<sup>[参考文献3]</sup>、実際にリリースされました。しかしマイグレーションガイドは 11 ステップもあり、ワンクリックで終わり！みたいなツールではありません。</p>
+
+<h3 id="移行先の選定">移行先の選定</h3>
+
+<p>では、残された時間で開発者が取れる選択肢はどれだけあるでしょうか？</p>
+
+<p>Heroku はシャットダウン予告のメールの中で別の MongoDB Add-on の「ObjectRocket」への移行を提案しています。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/heroku2.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>Heroku Add-on の使い勝手の良さを引き続き享受するにはこれしかありません。引き続き Add-on 代を徴収したい Heroku としても、こちらを推したいはずです (※ Add-on 自体の提供元は Heroku ではないサードパーティ)。</p>
+
+<p>とはいえマイグレーションの手間がかかることには代わりありません。それに ObjectRocket にはたくさんの Heroku ユーザーが求めている無料 Sandbox がありません！
+Atlas には無料 Sandbox があります。やっぱり Atlas しかありませんね！</p>
+
+<p>なお、ObjectRocket や Atlas 以外にもまだまだ選択肢もあります。一応紹介しておきます。</p>
+
+<ul>
+<li>Azure Cosmos DB (API 互換のベツモノ)</li>
+<li>Amazon DocumentDB (API 互換のベツモノ)</li>
+<li>IBM Cloud Hyper Protect DBaaS for MongoDB (ホンモノの MongoDB クラスター)</li>
+</ul>
+
+<p>DBaaS 自体をやめるという選択肢もあります。でも MongoDB を自分でホストするのは大変な苦痛を伴います。個人的にはおすすめできません。</p>
+
+<p>本記事では、表題どおり MongoDB Atlas を選定します。11 ステップの地獄のマイグレーション作業の始まりです。コーヒーと頭痛薬を用意したら、早速はじめましょう！</p>
+
+<p>なお本記事は mLab の Sandbox (無料) を Atlas の Sandbox (無料) に移行することを想定しています。有償の場合は手順が異なる場合があります。</p>
+
+<h3 id="マイグレーション前の準備">マイグレーション前の準備</h3>
+
+<h4 id="a-atlas-組織とプロジェクトの作成">A. Atlas 組織とプロジェクトの作成</h4>
+
+<p>次の URL にアクセスしてサインアップします。</p>
+
+<blockquote>
+<p>Managed MongoDB Hosting | Database-as-a-Service | MongoDB</p>
+
+<p><a href="https://www.mongodb.com/cloud/atlas">https://www.mongodb.com/cloud/atlas</a></p>
+</blockquote>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas1.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>Start free ボタンを押して、個人情報を入力してサインアップします。</p>
+
+<p>私は実行したら <code>CORS_ORIGIN_DENIED</code> というエラー画面になってしまいました😇
+先行きがとっても不安です・・・。しかし大丈夫、ちゃんとサインアップメールが届いていました。メールのリンクをクリックしてログインします。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas2.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>同じ画面になりましたか？それでは次のステップです。</p>
+
+<h4 id="b-atlas-組織と-mlab-アカウントの接続">B. Atlas 組織と　mLab アカウントの接続</h4>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas3.png" />
+    
+    
+</figure>
+
+
+<p>画面左上の葉っぱ (失礼) の右側にある歯車アイコン⚙️をクリックし、 &ldquo;Organization Settings&rdquo; 画面を開いてください。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas4.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>一番下までぐぐっとスクロールすると、&rdquo;Connect to mLab&rdquo; というペインが登場しています！素晴らしい！
+早速 [Connect to mLab] ボタンを押します。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/mlab1.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>mLab のログイン画面になりますね。でも Heroku Add-on だとアイパスがわかりません。
+で、どうするかというと、ここで一旦、 <strong>同じブラウザで別タブ</strong> を開き、Heroku Dashboard にアクセスします。</p>
+
+<blockquote>
+<p>Heroku Dashboard</p>
+
+<p><a href="http://dashboard.heroku.com">http://dashboard.heroku.com</a></p>
+</blockquote>
+
+<p>ログイン後、目的のアプリを開きます。そして &ldquo;Installed add-ons&rdquo; ペインにある mLab をクリックし、mLab のダッシュボードを開きます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/heroku3.png" />
+    
+    
+</figure>
+
+
+<p>mLab のダッシュボードが開きましたね！この時点でブラウザには次の 3 つのタブがあるはずです。</p>
+
+<ol>
+<li>mLab ログイン画面のタブ</li>
+<li>Heroku Dashboard のタブ</li>
+<li>mLab のタブ</li>
+</ol>
+
+<p>タブ 3 から 1 に切り替え、 <strong>ログイン画面をリロード</strong> します。</p>
+
+<p>するとあら不思議、画面が変わりました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/mlab2.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>次は <strong>ブラウザの戻るボタン</strong>で Atlas に戻ります。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas4.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>もう一回 [Connect to mLab] ボタンを押します。
+あらあら不思議、新しい画面が現れました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/mlab3.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>[Authorize] ボタンを押すと、Atlas の画面に戻ります。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas5.png" width="50%" />
+    
+    
+</figure>
+
+
+<h3 id="指定したデータベースのマイグレーション">指定したデータベースのマイグレーション</h3>
+
+<h4 id="c-指定したデータベースのマイグレーション処理の開始">C. 指定したデータベースのマイグレーション処理の開始</h4>
+
+<p>先程の画面で行の右端に [&hellip;] ボタンがあります。押してメニューを開き、続いて [Configure Migration] を選択します。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas6.png" />
+    
+    
+</figure>
+
+
+<p>お待たせしました・・・こちらが「マイグレーションウィザード」です！</p>
+
+<p>冒頭で言及した「11ステップ」というのはここから始まります！ (いままでのは事前準備&hellip;)</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas7.png" width="50%" />
+    
+    
+</figure>
+
+
+<h4 id="d-マイグレーションウィザードのタスクの実施">D. マイグレーションウィザードのタスクの実施</h4>
+
+<p><strong>Step 1. 対象プロジェクトの設定</strong></p>
+
+<p>マイグレーションウィザードの1番目のボタン [Create or Select Target Project] を押しましょう。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas8.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>&ldquo;Project 0&rdquo; がありましたのでこれを選択します。いったいつ作ったんでしょう？きっとサインアップしたときですね。もしなければ画面に従って作ってください。</p>
+
+<p>準備できたら [Confirm Project and Continue] ボタンを押します。</p>
+
+<p><strong>Step 2. データベースユーザーのインポート</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas9.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>マイグレーションガイドでは特に何も指示されていません。警告アイコンが気になりますが、そのまま進めましょう。
+[Import Database Users And Continue] ボタンを押します。</p>
+
+<p><strong>Step 3. IP ホワイトリストの設定</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas10.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>&ldquo;Allow all IP address&hellip;&rdquo; と続くチェックボックスを入れます。Heroku は原則ソース IP が不定ですからね。</p>
+
+<p>チェックを入れたら [Allow All And Continue] ボタンを押します。</p>
+
+<p><strong>Step 4. 対象 Atlas クラスターの作成</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas11.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>&ldquo;Cluster&rdquo; のプルダウンを開くと &ldquo;Create most equivalent new cluster RECOMMENDED&rdquo; という唯一の選択肢があるので選択します。</p>
+
+<p>するとクラスターの設定を選ぶ重要な画面になります。各項目を確認しながら一番下までスクロールしてください。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas12.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>M0 が無料の Sandbox です！お値段の見積もりも表示されていますね。M0 なら $0 なのを確認してください。
+十分に確認したら [Confirm Target And Continue] ボタンを押します。</p>
+
+<p>すると、クラスター作成中表示が現れます。しばらく待ちましょう。私は3分待ちました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas13.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>終わるとこんな表示になります。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas14.png" width="50%" />
+    
+    
+</figure>
+
+
+<p><strong>Step 5. 移行元と移行対象を確認</strong></p>
+
+<p>マイグレーションウィザードの [Confirm Source and Target] ボタンを押します。</p>
+
+<p>(and だったり And だったりが気になりますね&hellip;)</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas15.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>確認したら [Confirm And Continue] ボタンを押します。</p>
+
+<p><strong>Step 6. マイグレーションのテスト</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas16.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>マイグレーションのテストを実行するかどうかを選択できます。</p>
+
+<p>このテストは実際に以下の手順を行い、マイグレーション実行時間の見積もりやデータ・インデックスが実際に移行可能であることを検証できます。
+マイグレーションガイドでも &ldquo;strongly recommend&rdquo; (強く推奨) とあるので、実施しない手はないでしょう。</p>
+
+<ol>
+<li>Atlas クラスターを消去</li>
+<li>mLab で <code>mongodump</code> を実行</li>
+<li>Atlas クラスターで <code>mongorestore</code> を実行</li>
+</ol>
+
+<p>テストする場合はそのまま (選択肢にチェックを入れずに) [Begin Test Run] ボタンを押します。</p>
+
+<p>テスト実行中は以下のような画面になります。しばらく待ちましょう。私は2分待ちました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas17.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>終わったら次のような画面になるので、 [Confirm Connectivity] ボタンを押します。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas18.png" width="50%" />
+    
+    
+</figure>
+
+
+<p><strong>Step 7. 接続テスト</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas19.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>接続テストの案内画面になりました。</p>
+
+<p>テスト方法は色々とあります。
+まず、MongoDB Atlas のクラスターに接続するには 2 つの接続文字列があります<sup>[参考文献5,6]</sup>。</p>
+
+<ol>
+<li>DNS Seedlist Connection Format (SRV): <code>mongodb+srv://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;/&lt;db&gt;?retryWrites=true&amp;w=majority</code></li>
+<li>Standard Connection String Format: <code>mongodb://&lt;username&gt;:&lt;password&gt;@&lt;shard0_host&gt;:27017,&lt;shard1_host&gt;:27017,&lt;shard2_host&gt;:27017/&lt;db&gt;?ssl=true&amp;replicaSet=&lt;shard0_name&gt;&amp;authSource=admin&amp;retryWrites=true&amp;w=majority</code></li>
+</ol>
+
+<p>1番目のやり方はページに書いてあります。2番目のやり方は &ldquo;Having trouble connecting?&rdquo; の中に書いてあります。
+お勧めは当然シンプルでモダンな1番目のほうです。しかし1番目でうまくいかない場合は2番目を試すことになります。</p>
+
+<p>このような仕様になっているため、単に Mongo Shell から繋いで試すだけでなく、実際のアプリケーション (ドライバー) の DB 設定を書き換えてローカルで実行する等して検証する事が重要です。</p>
+
+<p>私のアプリは Java 11 + Spring Boot + Spring Data MongoDB という環境でしたが、 <code>spring.data.mongodb.uri</code> に挿して試したところ以下のようなエラーになってしまいました:</p>
+
+<pre><code class="language-json">{&quot;ok&quot;: 0, &quot;errmsg&quot;: &quot;no SNI name sent, make sure using a MongoDB 3.4+ driver/shell.&quot;, &quot;code&quot;: 8000, &quot;codeName&quot;: &quot;AtlasError&quot;}
+</code></pre>
+
+<p>これは使っていた AdoptOpenJDK 11 が SNI をサポートしていないことによる問題で<sup>[参考文献7]</sup>、結局 <a href="https://www.azul.com/downloads/zulu-community/">Azul Zulu OpenJDK</a> に置き換えて解決しました。</p>
+
+<p>確認したら [Confirm And Continue] ボタンを押します。</p>
+
+<p><strong>Step 8. Heroku アドオンの config var からの独立性確保</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas20.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>マイグレーション完了後、mLab アドオンは削除することになりますが、その際に <code>MONGODB_URI</code> config var (環境変数) も Heroku App から削除されてしまいます。
+そのため、<code>MONGODB_URI</code> 以外の config var を別に作り、アプリが参照する環境変数をそちらに切り替える作業を行ってください。
+もちろん、複数アタッチされている場合は色の名前で区別されたそれぞれにおいて対応が必要です。</p>
+
+<p>私は画面にある例そのまま <code>DB_URI</code> にすることにしました。具体的な手順は次の通り:</p>
+
+<ol>
+<li>Heroku Dashboard の App の &ldquo;Settings&rdquo; タブを開き、　[Reveal Config Vars] ボタンを押す</li>
+<li>追加欄で KEY = <code>DB_URI</code>, VALUE = (<code>MONGODB_URI</code> の値をコピペ) を記入し [Add] ボタンを押す</li>
+<li>アプリケーションの設定で参照環境変数を変更してデプロイ</li>
+</ol>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/heroku4.png" />
+    
+    
+</figure>
+
+
+<p>完了したら [Confirm And Continue] ボタンを押します。</p>
+
+<p><strong>Step 9. マイグレーション</strong></p>
+
+<p>いよいよマイグレーション実行のときが来ました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas21.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>必要に応じてアプリケーションを止め (メンテナンスモードにするなど)、注意事項を確認したら、 &ldquo;I understand that&hellip;&rdquo; のチェックボックスを入れて、</p>
+
+<p>いざ、</p>
+
+<p>[Begin Migrasion] を押します！</p>
+
+<p>マイグレーション実行中は以下のような画面になります。しばらく待ちましょう。私は3分待ちました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas22.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>終わりましたか？おめでとうございます！では [Start Using Atlas] ボタンを押しましょう。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas23.png" width="50%" />
+    
+    
+</figure>
+
+
+<p><strong>Step 10. Atlas の利用を開始</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas24.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>先程作った Heroku config var の <code>DB_URI</code> を、Step 7 でテストした接続文字列に置き換えます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/heroku5.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>config ver を変更するとほぼ即座に Dyno がリスタートすることにご注意ください。</p>
+
+<p>無事に変わりましたか？おめでとうございます🎉</p>
+
+<p>マイグレーションウィザードはもう用無しですが、一応画面は続いているので進めましょう。</p>
+
+<p>最後のステップは mLab の削除です。</p>
+
+<p><strong>Step 11. mLab Add-on の削除</strong></p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/atlas25.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>注意事項が表示されるだけです。削除操作は自分で操作する必要があります。</p>
+
+<p>Heroku Dashboard の App の &ldquo;Configure Add-ons&rdquo; リンクから削除できます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/heroku6.png" />
+    
+    
+</figure>
+
+
+<p>くちばしみたいなアイコンに &ldquo;Delete Add-on&rdquo; があります。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/heroku7.png" />
+    
+    
+</figure>
+
+
+<p>削除後もアプリが動いていることを確認し、残ったコーヒーをすべて飲み干したら、全てが終了です。お疲れさまでした。</p>
+
+<p>Happy hacking!</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://docs.mlab.com/shutdown-of-heroku-add-on/">Shutdown of mLab&rsquo;s Heroku Add-on on November 10, 2020 | mLab Documentation &amp; Support</a></li>
+<li><a href="https://blog.mlab.com/2018/10/mlab-is-becoming-a-part-of-mongodb-inc/">mLab is becoming a part of MongoDB, Inc.</a></li>
+<li><a href="https://docs.mlab.com/mlab-to-atlas/">Migrating to MongoDB Atlas | mLab Documentation &amp; Support</a></li>
+<li><a href="https://docs.mlab.com/how-to-migrate-sandbox-heroku-addons-to-atlas/">Guide to Migrating a Sandbox Heroku Add-on to Atlas | mLab Documentation &amp; Support</a></li>
+<li><a href="https://docs.mlab.com/troubleshooting-atlas-connection-issues/">Troubleshooting connection issues to MongoDB Atlas | mLab Documentation &amp; Support</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/connection-string/">Connection String URI Format &mdash; MongoDB Manual</a></li>
+<li><a href="https://stackoverflow.com/questions/59112124/">java - MongoCommandException: Command failed with error 8000 (AtlasError): &#39;no SNI name sent, make sure using a MongoDB 3.4+ driver/shell.&#39; - Stack Overflow</a></li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Heroku%20%e3%81%ae%20mLab%20Add-on%20%e3%82%92%20MongoDB%20Atlas%20%e3%81%ab%e7%a7%bb%e8%a1%8c%e3%81%99%e3%82%8b&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f&amp;title=Heroku%20%e3%81%ae%20mLab%20Add-on%20%e3%82%92%20MongoDB%20Atlas%20%e3%81%ab%e7%a7%bb%e8%a1%8c%e3%81%99%e3%82%8b" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Heroku%20%e3%81%ae%20mLab%20Add-on%20%e3%82%92%20MongoDB%20Atlas%20%e3%81%ab%e7%a7%bb%e8%a1%8c%e3%81%99%e3%82%8b&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2020%2f07%2f11%2fmigrate-heroku-mlab-to-mongodb-atlas%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/" title="Go の html/template でヘッダーやフッター等の共通化を実現する方法">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/">Heroku の mLab Add-on を MongoDB Atlas に移行する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/">Go の html/template でヘッダーやフッター等の共通化を実現する方法</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/">10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/">Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/">AWS IoT MQTT の 443 ポートへ Go からアクセスする</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/26/aosn-workshop-yearly-report-2018/">AOSN読書会 年次活動報告 2018</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/15/resign-uhuru-corporation/">株式会社ウフルを退職します</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/">Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/">Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/">Kotlin で始める AWS Greengrass</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/salesforce">salesforce</a></li><li><a href="/categories/tools">tools</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/golang">golang</a></li><li><a href="/tags/gradle">gradle</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/spring-boot">spring-boot</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/github">github</a></li><li><a href="/tags/kotlin">kotlin</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/heroku">heroku</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

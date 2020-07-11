@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mongodb on Yutaka 🍊 Kato</title>
+    <link>https://mikan.github.io/tags/mongodb/</link>
+    <description>Recent content in Mongodb on Yutaka 🍊 Kato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
+    <lastBuildDate>Sat, 11 Jul 2020 11:56:54 +0900</lastBuildDate>
+    
+	<atom:link href="https://mikan.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Heroku の mLab Add-on を MongoDB Atlas に移行する</title>
+      <link>https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/</link>
+      <pubDate>Sat, 11 Jul 2020 11:56:54 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/</guid>
+      <description>先日 (2020/7/10), Heroku のアドオン mLab MongoDB が 2020/11/10 にシャットダウンするとアナウンスがありました[参考文献1]。 mLab (旧 MongoLab) といえば、Heroku 界隈では無料でサクッと MongoDB</description>
+    </item>
+    
+  </channel>
+</rss>
