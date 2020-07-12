@@ -61,7 +61,7 @@
     },
     "datePublished": "2020-07-12",
     "description": "",
-    "wordCount": 4428
+    "wordCount": 4446
   }
 </script>
   
@@ -193,7 +193,7 @@
 
   <small>
   &middot; Read in about 9 min
-  &middot; (4428 words)
+  &middot; (4446 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
@@ -390,7 +390,7 @@ Fyne のビルドには C コンパイラが必要です。いくつか選択肢
 </ul>
 
 <p>私が使っているのは <a href="http://mingw-w64.org/doku.php/download/mingw-builds">mingw-w64</a> です。MSYS2 にもこれが入っています。
-<a href="https://chocolatey.org/">Chocolatey</a> パッケージマネージャーをお使いの方は <code>choco install mingw</code> で <code>mingw-w64</code> が一発で入ります！</p>
+<a href="https://chocolatey.org/">Chocolatey</a> パッケージマネージャーをお使いの方は <code>choco install mingw</code> で mingw-w64 が一発で入ります！</p>
 
 <p>導入後は cc コマンドにパスが通っていることを確認してください。</p>
 
@@ -593,7 +593,7 @@ panic: runtime error: invalid memory address or nil pointer dereference
 })
 </code></pre>
 
-<p>しかしフォントの指定の口は環境変数1つのみです。Fyne のコードを見る限り、ファイル名に <code>Regular</code> が含まれていると、その部分を <code>Bold</code>, <code>BoldItalic</code>, <code>Italic</code> に変換するようです。それ以外は指定しても効きません。この実装はちょっと不便です (しかも undocumented)。
+<p>しかしフォントの指定の口は環境変数1つのみです。Fyne のコードを見る限り、ファイル名に <code>Regular</code> が含まれていると、その部分を <code>Bold</code>, <code>BoldItalic</code>, <code>Italic</code> に変換するようです。このファイル名パターンに一致しない場合は <code>TextStyle</code> を指定しても変化しません。この実装はちょっと不便です (しかも undocumented)。
 また等幅フォントについては <code>FYNE_FONT</code> 環境変数ではなく <code>FYNE_FONT_MONOSPACE</code> 環境変数で指定するように実装されています。</p>
 
 <p>実際にアプリケーションとしてパッケージングして配布することを考えても、環境変数で指定するというのはあまり都合の良い方式ではありません。
