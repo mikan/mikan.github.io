@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fyne on Yutaka 🍊 Kato</title>
+    <link>https://mikan.github.io/tags/fyne/</link>
+    <description>Recent content in Fyne on Yutaka 🍊 Kato</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
+    <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
+    <lastBuildDate>Sun, 12 Jul 2020 19:04:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://mikan.github.io/tags/fyne/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発</title>
+      <link>https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/</link>
+      <pubDate>Sun, 12 Jul 2020 19:04:00 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/</guid>
+      <description>皆さんは デスクトップアプリ を作ろう！となったとき、どんな UI ツールキットで作りますか？ OS が決まっているならば SwiftUI, WPF あるいは GTK+ や Qt でしょうか。 色ん</description>
+    </item>
+    
+  </channel>
+</rss>

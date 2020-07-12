@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="golang, fyne, ">
+
+
+<meta property="og:title" content="Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2020-07-12T19:04:00&#43;09:00" />
+<meta property="og:article:modified_time" content="2020-07-12T19:04:00&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="golang">
+    
+<meta property="og:article:tag" content="fyne">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2020-07-12",
+    "description": "",
+    "wordCount": 4416
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.44" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-book'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/tools/" >
+                <i class='fa fa-cut'></i>
+                Tools
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2020-07-12">12 Jul, 2020</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 9 min
+  &middot; (4416 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Go%20%e8%a3%bd%20UI%20%e3%83%84%e3%83%bc%e3%83%ab%e3%82%ad%e3%83%83%e3%83%88%20Fyne%20%e3%81%a7%e5%a7%8b%e3%82%81%e3%82%8b%e3%82%af%e3%83%ad%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0%20GUI%20%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f&amp;title=Go%20%e8%a3%bd%20UI%20%e3%83%84%e3%83%bc%e3%83%ab%e3%82%ad%e3%83%83%e3%83%88%20Fyne%20%e3%81%a7%e5%a7%8b%e3%82%81%e3%82%8b%e3%82%af%e3%83%ad%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0%20GUI%20%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Go%20%e8%a3%bd%20UI%20%e3%83%84%e3%83%bc%e3%83%ab%e3%82%ad%e3%83%83%e3%83%88%20Fyne%20%e3%81%a7%e5%a7%8b%e3%82%81%e3%82%8b%e3%82%af%e3%83%ad%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0%20GUI%20%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/golang" class="label label-primary">golang</a>
+  
+  <a href="https://mikan.github.io/tags/fyne" class="label label-primary">fyne</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne1.png" />
+    
+    
+</figure>
+
+
+<p>皆さんは <strong>デスクトップアプリ</strong> を作ろう！となったとき、どんな UI ツールキットで作りますか？
+OS が決まっているならば SwiftUI, WPF あるいは GTK+ や Qt でしょうか。
+色んな OS をサポートしたい場合は、Tcl/Tk, wxWidgets, JavaFX, Xamarin, Electron, React Native なども良いですね。</p>
+
+<p>それでは <strong>Go 言語で</strong> 作りたいとなったときはどうしましょう？
+awesome-go<sup>[参考文献1]</sup> によると、以下のような選択肢がありそうです。</p>
+
+<table>
+<thead>
+<tr>
+<th>パッケージ</th>
+<th>ツールキット/エンジン</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>github.com/mattn/go-gtk</td>
+<td>GTK+</td>
+</tr>
+
+<tr>
+<td>github.com/gotk3/gotk3</td>
+<td>GTK+</td>
+</tr>
+
+<tr>
+<td>github.com/therecipe/qt</td>
+<td>Qt</td>
+</tr>
+
+<tr>
+<td>github.com/andlabs/ui</td>
+<td>libui</td>
+</tr>
+
+<tr>
+<td>github.com/asticode/go-astilectron</td>
+<td>Electron</td>
+</tr>
+
+<tr>
+<td>github.com/maxence-charriere/go-app</td>
+<td>ブラウザ系</td>
+</tr>
+
+<tr>
+<td>github.com/sciter-sdk/go-sciter</td>
+<td>ブラウザ系</td>
+</tr>
+
+<tr>
+<td>github.com/dtylman/gowd</td>
+<td>ブラウザ系</td>
+</tr>
+
+<tr>
+<td>github.com/wailsapp/wails</td>
+<td>ブラウザ系</td>
+</tr>
+
+<tr>
+<td>github.com/zserge/webview</td>
+<td>ブラウザ系</td>
+</tr>
+
+<tr>
+<td>fyne.io/fyne</td>
+<td>オリジナル</td>
+</tr>
+</tbody>
+</table>
+
+<p>こうやって分類すると、fyne というのはいったい何者なのだと思いませんか？
+そう思ったわたしは実際に試用してみて気に入り、社内で使う簡単な GUI アプリの開発に採用、ほんの一瞬で目的通りのアプリを実際に作れてしまいました。
+作ったアプリはのちほど紹介しますが、まずは基本的な使い方と多くの人が遭遇するであろうハマりポイントをいくつか紹介したいと思います。</p>
+
+<p>ただし、現状 Go の GUI 領域はまだまだ発展途上です。Fyne においてもデータバインディングやアニメーション機能が未提供だったりと GUI ツールキットとしては大穴があいているのも事実。限界を承知の上で、過度に期待せずに読んでいただけたらと思います。</p>
+
+<h3 id="はじめかた">はじめかた</h3>
+
+<p>既に Go 言語の開発環境は整っている前提で始めたいと思います。整っていない方は <a href="https://golang.org/doc/install">Getting Started</a> してください。</p>
+
+<p>では早速コードから。&rdquo;Hello, world!&rdquo; を表示するだけの最小構成のプログラムは以下のようになります。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fyne.io/fyne/app&quot;
+	&quot;fyne.io/fyne/widget&quot;
+)
+
+func main() {
+	a := app.New()
+	w := a.NewWindow(&quot;Hello&quot;)
+	w.SetContent(widget.NewLabel(&quot;Hello, world!&quot;))
+	w.ShowAndRun()
+}
+</code></pre>
+
+<p>デスクトップアプリの本体とは思えない短さですね！</p>
+
+<p><code>go.mod</code> はこんな感じ。</p>
+
+<pre><code>module github.com/user/repo
+
+go 1.14
+
+require fyne.io/fyne v1.3.2
+</code></pre>
+
+<p>(バージョンは執筆時点の最新)</p>
+
+<p>さあ、実行してみましょう！</p>
+
+<pre><code>go run .
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne2.png" />
+    
+    
+</figure>
+
+
+<p>表示されましたか？おめでとうございます👏</p>
+
+<p>動きませんでしたか？問題ありません。計算通りです。続きを読んでください。</p>
+
+<h4 id="windows-の方">Windows の方</h4>
+
+<p>素の Windows で Go のツールチェインだけ入ってるという方、おそらくビルドできないはずです。
+Fyne のビルドには C コンパイラが必要です。いくつか選択肢があります。</p>
+
+<p>公式のチュートリアルでは以下が紹介されていました:</p>
+
+<ul>
+<li><a href="https://www.msys2.org/">MSYS2</a></li>
+<li><a href="https://jmeubank.github.io/tdm-gcc/download/">TDM-GCC</a></li>
+<li><a href="https://www.cygwin.com/">Cygwin</a></li>
+</ul>
+
+<p>私が使っているのは <a href="http://mingw-w64.org/doku.php/download/mingw-builds">mingw-w64</a> です。MSYS2 にもこれが入っています。
+<a href="https://chocolatey.org/">Chocolatey</a> パッケージマネージャーをお使いの方は <code>choco install mingw</code> で <code>mingw-w64</code> が一発で入ります！</p>
+
+<p>導入後は cc コマンドにパスが通っていることを確認してください。</p>
+
+<h4 id="macos-の方">macOS の方</h4>
+
+<p><a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12">Xcode</a> とその command line tools が必要です。
+command line tools の導入は <code>xcode-select --install</code> でいけます。
+導入済であっても、macOS をアップグレードした後とかに再度このコマンドを打つ必要になることがあります。</p>
+
+<h4 id="linux-の方">Linux の方</h4>
+
+<p>gcc に加え、X11 関係の開発用ヘッダファイル等が必要になります。
+Linux/Ubuntu では <code>apt install gcc xorg-dev libgl1-meta-dev</code>, Fedora とかでは <code>dnf install gcc libXcursor-devel libXrandr-devel mesa-libGL-devel libXi-devel libXinerama-devel</code>, Arch では <code>pacman -S xorg-server-devel</code> です。</p>
+
+<h3 id="ライトテーマ">ライトテーマ</h3>
+
+<p>Fyne でアプリを起動して、ダークモードっぽい見た目になるのに驚いた人もいるかもしれません。
+Fyne ではダークテーマがデフォルトになっています。ライトテーマもあります。環境変数を設定するだけで切り替わるので、早速試してみましょう！</p>
+
+<p>Unix 系の方は、</p>
+
+<pre><code>FYNE_THEME=light go run .
+</code></pre>
+
+<p>Windows (コマンドプロンプト) の方は、</p>
+
+<pre><code>set FYNE_THEME=light
+go run .
+</code></pre>
+
+<p>PowerShell の方は、</p>
+
+<pre><code class="language-powershell">$Env:FYNE_THEME='light'
+go run .
+</code></pre>
+
+<p>(クロスプラットフォームの手順の説明はたいへんだなぁ)</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne3.png" />
+    
+    
+</figure>
+
+
+<p>わずか環境変数1つで驚きの白さに！</p>
+
+<h3 id="レイアウト">レイアウト</h3>
+
+<p>基本的には、複数要素を垂直に並べる <code>VBox</code>, 水平に並べる <code>HBox</code> を組合せてレイアウトします。
+先程のコードの <code>w.SetContent</code> 部を以下に書き換えてみましょう。</p>
+
+<pre><code class="language-go">w.SetContent(widget.NewVBox(
+    widget.NewLabel(&quot;Label 1&quot;),
+    widget.NewLabel(&quot;Label 2&quot;),
+))
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne4.png" />
+    
+    
+</figure>
+
+
+<p>縦に2つのラベルが並びました。</p>
+
+<p>次は <code>HBox</code>。</p>
+
+<pre><code class="language-go">w.SetContent(widget.NewHBox(
+    widget.NewLabel(&quot;Label 1&quot;),
+    widget.NewLabel(&quot;Label 2&quot;),
+))
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne5.png" />
+    
+    
+</figure>
+
+
+<p>横に2つのラベルが並びました。</p>
+
+<p>入れ子もできます。</p>
+
+<pre><code class="language-go">w.SetContent(widget.NewVBox(
+    widget.NewLabel(&quot;Label 1&quot;),
+    widget.NewLabel(&quot;Label 2&quot;),
+    widget.NewHBox(
+        widget.NewLabel(&quot;Label 3&quot;),
+        widget.NewLabel(&quot;Label 4&quot;),
+    ),
+))
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne6.png" />
+    
+    
+</figure>
+
+
+<p>自由自在！</p>
+
+<p>また、タブやアコーディオン、スクロール対応などのいくつかのコンテナが用意されています。</p>
+
+<pre><code class="language-go">w.SetContent(widget.NewTabContainer(
+    widget.NewTabItem(&quot;Tab1&quot;, widget.NewLabel(&quot;Label 1&quot;)),
+    widget.NewTabItem(&quot;Tab2&quot;, widget.NewLabel(&quot;Label 2&quot;)),
+))
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne7.png" />
+    
+    
+</figure>
+
+
+<p>簡単ですね！</p>
+
+<h3 id="ウィジェット">ウィジェット</h3>
+
+<p>UI ツールキットはウィジェットがあればあるほど嬉しいです。しかし・・・ Fyne はあまりありません。
+なによりデータバインディングに未対応 (v2 で計画) なので、テーブル系がないのは致命的です。
+とはいえ、いまあるものは簡単に使えます。また本記事では割愛しますが拡張もできるようになっています。</p>
+
+<p>ありったけのウィジェットを並べてみました。</p>
+
+<pre><code class="language-go">w.SetContent(widget.NewVBox(
+    widget.NewGroup(&quot;Button&quot;, widget.NewButton(&quot;Button&quot;, func() {})),
+    widget.NewGroup(&quot;Check&quot;, widget.NewCheck(&quot;Check&quot;, func(_ bool) {})),
+    widget.NewGroup(&quot;Entry&quot;, widget.NewEntry()),
+    widget.NewGroup(&quot;PasswordEntry&quot;, widget.NewPasswordEntry()),
+    widget.NewGroup(&quot;Form&quot;, widget.NewForm(widget.NewFormItem(&quot;FormItem&quot;, widget.NewEntry()))),
+    widget.NewGroup(&quot;HyperLink&quot;, widget.NewHyperlink(&quot;HyperLink&quot;, &amp;url.URL{})),
+    widget.NewGroup(&quot;Icon&quot;, widget.NewIcon(theme.FyneLogo())),
+    widget.NewGroup(&quot;Label&quot;, widget.NewLabel(&quot;Label&quot;)),
+    widget.NewGroup(&quot;ProgressBar&quot;, widget.NewProgressBar()),
+    widget.NewGroup(&quot;Radio&quot;, widget.NewRadio([]string{&quot;Option1&quot;, &quot;Option2&quot;}, func(_ string) {})),
+    widget.NewGroup(&quot;Select&quot;, widget.NewSelect([]string{&quot;Select&quot;}, func(_ string) {})),
+    widget.NewGroup(&quot;ToolBar&quot;, widget.NewToolbar(widget.NewToolbarAction(theme.DocumentSaveIcon(), func() {}))),
+))
+</code></pre>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne8.png" />
+    
+    
+</figure>
+
+
+<h3 id="日本語表示">日本語表示</h3>
+
+<p>冒頭に張ったスクショには日本語が表示されていましたが、実は Fyne は日本語表示に対応していません！
+リポジトリを見ると Noto Sans が同梱されているのが確認できますが、日本語対応の CJK JP ではありません。</p>
+
+<p>ですがもちろん解決策があります。テーマを切り替えたときと同じように環境変数でフォントを指定するだけです！</p>
+
+<p>macOS:</p>
+
+<pre><code>FYNE_FONT=/System/Library/Fonts/AquaKana.ttc go run .
+</code></pre>
+
+<p>Windows 10 PowerShell:</p>
+
+<pre><code>$Env:FYNE_FONT='C:\Windows\Fonts\YuGothM.ttc'
+go run .
+</code></pre>
+
+<p>ヒラギノ角ゴとか指定しようとしたら bad TTF version というエラーで落ちてしまいました。現状では指定できるフォントは限られているようです。</p>
+
+<pre><code>2020/07/12 08:34:21 Fyne error:  font load error
+2020/07/12 08:34:21   Cause: freetype: invalid TrueType format: bad TTF version
+2020/07/12 08:34:21   At: /Users/yutaka/Projects/go/pkg/mod/fyne.io/fyne@v1.3.2/internal/painter/font.go:20
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x1d4 pc=0x42a5c31]
+</code></pre>
+
+<p>なお、 <code>Label</code> や <code>HyperLink</code> ではスタイルを指定できる <code>NewXxxWithStyle()</code> という関数もあり、こんな感じで太字・斜体・等幅が指定できます。</p>
+
+<pre><code>widget.NewLabelWithStyle(&quot;らべる&quot;, fyne.TextAlignCenter, fyne.TextStyle{
+    Bold: true,
+    Italic: true,
+    Monospace: true,
+})
+</code></pre>
+
+<p>しかしフォントの指定の口は環境変数1つのみです。Fyne のコードを見る限り、ファイル名に <code>Regular</code> が含まれていると、その部分を <code>Bold</code>, <code>BoldItalic</code>, <code>Italic</code> に変換するようです。それ以外は指定しても効きません。この実装はちょっと不便です (しかも undocumented)。
+また等幅フォントについては <code>FYNE_FONT</code> 環境変数ではなく <code>FYNE_FONT_MONOSPACE</code> 環境変数で指定するように実装されています。</p>
+
+<p>実際にアプリケーションとしてパッケージングして配布することを考えても、環境変数で指定するというのはあまり都合の良い方式ではありません。
+いまのところ現実的な解決策としては、</p>
+
+<ul>
+<li><code>TextStyle</code> を使いたいときは自分でフォントを (名前を整えた上で) 成果物に同梱し、 <code>app.New()</code> より前に環境変数に設定</li>
+<li><code>TextStyle</code> を使わないのであれば、実行 OS から適切なシステムフォントを探し、 <code>app.New()</code> より前に環境変数に設定</li>
+</ul>
+
+<p>とするのが良さそうです。</p>
+
+<p>冒頭の例では、以下のようなコードになっています。ファイルが存在するか判定して、あれば環境変数に設定してから <code>app.New()</code> します。</p>
+
+<pre><code class="language-go">fontPath := &quot;/System/Library/Fonts/AquaKana.ttc&quot;
+if _, err := os.Stat(fontPath); err == nil {
+    os.Setenv(&quot;FYNE_FONT&quot;, fontPath)
+}
+a := app.New()
+w := a.NewWindow(&quot;Hello&quot;)
+</code></pre>
+
+<h3 id="パッケージング">パッケージング</h3>
+
+<p>Fyne で作ったデスクトップアプリは、 <code>go run</code> で動いたことからもわかるようにそのまま <code>go build</code> したものを配布しても構いません。
+しかし <code>go build</code> だけだと Windows の場合は exe ファイルにアイコンがない上、コマンドプロンプト画面 (いわゆる DOS 窓) が出現してしまいます。そして Mac の場合は当然ながら <code>.app</code> 形式のアプリではなく生のバイナリファイルで、デスクトップアプリらしさがありません。Linux もデスクトップ環境が読み込めるパスでアイコンを置いておきたいものです。</p>
+
+<p>というわけでパッケージングコマンドが提供されています。導入方法は簡単。</p>
+
+<pre><code>go get fyne.io/fyne/cmd/fyne
+</code></pre>
+
+<p>使い方もシンプルです。適当なアイコンを png ファイルで用意しておいて・・・</p>
+
+<pre><code>fyne package -icon icon.png
+</code></pre>
+
+<p>たったこれだけです。<code>-icon</code> のほかクロスコンパイル用の <code>-os &lt;os&gt;</code> があります。ただし前述のプラットフォーム事前条件を満たせないとクロスコンパイルは成功しません。
+あとは <code>-release</code> というリリースビルド用オプションもありますが、手元で試したところ <code>true</code> でも <code>false</code> でも同じバイナリが出力されました・・・。</p>
+
+<p><code>fyne package</code> 以外には <code>fyne bundle &lt;file|directory&gt;</code> なんてサブコマンドもあります。
+静的コンテンツ (ファイルやディレクトリ) をバイナリに埋め込むことができます。</p>
+
+<h3 id="おまけ-windows-で-exec-command-で-dos-窓が出る">おまけ: Windows で exec.Command で DOS 窓が出る</h3>
+
+<p>Windows 限定の話ですが、 <code>fyne package</code> でバイナリを作るとアプリ起動時にコマンドプロンプト画面 (いわゆる DOS 窓) が出ないよう対策してくれるということを先程紹介しました。
+これは何も <code>fyne</code> の魔法ではなく、内部で <code>go build</code> を以下のように実行しているだけです:</p>
+
+<pre><code>go build -ldflags -H=windowsgui .
+</code></pre>
+
+<p>しかしこの副作用なのか、GUI から何らかの外部コマンドを実行するコードを <code>fyne package</code> した exe を実行すると、この外部コマンドの DOS 窓が出現するという現象に遭遇しました。</p>
+
+<p>ちょっと長いですが次のようなコードを動かしてみます。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;os/exec&quot;
+
+	&quot;fyne.io/fyne/app&quot;
+	&quot;fyne.io/fyne/widget&quot;
+)
+
+func main() {
+	a := app.New()
+	w := a.NewWindow(&quot;ping&quot;)
+	label := widget.NewLabel(&quot;Not executed&quot;)
+	w.SetContent(widget.NewVBox(
+		widget.NewButton(&quot;Button&quot;, func() {
+			label.SetText(&quot;Executing...&quot;)
+			if err := exec.Command(&quot;ping&quot;, &quot;-n&quot;, &quot;3&quot;, &quot;1.1.1.1&quot;).Run(); err != nil {
+				label.SetText(&quot;ERROR: &quot; + err.Error())
+				return
+			}
+			label.SetText(&quot;Success&quot;)
+		}),
+		label,
+	))
+	w.ShowAndRun()
+}
+</code></pre>
+
+<p>先程の <code>fyne package</code> でも <code>go build -ldflags -H=windowsgui .</code> でもどちらでも、確かに exe 起動時の DOS 窓は出なくなりますが、 &ldquo;Button&rdquo; を押すと DOS 窓が出現してしまいます。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/fyne9.png" width="80%" />
+    
+    
+</figure>
+
+
+<p>色々と調べたところ、これを解決する方法がありました。 <code>syscall.SysProcAttr</code> 構造体の <code>HideWindow</code> という Windows 専用項目でした<sup>[参考文献3]</sup>。
+先程のコードに適用すると、以下のようになります。これで DOS 窓は出なくなりました。</p>
+
+<pre><code class="language-go">cmd := exec.Command(&quot;ping&quot;, &quot;-n&quot;, &quot;3&quot;, &quot;1.1.1.1&quot;)
+cmd.SysProcAttr = &amp;syscall.SysProcAttr{HideWindow: true}
+if err := cmd.Run(); err != nil {
+    label.SetText(&quot;ERROR: &quot; + err.Error())
+    return
+}
+</code></pre>
+
+<p>しかしここで新たな問題が発生します。<code>HideWindow</code> は Windows 用の Go ツールチェインにしかないので、他の OS ではコンパイルできなくなるのです。
+これを解決するにはもはや Go の Build Constraints 機能に頼るしかないでしょう。まず、Windows かそれ以外かで分岐する部分を別のソースファイルにし、そして関数化します。ファイル名は <code>cmd_windows.go</code> とします (<code>_windows</code> の部分が Build Constraints の規約)。</p>
+
+<p><code>cmd_windows.go</code>:</p>
+
+<pre><code>package main
+
+import (
+	&quot;os/exec&quot;
+	&quot;syscall&quot;
+)
+
+func prepareBackgroundCommand(cmd *exec.Cmd) {
+	cmd.SysProcAttr = &amp;syscall.SysProcAttr{HideWindow: true}
+}
+</code></pre>
+
+<p>Windows 以外の場合は何もしなくて良いですが、関数は必要です。そこでもうひとつ <code>cmd.go</code> を作成します。</p>
+
+<p><code>cmd.go</code>:</p>
+
+<pre><code>// +build !windows
+
+package main
+
+import &quot;os/exec&quot;
+
+func prepareBackgroundCommand(_ *exec.Cmd) {
+	// no-op
+}
+</code></pre>
+
+<p>冒頭に書いた <code>// +build !windows</code> は <code>GOOS</code> が windows じゃない場合はこのソースをビルドしてねという指示です。</p>
+
+<p>準備ができたら、<code>exec.Cmd</code> に適用しましょう。</p>
+
+<pre><code class="language-go">cmd := exec.Command(&quot;ping&quot;, &quot;-n&quot;, &quot;3&quot;, &quot;1.1.1.1&quot;)
+prepareBackgroundCommand(cmd)
+if err := cmd.Run(); err != nil {
+    label.SetText(&quot;ERROR: &quot; + err.Error())
+    return
+}
+</code></pre>
+
+<p>これで Windows 以外の OS のビルドが壊れなくなります。めでたしめでたし。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>Fyne は GUI ツールキットとして基本的な機能を備え、それなりのルックスのデスクトップアプリケーションを簡単に開発できることが分かりました。
+しかも、今回は触れませんでしたが Android や iOS で動くアプリも作れるようになっているなど、デスクトップだけでなくモバイルもカバーできる真のクロスプラットフォームなツールキットを目指しているのも心強いです。Fyne の開発は活発に進められており、今後の発展にも大いに期待できます。</p>
+
+<p>一方で、現時点ではまだ機能が出揃っていないという点でフィットしなかったり、あるいは開発環境構築でつまづいたり、新たな問題に遭遇したりして挫折することもありえるツールキットでもあります。問題を解決するには Go や OS の一段深い理解が必要になることもあるでしょう。
+万人にお勧めできるツールキットではない点も付け加えないといけません。</p>
+
+<p>なお、本記事を作成する元ネタになったアプリは GitHub で公開しています。
+ARPG (あーぷじー) という名前で、LAN 内で IP アドレスと MAC アドレスを相互に解決できる GUI アプリです。中身は単に OS のコマンドを叩いているだけですが、どうしても業務で GUI が欲しかったのでサクッと作りました。コードも短いですが、本記事で紹介したノウハウが詰まっています。</p>
+
+
+<figure class="center">
+    <a href="https://github.com/mikan/arpg">
+        <img src="/img/ss/arpg1.png" />
+    </a>
+    
+</figure>
+
+
+<blockquote>
+<p>mikan/arpg: IP address / MAC address resolving GUI tool</p>
+
+<p><a href="https://github.com/mikan/arpg">https://github.com/mikan/arpg</a></p>
+</blockquote>
+
+<p>何かの参考になれば幸いです。</p>
+
+<p>Happy hacking!</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://github.com/avelino/awesome-go">avelino/awesome-go: A curated list of awesome Go frameworks, libraries and software</a></li>
+<li><a href="https://github.com/fyne-io/fyne/tree/master/theme/font">fyne/theme/font at master · fyne-io/fyne</a></li>
+<li><a href="https://www.reddit.com/r/golang/comments/2c1g3x/build_golang_app_reverse_shell_to_run_in_windows/">Build golang app (reverse shell ) to run in Windows without it pops up the console (cmd.exe). Any idea, or clues ?? : golang</a></li>
+<li><a href="https://golang.org/pkg/go/build/#hdr-Build_Constraints">build - The Go Programming Language</a></li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Go%20%e8%a3%bd%20UI%20%e3%83%84%e3%83%bc%e3%83%ab%e3%82%ad%e3%83%83%e3%83%88%20Fyne%20%e3%81%a7%e5%a7%8b%e3%82%81%e3%82%8b%e3%82%af%e3%83%ad%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0%20GUI%20%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f&amp;title=Go%20%e8%a3%bd%20UI%20%e3%83%84%e3%83%bc%e3%83%ab%e3%82%ad%e3%83%83%e3%83%88%20Fyne%20%e3%81%a7%e5%a7%8b%e3%82%81%e3%82%8b%e3%82%af%e3%83%ad%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0%20GUI%20%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Go%20%e8%a3%bd%20UI%20%e3%83%84%e3%83%bc%e3%83%ab%e3%82%ad%e3%83%83%e3%83%88%20Fyne%20%e3%81%a7%e5%a7%8b%e3%82%81%e3%82%8b%e3%82%af%e3%83%ad%e3%82%b9%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0%20GUI%20%e3%82%a2%e3%83%97%e3%83%aa%e3%82%b1%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e9%96%8b%e7%99%ba&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2020%2f07%2f12%2fusing-fyne-for-developing-cross-platform-gui-application%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/" title="Heroku の mLab Add-on を MongoDB Atlas に移行する">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/">Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/">Heroku の mLab Add-on を MongoDB Atlas に移行する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/">Go の html/template でヘッダーやフッター等の共通化を実現する方法</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/">10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/">Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/">AWS IoT MQTT の 443 ポートへ Go からアクセスする</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/26/aosn-workshop-yearly-report-2018/">AOSN読書会 年次活動報告 2018</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/15/resign-uhuru-corporation/">株式会社ウフルを退職します</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/08/24/mysterious-behavior-caused-by-the-combination-of-jackson-and-kotlin/">Jackson と Kotlin の組み合わせで起きる不思議な現象の解析</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/07/28/desigining-project-layout-of-vuejs-that-serving-on-spring-webflux/">Vue.js を Spring WebFlux でホストする際のプロジェクト構成を考える</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/tools">tools</a></li><li><a href="/categories/salesforce">salesforce</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/golang">golang</a></li><li><a href="/tags/gradle">gradle</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/spring-boot">spring-boot</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/github">github</a></li><li><a href="/tags/kotlin">kotlin</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/heroku">heroku</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

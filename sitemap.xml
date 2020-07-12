@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/</loc>
+    <lastmod>2020-07-12T19:04:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/</loc>
     <lastmod>2020-07-11T11:56:54+09:00</lastmod>
   </url>
@@ -260,6 +265,12 @@
   </url>
   
   <url>
+    <loc>https://mikan.github.io/tags/fyne/</loc>
+    <lastmod>2020-07-12T19:04:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://mikan.github.io/tags/github/</loc>
     <lastmod>2018-01-23T21:19:41+09:00</lastmod>
     <priority>0</priority>
@@ -273,7 +284,7 @@
   
   <url>
     <loc>https://mikan.github.io/tags/golang/</loc>
-    <lastmod>2019-12-08T01:04:20+09:00</lastmod>
+    <lastmod>2020-07-12T19:04:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -429,7 +440,7 @@
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2020-07-11T11:56:54+09:00</lastmod>
+    <lastmod>2020-07-12T19:04:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -488,7 +499,7 @@
   
   <url>
     <loc>https://mikan.github.io/categories/tools/</loc>
-    <lastmod>2018-02-23T22:16:01+09:00</lastmod>
+    <lastmod>2020-07-12T19:04:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -518,7 +529,7 @@
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2020-07-11T11:56:54+09:00</lastmod>
+    <lastmod>2020-07-12T19:04:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
