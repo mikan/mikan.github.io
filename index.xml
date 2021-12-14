@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sun, 12 Jul 2020 19:04:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 14 Dec 2021 05:13:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3年間の畜産アグリテック業界への挑戦とこれから</title>
+      <link>https://mikan.github.io/2021/12/14/an-invitation-to-the-livestock-agri-tech/</link>
+      <pubDate>Tue, 14 Dec 2021 05:13:00 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2021/12/14/an-invitation-to-the-livestock-agri-tech/</guid>
+      <description>久々のエントリは近況というかここ3年間ぐらいの活動のご報告から。 2018年に株式会社ウフルを退職してから 畜産アグリテック の世界に身を置き、も</description>
+    </item>
     
     <item>
       <title>Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発</title>
