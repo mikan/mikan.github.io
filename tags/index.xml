@@ -383,6 +383,15 @@
     </item>
     
     <item>
+      <title>Python</title>
+      <link>https://mikan.github.io/tags/python/</link>
+      <pubDate>Sun, 26 Dec 2021 05:20:00 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Quasar Framework</title>
       <link>https://mikan.github.io/tags/quasar-framework/</link>
       <pubDate>Sat, 28 Jul 2018 19:40:00 +0900</pubDate>
@@ -394,7 +403,7 @@
     <item>
       <title>Raspberrypi</title>
       <link>https://mikan.github.io/tags/raspberrypi/</link>
-      <pubDate>Sat, 23 Nov 2019 22:15:00 +0900</pubDate>
+      <pubDate>Sun, 26 Dec 2021 05:20:00 +0900</pubDate>
       <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/raspberrypi/</guid>
       <description></description>
@@ -415,6 +424,15 @@
       <pubDate>Sun, 19 Nov 2017 23:07:42 +0900</pubDate>
       <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tags/seminar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sensing</title>
+      <link>https://mikan.github.io/tags/sensing/</link>
+      <pubDate>Sun, 26 Dec 2021 05:20:00 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/tags/sensing/</guid>
       <description></description>
     </item>
     

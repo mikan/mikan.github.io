@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Raspberry Pi Pico と SCD41 で作る CO2 表示器  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="python, raspberrypi, sensing, ">
+
+
+<meta property="og:title" content="Raspberry Pi Pico と SCD41 で作る CO2 表示器  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2021/12/26/making-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2021-12-26T05:20:00&#43;09:00" />
+<meta property="og:article:modified_time" content="2021-12-26T05:20:00&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="python">
+    
+<meta property="og:article:tag" content="raspberrypi">
+    
+<meta property="og:article:tag" content="sensing">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="Raspberry Pi Pico と SCD41 で作る CO2 表示器" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2021/12/26/making-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Raspberry Pi Pico と SCD41 で作る CO2 表示器",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2021-12-26",
+    "description": "",
+    "wordCount": 3210
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2021/12/26/making-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.44" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-book'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/tools/" >
+                <i class='fa fa-cut'></i>
+                Tools
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>Raspberry Pi Pico と SCD41 で作る CO2 表示器
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2021-12-26">26 Dec, 2021</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 7 min
+  &middot; (3210 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Raspberry%20Pi%20Pico%20%e3%81%a8%20SCD41%20%e3%81%a7%e4%bd%9c%e3%82%8b%20CO2%20%e8%a1%a8%e7%a4%ba%e5%99%a8&amp;url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f&amp;title=Raspberry%20Pi%20Pico%20%e3%81%a8%20SCD41%20%e3%81%a7%e4%bd%9c%e3%82%8b%20CO2%20%e8%a1%a8%e7%a4%ba%e5%99%a8" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Raspberry%20Pi%20Pico%20%e3%81%a8%20SCD41%20%e3%81%a7%e4%bd%9c%e3%82%8b%20CO2%20%e8%a1%a8%e7%a4%ba%e5%99%a8&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/python" class="label label-primary">python</a>
+  
+  <a href="https://mikan.github.io/tags/raspberrypi" class="label label-primary">raspberrypi</a>
+  
+  <a href="https://mikan.github.io/tags/sensing" class="label label-primary">sensing</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+
+<figure class="center">
+    
+        <img src="/img/photo/20211220-0105.jpg" width="50%" />
+    
+    
+</figure>
+
+
+<p>年末が近づいてきてだいぶ寒い日が続くようになってきましたが、寒くなってくると換気がおっくうになってお部屋の CO2 濃度が上がりがちです。
+CO2 濃度が上がると人体には集中力低下などの影響があると言われており <sup>[参考文献1]</sup>、脳みそを使って知的でクリエイティブな仕事をする我々プログラマーにとって見えない大敵です。
+さらに、コロナ禍においては屋内で人が密集してしまう環境では十分な換気が感染リスク減少に寄与することが言われており <sup>[参考文献2]</sup>、換気の指標として CO2 濃度の計測は有用です。</p>
+
+<p>ところがその CO2 濃度を計測するセンサーには粗悪品が多いという情報があります。電通大の調査によると、粗悪な CO2 センサーは消毒用アルコールに強く反応してしまうそうです <sup>[参考文献3]</sup>。
+しっかりモニタリングしたければ高価な CO2 計測器を買えばよいのですが、できれば安価に実現したいもの。ということで電子工作界隈で流行り出したのが CO2 センサーの自作。
+人気なのは安価なこちらのセンサー、Zhengzhou 社製 MH-Z19 シリーズ。写真の MH-Z19C は秋葉原の秋月で ¥2,500 ぐらい、激安といっていいでしょう <sup>[参考文献4]</sup>。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/photo/20211226_0331.jpg" width="50%" />
+    
+    
+</figure>
+
+
+<p>NDIR (非分散型赤外) 方式というのを採用していて、測定範囲は 400〜5000ppm、誤差 ± (50ppm + 5% reading value) とスペックも上々。金ピカでゴツい見た目もなかなか。ちなみに端っこに張り付いている紙切れはフィルターなので、剥がしたりしてはいけません。</p>
+
+<p>ただし今回紹介するのはこれではなく <strong>Sensirion SCD41</strong> です。
+Sensirion といえば SHT シリーズなど CMOS を使った独自技術による高精度な温湿度センサーが有名ですが、こちらはその CO2 バージョンのようなものです。値段は MH-Z19 シリーズほどではないですが CO2 センサーとしてはやはり結構安い部類、そしてセンシリオン公式 <sup>[参考文献5]</sup> のほか最近 Seeed <sup>[参考文献6]</sup> や Adafruit <sup>[参考文献7]</sup> からも評価ボードが発売され入手もしやすいです。スペック上も、測定範囲こそ MH-Z19C と同じですが、誤差は ± (40ppm + 5% reading value) とより高精度になっています <sup>[参考文献8]</sup>。しかもこのセンサー、 CO2 だけでなく温度・湿度も1モジュールでできてしまいます。冬場部屋で加湿器を運用している私にとって高精度の湿度のモニタリングも同時に達成したい。というわけで今回は SCD41 を使った表示器を製作することに決定、まずはブレッドボードに配線してみました。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/photo/20211219_2223.jpg" width="50%" />
+    
+    
+</figure>
+
+
+<p>マイコンは今ホットな Raspberry Pi Pico を採用。LCD は I2C で手軽に使えて ¥550 と安価な AQM1602 のキット <sup>[参考文献9]</sup> を利用しています。
+ちなみにこのキット、なかなか細かいハンダ付けが必要なので、しっかり換気して集中力を高めた状態で作業しましょう (笑)</p>
+
+<p>配線はこんな感じです。上の写真とは AQM1602 が左右逆になっているのでご注意ください。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/diagram/rpi-pico-scd41-wiring.png" width="70%" />
+    
+    
+</figure>
+
+
+<p>プログラムはせっかくの Pi Pico なので MicroPython をチョイスしました。
+SCD41 のドライバーは Adafruit が公開している CircuitPython 向けのものを MicroPython 化して対応しました。</p>
+
+<blockquote>
+<p>adafruit/Adafruit_CircuitPython_SCD4X: CircuitPython/Python driver for Sensirion SCD40 &amp; SCD41</p>
+
+<p><a href="https://github.com/adafruit/Adafruit_CircuitPython_SCD4X">https://github.com/adafruit/Adafruit_CircuitPython_SCD4X</a></p>
+</blockquote>
+
+<p>ただしキャリブレーション等の機能はまだ移植していません。</p>
+
+<p>AQM1602 のドライバーは秋月電子通商の商品サイトにある Arduino 向けサンプルプログラムを MicroPython 化して対応しました。</p>
+
+<blockquote>
+<p>Ｉ２Ｃ接続小型キャラクタＬＣＤモジュール　１６×２行　３．３Ｖ／５Ｖ: ディスプレイ･表示器 秋月電子通商-電子部品・ネット通販</p>
+
+<p><a href="https://akizukidenshi.com/catalog/g/gP-08779/">https://akizukidenshi.com/catalog/g/gP-08779/</a></p>
+</blockquote>
+
+<p>完成したプログラム (<code>main.py</code>) は以下のようになりました。ちょっと長いですが全文を貼り付けます。</p>
+
+<pre><code class="language-python">import machine
+import time
+from micropython import const
+
+
+class SCD4X:
+    &quot;&quot;&quot;
+    Based on https://github.com/adafruit/Adafruit_CircuitPython_SCD4X
+    Copyright (c) 2021 ladyada for Adafruit Industries
+    MIT License
+    &quot;&quot;&quot;
+
+    DEFAULT_ADDRESS = 0x62
+    DATA_READY = const(0xE4B8)
+    STOP_PERIODIC_MEASUREMENT = const(0x3F86)
+    START_PERIODIC_MEASUREMENT = const(0x21B1)
+    READ_MEASUREMENT = const(0xEC05)
+
+    def __init__(self, i2c_bus, address=DEFAULT_ADDRESS):
+        self.i2c = i2c_bus
+        self.address = address
+        self._buffer = bytearray(18)
+        self._cmd = bytearray(2)
+        self._crc_buffer = bytearray(2)
+
+        # cached readings
+        self._temperature = None
+        self._relative_humidity = None
+        self._co2 = None
+
+        self.stop_periodic_measurement()
+
+    @property
+    def co2(self):
+        &quot;&quot;&quot;Returns the CO2 concentration in PPM (parts per million)
+        .. note::
+            Between measurements, the most recent reading will be cached and returned.
+        &quot;&quot;&quot;
+        if self.data_ready:
+            self._read_data()
+        return self._co2
+
+    @property
+    def temperature(self):
+        &quot;&quot;&quot;Returns the current temperature in degrees Celsius
+        .. note::
+            Between measurements, the most recent reading will be cached and returned.
+        &quot;&quot;&quot;
+        if self.data_ready:
+            self._read_data()
+        return self._temperature
+
+    @property
+    def relative_humidity(self):
+        &quot;&quot;&quot;Returns the current relative humidity in %rH.
+        .. note::
+            Between measurements, the most recent reading will be cached and returned.
+        &quot;&quot;&quot;
+        if self.data_ready:
+            self._read_data()
+        return self._relative_humidity
+
+    def _read_data(self):
+        &quot;&quot;&quot;Reads the temp/hum/co2 from the sensor and caches it&quot;&quot;&quot;
+        self._send_command(self.READ_MEASUREMENT, cmd_delay=0.001)
+        self._read_reply(self._buffer, 9)
+        self._co2 = (self._buffer[0] &lt;&lt; 8) | self._buffer[1]
+        temp = (self._buffer[3] &lt;&lt; 8) | self._buffer[4]
+        self._temperature = -45 + 175 * (temp / 2 ** 16)
+        humi = (self._buffer[6] &lt;&lt; 8) | self._buffer[7]
+        self._relative_humidity = 100 * (humi / 2 ** 16)
+
+    @property
+    def data_ready(self):
+        &quot;&quot;&quot;Check the sensor to see if new data is available&quot;&quot;&quot;
+        self._send_command(self.DATA_READY, cmd_delay=0.001)
+        self._read_reply(self._buffer, 3)
+        return not ((self._buffer[0] &amp; 0x03 == 0) and (self._buffer[1] == 0))
+
+    def stop_periodic_measurement(self):
+        &quot;&quot;&quot;Stop measurement mode&quot;&quot;&quot;
+        self._send_command(self.STOP_PERIODIC_MEASUREMENT, cmd_delay=0.5)
+
+    def start_periodic_measurement(self):
+        &quot;&quot;&quot;Put sensor into working mode, about 5s per measurement&quot;&quot;&quot;
+        self._send_command(self.START_PERIODIC_MEASUREMENT, cmd_delay=0.01)
+
+    def _send_command(self, cmd, cmd_delay=0.0):
+        self._cmd[0] = (cmd &gt;&gt; 8) &amp; 0xFF
+        self._cmd[1] = cmd &amp; 0xFF
+        self.i2c.writeto(self.address, self._cmd)
+        time.sleep(cmd_delay)
+
+    def _read_reply(self, buff, num):
+        self.i2c.readfrom_into(self.address, buff, num)
+        self._check_buffer_crc(self._buffer[0:num])
+
+    def _check_buffer_crc(self, buf):
+        for i in range(0, len(buf), 3):
+            self._crc_buffer[0] = buf[i]
+            self._crc_buffer[1] = buf[i + 1]
+            if self._crc8(self._crc_buffer) != buf[i + 2]:
+                raise RuntimeError(&quot;CRC check failed while reading data&quot;)
+        return True
+
+    @staticmethod
+    def _crc8(buffer):
+        crc = 0xFF
+        for byte in buffer:
+            crc ^= byte
+            for _ in range(8):
+                if crc &amp; 0x80:
+                    crc = (crc &lt;&lt; 1) ^ 0x31
+                else:
+                    crc = crc &lt;&lt; 1
+        return crc &amp; 0xFF  # return the bottom 8 bits
+
+
+class AQM1602:
+    &quot;&quot;&quot;
+    Based on https://akizukidenshi.com/catalog/g/gP-08779/
+    &quot;&quot;&quot;
+
+    DEFAULT_ADDRESS = 0x3E
+
+    def __init__(self, i2c_bus, address=DEFAULT_ADDRESS):
+        self.i2c = i2c_bus
+        self.address = address
+        time.sleep_ms(100)
+        self.write_cmd(0x38)
+        time.sleep_ms(20)
+        self.write_cmd(0x39)
+        time.sleep_ms(20)
+        self.write_cmd(0x14)
+        time.sleep_ms(20)
+        self.write_cmd(0x73)
+        time.sleep_ms(20)
+        self.write_cmd(0x56)
+        time.sleep_ms(20)
+        self.write_cmd(0x6C)
+        time.sleep_ms(20)
+        self.write_cmd(0x38)
+        time.sleep_ms(20)
+        self.write_cmd(0x01)
+        time.sleep_ms(20)
+        self.write_cmd(0x0C)
+        time.sleep_ms(20)
+
+    def write_data(self, data):
+        self.i2c.writeto_mem(self.address, 0x40, bytes([data &amp; 0xFF]), addrsize=8)
+        time.sleep_ms(1)
+
+    def write_cmd(self, cmd):
+        self.i2c.writeto_mem(self.address, 0x00, bytes([cmd &amp; 0xFF]), addrsize=8)
+        time.sleep_ms(1)
+
+    def print(self, line_no, lin):
+        buf = bytearray(lin)
+        if len(buf) &lt;= 0:
+            return
+        if len(buf) &gt; 16:
+            buf = buf[0:16]
+        if line_no == 0:
+            self.write_cmd(0x01)
+            self.write_cmd(0x80)
+        else:
+            self.write_cmd(0x02)
+            self.write_cmd(0xC0)
+        for idx in range(0, len(buf)):
+            self.write_data(buf[idx])
+
+
+if __name__ == &quot;__main__&quot;:
+    led = machine.Pin(25, machine.Pin.OUT)
+    uart = machine.UART(1, 9600, tx=machine.Pin(4), rx=machine.Pin(5))
+
+    # I2C0: SCD4X
+    i2c0 = machine.I2C(0, sda=machine.Pin(0), scl=machine.Pin(1), freq=100000)
+    print(&quot;i2c0 scan result:&quot;, i2c0.scan())
+    scd4x = SCD4X(i2c0)
+    scd4x.start_periodic_measurement()
+
+    # I2C1: LCD
+    i2c1 = machine.I2C(1, sda=machine.Pin(2), scl=machine.Pin(3), freq=100000)
+    print(&quot;i2c1 scan result:&quot;, i2c1.scan())
+    lcd = AQM1602(i2c1)
+
+    seq = 0
+    print(&quot;seq,co2,temperature,humidity&quot;)
+    lcd.print(0, &quot;SCD4X CO2 Sensor&quot;)
+    lcd.print(1, &quot;Initializing...&quot;)
+
+    while True:
+        time.sleep(5)
+        seq = seq + 1
+        co2_ppm = scd4x.co2
+        temp_deg = scd4x.temperature
+        humidity_percent = scd4x.relative_humidity
+        print(seq, co2_ppm, temp_deg, humidity_percent, sep=&quot;,&quot;)
+        if co2_ppm &gt;= 2000:
+            led.on()
+        else:
+            led.off()
+        lcd.print(0, &quot;%dppm&quot; % co2_ppm)
+        lcd.print(1, &quot;%.1f%cC %.1f%%&quot; % (temp_deg, 13, humidity_percent))
+</code></pre>
+
+<p>main 処理にあるように、2,000ppm を超えると Pico の基板にある LED が点灯するように仕込んであります。また計測データは UART 経由で CSV 形式で出力する機能もつけてあります。</p>
+
+<p>Pico へのプログラムの書き込みは Thonny を使いました。Pico を繋いだ状態で起動すると、MicroPython 用ファームウェアの書き込こんどく？みたいなダイアログが出てきて、ワンクリックでセットアップできる、とても便利なツールです。</p>
+
+<blockquote>
+<p>Thonny, Python IDE for beginners</p>
+
+<p><a href="https://thonny.org/">https://thonny.org/</a></p>
+</blockquote>
+
+<p>試行錯誤するときは Thonny のエディタに打ち込んだプログラムを Run ボタンを押すだけでそのまま Pico 上で動きます。
+Pico 本体にプログラムを配置して走らせたい場合は、保存先として Pico を選び <code>main.py</code> という名前で保存します。</p>
+
+<p>一度 Pico 上に配置してしまえば、その後は Pico 上にある <code>main.py</code> を Thonny で開いていじることもできます。なおその際には一度 Stop ボタンを押して今走っているプログラムを止めておく (シェルに <code>&gt;&gt;&gt;</code> が出ている状態にする) 必要があります。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/thonny1.png" width="50%" />
+    
+    
+</figure>
+
+
+
+<figure class="center">
+    
+        <img src="/img/ss/thonny2.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>息を吹きかけたりして CO2・温度・湿度が変化することを確認してみましょう。</p>
+
+<p>一通り動作を確認したら、今度はブレッドボードではなくもうちょっと使いやすいようにユニバーサル基板にしたくなりました。
+そして完成したのが冒頭の写真です (再掲)。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/photo/20211220-0105.jpg" width="50%" />
+    
+    
+</figure>
+
+
+<p>用意した部材はこちら:</p>
+
+<ul>
+<li>ユニバーサル基板 2.54mm ピッチ 両面スルーホール Bタイプ
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-03232/">https://akizukidenshi.com/catalog/g/gP-03232/</a></li>
+</ul></li>
+<li>アクリル版 B基板用
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-10243/">https://akizukidenshi.com/catalog/g/gP-10243/</a></li>
+</ul></li>
+<li>M3 ネジ・ナット (x4)
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-02743/">https://akizukidenshi.com/catalog/g/gP-02743/</a></li>
+</ul></li>
+<li>M3 スペーサー 20mm (x4)
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-07570/">https://akizukidenshi.com/catalog/g/gP-07570/</a></li>
+</ul></li>
+<li>分割ロングピンソケット・・・SCD41 接続用 (ボードによって4〜8ピン使用) ※基板に直付けする場合は省略可能
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gC-05779/">https://akizukidenshi.com/catalog/g/gC-05779/</a></li>
+</ul></li>
+<li>ピンソケット 2x20 (x2)・・・Pico 接続用 (2列目は不使用) ※基板に直付けする場合は省略可能
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gC-00085/">https://akizukidenshi.com/catalog/g/gC-00085/</a></li>
+</ul></li>
+<li>丸ピン IC ソケット・・・AQM1602 接続用 (4ピンのみ使用) ※基板に直付けする場合は省略可能
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-01591/">https://akizukidenshi.com/catalog/g/gP-01591/</a></li>
+</ul></li>
+<li>タクトスイッチ・・・リセットボタン用
+
+<ul>
+<li><a href="https://akizukidenshi.com/catalog/g/gP-03647/">https://akizukidenshi.com/catalog/g/gP-03647/</a></li>
+</ul></li>
+<li>すずめっき線・はんだ</li>
+</ul>
+
+<p>写真の作例は 2,000ppm 超えインジケーターをより目立たせるため Pico 上の LED ではなく基板に置いた赤色 LED に切り替えていますが、それ以外は上に書いた配線図通りです。</p>
+
+<p>表のようす:</p>
+
+
+<figure class="center">
+    
+        <img src="/img/photo/20211220_0051.jpg" width="50%" />
+    
+    
+</figure>
+
+
+<p>裏のようす:</p>
+
+
+<figure class="center">
+    
+        <img src="/img/photo/20211220_0105.jpg" width="50%" />
+    
+    
+</figure>
+
+
+<p>なかなかパンクな感じに仕上がりました。
+7 セグ LED を並べたりすればもっと存在感ある感じになったのですが、電気を消した部屋で煌々と光るのもなんかあれなのでテキスト LCD に落ち着いています。</p>
+
+<p>なお本記事に掲載したプログラムや配線図は GitHub でも公開しています。
+不具合や改善点を見つけた際などは是非 issue や PR をお送りください。お待ちしております。</p>
+
+<blockquote>
+<p><a href="https://github.com/mikan/rpi-pico-scd4x">https://github.com/mikan/rpi-pico-scd4x</a></p>
+</blockquote>
+
+<p>Happy hacking!</p>
+
+<h4 id="参考文献">参考文献</h4>
+
+<ol>
+<li><a href="https://www.jstage.jst.go.jp/article/aije/77/676/77_533/_article/-char/ja/">教室環境の質が児童の体調と集中力に与える影響に関する実態調査</a></li>
+<li><a href="https://ci.nii.ac.jp/naid/130007884051/">CiNii 論文 - コロナウィルスの感染対策に有用な室内環境に関連する研究事例の紹介</a></li>
+<li><a href="https://www.uec.ac.jp/news/announcement/2021/20210810_3625.html">【ニュースリリース】安価で粗悪なCO<sub>2</sub>センサの見分け方 ～５千円以下の機種、大半が消毒用アルコールに強く反応～│電気通信大学</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/gM-16142/">ＣＯ２センサーモジュール　ＭＨ－Ｚ１９Ｃ: センサ一般 秋月電子通商-電子部品・ネット通販</a></li>
+<li><a href="https://www.sensirion.com/en/environmental-sensors/evaluation-kit-sek-environmental-sensing/evaluation-kit-sek-scd41/">Evaluation Kit SEK-SCD41 | Sensirion</a></li>
+<li><a href="https://www.seeedstudio.com/Grove-CO2-Temperature-Humidity-Sensor-SCD41-p-5025.html">Grove - CO2 &amp; Temperature &amp; Humidity Sensor - SCD41</a></li>
+<li><a href="https://www.adafruit.com/product/5190">Adafruit SCD-41 - True CO2 Temperature and Humidity Sensor [STEMMA QT / Qwiic] : ID 5190 : $59.50 : Adafruit Industries, Unique &amp; fun DIY electronics and kits</a></li>
+<li><a href="https://www.sensirion.com/jp/environmental-sensors/carbon-dioxide-sensors/carbon-dioxide-sensor-scd4x/">CO2センサー 「SCD4x」 | Sensirion</a></li>
+<li><a href="https://akizukidenshi.com/catalog/g/gK-08896/">Ｉ２Ｃ接続小型キャラクタＬＣＤモジュール（１６×２行・３．３Ｖ／５Ｖ）ピッチ変換キット: ディスプレイ･表示器 秋月電子通商-電子部品・ネット通販</a></li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=Raspberry%20Pi%20Pico%20%e3%81%a8%20SCD41%20%e3%81%a7%e4%bd%9c%e3%82%8b%20CO2%20%e8%a1%a8%e7%a4%ba%e5%99%a8&amp;url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f&amp;title=Raspberry%20Pi%20Pico%20%e3%81%a8%20SCD41%20%e3%81%a7%e4%bd%9c%e3%82%8b%20CO2%20%e8%a1%a8%e7%a4%ba%e5%99%a8" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=Raspberry%20Pi%20Pico%20%e3%81%a8%20SCD41%20%e3%81%a7%e4%bd%9c%e3%82%8b%20CO2%20%e8%a1%a8%e7%a4%ba%e5%99%a8&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2021%2f12%2f26%2fmaking-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2021/12/14/livestock-agri-tech-3years/" title="3年間の畜産アグリテック業界への挑戦とこれから">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2021/12/26/making-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico/">Raspberry Pi Pico と SCD41 で作る CO2 表示器</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2021/12/14/livestock-agri-tech-3years/">3年間の畜産アグリテック業界への挑戦とこれから</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/">Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/">Heroku の mLab Add-on を MongoDB Atlas に移行する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/">Go の html/template でヘッダーやフッター等の共通化を実現する方法</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/">10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/">Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/">AWS IoT MQTT の 443 ポートへ Go からアクセスする</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/26/aosn-workshop-yearly-report-2018/">AOSN読書会 年次活動報告 2018</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/15/resign-uhuru-corporation/">株式会社ウフルを退職します</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/tools">tools</a></li><li><a href="/categories/salesforce">salesforce</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/golang">golang</a></li><li><a href="/tags/gradle">gradle</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/spring-boot">spring-boot</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/github">github</a></li><li><a href="/tags/kotlin">kotlin</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li><li><a href="/tags/heroku">heroku</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
