@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
-    <lastBuildDate>Sat, 11 Jul 2020 11:56:54 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 31 Mar 2022 12:30:00 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>公共交通オープンデータ API のお引越し</title>
+      <link>https://mikan.github.io/2022/03/31/migrate-odpt-api/</link>
+      <pubDate>Thu, 31 Mar 2022 12:30:00 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2022/03/31/migrate-odpt-api/</guid>
+      <description>大都市の地下に張り巡らされた9つの地下鉄路線を運営する東京メトロ。2014年にその地下鉄のデータを使ったアプリを開発するコンテスト「東京メト</description>
+    </item>
     
     <item>
       <title>Heroku の mLab Add-on を MongoDB Atlas に移行する</title>

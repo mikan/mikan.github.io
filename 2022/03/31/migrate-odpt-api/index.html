@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>公共交通オープンデータ API のお引越し  &middot; Yutaka 🍊 Kato</title>
+  <meta property="og:image" content="https://mikan.github.io/ogp.png" />
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="heroku, java, spring-boot, mongodb, ">
+
+
+<meta property="og:title" content="公共交通オープンデータ API のお引越し  &middot; Yutaka 🍊 Kato ">
+<meta property="og:site_name" content="Yutaka 🍊 Kato"/>
+<meta property="og:url" content="https://mikan.github.io/2022/03/31/migrate-odpt-api/" />
+<meta property="og:locale" content="ja-jp">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2022-03-31T12:30:00&#43;09:00" />
+<meta property="og:article:modified_time" content="2022-03-31T12:30:00&#43;09:00" />
+
+  
+    
+<meta property="og:article:tag" content="heroku">
+    
+<meta property="og:article:tag" content="java">
+    
+<meta property="og:article:tag" content="spring-boot">
+    
+<meta property="og:article:tag" content="mongodb">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@kagaorange" />
+<meta name="twitter:creator" content="@kagaorange" />
+<meta name="twitter:title" content="公共交通オープンデータ API のお引越し" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="https://mikan.github.io/2022/03/31/migrate-odpt-api/" />
+<meta name="twitter:domain" content="https://mikan.github.io/">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "公共交通オープンデータ API のお引越し",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2022-03-31",
+    "description": "",
+    "wordCount": 4971
+  }
+</script>
+  
+
+
+
+<link rel="canonical" href="https://mikan.github.io/2022/03/31/migrate-odpt-api/" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+<link rel="icon" href="/favicon.png">
+<meta name="generator" content="Hugo 0.44" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+
+    <link rel="stylesheet" href="https://mikan.github.io/css/bootswatch/sandstone/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://mikan.github.io/css/style.css">
+
+
+<link rel="stylesheet" href="https://mikan.github.io/css/mikan.css">
+
+
+
+  <link rel="stylesheet" href="https://mikan.github.io/css/highlight/default.css">
+
+
+</head>
+<body class="map[name:sandstone]" data-ng-app="myapp" data-ng-controller="MyController" data-ng-mouseleave="MouseLeave($event)">
+    <header id="main-header">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        
+          
+          <a class="navbar-brand-img" href="/">
+            <img alt="Yutaka 🍊 Kato" src="/logo.png">
+            
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/" >
+                <i class='fa fa-home'></i>
+                Home
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/post/" >
+                <i class='fa fa-archive'></i>
+                Archives
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/seminars/" >
+                <i class='fa fa-users'></i>
+                Seminars
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/bookshelf/" >
+                <i class='fa fa-book'></i>
+                Bookshelf
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/tools/" >
+                <i class='fa fa-cut'></i>
+                Tools
+              </a>
+            </li>
+            
+            <li class="">
+
+              <a href="https://mikan.github.io/about/" >
+                <i class='fa fa-info-circle'></i>
+                About
+              </a>
+            </li>
+            
+            
+              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </header>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="text-center">
+
+    <h1>公共交通オープンデータ API のお引越し
+</h1>
+
+    <div class="metas">
+<small>
+  <i class="fa fa-calendar"></i>
+  <time datetime="2022-03-31">31 Mar, 2022</time>
+</small>
+
+
+  <small>
+  &middot; Read in about 10 min
+  &middot; (4971 words)
+  &middot; 
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=%e5%85%ac%e5%85%b1%e4%ba%a4%e9%80%9a%e3%82%aa%e3%83%bc%e3%83%97%e3%83%b3%e3%83%87%e3%83%bc%e3%82%bf%20API%20%e3%81%ae%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97&amp;url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f&amp;title=%e5%85%ac%e5%85%b1%e4%ba%a4%e9%80%9a%e3%82%aa%e3%83%bc%e3%83%97%e3%83%b3%e3%83%87%e3%83%bc%e3%82%bf%20API%20%e3%81%ae%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=%e5%85%ac%e5%85%b1%e4%ba%a4%e9%80%9a%e3%82%aa%e3%83%bc%e3%83%97%e3%83%b3%e3%83%87%e3%83%bc%e3%82%bf%20API%20%e3%81%ae%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  </small>
+
+<div class="margin-10">
+  <i class="fa fa-tags"></i>
+  
+  <a href="https://mikan.github.io/tags/heroku" class="label label-primary">heroku</a>
+  
+  <a href="https://mikan.github.io/tags/java" class="label label-primary">java</a>
+  
+  <a href="https://mikan.github.io/tags/spring-boot" class="label label-primary">spring-boot</a>
+  
+  <a href="https://mikan.github.io/tags/mongodb" class="label label-primary">mongodb</a>
+  
+
+
+</div>
+
+<br>
+</div>
+
+  </div>
+</div>
+
+      <div class="content">
+  
+
+
+<figure class="center">
+    
+        <img src="/img/ss/tmod-sunset1.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>大都市の地下に張り巡らされた9つの地下鉄路線を運営する東京メトロ。2014年にその地下鉄のデータを使ったアプリを開発するコンテスト「東京メトロ オープンデータコンテスト」が開かれました。私は友達を誘ってトイレ検索アプリ (本記事の最後で紹介します) を開発し、現在も運用・保守を続けています。</p>
+
+<p>しかし、その当時から運営され続けてきたオープンデータ API とその開発者サイトが<strong>2022年3月末</strong>をもって廃止することになりました。
+後継としては公共交通オープンデータ協議会 (odpt.org、以下 &ldquo;協議会&rdquo; と呼ぶことにします) が案内され、2022年2月24日からは協議会からの東京メトロのデータ提供が開始されています。</p>
+
+
+<figure class="center">
+    
+        <img src="/img/ss/odpt1.png" width="50%" />
+    
+    
+</figure>
+
+
+<p>協議会でも開発コンテストが開催されていたため、そちらから公共系オープンデータに触れた方も少なくないかもしれません。</p>
+
+<p>今回、前述のトイレ検索アプリの API を東京メトロから協議会へ切り替える作業を行なったので、API ユーザーとしての具体的な注意点・作業内容と、また API 設計の考察をごく簡単にまとめたいと思います。</p>
+
+<h3 id="提供されるデータの種類">提供されるデータの種類</h3>
+
+<p>協議会のデータカタログ<sup>[参考文献1]</sup>によると、現在のところ鉄道、バス、飛行機、船などで37件の組織からデータが提供されているようです。
+鉄道分野では以下の7事業者を見つけました (執筆時点)。</p>
+
+<ul>
+<li>ゆりかもめ</li>
+<li>多摩都市モノレール</li>
+<li>東京メトロ</li>
+<li>東京臨海高速鉄道 (りんかい線)</li>
+<li>東京都交通局 (都営地下鉄、荒川線、都バス)</li>
+<li>横浜市交通局 (市営地下鉄、市バス)</li>
+<li>首都圏新都市鉄道 (つくばエクスプレス)</li>
+</ul>
+
+<p>提供されているデータの種類を事業者ごとにまとめてみました (執筆時点)。</p>
+
+<table>
+<thead>
+<tr>
+<th>事業者</th>
+<th>駅情報</th>
+<th>駅時刻表</th>
+<th>列車時刻表</th>
+<th>運賃</th>
+<th>運行</th>
+<th>路線系統</th>
+<th>乗降者数</th>
+<th>列車ロケーション</th>
+<th>画像等</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ゆりかもめ</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>-</td>
+<td>✔︎</td>
+<td>-</td>
+<td>✔︎</td>
+<td>-</td>
+<td>-</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>多摩都市モノレール</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>-</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>東京メトロ</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>(調整中)</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>東京臨海高速鉄道</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>-</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>東京都交通局</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>横浜市交通局</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>首都圏新都市鉄道</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>✔︎</td>
+<td>-</td>
+<td>✔︎</td>
+</tr>
+</tbody>
+</table>
+
+<p>駅情報、駅時刻表、運賃といった基礎的なデータは網羅されていることがわかります。一方でリアルタイム性が高い列車ロケーション情報は提供体制がまだあまり整備されているとはいえません。
+東京メトロ API ユーザー視点では、メトロ以外のデータも使えるようになったぞ！と思っても、期待したデータが提供されていなかったといった落とし穴があり得ます。</p>
+
+<p>さて、ここまで来て東京メトロ API で使っていた ◯◯ がない！？という課題が浮かび上がりました。
+東京メトロ API と協議会 API の提供データの違いもまとめてみました (執筆時点)。</p>
+
+<table>
+<thead>
+<tr>
+<th>データ</th>
+<th>東京メトロ オープンデータ API</th>
+<th>協議会 API の東京メトロのデータ</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>列車ロケーション情報</td>
+<td>✔︎</td>
+<td>(調整中)</td>
+</tr>
+
+<tr>
+<td>運行情報</td>
+<td>✔︎</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>駅時刻表</td>
+<td>✔︎</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>施設情報（駅施設情報）</td>
+<td>✔︎</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>駅情報（乗降人員数）</td>
+<td>✔︎</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>運賃情報</td>
+<td>✔︎</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>地物（駅出入口）情報</td>
+<td>✔︎</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>国土交通省国土数値情報 地物（駅）情報</td>
+<td>✔︎</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>国土交通省国土数値情報 地物（線路）情報</td>
+<td>✔︎</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>東京メトロ駅情報</td>
+<td>✔︎</td>
+<td>✔︎</td>
+</tr>
+
+<tr>
+<td>東京メトロ路線情報</td>
+<td>✔︎</td>
+<td>✔︎</td>
+</tr>
+</tbody>
+</table>
+
+<p>開発コンテストではロケーション情報を使ったアプリが目立っていたので、それらは3月末で一旦全滅することになります。残念ですね。</p>
+
+<p>私が開発していたアプリはというと、以下の3つを利用していました。</p>
+
+<ul>
+<li>駅情報・・・協議会でも提供あり</li>
+<li>駅時刻表・・・協議会でも提供あり</li>
+<li>駅施設情報・・・協議会では未提供！</li>
+</ul>
+
+<p>駅施設情報がない・・・！どうしよう！？対策はのちほど・・・・。</p>
+
+<h3 id="利用規約-ガイドラインの差異">利用規約・ガイドラインの差異</h3>
+
+<p>そもそも協議会の API 提供周辺は東京メトロの活動を土台としてそのまま発展させているように見えます。API 仕様は基本的な設計方針を維持したまま発展した感じですし、API 仕様書から開発者サイトの作り方、フォーラムまでほとんど違いがありません。
+利用規約やガイドラインについても共通点が多く、アナウンスされている大きな違いは<strong>商用目的での利用が可能になった</strong>ことぐらいです。</p>
+
+<p>なお東京メトロのほうの利用規約では、禁止事項として以下が挙げられていました。</p>
+
+<blockquote>
+<p>公共交通データAPIを用いて得られた本公共交通データを、本webシステム以外のソフトウェア、データベース、アプリケーション、GPSシステムをはじめ、これらに限らない何等かのシステムに取り込み、または更新すること。</p>
+</blockquote>
+
+<p>ただし以下のような内容は利用規約上禁止されていない旨、FAQ に記載されていました。</p>
+
+<blockquote>
+<p>・アプリで駅名を検索する際、毎回データ検索APIを利用すると非効率なため、駅情報 odpt:Station をAPIからキャッシュ（DBに保存、ファイルに保存など）してアプリで活用すること</p>
+
+<p>・データサイズの大きい時刻表などをキャッシュしてアプリで活用すること</p>
+
+<p>・路線情報 odpt:Railway から抽出した路線の接続関係をグラフデータベースに取り込んで経路探索アプリなどを開発すること</p>
+
+<p>・駅情報 odpt:Railway や路線情報 odpt:Station、駅出入口情報 ug:Poi から取得されるデータをGISデータベースに取り込んでアプリで活用すること</p>
+</blockquote>
+
+<p>協議会のほうの利用規約では、取り込みに関する項目自体が禁止事項から削除されました。
+代わりに開発者ガイドラインのほうに列車ロケーション情報・列車運行情報などのリアルタイム性の高い動的データに対し、データ生成時刻情報 <code>dc:date</code> を画面上に表示するなどの要求事項が盛り込まれました。
+また静的データに対しても古い情報の提示による誤解や混乱を避けるため取得日時の表示や定期的な更新を求めています。逆に言えば、このガイドラインに従う限りはアプリケーション側で静的データはキャッシュして良いと解釈できます。</p>
+
+<p>なお、ガイドラインでは公共交通オープンデータセンターから取得したデータを利用している旨掲示するなどの要求事項も記載されていますので、仮にごく簡単な修正で API 移行自体は完了できたとしても、必ず本ガイドラインを読んで要求事項に従って対応する必要があります。</p>
+
+<p>これらをふまえた上で、私は協議会 API では提供されない東京メトロの駅施設情報はアプリケーション上にキャッシュして利用することにしました。
+将来提供が再開されるまでは情報がアップデートされませんが、アプリを停止するよりはマシでしょう。ただし情報が古すぎて役に立たなくなってきたらアプリを停止する必要があるかもしれませんね・・・。</p>
+
+<h3 id="api-移行作業">API 移行作業</h3>
+
+<p>さて、だいぶ前置きが長くなりましたが、ここから API 移行作業のメモです。
+作業は以下の流れで行いました。</p>
+
+<ol>
+<li>協議会 API ユーザー登録 (すぐに利用可能にならないので真っ先に着手！)</li>
+<li>アクセストークン発行</li>
+<li>API 仕様差異調査</li>
+<li>廃止 API の対策検討</li>
+<li>API 仕様差異の実装</li>
+</ol>
+
+<h4 id="1-協議会-api-ユーザー登録">1. 協議会 API ユーザー登録</h4>
+
+<p>まずは以下の URL からユーザー登録を行います。</p>
+
+<blockquote>
+<p>開発者サイト
+<a href="https://developer.odpt.org/">https://developer.odpt.org/</a></p>
+</blockquote>
+
+<p>東京メトロのときもそうでしたが、登録しても承認されないとログインできるようになりません。
+ユーザー登録画面には以下のように記載されています。</p>
+
+<blockquote>
+<p>登録の申請をいただいた後、申請内容に問題がない場合、最大2営業日程度で承認完了のメールをお送りします。</p>
+</blockquote>
+
+<p>私の場合は平日の朝に申し込んでたった45分で登録完了メールが届いてログインできるようになりました。
+ログインすると、アクセストークンの発行や API 仕様書の閲覧が可能になります。</p>
+
+<h4 id="2-アクセストークン発行">2. アクセストークン発行</h4>
+
+<p>ユーザー登録が完了したら、まずアクセストークンを発行します。</p>
+
+<p>最初から <code>DefaultApplication</code> というトークンが発行されていますが、使い回しはせず用途別に発行してください。</p>
+
+<h4 id="3-api-仕様差異調査">3. API 仕様差異調査</h4>
+
+<p>原則的に HTTP と JSON-LD に基づいた RESTish な (RESTful ではない) APIで、大筋では大きく変わっていませんが、細かな差異はたくさんあります。</p>
+
+<p>まずはエンドポイントから。おおまかに以下のような差異があります。</p>
+
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>東京メトロ</th>
+<th>協議会</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ホスト名</td>
+<td>api.tokyometroapp.jp</td>
+<td>api.odpt.org</td>
+</tr>
+
+<tr>
+<td>データ検索 API</td>
+<td>/api/v2/datapoints?</td>
+<td>/v4/RDF_TYPE?</td>
+</tr>
+
+<tr>
+<td>データ取得 API</td>
+<td>/api/v2/datapoints/DATA_URI</td>
+<td>/v4/datapoints/$DATA_URI</td>
+</tr>
+
+<tr>
+<td>データダンプ API</td>
+<td>-</td>
+<td>/v4/RDF_TYPE.json?</td>
+</tr>
+
+<tr>
+<td>地物情報検索 API</td>
+<td>/api/v2/places?</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>地物情報取得 API</td>
+<td>/api/v2/places/DATA_URI</td>
+<td>/v4/places/RDF_TYPE?</td>
+</tr>
+</tbody>
+</table>
+
+<p>実際のデータ取得のリクエストは以下のようになります (銀座線の銀座駅の渋谷方面の駅時刻表を取得する例)。</p>
+
+<p>東京メトロ:</p>
+
+<pre><code>curl -v &quot;https://api.tokyometroapp.jp/api/v2/datapoints?rdf:type=odpt:StationTimetable&amp;acl:consumerKey=&lt;CONSUMER_KEY&gt;&amp;odpt:station=odpt.Station:TokyoMetro.Ginza.Ginza&amp;odpt:railDirection=odpt.RailDirection:TokyoMetro.Shibuya&quot;
+</code></pre>
+
+<p>協議会:</p>
+
+<pre><code>curl &quot;https://api.odpt.org/api/v4/odpt:StationTimetable?acl:consumerKey=&lt;CONSUMER_KEY&gt;&amp;odpt:station=odpt.Station:TokyoMetro.Ginza.Ginza&amp;odpt:railDirection=odpt.RailDirection:TokyoMetro.Shibuya&quot;
+</code></pre>
+
+<p>なお、協議会の API では事業者を指定するために <code>odpt:operator=odpt.Operator:TokyoMetro</code> を追加することもできます。上記の例では必要ありませんが、取得するデータの種類によっては指定したほうが良いでしょう。</p>
+
+<p>個々の API に関しては、変更がさほどないものと、結構あるものがあります。
+私のアプリでは、以下のような改修が必要になりました:</p>
+
+<ul>
+<li>駅情報
+
+<ul>
+<li>駅施設情報の提供がなくなったため、駅施設情報への参照が消えた</li>
+</ul></li>
+<li>駅時刻表
+
+<ul>
+<li>平日ダイヤ・土休日ダイヤなどの区分が <code>odpt:Calendar</code> を用いたモデルに全面的に書き換えられた</li>
+<li>行き先が文字列から文字列の配列になった (複数の行き先が刺せるモデルになった)</li>
+</ul></li>
+<li>駅施設情報
+
+<ul>
+<li>そもそも提供がなくなった</li>
+</ul></li>
+</ul>
+
+<p><code>odpt:Calendar</code> は協議会 API でのみ利用可能な共通クラスで、<code>odpt.Calendar:Weekday</code> や事業者固有の休日などの日付の集合などを扱えるようになっています。<code>curl &quot;https://api.odpt.org/api/v4/odpt:Calendar?acl:consumerKey=&lt;CONSUMER_KEY&gt;&quot;</code> とすると全ての定義を取得できますが、大量にあって驚きます・・・。日付のモデリングって難しいですよね。</p>
+
+<h4 id="4-廃止-api-の対策検討">4. 廃止 API の対策検討</h4>
+
+<p>廃止されてしまったデータを利用している場合、どう対応するか悩ましいです。
+いくつか選択肢が考えられます。</p>
+
+<ol>
+<li>アプリの提供を終了する</li>
+<li>当該データを必要とする機能をドロップし、提供再開を祈りながら待つ</li>
+<li>当該データの現時点のスナップショットをキャッシュ、提供再開を祈りながら待つ</li>
+<li>別の API を探す or ユーザー生成コンテンツ化など</li>
+</ol>
+
+<p>たくさんの種類のオープンデータに手を出した人ほど今回の影響を受けてしまうので、今までの意欲的なデータ提供に感謝すつつ、もう少し救済措置が欲しかったかなとは思います。</p>
+
+<h4 id="5-api-仕様差異の実装">5. API 仕様差異の実装</h4>
+
+<p>私の作ったアプリでは、API の応答データを何パターンかテストデータとして保存しておき、それをアプリケーションに食わせるユニットテストをたくさん用意していました。
+今回の API 移行に関しては、この仕組みがとても役に立ちました。新仕様の応答データを食わせて失敗するテストを潰していくことで、効率よく API 仕様変更に対応することができました。
+もっとも、交通事情も日々変化しており (虎ノ門ヒルズ駅が出来ただの、S-TRAIN が運行開始しただの)、一度テストデータ用意すれば将来も安泰とはならない難しさもありますが、オープンデータは基本データを HTTP GET するだけでサーバー側の状態などに依存するものがなく、構造的にユニットテストがやりやすい分野だと思います。</p>
+
+<h3 id="john-metro">John Metro</h3>
+
+<p>それでは改修を終えたオープンデータを使うアプリをご覧ください。</p>
+
+<p>電車に乗っているとき、急にお腹が痛くなったことはありませんか？
+このアプリは、駅名を入れて検索すると、何号車で降りればトイレに最速でたどり着けるかを瞬時に示すことができるアプリです。</p>
+
+<blockquote>
+<p>John Metro</p>
+
+<p><a href="https://johnmetro.herokuapp.com/">https://johnmetro.herokuapp.com/</a></p>
+</blockquote>
+
+
+<figure class="center">
+    <a href="https://johnmetro.herokuapp.com/">
+        <img src="/img/ss/johnmetro1.png" width="50%" />
+    </a>
+    
+    <figcaption>
+        <h4>John Metro</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>おまけ機能として、トイレの評価機能、落書き機能なども用意してあります。もしトイレの壁に落書きしたくなったら、ぐっとこらえて John Metro に書き込んでください。</p>
+
+<p>駅の検索には駅情報 <code>odpt:Station</code> を、トイレの位置や属性情報は駅施設情報 <code>odpt:StationFacility</code>、トイレを済ませたあと次の電車の来る時刻を確認できる発車案内欄には駅時刻表 <code>odpt:StationTimetable</code> を利用しています。祝日の判定には現在内閣府の配布している <code>syukujitsu.csv</code><sup>[参考文献2]</sup> を利用していますが、今回の移行で <code>odpt:Calendar</code> への移行も考え始めました。</p>
+
+<p>技術的には、実装は Java と Spring Boot、DB に MongoDB Atlas、ホスティングに Heroku を利用しています。初期はもっと別のものを使っていたのですが、何回かの改修を経て現在の形に落ち着きました。MongoDB の mLab から Atlas への移行は<a href="/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/">こちらの記事</a>に紹介があります。実はここで移行作業していた MongoDB のデータベースは John Metro のトイレ評価を溜め込んだ DB なのでした。</p>
+
+<p>API 移行にともない、今後は駅施設情報は2022年3月末の状態からアップデートされなくなります。東京メトロには、ぜひ施設情報の再提供をお願いしたいところです。
+東京メトロの事務局には駅設備データの提供再開を要望していますが、執筆時点までに回答はありません。</p>
+
+<p>Happy hacking!</p>
+
+<h3 id="参考文献">参考文献</h3>
+
+<ol>
+<li><a href="https://ckan.odpt.org/">データセット - 公共交通オープンデータセンター データカタログサイト</a></li>
+<li><a href="https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html">国民の祝日について - 内閣府</a></li>
+</ol>
+
+</div>
+
+
+      <footer>
+  
+<span class="share-box">Share this on:
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-facebook-official "></i></a>
+
+    <a href="https://twitter.com/intent/tweet?text=%e5%85%ac%e5%85%b1%e4%ba%a4%e9%80%9a%e3%82%aa%e3%83%bc%e3%83%97%e3%83%b3%e3%83%87%e3%83%bc%e3%82%bf%20API%20%e3%81%ae%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97&amp;url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-twitter"></i></a>
+
+    <a href="https://plus.google.com/share?url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-google-plus"></i></a>
+
+    <a href="http://www.reddit.com/submit?url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-reddit"></i></a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f&amp;title=%e5%85%ac%e5%85%b1%e4%ba%a4%e9%80%9a%e3%82%aa%e3%83%bc%e3%83%97%e3%83%b3%e3%83%87%e3%83%bc%e3%82%bf%20API%20%e3%81%ae%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><i class="fa fa-linkedin"></i></a>
+
+    <a href="mailto:?subject=%e5%85%ac%e5%85%b1%e4%ba%a4%e9%80%9a%e3%82%aa%e3%83%bc%e3%83%97%e3%83%b3%e3%83%87%e3%83%bc%e3%82%bf%20API%20%e3%81%ae%e3%81%8a%e5%bc%95%e8%b6%8a%e3%81%97&amp;body=Check out this site https%3a%2f%2fmikan.github.io%2f2022%2f03%2f31%2fmigrate-odpt-api%2f" data-proofer-ignore=""><i class="fa fa-envelope"></i></a>
+  </span>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      
+  
+    <nav><ul class="pager">
+    
+        <li class="previous">
+          <a href="https://mikan.github.io/2021/12/26/making-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico/" title="Raspberry Pi Pico と SCD41 で作る CO2 表示器">
+            <span aria-hidden="true">&larr;</span>Previous
+          </a>
+        </li>
+    
+
+    
+    </ul> </nav>
+  
+
+
+</div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//kagaorange.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+    </div>
+    
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div>
+  
+
+    <div class="section">
+      <header><div class="title"><b>Latest Posts</b></div></header>
+      <div class="content">
+        <ul>
+        
+          <li>
+          <a href="https://mikan.github.io/2022/03/31/migrate-odpt-api/">公共交通オープンデータ API のお引越し</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2021/12/26/making-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico/">Raspberry Pi Pico と SCD41 で作る CO2 表示器</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2021/12/14/livestock-agri-tech-3years/">3年間の畜産アグリテック業界への挑戦とこれから</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2020/07/12/using-fyne-for-developing-cross-platform-gui-application/">Go 製 UI ツールキット Fyne で始めるクロスプラットフォーム GUI アプリケーション開発</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/">Heroku の mLab Add-on を MongoDB Atlas に移行する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/12/08/implementing-header-and-footer-with-golang-html-template/">Go の html/template でヘッダーやフッター等の共通化を実現する方法</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2019/11/23/setup-la-frite-with-debian-10-and-benchmark-using-pts/">10 ドル Linux ボード La Frite に Debian 10 をインストールして Phoronix Test Suite で性能を計測する</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/11/30/using-oidc-on-webflux-with-spring-boot-21-and-spring-security-51/">Spring Boot 2.1 と Spring Security 5.1 を組み合わせて WebFlux で OpenID Connect を使う</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/">AWS IoT MQTT の 443 ポートへ Go からアクセスする</a>
+          </li>
+        
+          <li>
+          <a href="https://mikan.github.io/2018/09/26/aosn-workshop-yearly-report-2018/">AOSN読書会 年次活動報告 2018</a>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>category</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/categories/web">web</a></li><li><a href="/categories/iot">iot</a></li><li><a href="/categories/life">life</a></li><li><a href="/categories/tools">tools</a></li><li><a href="/categories/salesforce">salesforce</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      
+      
+      <div class="section taxonomies">
+        <header><div class="title"><b>tag</b></div></header>
+
+        <div class="content">
+          <ul>
+            <li><a href="/tags/golang">golang</a></li><li><a href="/tags/java">java</a></li><li><a href="/tags/spring-boot">spring-boot</a></li><li><a href="/tags/gradle">gradle</a></li><li><a href="/tags/aws">aws</a></li><li><a href="/tags/book">book</a></li><li><a href="/tags/github">github</a></li><li><a href="/tags/heroku">heroku</a></li><li><a href="/tags/kotlin">kotlin</a></li><li><a href="/tags/c&#43;&#43;">c&#43;&#43;</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+
+</div>
+
+      </div>
+    
+  </div>
+</div>
+    
+<footer class="footer hidden-print">
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="pull-left">
+  <a class="toplink" href="javascript:" id="return-to-top">back to top</a>
+</div>
+<div class="pull-right">
+
+</div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              
+    
+<div class="container footline">
+    <small>
+  Copyright&copy; <a href='/about/'>Yutaka Kato</a>
+
+</small>
+</div>
+
+
+    
+
+
+        </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="//s3.amazonaws.com/mailmunch/static/site.js" id="mailmunch-script" data-mailmunch-site-id="" async="async"></script>
+
+
+
+<script src="//load.sumome.com/" data-sumo-site-id="7376c112ca70badebd8ee83050033a40afd51c35656127efca6d0e2f5b1f09c2" async="async"></script>
+
+<script src="https://mikan.github.io/js/jquery.min.js"></script>
+<script src="https://mikan.github.io/js/bootstrap.min.js"></script>
+
+
+<script src="https://mikan.github.io/js/highlight.pack.js"></script>
+<script src="https://mikan.github.io/js/site.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+  var _gaq=[['_setAccount','UA-68709286-1'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<script>
+var ENABLE_POPOVER = "", 
+EXPIRE_COOKIE = "", 
+SHOW_MODAL_TIMEOUT = "", 
+MOUSE_LEAVE = "", 
+MODAL_SIZE = "", 
+POST_URL = "", 
+SIGNUP_HEADER = "",
+HEADER_IMAGE = "",
+IMG_DESCRIPTION = "",
+SIGNUP_TEXT = "",
+INPUT_PLACEHOLDER = "",
+SUBMIT_BUTTON = "",
+SUCCESS_MESSAGE = "",
+ERROR_MESSAGE = "",
+OPTIN = "",
+COOKIE_NAME = "",
+CONTENTLANGUAGE = ""; 
+</script>
+
+
+
+
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//MathJax.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax//config/TeX-AMS-MML_HTMLorMML.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    for(var all in MathJax.Hub.getAllJax()) {
+        all.SourceElement().parentNode.className += ' has-jax';
+
+    }
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
