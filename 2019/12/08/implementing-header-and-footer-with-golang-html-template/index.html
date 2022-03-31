@@ -59,7 +59,7 @@
     },
     "datePublished": "2019-12-08",
     "description": "",
-    "wordCount": 3009
+    "wordCount": 3004
   }
 </script>
   
@@ -190,8 +190,8 @@
 
 
   <small>
-  &middot; Read in about 7 min
-  &middot; (3009 words)
+  &middot; Read in about 6 min
+  &middot; (3004 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2019%2f12%2f08%2fimplementing-header-and-footer-with-golang-html-template%2f" onclick="window.open(this.href, 'mywin',
@@ -233,11 +233,10 @@
   
 
 <p>最近新人くんに Go 言語を教えているのですが、「これは確かに分かりにくいよな」って思ったところがあったので1つ取り上げて解説したいと思います。
-それは、「自分で Go でテンプレートの分割をやろうとしたところ値をうまく渡せず諦めました。これ、どうやったんですか？」といった質問でした。
-</p>
+それは、「自分で Go でテンプレートの分割をやろうとしたところ値をうまく渡せず諦めました。これ、どうやったんですか？」といった質問でした。</p>
 
 <p>Go の標準ライブラリの <code>html/template</code> (<code>text/template</code> ではない) はびっくりするぐらいシンプルなのにとてもパワフルなテンプレートエンジンです。
-私は現在この <code>html/template</code> を用いて 43 個もの画面を持つ Web アプリケーションの開発・運用しており、中には 1000 行を軽く超える HTML もありますが、どのページも高速でレンダリングされます。
+私は現在この <code>html/template</code> を用いて 43 個もの画面を持つ Web アプリケーションの開発・運用しており、中には 1000 行を軽く超える HTML もありますが、どのページも高速でレンダリングされます。
 また、本記事で紹介する部品化を使いこなせば、フロントエンドフレームワークでやっているコンポーネント化に近いこともある程度までは実現することができます。</p>
 
 <p>冒頭の質問に対する回答例を紹介するまえに、まずは基本的な使い方をおさらいしましょう。</p>
@@ -324,7 +323,7 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 <p>ばっちりですね！</p>
 
 <p>さて、コードを読むと (書くと) リクエストが来るたびにテンプレートファイルを読み込むのは効率が悪いと感じるでしょう (テンプレートのデバッグ中には嬉しいのですが)。
-起動時に読み込むように改良してみます。</p>
+起動時に読み込むように改良してみます。</p>
 
 <pre><code class="language-go">// import は省略しました
 
@@ -540,7 +539,7 @@ func newHeader(title string) header {
 
 <p>Go の基本的なテクニックと、ちょっとした <code>template</code> のコツを組み合わせると、そこそこの規模の Web アプリケーションも難なく開発できるようになります。</p>
 
-<p>また、本記事では省きますが <code>FuncMap</code> という機能があります。これを用いるとテンプレートから思い思いの Go 関数を呼び出せるようになり、表現力が倍増します。テンプレートの部品化と併せて、ぜひ習得してみてください。</p>
+<p>また、本記事では省きますが <code>FuncMap</code> という機能があります。これを用いるとテンプレートから思い思いの Go 関数を呼び出せるようになり、表現力が倍増します。テンプレートの部品化と併せて、ぜひ習得してみてください。</p>
 
 <p>すべての <code>html/template</code> の仕様は Godoc にあるので、困ったら頑張ってここを見れば最終的には答えがみつかるはずです。</p>
 

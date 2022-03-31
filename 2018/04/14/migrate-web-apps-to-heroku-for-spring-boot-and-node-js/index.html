@@ -71,7 +71,7 @@
     },
     "datePublished": "2018-04-14",
     "description": "",
-    "wordCount": 6415
+    "wordCount": 6411
   }
 </script>
   
@@ -203,7 +203,7 @@
 
   <small>
   &middot; Read in about 13 min
-  &middot; (6415 words)
+  &middot; (6411 words)
   &middot; 
 <span class="share-box">Share this on:
     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikan.github.io%2f2018%2f04%2f14%2fmigrate-web-apps-to-heroku-for-spring-boot-and-node-js%2f" onclick="window.open(this.href, 'mywin',
@@ -265,12 +265,12 @@
 </figure>
 
 
-<p>先日、契約している VPS (<a href="https://www.vultr.com/?ref=7053029">VULTR VPS 東京リージョン</a>) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。この記事はその奮闘記です。
+<p>先日、契約している VPS (<a href="https://www.vultr.com/?ref=7053029">VULTR VPS 東京リージョン</a>) で動かしている自作 Web アプリたちの負荷が上がってきたことから、Heroku へのお引越しを敢行しました。この記事はその奮闘記です。
 主に、設定ファイルの環境変数化、デプロイ、Deploy to Heroku ボタンの設置、New Relic APM によるパフォーマンスモニタリングの適用の4点についてのメモをまとめました。</p>
 
 <h3 id="1-設定ファイルの環境変数化">1. 設定ファイルの環境変数化</h3>
 
-<p>皆さんの Web アプリはどのようにパラメーターを定義・記載していますか？そして、それをどうやって環境ごとに切り替えていますか？
+<p>皆さんの Web アプリはどのようにパラメーターを定義・記載していますか？そして、それをどうやって環境ごとに切り替えていますか？
 たとえば、標準的な Web アプリでは以下のような環境があり、それぞれデータベースやログレベルなどを異なるものを指すことが多いでしょう。</p>
 
 <ul>
@@ -373,9 +373,9 @@ Heroku が生み出した Web アプリ開発の有名な方法論 <strong>&ldqu
 
 <h4 id="1-1-spring-boot-の場合">1.1 Spring Boot の場合</h4>
 
-<p>Spring Boot のプロパティは、環境変数と相互に変換可能です。すなわち、<code>spring.data.mongodb.uri</code> というプロパティは環境変数 <code>SPRING_DATA_MONGODB_URI</code> に対応しています。よって、この仕組みを使うことでアプリ側は何も対応することなく Heroku にフィットさせることができます。</p>
+<p>Spring Boot のプロパティは、環境変数と相互に変換可能です。すなわち、<code>spring.data.mongodb.uri</code> というプロパティは環境変数 <code>SPRING_DATA_MONGODB_URI</code> に対応しています。よって、この仕組みを使うことでアプリ側は何も対応することなく Heroku にフィットさせることができます。</p>
 
-<p>しかし、Heroku ではアドオンから提供される環境変数をアプリから利用するというパターンがあり、全ての環境変数をデベロッパー (この記事を読んでいるあなた) が決められるとは限りません。このようなケースでは、環境変数とプロパティの対応関係を何かしらの手段で定義することになります。
+<p>しかし、Heroku ではアドオンから提供される環境変数をアプリから利用するというパターンがあり、全ての環境変数をデベロッパー (この記事を読んでいるあなた) が決められるとは限りません。このようなケースでは、環境変数とプロパティの対応関係を何かしらの手段で定義することになります。
 また、Spring Boot は前述のように <code>application.properties</code> / <code>.yml</code> とプロファイルの機構による柔軟なパラメーター制御が最初から備わっており、Spring Security や Spring Data 等の構造化されたパラメーターたちもこのファイル一つで取り回せる利便性があります。
 いくら環境変数絶対な Heroku といえども、この仕組みはなかなか手放したくないものです。
 そこで便利なのが、<code>application.propeties</code> / <code>.yml</code> の中から環境変数を刺す機能を用いた、プロパティ・プロファイル・環境変数の合わせ技です。</p>
