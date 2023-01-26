@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Spring Security on Yutaka 🍊 Kato</title>
+    <title>spring-security on Yutaka 🍊 Kato</title>
     <link>https://mikan.github.io/tags/spring-security/</link>
-    <description>Recent content in Spring Security on Yutaka 🍊 Kato</description>
+    <description>Recent content in spring-security on Yutaka 🍊 Kato</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
