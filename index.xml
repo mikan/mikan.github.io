@@ -325,7 +325,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tool/charcount/</guid>
-      <description>Character Counter function count(form, val) { &#34;use strict&#34;; var wis, wos, line; if (!val) return; wis = val.replace(/\n/g, &#34;&#34;); form.within_space.value = wis.length; wos = val.replace(/\s| /g, &#34;&#34;); form.without_space.value = wos.length; line = val.match(/\n/g); form.lines.value = line &amp;&amp; line.length + 1 || &#34;1&#34;; } body { font-size: 100%; width: 50%; margin: 10px auto; text-align: center; } textarea { width: 100%; height: 50%; } table { color: black; background: lavender; margin: 10px</description>
+      <description>Character Counterfunction count(form, val) {&#34;use strict&#34;;var wis, wos, line;if (!val) return;wis = val.replace(/\n/g, &#34;&#34;);form.within_space.value = wis.length;wos = val.replace(/\s|　/g, &#34;&#34;);form.without_space.value = wos.length;line = val.match(/\n/g);form.lines.value = line &amp;&amp; line.length + 1 || &#34;1&#34;;}body {font-size: 100%;width: 50%;margin: 10px auto;text-align: center;}textarea {width: 100%;height: 50%;}table {color: black;background: lavender;margin: 10px auto;padding: 8px;border-radius: 0.</description>
     </item>
     
     <item>
@@ -334,7 +334,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>mikan@aomikan.org (Yutaka Kato)</author>
       <guid>https://mikan.github.io/tool/timer/</guid>
-      <description>LT Timer &#34;use strict&#34;; var COLOR = { NORMAL: &#34;cyan&#34;, WARNING: &#34;salmon&#34;, ERROR: &#34;red&#34; }; var defaultM = 5; var defaultS = 0; var over = false; var t; window.onload = function() { document.getElementById(&#34;timer&#34;).style.color = COLOR.NORMAL; }; function startCounting() { over = false; document.getElementById(&#34;start&#34;).disabled = true; document.getElementById(&#34;stop&#34;).disabled = false; t = setInterval(&#34;countDown()&#34;, 1000); } function stopCounting() { document.getElementById(&#34;start&#34;).disabled = false; document.getElementById(&#34;stop&#34;).disabled = true; clearInterval(t); } function resetCounter() { over =</description>
+      <description>LT Timer  &#34;use strict&#34;; var COLOR = { NORMAL: &#34;cyan&#34;, WARNING: &#34;salmon&#34;, ERROR: &#34;red&#34; }; var defaultM = 5; var defaultS = 0; var over = false; var t; window.onload = function() { document.getElementById(&#34;timer&#34;).style.color = COLOR.NORMAL; }; function startCounting() { over = false; document.getElementById(&#34;start&#34;).disabled = true; document.getElementById(&#34;stop&#34;).disabled = false; t = setInterval(&#34;countDown()&#34;, 1000); } function stopCounting() { document.getElementById(&#34;start&#34;).disabled = false; document.getElementById(&#34;stop&#34;).disabled = true; clearInterval(t); } function resetCounter() { over = false; stopCounting(); reset(); } function countDown() { var min = document.</description>
     </item>
     
   </channel>

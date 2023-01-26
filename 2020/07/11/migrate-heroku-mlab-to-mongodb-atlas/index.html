@@ -85,7 +85,7 @@
 <link rel="canonical" href="https://mikan.github.io/2020/07/11/migrate-heroku-mlab-to-mongodb-atlas/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.51" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -254,12 +254,8 @@
       <div class="content">
   
 
-
 <figure class="center">
-    
-        <img src="/img/logo/mlab_rip.png" width="50%" />
-    
-    
+    <img src="/img/logo/mlab_rip.png" width="50%"/> 
 </figure>
 
 
@@ -278,12 +274,8 @@ MongoDB, Inc. では独自の DBaaS である Atlas をローンチしており�
 
 <p>Heroku はシャットダウン予告のメールの中で別の MongoDB Add-on の「ObjectRocket」への移行を提案しています。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/heroku2.png" width="50%" />
-    
-    
+    <img src="/img/ss/heroku2.png" width="50%"/> 
 </figure>
 
 
@@ -318,12 +310,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 <p><a href="https://www.mongodb.com/cloud/atlas">https://www.mongodb.com/cloud/atlas</a></p>
 </blockquote>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas1.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas1.png" width="80%"/> 
 </figure>
 
 
@@ -332,12 +320,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 <p>私は実行したら <code>CORS_ORIGIN_DENIED</code> というエラー画面になってしまいました😇
 先行きがとっても不安です・・・。しかし大丈夫、ちゃんとサインアップメールが届いていました。メールのリンクをクリックしてログインします。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas2.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas2.png" width="80%"/> 
 </figure>
 
 
@@ -345,35 +329,23 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <h4 id="b-atlas-組織と-mlab-アカウントの接続">B. Atlas 組織と　mLab アカウントの接続</h4>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas3.png" />
-    
-    
+    <img src="/img/ss/atlas3.png"/> 
 </figure>
 
 
 <p>画面左上の葉っぱ (失礼) の右側にある歯車アイコン⚙️をクリックし、 &ldquo;Organization Settings&rdquo; 画面を開いてください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas4.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas4.png" width="80%"/> 
 </figure>
 
 
 <p>一番下までぐぐっとスクロールすると、&rdquo;Connect to mLab&rdquo; というペインが登場しています！素晴らしい！
 早速 [Connect to mLab] ボタンを押します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/mlab1.png" width="80%" />
-    
-    
+    <img src="/img/ss/mlab1.png" width="80%"/> 
 </figure>
 
 
@@ -388,12 +360,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>ログイン後、目的のアプリを開きます。そして &ldquo;Installed add-ons&rdquo; ペインにある mLab をクリックし、mLab のダッシュボードを開きます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/heroku3.png" />
-    
-    
+    <img src="/img/ss/heroku3.png"/> 
 </figure>
 
 
@@ -409,46 +377,30 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>するとあら不思議、画面が変わりました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/mlab2.png" width="80%" />
-    
-    
+    <img src="/img/ss/mlab2.png" width="80%"/> 
 </figure>
 
 
 <p>次は <strong>ブラウザの戻るボタン</strong>で Atlas に戻ります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas4.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas4.png" width="80%"/> 
 </figure>
 
 
 <p>もう一回 [Connect to mLab] ボタンを押します。
 あらあら不思議、新しい画面が現れました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/mlab3.png" width="80%" />
-    
-    
+    <img src="/img/ss/mlab3.png" width="80%"/> 
 </figure>
 
 
 <p>[Authorize] ボタンを押すと、Atlas の画面に戻ります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas5.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas5.png" width="80%"/> 
 </figure>
 
 
@@ -458,12 +410,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>先程の画面で行の右端に [&hellip;] ボタンがあります。押してメニューを開き、続いて [Configure Migration] を選択します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas6.png" />
-    
-    
+    <img src="/img/ss/atlas6.png"/> 
 </figure>
 
 
@@ -471,12 +419,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>冒頭で言及した「11ステップ」というのはここから始まります！ (いままでのは事前準備&hellip;)</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas7.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas7.png" width="80%"/> 
 </figure>
 
 
@@ -486,12 +430,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>マイグレーションウィザードの1番目のボタン [Create or Select Target Project] を押しましょう。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas8.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas8.png" width="80%"/> 
 </figure>
 
 
@@ -501,12 +441,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p><strong>Step 2. データベースユーザーのインポート</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas9.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas9.png" width="80%"/> 
 </figure>
 
 
@@ -515,12 +451,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p><strong>Step 3. IP ホワイトリストの設定</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas10.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas10.png" width="80%"/> 
 </figure>
 
 
@@ -530,12 +462,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p><strong>Step 4. 対象 Atlas クラスターの作成</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas11.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas11.png" width="80%"/> 
 </figure>
 
 
@@ -543,12 +471,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>するとクラスターの設定を選ぶ重要な画面になります。各項目を確認しながら一番下までスクロールしてください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas12.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas12.png" width="80%"/> 
 </figure>
 
 
@@ -557,23 +481,15 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>すると、クラスター作成中表示が現れます。しばらく待ちましょう。私は3分待ちました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas13.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas13.png" width="80%"/> 
 </figure>
 
 
 <p>終わるとこんな表示になります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas14.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas14.png" width="80%"/> 
 </figure>
 
 
@@ -583,12 +499,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>(and だったり And だったりが気になりますね&hellip;)</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas15.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas15.png" width="80%"/> 
 </figure>
 
 
@@ -596,12 +508,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p><strong>Step 6. マイグレーションのテスト</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas16.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas16.png" width="80%"/> 
 </figure>
 
 
@@ -620,34 +528,22 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>テスト実行中は以下のような画面になります。しばらく待ちましょう。私は2分待ちました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas17.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas17.png" width="80%"/> 
 </figure>
 
 
 <p>終わったら次のような画面になるので、 [Confirm Connectivity] ボタンを押します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas18.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas18.png" width="80%"/> 
 </figure>
 
 
 <p><strong>Step 7. 接続テスト</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas19.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas19.png" width="80%"/> 
 </figure>
 
 
@@ -677,12 +573,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p><strong>Step 8. Heroku アドオンの config var からの独立性確保</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas20.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas20.png" width="80%"/> 
 </figure>
 
 
@@ -698,12 +590,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 <li>アプリケーションの設定で参照環境変数を変更してデプロイ</li>
 </ol>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/heroku4.png" />
-    
-    
+    <img src="/img/ss/heroku4.png"/> 
 </figure>
 
 
@@ -713,12 +601,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>いよいよマイグレーション実行のときが来ました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas21.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas21.png" width="80%"/> 
 </figure>
 
 
@@ -730,45 +614,29 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>マイグレーション実行中は以下のような画面になります。しばらく待ちましょう。私は3分待ちました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas22.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas22.png" width="80%"/> 
 </figure>
 
 
 <p>終わりましたか？おめでとうございます！では [Start Using Atlas] ボタンを押しましょう。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas23.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas23.png" width="80%"/> 
 </figure>
 
 
 <p><strong>Step 10. Atlas の利用を開始</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas24.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas24.png" width="80%"/> 
 </figure>
 
 
 <p>先程作った Heroku config var の <code>DB_URI</code> を、Step 7 でテストした接続文字列に置き換えます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/heroku5.png" width="80%" />
-    
-    
+    <img src="/img/ss/heroku5.png" width="80%"/> 
 </figure>
 
 
@@ -782,12 +650,8 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p><strong>Step 11. mLab Add-on の削除</strong></p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/atlas25.png" width="80%" />
-    
-    
+    <img src="/img/ss/atlas25.png" width="80%"/> 
 </figure>
 
 
@@ -795,23 +659,15 @@ Atlas には無料 Sandbox があります。やっぱり Atlas しかありま�
 
 <p>Heroku Dashboard の App の &ldquo;Configure Add-ons&rdquo; リンクから削除できます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/heroku6.png" />
-    
-    
+    <img src="/img/ss/heroku6.png"/> 
 </figure>
 
 
 <p>くちばしみたいなアイコンに &ldquo;Delete Add-on&rdquo; があります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/heroku7.png" />
-    
-    
+    <img src="/img/ss/heroku7.png"/> 
 </figure>
 
 

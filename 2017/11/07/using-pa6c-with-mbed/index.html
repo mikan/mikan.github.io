@@ -83,7 +83,7 @@
 <link rel="canonical" href="https://mikan.github.io/2017/11/07/using-pa6c-with-mbed/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.51" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -252,17 +252,10 @@
 
 <p><a href="/2017/11/06/using-esp-wroom-02-with-mbed/">前回の記事</a>に引き続き Mbed ネタです。今回ご紹介するのはコチラ！</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/pa6c-breakout.jpg" width="40%" />
-    
-    
-    <figcaption>
-        <h4>PA6C Breakout基板 (実装済み)</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/pa6c-breakout.jpg" width="40%"/> <figcaption>
+            <h4>PA6C Breakout基板 (実装済み)</h4>
+        </figcaption>
 </figure>
 
 
@@ -303,17 +296,10 @@
 
 <p>シリアル通信と電源供給だけ。まるで USB だ。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20171106-2240.jpg" width="80%" />
-    
-    
-    <figcaption>
-        <h4>配線完了 (前回の写真を再掲)</h4>
-        
-    </figcaption>
-    
+    <img src="/img/photo/20171106-2240.jpg" width="80%"/> <figcaption>
+            <h4>配線完了 (前回の写真を再掲)</h4>
+        </figcaption>
 </figure>
 
 
@@ -357,17 +343,10 @@ int main() {
 
 <p>ではコンパイル、書き込み、ターミナル繋いでリセットボタン！</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/coolterm2.png" />
-    
-    
-    <figcaption>
-        <h4>PA6C からの出力</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/coolterm2.png"/> <figcaption>
+            <h4>PA6C からの出力</h4>
+        </figcaption>
 </figure>
 
 
@@ -396,33 +375,19 @@ int main() {
 
 <p>起動するとこんな感じです。Comport は [Auto Detect] を押すと自動でセットされます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/minigps1.png" />
-    
-    
-    <figcaption>
-        <h4>Mini GPS Tool その1</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/minigps1.png"/> <figcaption>
+            <h4>Mini GPS Tool その1</h4>
+        </figcaption>
 </figure>
 
 
 <p>やはり、まだ電波をキャッチできていないようです。でもしばらく待つと、12 というマークがついて日付・時刻が入りました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/minigps2.png" />
-    
-    
-    <figcaption>
-        <h4>Mini GPS Tool その2</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/minigps2.png"/> <figcaption>
+            <h4>Mini GPS Tool その2</h4>
+        </figcaption>
 </figure>
 
 
@@ -430,17 +395,10 @@ int main() {
 
 <p>・・・と思ったのですが、窓をあけてちょこっと突き出しただけでこの通り！</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/minigps3.png" />
-    
-    
-    <figcaption>
-        <h4>Mini GPS Tool その3</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/minigps3.png"/> <figcaption>
+            <h4>Mini GPS Tool その3</h4>
+        </figcaption>
 </figure>
 
 
@@ -448,17 +406,10 @@ int main() {
 
 <p>ここまで確認できれば、あとは煮るなり焼くなりです。とりあえず前回の記事の Wi-Fi モジュールを使って <a href="https://www.vultr.com/?ref=7053029">VULTR VPS 東京リージョン</a> に置いた Node-RED に送りつけてみました。NMEA 0183 フォーマットのまま送りつけているので、パースもクラウド上です。こんな感じで lat, lon を取り出すことができました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/nodered1.png" />
-    
-    
-    <figcaption>
-        <h4>Node-RED</h4>
-        
-    </figcaption>
-    
+    <img src="/img/ss/nodered1.png"/> <figcaption>
+            <h4>Node-RED</h4>
+        </figcaption>
 </figure>
 
 

@@ -83,7 +83,7 @@
 <link rel="canonical" href="https://mikan.github.io/2021/12/26/making-co2-display-unit-using-sensirion-scd41-and-raspberry-pi-pico/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.51" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -250,12 +250,8 @@
       <div class="content">
   
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20211220-0105.jpg" width="50%" />
-    
-    
+    <img src="/img/photo/20211220-0105.jpg" width="50%"/> 
 </figure>
 
 
@@ -267,12 +263,8 @@ CO2 濃度が上がると人体には集中力低下などの影響があると�
 しっかりモニタリングしたければ高価な CO2 計測器を買えばよいのですが、できることなやらやっぱり安価に実現したいもの。ということで電子工作界隈では CO2 センサーの自作が流行り出しました。
 人気なのは安価なこちらのセンサー、Zhengzhou 社製 MH-Z19 シリーズ。写真の MH-Z19C は秋葉原の秋月で ¥2,500 ぐらい、激安といっていいでしょう <sup>[参考文献4]</sup>。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20211226_0331.jpg" width="50%" />
-    
-    
+    <img src="/img/photo/20211226_0331.jpg" width="50%"/> 
 </figure>
 
 
@@ -281,12 +273,8 @@ CO2 濃度が上がると人体には集中力低下などの影響があると�
 <p>ただし今回紹介するのはこれではなく <strong>Sensirion SCD41</strong> です。
 Sensirion といえば SHT シリーズなど CMOS を使った独自技術による高精度な温湿度センサーが有名ですが、こちらはその CO2 バージョンのようなものです。値段は MH-Z19 シリーズほどではないですが CO2 センサーとしてはやはり結構安い部類、そしてセンシリオン公式 <sup>[参考文献5]</sup> のほか最近 Seeed <sup>[参考文献6]</sup> や Adafruit <sup>[参考文献7]</sup> からも評価ボードが発売され入手もしやすいです。スペック上も、測定範囲こそ MH-Z19C と同じですが、誤差は ± (40ppm + 5% reading value) とより高精度になっています <sup>[参考文献8]</sup>。しかもこのセンサー、 CO2 だけでなく温度・湿度も1モジュールでできてしまいます。冬場部屋で加湿器を運用している私にとって高精度の湿度のモニタリングも同時に達成したい。というわけで今回は SCD41 を使った表示器を製作することに決定、まずはブレッドボードに配線してみました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20211219_2223.jpg" width="50%" />
-    
-    
+    <img src="/img/photo/20211219_2223.jpg" width="50%"/> 
 </figure>
 
 
@@ -295,12 +283,8 @@ Sensirion といえば SHT シリーズなど CMOS を使った独自技術に�
 
 <p>配線はこんな感じです。上の写真とは AQM1602 が左右逆になっているのでご注意ください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/diagram/rpi-pico-scd41-wiring.png" width="70%" />
-    
-    
+    <img src="/img/diagram/rpi-pico-scd41-wiring.png" width="70%"/> 
 </figure>
 
 
@@ -547,21 +531,13 @@ Pico 本体にプログラムを配置して走らせたい場合は、保存先
 
 <p>一度 Pico 上に配置してしまえば、その後は Pico 上にある <code>main.py</code> を Thonny で開いていじることもできます。なおその際には一度 Stop ボタンを押して今走っているプログラムを止めておく (シェルに <code>&gt;&gt;&gt;</code> が出ている状態にする) 必要があります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/thonny1.png" width="50%" />
-    
-    
+    <img src="/img/ss/thonny1.png" width="50%"/> 
 </figure>
 
 
-
 <figure class="center">
-    
-        <img src="/img/ss/thonny2.png" width="50%" />
-    
-    
+    <img src="/img/ss/thonny2.png" width="50%"/> 
 </figure>
 
 
@@ -570,12 +546,8 @@ Pico 本体にプログラムを配置して走らせたい場合は、保存先
 <p>一通り動作を確認したら、今度はブレッドボードではなくもうちょっと使いやすいようにユニバーサル基板にしたくなりました。
 そして完成したのが冒頭の写真です (再掲)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20211220-0105.jpg" width="50%" />
-    
-    
+    <img src="/img/photo/20211220-0105.jpg" width="50%"/> 
 </figure>
 
 
@@ -629,23 +601,15 @@ Pico 本体にプログラムを配置して走らせたい場合は、保存先
 
 <p>表のようす:</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20211220_0051.jpg" width="50%" />
-    
-    
+    <img src="/img/photo/20211220_0051.jpg" width="50%"/> 
 </figure>
 
 
 <p>裏のようす:</p>
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20211220_0105.jpg" width="50%" />
-    
-    
+    <img src="/img/photo/20211220_0105.jpg" width="50%"/> 
 </figure>
 
 

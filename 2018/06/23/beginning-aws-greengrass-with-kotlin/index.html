@@ -87,7 +87,7 @@
 <link rel="canonical" href="https://mikan.github.io/2018/06/23/beginning-aws-greengrass-with-kotlin/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.51" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -258,12 +258,8 @@
       <div class="content">
   
 
-
 <figure class="center">
-    
-        <img src="/img/photo/20180617-1643.jpg" width="50%" />
-    
-    
+    <img src="/img/photo/20180617-1643.jpg" width="50%"/> 
 </figure>
 
 
@@ -382,56 +378,36 @@ Java HotSpot(TM) Client VM (build 25.65-b01, mixed mode)
 
 <p>💡 画面右上に現在のリージョンが表示されています。希望するリージョンを確認・選択してから作業を開始してください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass1.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass1.png" width="80%"/> 
 </figure>
 
 
 <p>[グループの作成] ボタンを押すと、ウィザードが始まります。ここでは [簡単な作成の使用] を選びます (すごい直訳感・・・)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass2.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass2.png" width="80%"/> 
 </figure>
 
 
 <p>適当なグループ名をつけて、 [次へ] を選びます。ここでは rpi3-group としました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass3.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass3.png" width="80%"/> 
 </figure>
 
 
 <p>Core 機能の名前を付ける画面ですが、既にグループ名 + &ldquo;_Core&rdquo; が入っています。そのまま [次へ] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass4.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass4.png" width="80%"/> 
 </figure>
 
 
 <p>なんだかいろいろしてくれるらしいです。確認したら [グループと Core の作成] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass5.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass5.png" width="80%"/> 
 </figure>
 
 
@@ -442,12 +418,8 @@ Java HotSpot(TM) Client VM (build 25.65-b01, mixed mode)
 <li>ARMv7l, Raspbian Jessie, Linux の行の [ダウンロード]</li>
 </ul>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass6.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass6.png" width="80%"/> 
 </figure>
 
 
@@ -548,34 +520,22 @@ Ultimate と Community がありますが、今回はどちらでも開発でき
 <p>導入時、色々なオプション機能選択ができますが、 Gradle が使えれば良いです。
 インストールして立ち上がったら、 [Create New Project] を選択し、次のように [Gradle], [Kotlin (Java)] 指定して [Next] を選択します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea1.png" width="80%" />
-    
-    
+    <img src="/img/ss/idea1.png" width="80%"/> 
 </figure>
 
 
 <p>GroupId, ArtifactId は適当に。このあとは全部デフォルトのまま [Next], [Next] と進み最後に [Finish] です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea2.png" width="80%" />
-    
-    
+    <img src="/img/ss/idea2.png" width="80%"/> 
 </figure>
 
 
 <p>プロジェクトが開きました。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea3.png" width="80%" />
-    
-    
+    <img src="/img/ss/idea3.png" width="80%"/> 
 </figure>
 
 
@@ -607,12 +567,8 @@ build.dependsOn buildZip
 <p>編集が終わったら、 Gradle プロジェクトをリフレッシュしましょう。
 画面右手にある [Gradle] というツールウインドウを開き (ツールウインドウがなければ、画面の一番左下の ❏ ←こんなアイコンをクリック)、次に再読込ボタン (下の画像だと左手にある青くて丸いボタン 🌀) をクリックします。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea4.png" />
-    
-    
+    <img src="/img/ss/idea4.png"/> 
 </figure>
 
 
@@ -622,24 +578,16 @@ build.dependsOn buildZip
 プロジェクトを右クリックし、 [New] -&gt; [Directory] を開きます。
 画面に <code>src/main/kotlin/demo</code> と入力し、 [OK] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea5.png" />
-    
-    
+    <img src="/img/ss/idea5.png"/> 
 </figure>
 
 
 <p>パッケージ <code>demo</code> を右クリックし、 [New] -&gt; [Kotlin File/Class] を選びます。
 画面の Name: 欄に <code>HelloWorld</code> を入力し、 Kind: は Class を選んで [OK] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea6.png" />
-    
-    
+    <img src="/img/ss/idea6.png"/> 
 </figure>
 
 
@@ -689,23 +637,15 @@ private class PublishHelloWorld : TimerTask() {
 
 <p>コンソールに戻り、画面右下の [ソフトウェア] を開きます。スクロールして AWS Greengrass Core SDK を探し、 [ダウンロードの設定] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass7.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass7.png" width="80%"/> 
 </figure>
 
 
 <p>SDK ダウンロード画面になるので、プルダウンから [Java 8 バージョン 1.1.0] を選び、右の [Greengrass Core SDK のダウンロード]を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass8.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass8.png" width="80%"/> 
 </figure>
 
 
@@ -721,12 +661,8 @@ GreengrassJavaSDK-1.1.jar
 
 <p>IntelliJ でプロジェクトを右クリックし、 [New] -&gt; [Directory] を開き、 <code>libs</code> と入力して [OK] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea7.png" />
-    
-    
+    <img src="/img/ss/idea7.png"/> 
 </figure>
 
 
@@ -734,24 +670,16 @@ GreengrassJavaSDK-1.1.jar
 
 <p>移動したら、以前と同じ手順で Gradle のリフレッシュを行います。するとコンパイルエラーが消えるはずです。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea8.png" />
-    
-    
+    <img src="/img/ss/idea8.png"/> 
 </figure>
 
 
 <p>消えたあとは、この Gradle ツールウインドウで [Tasks] -&gt; [other] とたどり、[buildZip] をダブルクリックします。
 すると、 <code>build/distributions/&lt;PROJECT&gt;-1.0-SNAPSHOT.zip</code> というファイルが出来上がるはずです。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/idea9.png" />
-    
-    
+    <img src="/img/ss/idea9.png"/> 
 </figure>
 
 
@@ -761,34 +689,22 @@ GreengrassJavaSDK-1.1.jar
 
 <p>再び Greengrass コンソールに戻ります。左側のメニューから [Greengrass] にある [グループ] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass9.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass9.png" width="80%"/> 
 </figure>
 
 
 <p>対象グループを選び、左側のメニューから [Lambda] を選び、右上の [Lambda の追加] を選びます (または [最初の Lambda を追加])。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass10.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass10.png" width="80%"/> 
 </figure>
 
 
 <p>Greengrass グループへの Lambda の追加という画面になるので、 [新しい Lambda の作成] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass11.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass11.png" width="80%"/> 
 </figure>
 
 
@@ -797,80 +713,52 @@ GreengrassJavaSDK-1.1.jar
 ポリシーテンプレートは空のままで構いません。
 終わったら、 [関数の作成] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/lambda2.png" width="80%" />
-    
-    
+    <img src="/img/ss/lambda2.png" width="80%"/> 
 </figure>
 
 
 <p>関数コードをアップロードするときが来ました。
 [ハンドラ] に <strong>demo.HelloWorld::handleRequest</strong> と入力し、 [アップロード] ボタンで先ほどの zip を選択します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/lambda3.png" width="80%" />
-    
-    
+    <img src="/img/ss/lambda3.png" width="80%"/> 
 </figure>
 
 
 <p>アップロードしたら、画面右上の [保存] を選びます。
 続いて [アクション] から [新しいバージョンを発行] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/lambda4.png" width="80%" />
-    
-    
+    <img src="/img/ss/lambda4.png" width="80%"/> 
 </figure>
 
 
 <p>バージョンに名前を付けます。ここは適当に v1 などと入力して [発行] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/lambda5.png" width="80%" />
-    
-    
+    <img src="/img/ss/lambda5.png" width="80%"/> 
 </figure>
 
 
 <p>先ほどの Greengrass コンソールのほうに戻り、今度は [既存の Lambda の使用] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass11.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass11.png" width="80%"/> 
 </figure>
 
 
 <p>できたてほやほやの Lambda を選び、 [次へ] に進みます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass12.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass12.png" width="80%"/> 
 </figure>
 
 
 <p>できたてほやほやのバージョンを選び、 [完了] に進みます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass13.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass13.png" width="80%"/> 
 </figure>
 
 
@@ -878,90 +766,58 @@ GreengrassJavaSDK-1.1.jar
 
 <p>ここでいったん、 Lambda を編集します。対象の Lambda の行の [・・・] から [設定の編集] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass14.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass14.png" width="80%"/> 
 </figure>
 
 
 <p>メモリ制限を <strong>64 MB</strong> に、Lambda のライフサイクルを <strong>存続期間が長く無制限に稼働する関数にする</strong> にして [更新] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass15.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass15.png" width="80%"/> 
 </figure>
 
 
 <p>次に、画面左手の ⬅️ より戻って [サブスクリプション] メニューを選び、 [サブスクリプションの追加] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass18.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass18.png" width="80%"/> 
 </figure>
 
 
 <p><strong>ソース</strong>に先ほどデプロイした Lambda を、<strong>ターゲット</strong>に <strong>IoT Cloud</strong> を選びます。
 Lambda のバージョンが複数ある場合は、最新のものを選択する必要があります (つまり、バージョンが上がったらこの設定もやり直しです！<code>$LATEST</code> バージョンエイリアスも使えません)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass19.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass19.png" width="80%"/> 
 </figure>
 
 
 <p>トピックのフィルターには、コードで指定したトピック <strong>hello/world</strong> を入力し、 [次へ] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass20.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass20.png" width="80%"/> 
 </figure>
 
 
 <p>問題なさそうなら内容を確認して、 [完了] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass21.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass21.png" width="80%"/> 
 </figure>
 
 
 <p>さあいよいよデプロイです。Raspberry Pi 3 は起きていますか？ <code>greengrassd</code> は生きていますか？指差喚呼したら、 [アクション] から [デプロイ] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass16.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass16.png" width="80%"/> 
 </figure>
 
 
 <p>[自動検出] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/greengrass17.png" width="80%" />
-    
-    
+    <img src="/img/ss/greengrass17.png" width="80%"/> 
 </figure>
 
 
@@ -973,23 +829,15 @@ AWS IoT コンソールの左側のメニューから [テスト] を選び、MQ
 <p>[トピックのサブスクリプション] という入力欄があるので、コードと Greengrass グループに設定したトピック名 <strong>hello/world</strong> を入力します。
 最後に [トピックに発行] を選びます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot19.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot19.png" width="80%"/> 
 </figure>
 
 
 <p>5秒ごとにメッセージが上がってくれば成功です！あがってこなかったら、なにかがおかしいです。後述のトラブルシューティングを参考にしてみてください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot20.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot20.png" width="80%"/> 
 </figure>
 
 

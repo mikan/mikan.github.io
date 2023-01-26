@@ -87,7 +87,7 @@
 <link rel="canonical" href="https://mikan.github.io/2018/05/23/enable-oauth-to-your-nginx-by-oauth2-proxy-and-auth0/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.51" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -258,12 +258,8 @@
       <div class="content">
   
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero10.png" width="50%" />
-    
-    
+    <img src="/img/ss/authzero10.png" width="50%"/> 
 </figure>
 
 
@@ -295,12 +291,8 @@ auth_basic_user_file /path/to/htpasswd;
 
 <p>認証サービスは包括的な認証統合サービスである <a href="https://auth0.com/">Auth0</a> をチョイスします。なお、oauth2_proxy はそれ自体が Google, LinkedIn, Facebook, GitHub, Azure, GitLab を直接サポートしていますので、これ以外には絶対に手を出さん！というのならそれでも良いと思います。しかし Auth0 は一度使ってみると便利すぎて震えること間違いなしです！自前のユーザーストアはもちろん備わってますし、ソーシャルログイン 2 箇所までは無料で利用できます。しかも有効化はたったのワンクリックです。対応するサービスは Google, Facebook, Microsoft, LinkedIn, GitHub, Dropbox, BitBucket, PayPal, Twitter, Amazon, vKontakte, Yandex, Yahoo!, 37 signals, Box, Salesforce, Salesforce Community, Fitbit, Baidu, Renren, Weibo, AOL, Shopify, WordPress, Dwolla, MiiCard, Yammer, SoundCloud, Instagram, The City, Planning Center, Evernote, Exact, DoCoMo&hellip; とにかくたくさんあります！</p>
 
-
 <figure class="center">
-    
-        <img src="/img/diagram/nginx-oauth-auth0.png" />
-    
-    
+    <img src="/img/diagram/nginx-oauth-auth0.png"/> 
 </figure>
 
 
@@ -316,34 +308,22 @@ auth_basic_user_file /path/to/htpasswd;
 
 <p>テナントまで作り終えたら、 &ldquo;Application&rdquo; を作ります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero2.png" width="80%" />
-    
-    
+    <img src="/img/ss/authzero2.png" width="80%"/> 
 </figure>
 
 
 <p>名前を入れ、 &ldquo;Regular Web Application&rdquo; を選んで [Create] を押します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero3.png" width="80%" />
-    
-    
+    <img src="/img/ss/authzero3.png" width="80%"/> 
 </figure>
 
 
 <p>アプリケーションが作成されると　Quick Start が表示されると思いますが、今回はプログラミングなど必要ありません。&rdquo;Settings&rdquo; タブに移動します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero4.png" width="80%" />
-    
-    
+    <img src="/img/ss/authzero4.png" width="80%"/> 
 </figure>
 
 
@@ -353,12 +333,8 @@ auth_basic_user_file /path/to/htpasswd;
 <li><code>https://your-site.com/oauth2/callback</code></li>
 </ul>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero6.png" />
-    
-    
+    <img src="/img/ss/authzero6.png"/> 
 </figure>
 
 
@@ -375,12 +351,8 @@ auth_basic_user_file /path/to/htpasswd;
 <p>&ldquo;Settings&rdquo; タブの要点を抑えたら、次は &ldquo;Connections&rdquo; タブを開き、このアプリケーションに適用する認証手段を選択します。
 ソーシャルログインのソースは画面左側のメニューから &ldquo;Connections&rdquo; を選び、好きなサービスを有効化します (無料枠は 2 つまで)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero5.png" width="80%" />
-    
-    
+    <img src="/img/ss/authzero5.png" width="80%"/> 
 </figure>
 
 
@@ -535,12 +507,8 @@ sudo service nginx reload
 
 <p>いよいよ、認証をかけた場所にブラウザでアクセスしてみます。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/oauth2proxy2.png" />
-    
-    
+    <img src="/img/ss/oauth2proxy2.png"/> 
 </figure>
 
 
@@ -548,34 +516,22 @@ sudo service nginx reload
 
 <p>なお、メールアドレスの制限を入れていた場合は、次のようになります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/oauth2proxy1.png" />
-    
-    
+    <img src="/img/ss/oauth2proxy1.png"/> 
 </figure>
 
 
 <p>複数指定していたら、こんな感じ。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/oauth2proxy3.png" />
-    
-    
+    <img src="/img/ss/oauth2proxy3.png"/> 
 </figure>
 
 
 <p>では、ボタンを押してみましょう！</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero10.png" width="60%" />
-    
-    
+    <img src="/img/ss/authzero10.png" width="60%"/> 
 </figure>
 
 
@@ -583,24 +539,16 @@ sudo service nginx reload
 
 <p>もし <strong>Callback URL mismatch.</strong> と表示された場合は、oauth2_proxy で指定した <code>redirect_url</code> の値と、 Auth0 の &ldquo;Settings&rdquo; タブの &ldquo;Allowed Callback URLs&rdquo; に記入した値が合っていないか、設定を忘れています。修正してください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero6.png" />
-    
-    
+    <img src="/img/ss/authzero6.png"/> 
 </figure>
 
 
 <p>無事に認証できることまで確認したら、ミッションコンプリートです。
 Auth0 のダッシュボードには、見事にログインが記録されています。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/authzero8.png" />
-    
-    
+    <img src="/img/ss/authzero8.png"/> 
 </figure>
 
 

@@ -87,7 +87,7 @@
 <link rel="canonical" href="https://mikan.github.io/2018/01/23/data-visualization-on-static-sites-with-aws-lambda-go-and-chart-js/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.51" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -265,34 +265,22 @@
 
 <p>今回は、AOSN 読書会のウェブサイト (<a href="https://aosn.github.io">https://aosn.github.io</a>) の課題本ごとのページに設置した参加記録のチャートを動的に生成する仕組みを AWS Lambda Go と Chart.js を用いて実現することができたので紹介します。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/aosn-chart.png" width="50%" />
-    
-    
+    <img src="/img/ss/aosn-chart.png" width="50%"/> 
 </figure>
 
 
 <p>こちらの元データは同じページにある参加記録の表となっています。このサイトは GitHub Pages 標準の Jekyll で生成されたもので、元データは Markdown です。読書会が終わると、議事録担当者 (だいたい私😇) が今日の参加者と進捗をここに記していく運用をかれこれ 3 年以上しています。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/aosn-attends.png" />
-    
-    
+    <img src="/img/ss/aosn-attends.png"/> 
 </figure>
 
 
 <p>私は以前この Markdown をパースして Elasticsearch に送りデータビジュアライゼーションする Go 言語のコードを書いており、今回はそのコードを流用して Lambda をインプリします。Markdown の表部分に参加記録の行を足してからグラフに反映されるまでの仕組みは、次のような流れになります。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/diagram/chartgen.png" />
-    
-    
+    <img src="/img/diagram/chartgen.png"/> 
 </figure>
 
 
@@ -368,12 +356,8 @@ set GOOS=windows
 
 <p>出来上がった zip はコンソールや <code>awscli</code> でアップします。ハンドラ名 (zip の中に入ってるファイル名) は、この例では <code>main</code> です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/lambda1.png" width="80%" />
-    
-    
+    <img src="/img/ss/lambda1.png" width="80%"/> 
 </figure>
 
 
@@ -381,34 +365,22 @@ set GOOS=windows
 
 <p>アップロードできたら、GitHub の Webhook をトリガーにして走らせるため、API Gateway を仕込みます。Webhook なのでメソッドは <code>POST</code> です。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/apigateway1.png" width="80%" />
-    
-    
+    <img src="/img/ss/apigateway1.png" width="80%"/> 
 </figure>
 
 
 <p>今回は Lambda プロキシ統合は使用しません。GitHub の Webhook にはただステータス 200 を返してくれさえすれば良いのです。逆に、もし Lambda Proxy でデータを返す場合はレスポンス情報を組み立てる追加の実装が必要になります (そして Malformed Lambda proxy response と戦う😇)。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/apigateway2.png" />
-    
-    
+    <img src="/img/ss/apigateway2.png"/> 
 </figure>
 
 
 <p>GitHub の Webhooks は以下のように設定します。Content type は <code>application/json</code> を選びます。これで毎回 git push されるたびに API Gateway (+ Lambda) が叩かれる仕組みが出来上がりです。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/github-webhook1.png" width="80%" />
-    
-    
+    <img src="/img/ss/github-webhook1.png" width="80%"/> 
 </figure>
 
 
@@ -557,12 +529,8 @@ function handleEntryCharts(key) {
 
 <p>描画結果 (再掲)</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/aosn-chart.png" />
-    
-    
+    <img src="/img/ss/aosn-chart.png"/> 
 </figure>
 
 

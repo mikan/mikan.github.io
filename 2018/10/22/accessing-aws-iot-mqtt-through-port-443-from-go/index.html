@@ -85,7 +85,7 @@
 <link rel="canonical" href="https://mikan.github.io/2018/10/22/accessing-aws-iot-mqtt-through-port-443-from-go/" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
 <link rel="icon" href="/favicon.png">
-<meta name="generator" content="Hugo 0.44" />
+<meta name="generator" content="Hugo 0.51" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
@@ -254,12 +254,8 @@
       <div class="content">
   
 
-
 <figure class="center">
-    
-        <img src="/img/logo/awsiot.png" />
-    
-    
+    <img src="/img/logo/awsiot.png"/> 
 </figure>
 
 
@@ -279,17 +275,10 @@
 <p>ただし、この 443 ポートでの MQTT には制約があり、<strong>TLS の ALPN 拡張</strong>をサポートしている必要があります。
 ALPN 拡張は、TLS 接続上でアプリケーション層に異なるプロトコルを使うことをネゴシエーションするための拡張で、これを用いることでサーバーで一旦 HTTP 1.1 を受け入れつつ、他のプロトコルのネゴシエーションが可能になるというわけです。</p>
 
-
-<figure class="center">
-    <a href="https://amzn.to/2OCHjEG">
-        <img src="/img/cover/pst.jpg" width="20%" />
-    </a>
-    
-    <figcaption>
-        <h4>「プロフェッショナルSSL/TLS」にも解説あり (P51)</h4>
-        
-    </figcaption>
-    
+<figure class="center"><a href="https://amzn.to/2OCHjEG">
+    <img src="/img/cover/pst.jpg" width="20%"/> </a><figcaption>
+            <h4>「プロフェッショナルSSL/TLS」にも解説あり (P51)</h4>
+        </figcaption>
 </figure>
 
 
@@ -300,12 +289,8 @@ ALPN 拡張は、TLS 接続上でアプリケーション層に異なるプロ�
 
 <h3 id="go-からのアクセス">Go からのアクセス</h3>
 
-
 <figure class="center">
-    
-        <img src="/img/logo/golang.jpg" width="30%" />
-    
-    
+    <img src="/img/logo/golang.jpg" width="30%"/> 
 </figure>
 
 
@@ -470,12 +455,8 @@ Go の SDK はデフォルトで <code>~/.aws/config</code> のほうは見に�
 
 <p>AWS IoT のコンソールのテストでサブったりパブったりしてこのコードとのやりとりを試してみてください。</p>
 
-
 <figure class="center">
-    
-        <img src="/img/ss/awsiot21.png" width="80%" />
-    
-    
+    <img src="/img/ss/awsiot21.png" width="80%"/> 
 </figure>
 
 
