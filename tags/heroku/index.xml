@@ -8,10 +8,19 @@
     <language>ja-jp</language>
     <managingEditor>mikan@aomikan.org (Yutaka Kato)</managingEditor>
     <webMaster>mikan@aomikan.org (Yutaka Kato)</webMaster>
-    <lastBuildDate>Thu, 31 Mar 2022 12:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2024 17:20:02 +0900</lastBuildDate>
     
 	<atom:link href="https://mikan.github.io/tags/heroku/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>無料で使える Heroku 代替サービス 2024版</title>
+      <link>https://mikan.github.io/2024/11/28/heroku-alternatives-2024/</link>
+      <pubDate>Thu, 28 Nov 2024 17:20:02 +0900</pubDate>
+      <author>mikan@aomikan.org (Yutaka Kato)</author>
+      <guid>https://mikan.github.io/2024/11/28/heroku-alternatives-2024/</guid>
+      <description>時は2024年、Heroku の無料枠が廃止されてから2年ほど経ちますが、その間にいろいろな代替サービス・プラットフォームが登場したり持ち上げ</description>
+    </item>
     
     <item>
       <title>公共交通オープンデータ API のお引越し</title>

@@ -4,32 +4,43 @@
   
   <url>
     <loc>https://mikan.github.io/categories/</loc>
-    <lastmod>2022-03-31T12:30:00+09:00</lastmod>
+    <lastmod>2024-11-28T17:20:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikan.github.io/post/</loc>
-    <lastmod>2022-03-31T12:30:00+09:00</lastmod>
+    <lastmod>2024-11-28T17:20:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikan.github.io/tags/</loc>
-    <lastmod>2022-03-31T12:30:00+09:00</lastmod>
+    <lastmod>2024-11-28T17:20:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikan.github.io/</loc>
-    <lastmod>2022-03-31T12:30:00+09:00</lastmod>
+    <lastmod>2024-11-28T17:20:02+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://mikan.github.io/tags/heroku/</loc>
-    <lastmod>2022-03-31T12:30:00+09:00</lastmod>
+    <lastmod>2024-11-28T17:20:02+09:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/categories/web/</loc>
+    <lastmod>2024-11-28T17:20:02+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://mikan.github.io/2024/11/28/heroku-alternatives-2024/</loc>
+    <lastmod>2024-11-28T17:20:02+09:00</lastmod>
   </url>
   
   <url>
@@ -46,12 +57,6 @@
   
   <url>
     <loc>https://mikan.github.io/tags/spring-boot/</loc>
-    <lastmod>2022-03-31T12:30:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://mikan.github.io/categories/web/</loc>
     <lastmod>2022-03-31T12:30:00+09:00</lastmod>
     <priority>0</priority>
   </url>
